@@ -1,0 +1,14 @@
+#PingAddresses = 192.168.100.0/255.255.255.0
+PingAddresses = auto
+#PingNames = someHost;someOtherHost
+#AllowedAddresses = 192.168.100.0/255.255.255.0
+AllowedAddresses = auto
+#BroadcastNetwork = 192.168.100.0/255.255.255.0
+BroadcastNetwork = auto
+FirstWait = 30                          #30 hundredth seconds
+SecondWait = -1                         #only one try
+#SecondWait = 60                         #try twice, and the second time wait 0.6 seconds
+UpdatePeriod = 300                      #update after 300 secs
+DeliverUnnamedHosts = 0                 #also publish hosts without name
+MaxPingsAtOnce = 256                    #send up to 256 ICMP echo requests at once
+SearchUsingNmblookup = 1
