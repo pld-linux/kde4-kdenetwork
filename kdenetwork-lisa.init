@@ -1,0 +1,89 @@
+#!/bin/sh
+#
+# lisa		LAN Information Server
+#
+# chkconfig:	345 50 50
+#
+# description:	LISa is a small daemon which is intended to run on end user
+#		systems. It provides something like a "network neighbourhood",
+#		but only relying on the TCP/IP protocol stack, no smb or
+#		whatever.
+#
+# $Id$
+
+
+# Source function library
+. /etc/rc.d/init.d/functions
+
+# Get network config
+. /etc/sysconfig/network
+
+# Get service config - may override defaults
+[ -f /etc/sysconfig/lisa ] && . /etc/sysconfig/lisa
+
+# Check that networking is up.
+if is_yes "${NETWORKING}"; then
+	if [ ! -f /var/lock/subsys/network ]; then
+		# nls "ERROR: Networking is down. %s can't be run." lisa
+		msg_network_down lisa
+		exit 1
+	fi
+else
+	exit 0
+fi
+
+RETVAL=0
+# See how we were called.
+case "$1" in
+  start)
+	# Check if the service is already running?
+	if [ ! -f /var/lock/subsys/lisa ]; then
+		# show "Starting %s service" lisa
+		msg_starting lisa
+		busy
+		lisa >/dev/null
+		RETVAL=$?
+		if [ $RETVAL -eq 0 ]; then
+			log_success "$1 startup"
+			ok
+		else
+			fail
+			log_failed "$1 startup"
+		fi
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/lisa
+	else
+		# show "%s service is already running." lisa
+		msg_already_running lisa
+	fi
+	;;
+  stop)
+	# Stop daemons.
+	# show "Stopping %s service" lisa
+	if [ -f /var/lock/subsys/lisa ]; then
+		msg_stopping lisa
+		killproc lisa
+		rm -f /var/lock/subsys/lisa
+	else
+		# show "%s service is not running." lisa
+		msg_not_running lisa
+	fi	
+	;;
+  restart|force-reload)
+	$0 stop
+	$0 start
+	exit $?
+	;;
+  status)
+	status lisa
+	exit $?
+	;;
+  *)
+	# show "Usage: %s {start|stop|restart|force-reload|status}"
+	msg_usage "$0 {start|stop|restart|force-reload|status}"
+	exit 3
+esac
+
+exit $RETVAL
+
+# This must be last line !
+# vi:syntax=sh:tw=78:ts=8:sw=4
