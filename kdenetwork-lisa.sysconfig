@@ -1,0 +1,4 @@
+# Customized setings for lisa
+
+# Define nice level for lisa
+SERVICE_RUN_NICE_LEVEL="+5"
