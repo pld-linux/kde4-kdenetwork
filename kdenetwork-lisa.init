@@ -2,7 +2,7 @@
 #
 # lisa		LAN Information Server
 #
-# chkconfig:	345 50 50
+# chkconfig:	45 50 50
 #
 # description:	LISa is a small daemon which is intended to run on end user
 #		systems. It provides something like a "network neighbourhood",
