@@ -24,7 +24,6 @@
 # Check that networking is up.
 if is_yes "${NETWORKING}"; then
 	if [ ! -f /var/lock/subsys/network ]; then
-		# nls "ERROR: Networking is down. %s can't be run." lisa
 		msg_network_down lisa
 		exit 1
 	fi
@@ -38,7 +37,6 @@ case "$1" in
   start)
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/lisa ]; then
-		# show "Starting %s service" lisa
 		msg_starting lisa
 		busy
 		lisa >/dev/null
@@ -52,19 +50,16 @@ case "$1" in
 		fi
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/lisa
 	else
-		# show "%s service is already running." lisa
 		msg_already_running lisa
 	fi
 	;;
   stop)
 	# Stop daemons.
-	# show "Stopping %s service" lisa
 	if [ -f /var/lock/subsys/lisa ]; then
 		msg_stopping lisa
 		killproc lisa
 		rm -f /var/lock/subsys/lisa
 	else
-		# show "%s service is not running." lisa
 		msg_not_running lisa
 	fi	
 	;;
@@ -78,7 +73,6 @@ case "$1" in
 	exit $?
 	;;
   *)
-	# show "Usage: %s {start|stop|restart|force-reload|status}"
 	msg_usage "$0 {start|stop|restart|force-reload|status}"
 	exit 3
 esac
