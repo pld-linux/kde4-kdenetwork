@@ -61,7 +61,7 @@ case "$1" in
 		rm -f /var/lock/subsys/lisa
 	else
 		msg_not_running lisa
-	fi	
+	fi
 	;;
   restart|force-reload)
 	$0 stop
