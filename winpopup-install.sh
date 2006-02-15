@@ -7,7 +7,7 @@ i=/etc/samba/smb.conf
 
 # Create new smb.conf file with updated message command line
 cp -f $i{,.rpmsave}
-if grep -q '^include = /etc/samba/winpopup.conf' $i; then
+if ! grep -q '^include = /etc/samba/winpopup.conf' $i; then
 	echo 'include = /etc/samba/winpopup.conf' >> $i
 fi
 
