@@ -11,14 +11,13 @@
 #
 # $Id$
 
-
 # Source function library
 . /etc/rc.d/init.d/functions
 
 # Get network config
 . /etc/sysconfig/network
 
-# Get service config - may override defaults
+# Get service config
 [ -f /etc/sysconfig/lisa ] && . /etc/sysconfig/lisa
 
 # Check that networking is up.
@@ -31,10 +30,7 @@ else
 	exit 0
 fi
 
-RETVAL=0
-# See how we were called.
-case "$1" in
-  start)
+start() {
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/lisa ]; then
 		msg_starting lisa
@@ -52,8 +48,9 @@ case "$1" in
 	else
 		msg_already_running lisa
 	fi
-	;;
-  stop)
+}
+
+stop() {
 	# Stop daemons.
 	if [ -f /var/lock/subsys/lisa ]; then
 		msg_stopping lisa
@@ -62,11 +59,20 @@ case "$1" in
 	else
 		msg_not_running lisa
 	fi
+}
+
+RETVAL=0
+# See how we were called.
+case "$1" in
+  start)
+  	start
+	;;
+  stop)
+  	stop
 	;;
   restart|force-reload)
-	$0 stop
-	$0 start
-	exit $?
+	stop
+	start
 	;;
   status)
 	status lisa
@@ -80,4 +86,3 @@ esac
 exit $RETVAL
 
 # This must be last line !
-# vi:syntax=sh:tw=78:ts=8:sw=4
