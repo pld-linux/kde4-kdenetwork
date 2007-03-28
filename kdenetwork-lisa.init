@@ -74,15 +74,23 @@ case "$1" in
 	stop
 	start
 	;;
+  reload)
+	if [ -f /var/lock/subsys/lisa ]; then
+		msg_reloading lisa
+		killproc lisa -HUP
+		RETVAL=$?
+	else
+		msg_not_running lisa
+		exit 7
+	fi
+	;;
   status)
 	status lisa
 	exit $?
 	;;
   *)
-	msg_usage "$0 {start|stop|restart|force-reload|status}"
+	msg_usage "$0 {start|stop|restart|reload|force-reload|status}"
 	exit 3
 esac
 
 exit $RETVAL
-
-# This must be last line !
