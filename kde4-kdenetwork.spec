@@ -1107,7 +1107,7 @@ fi
 %{_kdedocdir}/en/kget
 %attr(755,root,root) %{_bindir}/kget
 %attr(755,root,root) %{_libdir}/kde4/khtml_kget.so
-%attr(755,root,root) %{_libdir}/kde4/kget_kiofactory.soop
+%attr(755,root,root) %{_libdir}/kde4/kget_kiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_metalinkfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_multisegkiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_kget.so
@@ -1206,14 +1206,14 @@ fi
 #%{_datadir}/services/chatwindow.desktop
 #%{_datadir}/services/emailwindow.desktop
 #%{_datadir}/services/invitation.protocol
-%{_datadir}/services/kopete_accountconfig.desktop
-%{_datadir}/services/kopete_addbookmarks.desktop
-%{_datadir}/services/kopete_appearanceconfig.desktop
-%{_datadir}/services/kopete_behaviorconfig.desktop
-%{_datadir}/services/kopete_chatwindowconfig.desktop
-%{_datadir}/servicetypes/kopeteplugin.desktop
-%{_datadir}/servicetypes/kopeteprotocol.desktop
-%{_datadir}/servicetypes/kopeteui.desktop
+%{_datadir}/kde4/services/kopete_accountconfig.desktop
+%{_datadir}/kde4/services/kopete_addbookmarks.desktop
+%{_datadir}/kde4/services/kopete_appearanceconfig.desktop
+%{_datadir}/kde4/services/kopete_behaviorconfig.desktop
+%{_datadir}/kde4/services/kopete_chatwindowconfig.desktop
+%{_datadir}/kde4/servicetypes/kopeteplugin.desktop
+%{_datadir}/kde4/servicetypes/kopeteprotocol.desktop
+%{_datadir}/kde4/servicetypes/kopeteui.desktop
 %{_datadir}/sounds/Kopete_Event.ogg
 %{_datadir}/sounds/Kopete_Received.ogg
 %{_datadir}/sounds/Kopete_Sent.ogg
