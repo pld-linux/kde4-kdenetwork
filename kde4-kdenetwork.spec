@@ -119,7 +119,7 @@ bibliotecas do kdenetwork.
 Summary:	File sharing plugins
 Summary(pl.UTF-8):	Wtyczki obsługujące współdzielenie plików
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minlibsevr}
+Requires:	kdebase4-core >= %{_minlibsevr}
 Obsoletes:	kcm_sambaconf
 
 %description filesharing
@@ -177,7 +177,7 @@ bibliotek.
 Summary:	File downloand manager
 Summary(pl.UTF-8):	Zarządca ściągania plików
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minbaseevr}
+Requires:	kdebase4-core >= %{_minbaseevr}
 
 %description kget
 A GetRight-like file download manager with resuming support and
@@ -192,7 +192,6 @@ Summary:	KDE News Ticker
 Summary(pl.UTF-8):	News Ticker dla KDE
 Summary(pt_BR.UTF-8):	Miniaplicativo de exibição de notícias para o painel Kicker
 Group:		X11/Applications
-Requires:	kdebase-desktop >= %{_minbaseevr}
 
 %description knewsticker
 KNewsTicker is an applet for the KDE panel (also known as Kicker)
@@ -216,7 +215,7 @@ Summary:	Multi-protocol plugin-based instant messenger
 Summary(pl.UTF-8):	Komunikator obsługujący wiele protokołów
 Group:		X11/Applications
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core >= %{_minbaseevr}
+Requires:	kdebase4-core >= %{_minbaseevr}
 Obsoletes:	kdenetwork-kit
 Obsoletes:	kopete
 Obsoletes:	kopete-plugin-protocols-aim
@@ -704,7 +703,6 @@ kontaktów na stronie WWW.
 Summary:	Public fileserver applet
 Summary(pl.UTF-8):	Applet publicznego serwera plików
 Group:		X11/Applications
-Requires:	kdebase-desktop >= %{_minbaseevr}
 
 %description kpf
 kpf provides simple file sharing using HTTP (the Hyper Text Transfer
@@ -751,7 +749,7 @@ Summary:	KDE PPP dialer
 Summary(pl.UTF-8):	Program do połączeń modemowych dla KDE
 Summary(pt_BR.UTF-8):	O discador para Internet
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minbaseevr}
+Requires:	kdebase4-core >= %{_minbaseevr}
 Requires:	ppp
 
 %description kppp
@@ -796,7 +794,7 @@ Summary:	KDE IRC client
 Summary(pl.UTF-8):	Klient IRC dla KDE
 Summary(pt_BR.UTF-8):	Cliente de IRC do KDE
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minbaseevr}
+Requires:	kdebase4-core >= %{_minbaseevr}
 Requires:	perl-IO-Socket-SSL
 Requires:	perl-Socket6 >= 0.11
 
@@ -816,7 +814,7 @@ Summary:	Virtual Desktops
 Summary(pl.UTF-8):	Wirtualne biurka
 Group:		X11/Applications
 Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core >= %{_minbaseevr}
+Requires:	kdebase4-core >= %{_minbaseevr}
 Suggests:	rdesktop
 
 %description krfb
@@ -839,7 +837,7 @@ specjalnych możliwości Remote Desktop Connection.
 Summary:	Talk daemon
 Summary(pl.UTF-8):	Daemon talk
 Group:		X11/Applications
-Requires:	kdebase-core >= %{_minbaseevr}
+Requires:	kdebase4-core >= %{_minbaseevr}
 
 %description ktalkd
 A talk daemon replacement. Support the talk protocol and features an
