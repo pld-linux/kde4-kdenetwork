@@ -101,7 +101,7 @@ Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_videodevice = %{epoch}:%{version}-%{release}
 Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
-Requires:	kdelibs-devel >= %{_minlibsevr}
+Requires:	kdelibs4-devel >= %{_minlibsevr}
 Obsoletes:	kdenetwork-librss-devel
 Obsoletes:	kdenetwork-rss-devel
 
@@ -144,7 +144,7 @@ Nadzorowanie usług DNS-SD.
 Summary:	KDE Internet Daemon
 Summary(pl.UTF-8):	Demon internetowy KDE
 Group:		X11/Applications
-Requires:	kdelibs >= %{_minlibsevr}
+Requires:	kdelibs4 >= %{_minlibsevr}
 Obsoletes:	kdenetwork-krfb < 9:3.1-6
 
 %description kinetd
@@ -853,7 +853,7 @@ wiadomościach.
 Summary:	Wireless LAN
 Summary(pl.UTF-8):	Bezprzewodowy LAN
 Group:		X11/Applications
-Requires:	kdelibs >= %{_minlibsevr}
+Requires:	kdelibs4 >= %{_minlibsevr}
 Requires:	wireless-tools
 Obsoletes:	kwifimanager
 
@@ -877,7 +877,7 @@ karty LAN używające interfejsu rozszerzeń bezprzewodowych.
 Summary:	KDE XmlRpc Daemon
 Summary(pl.UTF-8):	Deamon XmlRpc dla KDE
 Group:		X11/Applications
-Requires:	kdelibs >= %{_minlibsevr}
+Requires:	kdelibs4 >= %{_minlibsevr}
 
 %description kxmlrpcd
 KDE XmlRpc Daemon.
@@ -907,7 +907,7 @@ Przeglądarka dla udziałów Samby w sieci lokalnej.
 Summary:	kopete library
 Summary(pl.UTF-8):	Biblioteka kopete
 Group:		X11/Libraries
-Requires:	kdelibs >= %{_minlibsevr}
+Requires:	kdelibs4 >= %{_minlibsevr}
 Obsoletes:	kdenetwork-kopete < 10:3.1.93.031114-3
 
 %description libkopete
@@ -960,7 +960,7 @@ innymi przez AIM i ICQ.
 Summary:	RSS library
 Summary(pl.UTF-8):	Biblioteka RSS
 Group:		X11/Libraries
-Requires:	kdelibs >= %{_minlibsevr}
+Requires:	kdelibs4 >= %{_minlibsevr}
 Obsoletes:	kdenetwork-rss < 10:3.1.93.031114-3
 
 %description librss
