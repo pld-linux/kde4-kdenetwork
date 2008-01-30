@@ -32,12 +32,15 @@ Source3:	%{orgname}-lisa.sysconfig
 Source4:	%{orgname}-lisarc
 Source5:	winpopup-install.sh
 URL:		http://www.kde.org/
+BuildRequires:	QtOpenGL-devel
+BuildRequires:	avahi-compat-libdns_sd-devel
 BuildRequires:	cmake
 BuildRequires:	kdebase4-workspace-devel >= %{version}
 BuildRequires:	kdelibs4-devel >= %{_minlibsevr}
 BuildRequires:	libgadu-devel >= 1.4
 BuildRequires:	libidn-devel
 BuildRequires:	libiw-devel >= 27
+BuildRequires:	libjpeg-devel
 BuildRequires:	libtool
 BuildRequires:	libvncserver-devel
 BuildRequires:	libxml2-progs
@@ -47,6 +50,7 @@ BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	ortp-devel
 BuildRequires:	pcre-devel
+BuildRequires:	perl-base
 BuildRequires:	qca >= 2.0
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sqlite-devel
