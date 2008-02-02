@@ -107,9 +107,7 @@ Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_videodevice = %{epoch}:%{version}-%{release}
 Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
-Requires:	kdelibs4-devel >= %{_minlibsevr}
-Obsoletes:	kdenetwork-librss-devel
-Obsoletes:	kdenetwork-rss-devel
+Requires:	kde4-kdelibs-devel >= %{_minlibsevr}
 
 %description devel
 kdenetwork header files.
@@ -125,8 +123,7 @@ bibliotecas do kdenetwork.
 Summary:	File sharing plugins
 Summary(pl.UTF-8):	Wtyczki obsługujące współdzielenie plików
 Group:		X11/Applications
-Requires:	kdebase4-core >= %{_minlibsevr}
-Obsoletes:	kcm_sambaconf
+Requires:	kde4-kdebase-core >= %{_minlibsevr}
 
 %description filesharing
 File sharing plugins.
@@ -150,8 +147,7 @@ Nadzorowanie usług DNS-SD.
 Summary:	KDE Internet Daemon
 Summary(pl.UTF-8):	Demon internetowy KDE
 Group:		X11/Applications
-Requires:	kdelibs4 >= %{_minlibsevr}
-Obsoletes:	kdenetwork-krfb < 9:3.1-6
+Requires:	kde4-kdelibs >= %{_minlibsevr}
 
 %description kinetd
 A KDE daemon that listen on TCP ports and starts programs when a
@@ -183,7 +179,7 @@ bibliotek.
 Summary:	File downloand manager
 Summary(pl.UTF-8):	Zarządca ściągania plików
 Group:		X11/Applications
-Requires:	kdebase4-core >= %{_minbaseevr}
+Requires:	kde4-kdebase-core >= %{_minbaseevr}
 
 %description kget
 A GetRight-like file download manager with resuming support and
@@ -221,8 +217,7 @@ Summary:	Multi-protocol plugin-based instant messenger
 Summary(pl.UTF-8):	Komunikator obsługujący wiele protokołów
 Group:		X11/Applications
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
-Requires:	kdebase4-core >= %{_minbaseevr}
-Obsoletes:	kdenetwork-kit
+Requires:	kde4-kdebase-core >= %{_minbaseevr}
 Obsoletes:	kopete
 Obsoletes:	kopete-plugin-protocols-aim
 Obsoletes:	kopete-plugin-protocols-gg
@@ -470,7 +465,6 @@ Summary(pl.UTF-8):	Wtyczka Kopete do dodawania własnych aliasów dla poleceń
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Obsoletes:	kopete-tool-alias
-Conflicts:	kdenetwork-kopete < 10:3.2.90.040312-1
 
 %description kopete-tool-alias
 Kopete plugin to add custom aliases for commands.
@@ -483,7 +477,6 @@ Summary:	Kopete avdeviceconfig plugin
 Summary(pl.UTF-8):	Wtyczka Kopete do automatycznego przechodzenia w stan zajęty
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kopete-tool-avdeviceconfig
 
 %description kopete-tool-avdeviceconfig
 Kopete plugin which automatically changes status to away. Conditions
@@ -498,7 +491,6 @@ Summary:	Kopete smpppdcs plugin
 Summary(pl.UTF-8):	Wtyczka Kopete do automatycznego przechodzenia w stan zajęty
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kopete-tool-smpppdcs
 
 %description kopete-tool-smpppdcs
 Kopete plugin which automatically changes status to away. Conditions
@@ -513,7 +505,6 @@ Summary:	Kopete plugin which autoreplaces some text you can choose
 Summary(pl.UTF-8):	Wtyczka Kopete do automatycznej zamiany tekstu
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kopete-tool-autoreplace
 
 %description kopete-tool-autoreplace
 Kopete plugin which autoreplaces some text you can choose.
@@ -526,9 +517,6 @@ Summary:	Kopete Internet connection detector
 Summary(pl.UTF-8):	Wykrywacz połączeń internetowych dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Provides:	kdenetwork-kopete-tool-conectionstatus
-Obsoletes:	kdenetwork-kopete-tool-conectionstatus
-Obsoletes:	kopete-tool-connectionstatus
 
 %description kopete-tool-connectionstatus
 Kopete tool which automatically detects whether the internet
@@ -582,8 +570,6 @@ Summary:	A LaTeX plugin for Kopete
 Summary(pl.UTF-8):	Wtyczka Kopete renderująca tekst w formacie LaTeXa
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kopete-tool-latex
-Conflicts:	kdenetwork-kopete < 10:3.4.89-1
 
 %description kopete-tool-latex
 A LaTeX plugin for Kopete.
@@ -596,7 +582,6 @@ Summary:	A history plugin for Kopete
 Summary(pl.UTF-8):	Wtyczka Kopete obsługująca historię rozmów
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kopete-tool-history
 
 %description kopete-tool-history
 A history plugin for Kopete.
@@ -609,7 +594,6 @@ Summary:	Contact importer for Kopete
 Summary(pl.UTF-8):	Importer kontaktów dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kopete-tool-importer
 
 %description kopete-tool-importer
 Kopete tool which allows importing contacts from other instant
@@ -624,7 +608,6 @@ Summary:	Kopete plugin which sets away status when not detecting movement near t
 Summary(pl.UTF-8):	Wtyczka Kopete zmieniająca status na zajęty jeśli nie wykrywa ruchu wokół komputera
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kopete-tool-motionaway
 
 %description kopete-tool-motionaway
 This Kopete plugin sets away status when not detecting movement near
@@ -639,7 +622,6 @@ Summary:	Playlist informer for Kopete
 Summary(pl.UTF-8):	Informator o playliście dla Kopete
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kopete-tool-nowlistening
 
 %description kopete-tool-nowlistening
 This Kopete plugin tells selected live chats what you're currently
@@ -654,7 +636,6 @@ Summary:	A spell checking plugin for Kopete
 Summary(pl.UTF-8):	Wtyczka Kopete sprawdzająca pisownie
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kopete-tool-spellcheck
 
 %description kopete-tool-spellcheck
 A spell checking plugin for Kopete.
@@ -667,7 +648,6 @@ Summary:	Kopete plugin that adds nice effects to your messages
 Summary(pl.UTF-8):	Wtyczka Kopete dodająca ładne efekty do wiadomości
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kopete-tool-texteffect
 
 %description kopete-tool-texteffect
 Kopete plugin that adds nice effects to your messages.
@@ -680,7 +660,6 @@ Summary:	Kopete plugin which uses babelfish to translate messages
 Summary(pl.UTF-8):	Wtyczka Kopete wykorzystująca babelfish do tłumaczenia wiadomości
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kopete-tool-translator
 
 %description kopete-tool-translator
 This Kopete plugin uses web translating engines (like Altavista's
@@ -696,7 +675,6 @@ Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
 Requires:	libxml2 >= 2.4.8
 Requires:	libxslt >= 1.0.7
-Obsoletes:	kopete-tool-webpresence
 
 %description kopete-tool-webpresence
 This Kopete plugin shows the status of your IM accounts on a webpage.
@@ -755,7 +733,7 @@ Summary:	KDE PPP dialer
 Summary(pl.UTF-8):	Program do połączeń modemowych dla KDE
 Summary(pt_BR.UTF-8):	O discador para Internet
 Group:		X11/Applications
-Requires:	kdebase4-core >= %{_minbaseevr}
+Requires:	kde4-kdebase-core >= %{_minbaseevr}
 Requires:	ppp
 
 %description kppp
@@ -800,7 +778,7 @@ Summary:	KDE IRC client
 Summary(pl.UTF-8):	Klient IRC dla KDE
 Summary(pt_BR.UTF-8):	Cliente de IRC do KDE
 Group:		X11/Applications
-Requires:	kdebase4-core >= %{_minbaseevr}
+Requires:	kde4-kdebase-core >= %{_minbaseevr}
 Requires:	perl-IO-Socket-SSL
 Requires:	perl-Socket6 >= 0.11
 
@@ -820,7 +798,7 @@ Summary:	Virtual Desktops
 Summary(pl.UTF-8):	Wirtualne biurka
 Group:		X11/Applications
 Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
-Requires:	kdebase4-core >= %{_minbaseevr}
+Requires:	kde4-kdebase-core >= %{_minbaseevr}
 Suggests:	rdesktop
 
 %description krfb
@@ -843,7 +821,7 @@ specjalnych możliwości Remote Desktop Connection.
 Summary:	Talk daemon
 Summary(pl.UTF-8):	Daemon talk
 Group:		X11/Applications
-Requires:	kdebase4-core >= %{_minbaseevr}
+Requires:	kde4-kdebase-core >= %{_minbaseevr}
 
 %description ktalkd
 A talk daemon replacement. Support the talk protocol and features an
@@ -859,9 +837,8 @@ wiadomościach.
 Summary:	Wireless LAN
 Summary(pl.UTF-8):	Bezprzewodowy LAN
 Group:		X11/Applications
-Requires:	kdelibs4 >= %{_minlibsevr}
+Requires:	kde4-kdelibs >= %{_minlibsevr}
 Requires:	wireless-tools
-Obsoletes:	kwifimanager
 
 %description kwifimanager
 The KWiFiManager suite is a set of tools which allows you to manage
@@ -883,7 +860,7 @@ karty LAN używające interfejsu rozszerzeń bezprzewodowych.
 Summary:	KDE XmlRpc Daemon
 Summary(pl.UTF-8):	Deamon XmlRpc dla KDE
 Group:		X11/Applications
-Requires:	kdelibs4 >= %{_minlibsevr}
+Requires:	kde4-kdelibs >= %{_minlibsevr}
 
 %description kxmlrpcd
 KDE XmlRpc Daemon.
@@ -899,9 +876,6 @@ Requires(post,preun):	/sbin/chkconfig
 Requires:	konqueror >= %{_minbaseevr}
 Requires:	rc-scripts
 Requires:	samba-client
-Provides:	lisa
-Obsoletes:	kdenetwork-lisa
-Obsoletes:	lisa
 
 %description lanbrowser
 A browser for Samba shares in your Local Area Network.
@@ -913,8 +887,7 @@ Przeglądarka dla udziałów Samby w sieci lokalnej.
 Summary:	kopete library
 Summary(pl.UTF-8):	Biblioteka kopete
 Group:		X11/Libraries
-Requires:	kdelibs4 >= %{_minlibsevr}
-Obsoletes:	kdenetwork-kopete < 10:3.1.93.031114-3
+Requires:	kde4-kdelibs >= %{_minlibsevr}
 
 %description libkopete
 kopete library.
@@ -927,7 +900,6 @@ Summary:	MSN protocol shared library
 Summary(pl.UTF-8):	Biblioteka współdzielona dla protokołu MSN
 Group:		X11/Libraries
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kdenetwork-kopete-protocol-msn < 10:3.1.93.031114-3
 
 %description libkopete_msn
 MSN protocol shared library.
@@ -952,7 +924,6 @@ Summary:	Shared library which adds OSCAR protocol support
 Summary(pl.UTF-8):	Biblioteka dodająca obsługę protokołu OSCAR
 Group:		X11/Applications/Networking
 Requires:	%{name}-libkopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kdenetwork-kopete-protocol-oscar < 10:3.1.93.031114-3
 
 %description libkopete_oscar
 A shared library which adds OSCAR protocol support needed eg. by AIM
@@ -966,8 +937,7 @@ innymi przez AIM i ICQ.
 Summary:	RSS library
 Summary(pl.UTF-8):	Biblioteka RSS
 Group:		X11/Libraries
-Requires:	kdelibs4 >= %{_minlibsevr}
-Obsoletes:	kdenetwork-rss < 10:3.1.93.031114-3
+Requires:	kde4-kdelibs >= %{_minlibsevr}
 
 %description librss
 Library for RSS/RDF/XML parsers in KDE.
