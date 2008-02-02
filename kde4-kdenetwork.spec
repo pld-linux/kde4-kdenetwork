@@ -51,9 +51,9 @@ BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	ortp-devel
 BuildRequires:	pcre-devel
 BuildRequires:	perl-base
-BuildRequires:	qca >= 2.0
+BuildRequires:	qca-devel >= 2.0
 BuildRequires:	rpmbuild(macros) >= 1.268
-BuildRequires:	sqlite-devel
+BuildRequires:	sqlite3-devel
 %{?with_xmms:BuildRequires:	xmms-devel}
 BuildRequires:	xorg-lib-libXtst-devel
 Obsoletes:	kdenetwork4
@@ -992,7 +992,7 @@ Programy parsujące nagłówki RSS używane przez różne aplikacje.
 
 %build
 export QTDIR=%{_prefix}
-mkdir build
+install -d build
 cd build
 %cmake \
         -DCMAKE_INSTALL_PREFIX=%{_prefix} \
