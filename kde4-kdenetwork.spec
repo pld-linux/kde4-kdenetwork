@@ -1049,8 +1049,9 @@ fi
 %attr(755,root,root) %{_libdir}/kde4/kcm_fileshare.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kcmsambaconf.so
 #%{_datadir}/services/fileshare_propsdlgplugin.desktop
-#%{_desktopdir}/kde/fileshare.desktop
-#%{_desktopdir}/kde/kcmsambaconf.desktop
+%{_datadir}/kde4/services/fileshare.desktop
+%{_datadir}/kde4/services/fileshare_propsdlgplugin.desktop
+%{_datadir}/kde4/services/kcmsambaconf.desktop
 #%{_iconsdir}/hicolor/16x16/apps/kcmsambaconf.png
 
 %files kdnssd
@@ -1061,7 +1062,7 @@ fi
 %{_datadir}/apps/zeroconf
 %{_datadir}/kde4/services/kded/dnssdwatcher.desktop
 %{_datadir}/kde4/services/zeroconf.protocol
-/usr/share/dbus-1/interfaces/org.kde.kdnssd.xml
+%{_datadir}/dbus-1/interfaces/org.kde.kdnssd.xml
 
 #%files kfile-torrent
 #%defattr(644,root,root,755)
@@ -1193,7 +1194,6 @@ fi
 %dir %{_datadir}/apps/kopete/icons/hicolor/*
 %dir %{_datadir}/apps/kopete/icons/hicolor/*/*
 %dir %{_datadir}/apps/kopete/pics
-%dir %{_datadir}/apps/kopeterichtexteditpart
 
 #%{_datadir}/apps/kconf_update/kopete-account-kconf_update.upd
 #%{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.upd
@@ -1201,23 +1201,34 @@ fi
 #%{_datadir}/apps/kconf_update/kopete-nameTracking.upd
 #%{_datadir}/apps/kconf_update/kopete-pluginloader.upd
 #%{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
-#%{_datadir}/apps/kopete/*rc
+%{_datadir}/apps/kopete/*rc
 %{_datadir}/apps/kopete/icons/*/*/actions
 %{_datadir}/apps/kopete/pics/statistics
 %{_datadir}/apps/kopete/styles
-#%{_datadir}/apps/kopete_statistics
-#%{_datadir}/apps/kopeterichtexteditpart/kopeterichtexteditpartfull.rc
+%{_datadir}/apps/kopete_statistics
+%{_datadir}/apps/kopete_privacy
+%{_datadir}/apps/kopeterichtexteditpart
 #%{_datadir}/config.kcfg/kopete.kcfg
 #%{_datadir}/config.kcfg/kopeteidentityconfigpreferences.kcfg
+%{_datadir}/config.kcfg/kopeteappearancesettings.kcfg
+%{_datadir}/config.kcfg/kopetebehaviorsettings.kcfg
+%{_datadir}/config.kcfg/urlpicpreview.kcfg
 #%{_datadir}/mimelnk/application/x-kopete-emoticons.desktop
-#%{_datadir}/services/chatwindow.desktop
-#%{_datadir}/services/emailwindow.desktop
+%{_datadir}/kde4/services/chatwindow.desktop
+%{_datadir}/kde4/services/emailwindow.desktop
 #%{_datadir}/services/invitation.protocol
 %{_datadir}/kde4/services/kopete_accountconfig.desktop
 %{_datadir}/kde4/services/kopete_addbookmarks.desktop
 %{_datadir}/kde4/services/kopete_appearanceconfig.desktop
 %{_datadir}/kde4/services/kopete_behaviorconfig.desktop
 %{_datadir}/kde4/services/kopete_chatwindowconfig.desktop
+%{_datadir}/kde4/services/kopete_pluginconfig.desktop
+%{_datadir}/kde4/services/kopete_statistics.desktop
+%{_datadir}/kde4/services/kopete_qq.desktop
+%{_datadir}/kde4/services/kopete_testbed.desktop
+%{_datadir}/kde4/services/kopete_urlpicpreview.desktop
+%{_datadir}/kde4/services/kconfiguredialog
+%{_datadir}/kde4/services/kopete_privacy.desktop
 %{_datadir}/kde4/servicetypes/kopeteplugin.desktop
 %{_datadir}/kde4/servicetypes/kopeteprotocol.desktop
 %{_datadir}/kde4/servicetypes/kopeteui.desktop
@@ -1233,6 +1244,10 @@ fi
 %{_datadir}/apps/kopete/icons/*/*/apps/preferences-plugin-text-effect-kopete.png
 %{_datadir}/apps/kopete/icons/*/*/apps/preferences-text-autocorrection-kopete.png
 %{_datadir}/apps/kopete/icons/*/*/apps/preferences-text-highlighting-kopete.png
+%{_datadir}/dbus-1/interfaces/org.kde.Kopete.xml
+%{_datadir}/dbus-1/interfaces/org.kde.kopete.Client.xml
+%{_datadir}/dbus-1/interfaces/org.kde.kopete.Statistics.xml
+%{_datadir}/config/kopeterc
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
@@ -1257,6 +1272,7 @@ fi
 %attr(755,root,root) %{_libdir}/libqgroupwise.so
 %{_datadir}/kde4/services/kopete_groupwise.desktop
 %{_datadir}/apps/kopete/icons/*/*/*/groupwise_protocol.png
+%{_datadir}/apps/kopete_groupwise
 
 %files kopete-protocol-icq
 %defattr(644,root,root,755)
@@ -1277,7 +1293,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde4/kopete*jabber*.so
 #%attr(755,root,root) %{_libdir}/kde4/kio_jabberdisco.so
 %{_datadir}/apps/kopete_jabber
-#%{_datadir}/services/jabberdisco.protocol
+%{_datadir}/kde4/services/xmpp.protocol
 %{_datadir}/kde4/services/kopete_jabber.desktop
 %{_datadir}/apps/kopete/icons/*/*/*/jabber*.png
 
@@ -1293,7 +1309,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde4/kopete_msn.so
 #%attr(755,root,root) %{_libdir}/kde4/kopete_netmeeting.so
 #%{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
-#%{_datadir}/apps/kopete_msn
+%{_datadir}/apps/kopete_msn
 #%{_datadir}/apps/kopete_netmeeting
 #%{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
 #%{_datadir}/services/kconfiguredialog/kopete_netmeeting_config.desktop
@@ -1468,7 +1484,7 @@ fi
 %{_desktopdir}/kde4/Kppp.desktop
 %{_desktopdir}/kde4/kppplogview.desktop
 %{_iconsdir}/*/*/*/kppp.png
-/usr/share/dbus-1/interfaces/org.kde.kppp.xml
+%{_datadir}/dbus-1/interfaces/org.kde.kppp.xml
 
 %files krfb 
 %defattr(644,root,root,755)
@@ -1479,14 +1495,15 @@ fi
 #%attr(755,root,root) %{_libdir}/kde4/kcm_krfb.so
 %{_datadir}/apps/krdc
 %{_datadir}/apps/krfb
+%{_datadir}/applications/kde4/krdc.desktop
 #%{_datadir}/services/kinetd_krfb.desktop
 #%{_datadir}/services/kinetd_krfb_httpd.desktop
-#%{_datadir}/services/rdp.protocol
-#%{_datadir}/services/vnc.protocol
+%{_datadir}/kde4/services/rdp.protocol
+%{_datadir}/kde4/services/vnc.protocol
 #%{_datadir}/apps/konqueror/servicemenus/smb2rdc.desktop
 #%{_desktopdir}/kde/kcmkrfb.desktop
 %{_desktopdir}/kde4/krfb.desktop
-/usr/share/config.kcfg/krdc.kcfg
+%{_datadir}/config.kcfg/krdc.kcfg
 #%{_desktopdir}/kde/krdc.desktop
 #%{_iconsdir}/*/*/*/krdc*
 #%{_iconsdir}/[!l]*/*/*/krfb*
