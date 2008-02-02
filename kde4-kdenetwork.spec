@@ -35,8 +35,8 @@ URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel
 BuildRequires:	avahi-compat-libdns_sd-devel
 BuildRequires:	cmake
-BuildRequires:	kdebase4-workspace-devel >= %{version}
-BuildRequires:	kdelibs4-devel >= %{_minlibsevr}
+BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
+BuildRequires:	kde4-kdelibs-devel >= %{_minlibsevr}
 BuildRequires:	libgadu-devel >= 1.4
 BuildRequires:	libidn-devel
 BuildRequires:	libiw-devel >= 27
@@ -1052,7 +1052,7 @@ fi
 %{_datadir}/kde4/services/fileshare.desktop
 %{_datadir}/kde4/services/fileshare_propsdlgplugin.desktop
 %{_datadir}/kde4/services/kcmsambaconf.desktop
-#%{_iconsdir}/hicolor/16x16/apps/kcmsambaconf.png
+%{_iconsdir}/hicolor/16x16/apps/kcmsambaconf.png
 
 %files kdnssd
 %defattr(644,root,root,755)
@@ -1237,8 +1237,9 @@ fi
 %{_datadir}/sounds/Kopete_Sent.ogg
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
 %{_desktopdir}/kde4/kopete.desktop
-/usr/share/icons/*/*/*/kopete.png
-/usr/share/icons/*/*/actions
+%{_iconsdir}/*/*/*/kopete.png
+%{_iconsdir}/*/*/actions
+%{_iconsdir}/oxygen/*/*/kopete*
 %{_datadir}/apps/kopete/icons/*/*/apps/testbed_protocol.png
 %{_datadir}/apps/kopete/icons/*/*/apps/qq_protocol.png
 %{_datadir}/apps/kopete/icons/*/*/apps/preferences-plugin-text-effect-kopete.png
