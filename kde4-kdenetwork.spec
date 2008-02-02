@@ -18,7 +18,7 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 %define	orgname	kdenetwork
-Name:		kdenetwork4
+Name:		kde4-kdenetwork
 Version:	4.0.0
 Release:	0.1
 License:	GPL
@@ -56,6 +56,8 @@ BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sqlite-devel
 %{?with_xmms:BuildRequires:	xmms-devel}
 BuildRequires:	xorg-lib-libXtst-devel
+Obsoletes:	kdenetwork4
+Conflicts:	kdenetwork4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
