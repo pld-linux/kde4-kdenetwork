@@ -10,8 +10,6 @@
 %bcond_with	skype			# with skype support (incomplete!)
 
 %define		_state		stable
-%define		_minlibsevr	9:%{version}
-%define		_minbaseevr	9:%{version}
 #
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
@@ -36,7 +34,7 @@ BuildRequires:	QtOpenGL-devel
 BuildRequires:	avahi-compat-libdns_sd-devel
 BuildRequires:	cmake
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
-BuildRequires:	kde4-kdelibs-devel >= %{_minlibsevr}
+BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	libgadu-devel >= 1.4
 BuildRequires:	libidn-devel
 BuildRequires:	libiw-devel >= 27
@@ -107,7 +105,7 @@ Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_videodevice = %{epoch}:%{version}-%{release}
 Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
-Requires:	kde4-kdelibs-devel >= %{_minlibsevr}
+Requires:	kde4-kdelibs-devel
 
 %description devel
 kdenetwork header files.
@@ -123,7 +121,7 @@ bibliotecas do kdenetwork.
 Summary:	File sharing plugins
 Summary(pl.UTF-8):	Wtyczki obsługujące współdzielenie plików
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{_minlibsevr}
+Requires:	kde4-kdebase-core
 
 %description filesharing
 File sharing plugins.
@@ -147,7 +145,7 @@ Nadzorowanie usług DNS-SD.
 Summary:	KDE Internet Daemon
 Summary(pl.UTF-8):	Demon internetowy KDE
 Group:		X11/Applications
-Requires:	kde4-kdelibs >= %{_minlibsevr}
+Requires:	kde4-kdelibs
 
 %description kinetd
 A KDE daemon that listen on TCP ports and starts programs when a
@@ -837,7 +835,7 @@ wiadomościach.
 Summary:	Wireless LAN
 Summary(pl.UTF-8):	Bezprzewodowy LAN
 Group:		X11/Applications
-Requires:	kde4-kdelibs >= %{_minlibsevr}
+Requires:	kde4-kdelibs
 Requires:	wireless-tools
 
 %description kwifimanager
@@ -860,7 +858,7 @@ karty LAN używające interfejsu rozszerzeń bezprzewodowych.
 Summary:	KDE XmlRpc Daemon
 Summary(pl.UTF-8):	Deamon XmlRpc dla KDE
 Group:		X11/Applications
-Requires:	kde4-kdelibs >= %{_minlibsevr}
+Requires:	kde4-kdelibs
 
 %description kxmlrpcd
 KDE XmlRpc Daemon.
@@ -873,7 +871,7 @@ Summary:	KDE LAN Browser
 Summary(pl.UTF-8):	Przeglądarka LAN-u dla KDE
 Group:		X11/Applications
 Requires(post,preun):	/sbin/chkconfig
-Requires:	konqueror >= %{_minbaseevr}
+Requires:	konqueror >= %{version}
 Requires:	rc-scripts
 Requires:	samba-client
 
@@ -887,7 +885,7 @@ Przeglądarka dla udziałów Samby w sieci lokalnej.
 Summary:	kopete library
 Summary(pl.UTF-8):	Biblioteka kopete
 Group:		X11/Libraries
-Requires:	kde4-kdelibs >= %{_minlibsevr}
+Requires:	kde4-kdelibs
 
 %description libkopete
 kopete library.
@@ -937,7 +935,7 @@ innymi przez AIM i ICQ.
 Summary:	RSS library
 Summary(pl.UTF-8):	Biblioteka RSS
 Group:		X11/Libraries
-Requires:	kde4-kdelibs >= %{_minlibsevr}
+Requires:	kde4-kdelibs
 
 %description librss
 Library for RSS/RDF/XML parsers in KDE.
