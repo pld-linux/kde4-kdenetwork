@@ -735,16 +735,6 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post lanbrowser
-/sbin/chkconfig --add lisa
-%service lisa restart "Lisa daemon"
-
-%preun lanbrowser
-if [ "$1" = "0" ]; then
-	%service lisa stop
-	/sbin/chkconfig --del lisa
-fi
-
 %post	libkopete	-p /sbin/ldconfig
 %postun	libkopete	-p /sbin/ldconfig
 
