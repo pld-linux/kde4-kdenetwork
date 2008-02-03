@@ -104,7 +104,6 @@ Group:		X11/Development/Libraries
 Requires:	%{name}-libkopete_msn = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{epoch}:%{version}-%{release}
 Requires:	%{name}-libkopete_videodevice = %{epoch}:%{version}-%{release}
-Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
 Requires:	kde4-kdelibs-devel
 
 %description devel
@@ -140,38 +139,6 @@ DNS-SD Services Watcher.
 
 %description kdnssd -l pl.UTF-8
 Nadzorowanie usług DNS-SD.
-
-%package kinetd
-Summary:	KDE Internet Daemon
-Summary(pl.UTF-8):	Demon internetowy KDE
-Group:		X11/Applications
-Requires:	kde4-kdelibs
-
-%description kinetd
-A KDE daemon that listen on TCP ports and starts programs when a
-client connects. Configurable using DCOP.
-
-%description kinetd -l pl.UTF-8
-Demon KDE nasłuchujący na portach TCP i uruchamiający programy po
-połączeniu klienta. Jest konfigurowalny przy użyciu DCOP.
-
-%package kfile-torrent
-Summary:	Meta information plugin for BitTorrent files (*.torrent)
-Summary(pl.UTF-8):	Wtyczka pobierająca metainformacje z plików BitTorrenta (*.torrent)
-Group:		X11/Applications
-Requires:	konqueror >= %{_minbaseevr}
-
-%description kfile-torrent
-This is a meta information plugin for BitTorrent files (*.torrent).
-
-It doesn't depend on BitTorrent or any non-standard library being
-installed.
-
-%description kfile-torrent -l pl.UTF-8
-Wtyczka pobierająca metainformacje z plików BitTorrenta (*.torrent).
-
-Nie jest zależna od BitTorrenta ani od żadnych niestandardowych
-bibliotek.
 
 %package kget
 Summary:	File downloand manager
@@ -322,19 +289,6 @@ Kopete plugin which adds ICQ protocol support.
 %description kopete-protocol-icq -l pl.UTF-8
 Wtyczka Kopete dodająca obsługę protokołu ICQ.
 
-%package kopete-protocol-irc
-Summary:	Kopete plugin which adds IRC support
-Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę IRC-a
-Group:		X11/Applications/Networking
-Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kopete-protocol-irc
-
-%description kopete-protocol-irc
-Kopete plugin which adds IRC support.
-
-%description kopete-protocol-irc -l pl.UTF-8
-Wtyczka Kopete dodająca obsługę IRC-a.
-
 %package kopete-protocol-jabber
 Summary:	Kopete plugin which adds Jabber protocol support
 Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu Jabber
@@ -362,19 +316,6 @@ Kopete plugin which adds MSN protocol support.
 
 %description kopete-protocol-msn -l pl.UTF-8
 Wtyczka Kopete dodająca obsługę protokołu MSN.
-
-%package kopete-protocol-meanwhile
-Summary:	Kopete plugin which adds Lotus Sametime protocol support
-Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu Lotus Sametime
-Group:		X11/Applications/Networking
-Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kopete-protocol-meanwhile
-
-%description kopete-protocol-meanwhile
-Kopete plugin which adds meanwhile Lotus Sametime support.
-
-%description kopete-protocol-meanwhile -l pl.UTF-8
-Wtyczka Kopete dodająca obsługę protokołu Lotus Sametime.
 
 %package kopete-protocol-skype
 Summary:	Kopete plugin which adds Skype protocol support
@@ -484,20 +425,6 @@ are configurable.
 Wtyczka Kopete automatycznie zmieniająca status na zajęty. Warunki,
 po zaistnieniu których ma nastąpić, są konfigurowalne.
 
-%package kopete-tool-smpppdcs
-Summary:	Kopete smpppdcs plugin
-Summary(pl.UTF-8):	Wtyczka Kopete do automatycznego przechodzenia w stan zajęty
-Group:		X11/Applications/Networking
-Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-
-%description kopete-tool-smpppdcs
-Kopete plugin which automatically changes status to away. Conditions
-are configurable.
-
-%description kopete-tool-smpppdcs -l pl.UTF-8
-Wtyczka Kopete automatycznie zmieniająca status na zajęty. Warunki,
-po zaistnieniu których ma nastąpić, są konfigurowalne.
-
 %package kopete-tool-autoreplace
 Summary:	Kopete plugin which autoreplaces some text you can choose
 Summary(pl.UTF-8):	Wtyczka Kopete do automatycznej zamiany tekstu
@@ -509,20 +436,6 @@ Kopete plugin which autoreplaces some text you can choose.
 
 %description kopete-tool-autoreplace -l pl.UTF-8
 Wtyczka Kopete do automatycznej zamiany tekstu.
-
-%package kopete-tool-connectionstatus
-Summary:	Kopete Internet connection detector
-Summary(pl.UTF-8):	Wykrywacz połączeń internetowych dla Kopete
-Group:		X11/Applications/Networking
-Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-
-%description kopete-tool-connectionstatus
-Kopete tool which automatically detects whether the internet
-connection is available or not.
-
-%description kopete-tool-connectionstatus -l pl.UTF-8
-Narzędzie Kopete automatycznie sprawdzające, czy dostępne jest
-połączenie do Internetu.
 
 %package kopete-tool-contactnotes
 Summary:	Kopete tool which adds personal notes to your contacts
@@ -536,19 +449,6 @@ Kopete tool which allows adding personal notes to your contacts.
 
 %description kopete-tool-contactnotes -l pl.UTF-8
 Narzędzie Kopete umożliwiające dodawanie notatek do kontaktów.
-
-%package kopete-tool-cryptography
-Summary:	Kopete messages encryptor
-Summary(pl.UTF-8):	Program do szyfrowania wiadomości dla Kopete
-Group:		X11/Applications/Networking
-Requires:	%{name}-kopete = %{epoch}:%{version}-%{release}
-Obsoletes:	kopete-tool-cryptography
-
-%description kopete-tool-cryptography
-OpenPGP messages encryptor for Kopete.
-
-%description kopete-tool-cryptography -l pl.UTF-8
-Program dla Kopete do szyfrowania wiadomości przy pomocy OpenPGP.
 
 %package kopete-tool-highlight
 Summary:	A highlighter plugin for Kopete
@@ -681,51 +581,6 @@ This Kopete plugin shows the status of your IM accounts on a webpage.
 Ta wtyczka Kopete pokazuje status (całej lub części) listy
 kontaktów na stronie WWW.
 
-%package kpf
-Summary:	Public fileserver applet
-Summary(pl.UTF-8):	Applet publicznego serwera plików
-Group:		X11/Applications
-
-%description kpf
-kpf provides simple file sharing using HTTP (the Hyper Text Transfer
-Protocol), which is the same protocol used by web sites to provide
-data to your web browser. kpf is strictly a public fileserver, which
-means that there are no access restrictions to shared files. Whatever
-you select for sharing is available to anyone.
-
-kpf is designed to be used for sharing files with friends, not to act
-like a fully-fledged web server such as Apache. kpf was primarily
-conceived as an easy way to share files with others while chatting on
-IRC (Internet Relay Chat, or "chat rooms".)
-
-Typical usage: kpf is set up to serve files from the public_html
-folder in your home folder. You wish to make a file available to some
-people with whom you are chatting online. Rather than send them each
-an email with the file attached (some may not even be interested,) you
-copy the file into your public_html folder and announce to those
-listening that your file is available at
-<http://www.mymachine.net:8001/thefile>.
-
-%description kpf -l pl.UTF-8
-kpf umożliwia proste uwspólnianie plików przy użyciu protokołu
-HTTP (Hyper Text Transfer Protocol), tego samego, który jest używany
-dla stron WWW, aby dostarczyć dane do przeglądarki. Ściślej
-mówiąc kpf jest publicznym serwerem plików, co oznacza, że nie ma
-ograniczeń dostępu do współdzielonych plików. Wszystko co
-wybierze się do dzielenia, jest dostępne dla każdego.
-
-kpf jest zaprojektowany w celu dzielenia plików z przyjaciółmi, a
-nie działania jako pełnoprawny serwer WWW, taki jak Apache. kpf był
-początkowo rozwijany głównie jako prosty sposób współdzielenia
-plików z innymi podczas rozmawiania przez IRC.
-
-Typowy przypadek użycia: kpf jest konfigurowany do serwowania plików
-z podkatalogu public_html w katalogu domowym. Chcemy uczynić plik
-dostępnym dla ludzi, z którymi akurat rozmawiamy. Zamiast wysyłać
-plik pocztą jako załącznik (niektórzy mogą nawet nie być
-zainteresowani), kopiujemy plik do katalogu public_html i ogłaszamy,
-że plik jest dostępny jako http://www.mojkomputer.net:8001/plik .
-
 %package kppp
 Summary:	KDE PPP dialer
 Summary(pl.UTF-8):	Program do połączeń modemowych dla KDE
@@ -771,31 +626,10 @@ KPPP ma wypracowane naliczanie kosztów telefonów, pozwalające
 %description kppp -l pt_BR.UTF-8
 O discador para Internet.
 
-%package ksirc
-Summary:	KDE IRC client
-Summary(pl.UTF-8):	Klient IRC dla KDE
-Summary(pt_BR.UTF-8):	Cliente de IRC do KDE
-Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{_minbaseevr}
-Requires:	perl-IO-Socket-SSL
-Requires:	perl-Socket6 >= 0.11
-
-%description ksirc
-KSirc is the default KDE IRC client. It supports scripting with Perl
-and has a lot of compatibility with mIrc for general use.
-
-%description ksirc -l pl.UTF-8
-KSirc to domyślny klient IRC dla KDE. Obsługuje skrypty perlowe i
-jest w dużym stopniu kompatybilny z mIrcem przy ogólnym używaniu.
-
-%description ksirc -l pt_BR.UTF-8
-Cliente de IRC do KDE.
-
 %package krfb
 Summary:	Virtual Desktops
 Summary(pl.UTF-8):	Wirtualne biurka
 Group:		X11/Applications
-Requires:	%{name}-kinetd = %{epoch}:%{version}-%{release}
 Requires:	kde4-kdebase-core >= %{_minbaseevr}
 Suggests:	rdesktop
 
@@ -815,45 +649,6 @@ Connection z użyciem serwera KDE VNC, czyli "dzielenia pulpitu"
 (także dostarczanego przez ten pakiet), jako że najlepiej pasuje do
 specjalnych możliwości Remote Desktop Connection.
 
-%package ktalkd
-Summary:	Talk daemon
-Summary(pl.UTF-8):	Daemon talk
-Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{_minbaseevr}
-
-%description ktalkd
-A talk daemon replacement. Support the talk protocol and features an
-answering machine plus a possibility to inform you about incoming
-messages.
-
-%description ktalkd -l pl.UTF-8
-Zamiennik demona talk. Obsługuje protokół talk i ma automatyczną
-sekretarkę oraz możliwość informowania o przychodzących
-wiadomościach.
-
-%package kwifimanager
-Summary:	Wireless LAN
-Summary(pl.UTF-8):	Bezprzewodowy LAN
-Group:		X11/Applications
-Requires:	kde4-kdelibs
-Requires:	wireless-tools
-
-%description kwifimanager
-The KWiFiManager suite is a set of tools which allows you to manage
-your wireless LAN PC-Card under the K Desktop Environment. It provides
-information about your current connection and lets you set up up to
-four independent configurations which can be loaded automatically when
-KDE is started. KWiFiManager supports every wireless LAN card that
-uses the wireless extensions interface.
-
-%description kwifimanager -l pl.UTF-8
-Oprogramowanie KWiFiManager to zbiór narzędzi umożliwiających
-zarządzanie bezprzewodową kartą LAN w środowisku KDE. Dostarcza
-informacje o bieżącym połączeniu oraz pozwala ustawić do czterech
-niezależnych konfiguracji, które mogą być ładowane automatycznie
-przy starcie KDE. KWiFiManager obsługuje wszystkie bezprzewodowe
-karty LAN używające interfejsu rozszerzeń bezprzewodowych.
-
 %package kxmlrpcd
 Summary:	KDE XmlRpc Daemon
 Summary(pl.UTF-8):	Deamon XmlRpc dla KDE
@@ -865,21 +660,6 @@ KDE XmlRpc Daemon.
 
 %description kxmlrpcd -l pl.UTF-8
 Demon XmlRpc dla KDE.
-
-%package lanbrowser
-Summary:	KDE LAN Browser
-Summary(pl.UTF-8):	Przeglądarka LAN-u dla KDE
-Group:		X11/Applications
-Requires(post,preun):	/sbin/chkconfig
-Requires:	konqueror >= %{version}
-Requires:	rc-scripts
-Requires:	samba-client
-
-%description lanbrowser
-A browser for Samba shares in your Local Area Network.
-
-%description lanbrowser -l pl.UTF-8
-Przeglądarka dla udziałów Samby w sieci lokalnej.
 
 %package libkopete
 Summary:	kopete library
@@ -931,30 +711,6 @@ and ICQ.
 Biblioteka dodająca obsługę protokołu OSCAR, używanego między
 innymi przez AIM i ICQ.
 
-%package librss
-Summary:	RSS library
-Summary(pl.UTF-8):	Biblioteka RSS
-Group:		X11/Libraries
-Requires:	kde4-kdelibs
-
-%description librss
-Library for RSS/RDF/XML parsers in KDE.
-
-%description librss -l pl.UTF-8
-Biblioteka dla parserów RSS/RDF/XML w KDE.
-
-%package rss
-Summary:	RSS parsers used by different applications
-Summary(pl.UTF-8):	Programy parsujące nagłówki RSS używane przez różne aplikacje
-Group:		X11/Applications
-Requires:	%{name}-librss = %{epoch}:%{version}-%{release}
-
-%description rss
-RSS parsers used by different applications.
-
-%description rss -l pl.UTF-8
-Programy parsujące nagłówki RSS używane przez różne aplikacje.
-
 %prep
 %setup -q -n %{orgname}-%{version}
 
@@ -998,25 +754,19 @@ fi
 %post	libkopete_oscar	-p /sbin/ldconfig
 %postun	libkopete_oscar	-p /sbin/ldconfig
 
-%post	librss		-p /sbin/ldconfig
-%postun	librss		-p /sbin/ldconfig
-
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete.so
 %attr(755,root,root) %{_libdir}/libkopete_msn_shared.so
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so
 %attr(755,root,root) %{_libdir}/libkopete_videodevice.so
-#%attr(755,root,root) %{_libdir}/librss.so
 %{_includedir}/kopete
-#%{_includedir}/rss
 
 %files filesharing
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/fileshare_propsdlgplugin.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_fileshare.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kcmsambaconf.so
-#%{_datadir}/services/fileshare_propsdlgplugin.desktop
 %{_datadir}/kde4/services/fileshare.desktop
 %{_datadir}/kde4/services/fileshare_propsdlgplugin.desktop
 %{_datadir}/kde4/services/kcmsambaconf.desktop
@@ -1031,11 +781,6 @@ fi
 %{_datadir}/kde4/services/kded/dnssdwatcher.desktop
 %{_datadir}/kde4/services/zeroconf.protocol
 %{_datadir}/dbus-1/interfaces/org.kde.kdnssd.xml
-
-#%files kfile-torrent
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/kde4/kfile_torrent.so
-#%{_datadir}/services/kfile_torrent.desktop
 
 %files kget 
 %defattr(644,root,root,755)
@@ -1054,11 +799,8 @@ fi
 %{_datadir}/config.kcfg/kget.kcfg
 %{_datadir}/config.kcfg/kget_multisegkiofactory.kcfg
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
-#%{_datadir}/apps/khtml/kpartplugins/kget_plug_in.desktop
-#%{_datadir}/apps/konqueror/servicemenus/kget_download.desktop
-#%{_datadir}/mimelnk/application/x-kgetlist.desktop
 %{_desktopdir}/kde4/kget.desktop
-/usr/share/kde4/services/ServiceMenus/kget_download.desktop
+%{_datadir}/kde4/services/ServiceMenus/kget_download.desktop
 %{_datadir}/kde4/servicetypes/kget_plugin.desktop
 %{_datadir}/kde4/services/plasma-engine-kget.desktop
 %{_datadir}/kde4/services/plasma-kget-default.desktop
@@ -1067,27 +809,13 @@ fi
 %{_datadir}/kde4/services/kget_multisegkiofactory.desktop
 %{_datadir}/sounds/KGet*.ogg
 %{_iconsdir}/*/*/*/*kget*
-/usr/share/apps/desktoptheme/default/widgets/kget.svg
-
-#%files kinetd
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/kde4/kded_kinetd.so
-#%{_datadir}/apps/kinetd
-#%{_datadir}/services/kded/kinetd.desktop
-#%{_datadir}/servicetypes/kinetdmodule.desktop
+%{_datadir}/apps/desktoptheme/default/widgets/kget.svg
 
 %files knewsticker 
 %defattr(644,root,root,755)
 %{_kdedocdir}/en/knewsticker
-#%attr(755,root,root) %{_bindir}/knewstickerstub
-#%attr(755,root,root) %{_libdir}/kde4/knewsticker_panelapplet.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_knewsticker.so
 %{_datadir}/kde4/services/plasma-knewsticker-default.desktop
-#%{_datadir}/apps/knewsticker
-#%{_datadir}/apps/kicker/applets/knewsticker.desktop
-#%{_datadir}/apps/kconf_update/kn*
-#%{_datadir}/applnk/.hidden/knewstickerstub.desktop
-#%{_desktopdir}/kde/knewsticker*.desktop
 %{_iconsdir}/*/*/*/knewsticker.png
 
 %files kopete 
@@ -1163,12 +891,6 @@ fi
 %dir %{_datadir}/apps/kopete/icons/hicolor/*/*
 %dir %{_datadir}/apps/kopete/pics
 
-#%{_datadir}/apps/kconf_update/kopete-account-kconf_update.upd
-#%{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.upd
-#%{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.upd
-#%{_datadir}/apps/kconf_update/kopete-nameTracking.upd
-#%{_datadir}/apps/kconf_update/kopete-pluginloader.upd
-#%{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
 %{_datadir}/apps/kopete/*rc
 %{_datadir}/apps/kopete/icons/*/*/actions
 %{_datadir}/apps/kopete/pics/statistics
@@ -1176,15 +898,11 @@ fi
 %{_datadir}/apps/kopete_statistics
 %{_datadir}/apps/kopete_privacy
 %{_datadir}/apps/kopeterichtexteditpart
-#%{_datadir}/config.kcfg/kopete.kcfg
-#%{_datadir}/config.kcfg/kopeteidentityconfigpreferences.kcfg
 %{_datadir}/config.kcfg/kopeteappearancesettings.kcfg
 %{_datadir}/config.kcfg/kopetebehaviorsettings.kcfg
 %{_datadir}/config.kcfg/urlpicpreview.kcfg
-#%{_datadir}/mimelnk/application/x-kopete-emoticons.desktop
 %{_datadir}/kde4/services/chatwindow.desktop
 %{_datadir}/kde4/services/emailwindow.desktop
-#%{_datadir}/services/invitation.protocol
 %{_datadir}/kde4/services/kopete_accountconfig.desktop
 %{_datadir}/kde4/services/kopete_addbookmarks.desktop
 %{_datadir}/kde4/services/kopete_appearanceconfig.desktop
@@ -1249,41 +967,19 @@ fi
 %{_datadir}/apps/kopete/icons/*/*/*/*icq*
 %{_datadir}/kde4/services/kopete_icq.desktop
 
-#%files kopete-protocol-irc
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/kde4/kopete*irc*.so
-#%{_datadir}/apps/kopete/ircnetworks.xml
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/irc*
-#%{_datadir}/services/kopete_irc.desktop
-#%{_datadir}/services/irc.protocol
-
 %files kopete-protocol-jabber
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kopete*jabber*.so
-#%attr(755,root,root) %{_libdir}/kde4/kio_jabberdisco.so
 %{_datadir}/apps/kopete_jabber
 %{_datadir}/kde4/services/xmpp.protocol
 %{_datadir}/kde4/services/kopete_jabber.desktop
 %{_datadir}/apps/kopete/icons/*/*/*/jabber*.png
 
-#%files kopete-protocol-meanwhile
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/kde4/kopete*meanwhile*.so
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/meanwhile*
-#%{_datadir}/services/kopete_meanwhile.desktop
-
 %files kopete-protocol-msn
 %defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_msn.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_msn.so
-#%attr(755,root,root) %{_libdir}/kde4/kopete_netmeeting.so
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/msn*
 %{_datadir}/apps/kopete_msn
-#%{_datadir}/apps/kopete_netmeeting
-#%{_datadir}/services/kconfiguredialog/kopete_msn_config.desktop
-#%{_datadir}/services/kconfiguredialog/kopete_netmeeting_config.desktop
 %{_datadir}/kde4/services/kopete_msn.desktop
-#%{_datadir}/services/kopete_netmeeting.desktop
 %{_datadir}/apps/kopete/icons/*/*/*/msn_*.png
    
 
@@ -1337,7 +1033,6 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_autoreplace.so
 %attr(755,root,root) %{_libdir}/kde4/kopete*autoreplace*.so
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/autoreplace.png
 %{_datadir}/kde4/services/kopete_autoreplace.desktop
 %{_datadir}/kde4/services/kconfiguredialog/kopete_autoreplace_config.desktop
 
@@ -1347,24 +1042,11 @@ fi
 %{_datadir}/kde4/services/kopete_avdeviceconfig.desktop
 %{_datadir}/apps/kopete/icons/*/*/*/kopete_avdevice.png
 
-#%files kopete-tool-connectionstatus
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/kde4/kopete*connectionstatus*.so
-#%{_datadir}/services/kopete_connectionstatus.desktop
-
 %files kopete-tool-contactnotes
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kopete_contactnotes.so
 %{_datadir}/apps/kopete_contactnotes
 %{_datadir}/kde4/services/kopete_contactnotes.desktop
-
-#%files kopete-tool-cryptography
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_cryptography.so
-#%attr(755,root,root) %{_libdir}/kde4/kopete*cryptography*.so
-#%{_datadir}/apps/kopete_cryptography
-#%{_datadir}/services/kopete_cryptography.desktop
-#%{_datadir}/services/kconfiguredialog/kopete_cryptography_config.desktop
 
 %files kopete-tool-latex
 %defattr(644,root,root,755)
@@ -1382,7 +1064,6 @@ fi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_highlight.so
 %attr(755,root,root) %{_libdir}/kde4/kopete*highlight*.so
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/highlight.png
 %{_datadir}/kde4/services/kopete_highlight.desktop
 %{_datadir}/kde4/services/kconfiguredialog/kopete_highlight_config.desktop
 
@@ -1403,20 +1084,10 @@ fi
 %{_datadir}/kde4/services/kconfiguredialog/kopete_nowlistening_config.desktop
 %{_datadir}/kde4/services/kopete_nowlistening.desktop
 
-#%files kopete-tool-smpppdcs
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_smpppdcs.so
-#%attr(755,root,root) %{_libdir}/kde4/kopete*smpppdcs*.so
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/smpppdcs.png
-#%{_datadir}/config.kcfg/smpppdcs.kcfg
-#%{_datadir}/services/kconfiguredialog/kopete_smpppdcs_config.desktop
-#%{_datadir}/services/kopete_smpppdcs.desktop
-
 %files kopete-tool-texteffect
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_texteffect.so
 %attr(755,root,root) %{_libdir}/kde4/kopete*texteffect*.so
-#%{_datadir}/apps/kopete/icons/crystalsvg/*/*/texteffect.png
 %{_datadir}/kde4/services/kconfiguredialog/kopete_texteffect_config.desktop
 %{_datadir}/kde4/services/kopete_texteffect.desktop
 
@@ -1436,14 +1107,6 @@ fi
 %{_datadir}/kde4/services/kconfiguredialog/kopete_webpresence_config.desktop
 %{_datadir}/kde4/services/kopete_webpresence.desktop
 
-#%files kpf
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/kde4/kpf_panelapplet.so
-#%attr(755,root,root) %{_libdir}/kde4/kpfpropertiesdialog.so
-#%{_datadir}/apps/kicker/applets/kpfapplet.desktop
-#%{_datadir}/services/kpfpropertiesdialogplugin.desktop
-#%{_iconsdir}/*/*/*/kpf*
-
 %files kppp
 %defattr(644,root,root,755)
 %{_kdedocdir}/en/kppp
@@ -1461,74 +1124,13 @@ fi
 %{_kdedocdir}/en/krdc
 %attr(755,root,root) %{_bindir}/krdc
 %attr(755,root,root) %{_bindir}/krfb
-#%attr(755,root,root) %{_libdir}/kde4/kcm_krfb.so
 %{_datadir}/apps/krdc
 %{_datadir}/apps/krfb
 %{_datadir}/applications/kde4/krdc.desktop
-#%{_datadir}/services/kinetd_krfb.desktop
-#%{_datadir}/services/kinetd_krfb_httpd.desktop
 %{_datadir}/kde4/services/rdp.protocol
 %{_datadir}/kde4/services/vnc.protocol
-#%{_datadir}/apps/konqueror/servicemenus/smb2rdc.desktop
-#%{_desktopdir}/kde/kcmkrfb.desktop
 %{_desktopdir}/kde4/krfb.desktop
 %{_datadir}/config.kcfg/krdc.kcfg
-#%{_desktopdir}/kde/krdc.desktop
-#%{_iconsdir}/*/*/*/krdc*
-#%{_iconsdir}/[!l]*/*/*/krfb*
-
-#%files ksirc 
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/ksirc
-#%attr(755,root,root) %{_bindir}/dsirc
-#%attr(755,root,root) %{_libdir}/libkdeinit_ksirc.so
-#%attr(755,root,root) %{_libdir}/kde4/ksirc.so
-#%attr(755,root,root) %{_libdir}/kde4/libkntsrcfilepropsdlg.so
-#%{_datadir}/config/ksircrc
-#%{_datadir}/apps/ksirc
-#%{_datadir}/services/kntsrcfilepropsdlg.desktop
-#%{_desktopdir}/kde/ksirc.desktop
-#%{_iconsdir}/[!l]*/*/*/ksirc*
-
-#%files ktalkd 
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/ktalkd
-#%attr(755,root,root) %{_bindir}/ktalkdlg
-#%attr(755,root,root) %{_bindir}/mail.local
-#%attr(755,root,root) %{_libdir}/kde4/kcm_ktalkd.so
-#%{_datadir}/config/ktalkdrc
-#%{_datadir}/sounds/ktalkd.wav
-#%{_desktopdir}/kde/kcmktalkd.desktop
-#%{_iconsdir}/*/*/*/ktalkd.png
-
-#%files kwifimanager 
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/kwifimanager
-#%attr(755,root,root) %{_libdir}/libkwireless.so
-#%attr(755,root,root) %{_libdir}/kde4/kcm_wifi.so
-#%{_datadir}/apps/kicker/applets/kwireless.desktop
-#%{_datadir}/apps/kwifimanager
-#%{_desktopdir}/kde/kcmwifi.desktop
-#%{_desktopdir}/kde/kwifimanager.desktop
-#%{_iconsdir}/*/*/apps/kwifimanager.*
-
-#%files lanbrowser 
-#%defattr(644,root,root,755)
-#%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/lisarc
-#%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/lisa
-#%attr(754,root,root) /etc/rc.d/init.d/lisa
-#%attr(755,root,root) %{_bindir}/reslisa
-#%attr(755,root,root) %{_bindir}/lisa
-#%attr(755,root,root) %{_libdir}/kde4/kio_lan.so
-#%attr(755,root,root) %{_libdir}/kde4/kcm_lanbrowser.so
-#%{_datadir}/apps/lisa
-#%{_datadir}/apps/remoteview/lan.desktop
-#%{_datadir}/services/rlan.protocol
-#%{_datadir}/services/lan.protocol
-#%{_datadir}/apps/konqsidebartng/virtual_folders/services/lisa.desktop
-#%{_datadir}/applnk/.hidden/kcmkiolan.desktop
-#%{_datadir}/applnk/.hidden/kcmlisa.desktop
-#%{_datadir}/applnk/.hidden/kcmreslisa.desktop
 
 %files libkopete
 %defattr(644,root,root,755)
@@ -1545,14 +1147,3 @@ fi
 %files libkopete_oscar
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
-
-#%files librss
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/librss.so.*.*.*
-
-#%files rss
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/feedbrowser
-#%attr(755,root,root) %{_bindir}/rssclient
-#%attr(755,root,root) %{_bindir}/rssservice
-#%{_datadir}/services/rssservice.desktop
