@@ -9,7 +9,7 @@
 %bcond_without	hidden_visibility	# no gcc hidden visibility
 %bcond_with	skype			# with skype support (incomplete!)
 
-%define		_state		stable
+%define		_state		unstable
 #
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
@@ -17,12 +17,12 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 %define	orgname	kdenetwork
 Name:		kde4-kdenetwork
-Version:	4.0.0
+Version:	4.0.60
 Release:	0.1
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	f362bd34b589800845abfb99589d4cfc
+# Source0-md5:	91032603abb66342cc46e3b1838f9cec
 Source1:	%{orgname}-kopetestyles.tar.bz2
 # Source1-md5:	642aa6bf71c37c90ce23e3c4c3a90922
 Source2:	%{orgname}-lisa.init
@@ -34,7 +34,7 @@ BuildRequires:	QtOpenGL-devel
 BuildRequires:	avahi-compat-libdns_sd-devel
 BuildRequires:	cmake
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
-BuildRequires:	kde4-kdelibs-devel
+BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	libgadu-devel >= 1.4
 BuildRequires:	libidn-devel
 BuildRequires:	libiw-devel >= 27
@@ -104,7 +104,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name}-libkopete_msn = %{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{version}-%{release}
 Requires:	%{name}-libkopete_videodevice = %{version}-%{release}
-Requires:	kde4-kdelibs-devel
+Requires:	kde4-kdelibs-devel >= %{version}
 
 %description devel
 kdenetwork header files.
@@ -120,7 +120,7 @@ bibliotecas do kdenetwork.
 Summary:	File sharing plugins
 Summary(pl.UTF-8):	Wtyczki obsługujące współdzielenie plików
 Group:		X11/Applications
-Requires:	kde4-kdebase-core
+Requires:	kde4-kdebase-core >= %{version}
 
 %description filesharing
 File sharing plugins.
@@ -144,7 +144,7 @@ Nadzorowanie usług DNS-SD.
 Summary:	File downloand manager
 Summary(pl.UTF-8):	Zarządca ściągania plików
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{_minbaseevr}
+Requires:	kde4-kdebase-core >= %{version}
 
 %description kget
 A GetRight-like file download manager with resuming support and
@@ -182,7 +182,7 @@ Summary:	Multi-protocol plugin-based instant messenger
 Summary(pl.UTF-8):	Komunikator obsługujący wiele protokołów
 Group:		X11/Applications
 Requires:	%{name}-libkopete = %{version}-%{release}
-Requires:	kde4-kdebase-core >= %{_minbaseevr}
+Requires:	kde4-kdebase-core >= %{version}
 Obsoletes:	kopete
 Obsoletes:	kopete-plugin-protocols-aim
 Obsoletes:	kopete-plugin-protocols-gg
@@ -586,7 +586,7 @@ Summary:	KDE PPP dialer
 Summary(pl.UTF-8):	Program do połączeń modemowych dla KDE
 Summary(pt_BR.UTF-8):	O discador para Internet
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{_minbaseevr}
+Requires:	kde4-kdebase-core >= %{version}
 Requires:	ppp
 
 %description kppp
@@ -630,7 +630,7 @@ O discador para Internet.
 Summary:	Virtual Desktops
 Summary(pl.UTF-8):	Wirtualne biurka
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{_minbaseevr}
+Requires:	kde4-kdebase-core >= %{version}
 Suggests:	rdesktop
 
 %description krfb
@@ -653,7 +653,7 @@ specjalnych możliwości Remote Desktop Connection.
 Summary:	KDE XmlRpc Daemon
 Summary(pl.UTF-8):	Deamon XmlRpc dla KDE
 Group:		X11/Applications
-Requires:	kde4-kdelibs
+Requires:	kde4-kdelibs >= %{version}
 
 %description kxmlrpcd
 KDE XmlRpc Daemon.
@@ -665,7 +665,7 @@ Demon XmlRpc dla KDE.
 Summary:	kopete library
 Summary(pl.UTF-8):	Biblioteka kopete
 Group:		X11/Libraries
-Requires:	kde4-kdelibs
+Requires:	kde4-kdelibs >= %{version}
 
 %description libkopete
 kopete library.
