@@ -744,12 +744,27 @@ rm -rf $RPM_BUILD_ROOT
 %post	libkopete_oscar	-p /sbin/ldconfig
 %postun	libkopete_oscar	-p /sbin/ldconfig
 
+%post	libkopete_videodevice	-p /sbin/ldconfig
+%postun	libkopete_videodevice	-p /sbin/ldconfig
+
+%post	kget		-p /sbin/ldconfig
+%postun	kget		-p /sbin/ldconfig
+
+%post	kopete		-p /sbin/ldconfig
+%postun	kopete		-p /sbin/ldconfig
+
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete.so
 %attr(755,root,root) %{_libdir}/libkopete_msn_shared.so
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so
 %attr(755,root,root) %{_libdir}/libkopete_videodevice.so
+%attr(755,root,root) %{_libdir}/libiris_kopete.so
+%attr(755,root,root) %{_libdir}/libkopeteaddaccountwizard.so
+%attr(755,root,root) %{_libdir}/libkopetechatwindow_shared.so
+%attr(755,root,root) %{_libdir}/libkopeteidentity.so
+%attr(755,root,root) %{_libdir}/libkopeteprivacy.so
+%attr(755,root,root) %{_libdir}/liboscar.so
 %{_includedir}/kopete
 
 %files filesharing
@@ -783,7 +798,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_kget.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_kget.so
 %attr(755,root,root) %{_libdir}/libkgetcore.so.4.*.*
-%attr(755,root,root) %{_libdir}/libkgetcore.so.4
+%ghost %attr(755,root,root) %{_libdir}/libkgetcore.so.?
 %attr(755,root,root) %{_libdir}/libkgetcore.so
 %{_datadir}/apps/kget
 %{_datadir}/config.kcfg/kget.kcfg
@@ -844,27 +859,17 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
 
 #### ???
-%attr(755,root,root) %{_libdir}/libiris_kopete.so
-%attr(755,root,root) %{_libdir}/libiris_kopete.so.1
+%ghost %attr(755,root,root) %{_libdir}/libiris_kopete.so.?
 %attr(755,root,root) %{_libdir}/libiris_kopete.so.1.0.0
-%attr(755,root,root) %{_libdir}/libkopete.so.4
-%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.4
-%attr(755,root,root) %{_libdir}/libkopete_oscar.so.4
-%attr(755,root,root) %{_libdir}/libkopete_videodevice.so.4
-%attr(755,root,root) %{_libdir}/libkopeteaddaccountwizard.so
-%attr(755,root,root) %{_libdir}/libkopeteaddaccountwizard.so.1
+%ghost %attr(755,root,root) %{_libdir}/libkopeteaddaccountwizard.so.?
 %attr(755,root,root) %{_libdir}/libkopeteaddaccountwizard.so.1.0.0
-%attr(755,root,root) %{_libdir}/libkopetechatwindow_shared.so
-%attr(755,root,root) %{_libdir}/libkopetechatwindow_shared.so.1
+%ghost %attr(755,root,root) %{_libdir}/libkopetechatwindow_shared.so.?
 %attr(755,root,root) %{_libdir}/libkopetechatwindow_shared.so.1.0.0
-%attr(755,root,root) %{_libdir}/libkopeteidentity.so
-%attr(755,root,root) %{_libdir}/libkopeteidentity.so.1
+%ghost %attr(755,root,root) %{_libdir}/libkopeteidentity.so.?
 %attr(755,root,root) %{_libdir}/libkopeteidentity.so.1.0.0
-%attr(755,root,root) %{_libdir}/libkopeteprivacy.so
-%attr(755,root,root) %{_libdir}/libkopeteprivacy.so.1
+%ghost %attr(755,root,root) %{_libdir}/libkopeteprivacy.so.?
 %attr(755,root,root) %{_libdir}/libkopeteprivacy.so.1.0.0
-%attr(755,root,root) %{_libdir}/liboscar.so
-%attr(755,root,root) %{_libdir}/liboscar.so.1
+%ghost %attr(755,root,root) %{_libdir}/liboscar.so.?
 %attr(755,root,root) %{_libdir}/liboscar.so.1.0.0
 ####
 
@@ -1125,15 +1130,19 @@ rm -rf $RPM_BUILD_ROOT
 %files libkopete
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
+%ghost %attr(755,root,root) %{_libdir}/libkopete.so.?
 
 %files libkopete_videodevice
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete_videodevice.so.*.*.*
+%ghost %attr(755,root,root) %{_libdir}/libkopete_videodevice.so.?
 
 %files libkopete_msn
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
+%ghost %attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.?
 
 %files libkopete_oscar
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
+%ghost %attr(755,root,root) %{_libdir}/libkopete_oscar.so.?
