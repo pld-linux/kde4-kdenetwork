@@ -765,6 +765,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkopeteidentity.so
 %attr(755,root,root) %{_libdir}/libkopeteprivacy.so
 %attr(755,root,root) %{_libdir}/liboscar.so
+%attr(755,root,root) %{_libdir}/libkopetestatusmenu.so
 %{_includedir}/kopete
 
 %files filesharing
@@ -797,12 +798,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kget_multisegkiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_kget.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_kget.so
+%attr(755,root,root) %{_libdir}/kde4/kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/libkgetcore.so.4.*.*
 %ghost %attr(755,root,root) %{_libdir}/libkgetcore.so.?
 %attr(755,root,root) %{_libdir}/libkgetcore.so
 %{_datadir}/apps/kget
 %{_datadir}/config.kcfg/kget.kcfg
 %{_datadir}/config.kcfg/kget_multisegkiofactory.kcfg
+%{_datadir}/config.kcfg/kget_mirrorsearchfactory.kcfg
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %{_desktopdir}/kde4/kget.desktop
 %{_datadir}/kde4/services/ServiceMenus/kget_download.desktop
@@ -812,6 +815,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kget_kiofactory.desktop
 %{_datadir}/kde4/services/kget_metalinkfactory.desktop
 %{_datadir}/kde4/services/kget_multisegkiofactory.desktop
+%{_datadir}/kde4/services/kget_mirrorsearchfactory.desktop
 %{_datadir}/sounds/KGet*.ogg
 %{_iconsdir}/*/*/*/*kget*
 %{_datadir}/apps/desktoptheme/default/widgets/kget.svg
@@ -844,6 +848,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kopete_testbed.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_urlpicpreview.so
 %attr(755,root,root) %{_libdir}/kde4/libkrichtexteditpart.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_pipes.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_statusconfig.so
+%attr(755,root,root) %{_libdir}/kde4/kopete_pipes.so
 
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-0.10.pl
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
@@ -871,6 +878,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkopeteprivacy.so.1.0.0
 %ghost %attr(755,root,root) %{_libdir}/liboscar.so.?
 %attr(755,root,root) %{_libdir}/liboscar.so.1.0.0
+%attr(755,root,root) %{_libdir}/libkopetestatusmenu.so.1.0.0
+%ghost %attr(755,root,root) %{_libdir}/libkopetestatusmenu.so.?
 ####
 
 %dir %{_datadir}/apps/kopete
@@ -884,17 +893,18 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/apps/kopete/icons/hicolor
 %dir %{_datadir}/apps/kopete/icons/hicolor/*
 %dir %{_datadir}/apps/kopete/icons/hicolor/*/*
-%dir %{_datadir}/apps/kopete/pics
+#%dir %{_datadir}/apps/kopete/pics
 
 %{_datadir}/apps/kopete/*rc
 %{_datadir}/apps/kopete/icons/*/*/actions
-%{_datadir}/apps/kopete/pics/statistics
+#%{_datadir}/apps/kopete/pics/statistics
 %{_datadir}/apps/kopete/styles
 %{_datadir}/apps/kopete_statistics
 %{_datadir}/apps/kopete_privacy
 %{_datadir}/apps/kopeterichtexteditpart
 %{_datadir}/config.kcfg/kopeteappearancesettings.kcfg
 %{_datadir}/config.kcfg/kopetebehaviorsettings.kcfg
+%{_datadir}/config.kcfg/kopetestatussettings.kcfg
 %{_datadir}/config.kcfg/urlpicpreview.kcfg
 %{_datadir}/kde4/services/chatwindow.desktop
 %{_datadir}/kde4/services/emailwindow.desktop
@@ -910,6 +920,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kopete_urlpicpreview.desktop
 %{_datadir}/kde4/services/kconfiguredialog
 %{_datadir}/kde4/services/kopete_privacy.desktop
+%{_datadir}/kde4/services/kopete_pipes.desktop
+%{_datadir}/kde4/services/kopete_statusconfig.desktop
 %{_datadir}/kde4/servicetypes/kopeteplugin.desktop
 %{_datadir}/kde4/servicetypes/kopeteprotocol.desktop
 %{_datadir}/kde4/servicetypes/kopeteui.desktop
@@ -921,6 +933,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/*/kopete.png
 %{_iconsdir}/*/*/actions
 %{_iconsdir}/oxygen/*/*/kopete*
+%{_iconsdir}/*/scalable/apps/kopete.svgz
 %{_datadir}/apps/kopete/icons/*/*/apps/testbed_protocol.png
 %{_datadir}/apps/kopete/icons/*/*/apps/qq_protocol.png
 %{_datadir}/apps/kopete/icons/*/*/apps/preferences-plugin-text-effect-kopete.png
