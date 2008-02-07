@@ -885,14 +885,14 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/apps/kopete
 %dir %{_datadir}/apps/kopete/icons
 %dir %{_datadir}/apps/kopete/icons/crystalsvg
-%dir %{_datadir}/apps/kopete/icons/crystalsvg/*
-%dir %{_datadir}/apps/kopete/icons/crystalsvg/*/*
+#%dir %{_datadir}/apps/kopete/icons/crystalsvg/*
+#%dir %{_datadir}/apps/kopete/icons/crystalsvg/*/*
 %dir %{_datadir}/apps/kopete/icons/oxygen
-%dir %{_datadir}/apps/kopete/icons/oxygen/*
-%dir %{_datadir}/apps/kopete/icons/oxygen/*/*
+#%dir %{_datadir}/apps/kopete/icons/oxygen/*
+#%dir %{_datadir}/apps/kopete/icons/oxygen/*/*
 %dir %{_datadir}/apps/kopete/icons/hicolor
-%dir %{_datadir}/apps/kopete/icons/hicolor/*
-%dir %{_datadir}/apps/kopete/icons/hicolor/*/*
+#%dir %{_datadir}/apps/kopete/icons/hicolor/*
+#%dir %{_datadir}/apps/kopete/icons/hicolor/*/*
 #%dir %{_datadir}/apps/kopete/pics
 
 %{_datadir}/apps/kopete/*rc
