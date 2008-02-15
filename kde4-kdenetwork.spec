@@ -810,7 +810,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kget_metalinkfactory.desktop
 %{_datadir}/kde4/services/kget_multisegkiofactory.desktop
 %{_datadir}/kde4/services/kget_mirrorsearchfactory.desktop
-%{_datadir}/sounds/KGet*.ogg
+#%{_datadir}/sounds/KGet*.ogg
 %{_iconsdir}/*/*/*/*kget*
 %{_datadir}/apps/desktoptheme/default/widgets/kget.svg
 
