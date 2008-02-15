@@ -22,7 +22,7 @@ Release:	0.1
 License:	GPL
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	402f997bc119c9d304d9ade5726f750d
+# Source0-md5:	b8b42a5f8a6f9d3533d80718b15430dd
 URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel
 BuildRequires:	avahi-compat-libdns_sd-devel
