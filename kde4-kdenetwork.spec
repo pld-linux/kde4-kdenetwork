@@ -6,12 +6,10 @@
 #
 # Conditional build:
 %bcond_without	xmms			# without xmms support
-%bcond_without	hidden_visibility	# no gcc hidden visibility
 %bcond_with	skype			# with skype support (incomplete!)
-
-%define		_state		unstable
 #
-%define	orgname	kdenetwork
+%define		_state		unstable
+%define		orgname		kdenetwork
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
@@ -19,7 +17,7 @@ Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
 Version:	4.0.62
 Release:	0.1
-License:	GPL
+License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	b8b42a5f8a6f9d3533d80718b15430dd
@@ -54,42 +52,69 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 KDE network applications. Package includes:
-- KDict - Online dictionary client
 - KGet - file downloader
 - KNewsticker - News Ticker
-- KPF - Public fileserver applet
 - KPPP - PPP dialer
 - krdc - remote desktop connection
 - krfb - virtual desktops
-- KSirc - IRC client
-- KTalkd - takt daemon
-- KXmlRpcd - XmlRpc Daemon
-- Lanbrowser - LAN Browser
-- KWiFiManager - wireless network manager
 
 %description -l pl.UTF-8
 Aplikacje sieciowe KDE. Pakiet zawiera następujące programy:
-- KDict - klient słownika
 - KGet - ściągacz plików
 - KNewsticker - aplet wyświetlający nowości
-- KPF - applet publicznego serwera plików
 - KPPP - program do nawiązywania połączeń modemowych
 - krdc - zdalny pulpit
 - krfb - wirtualne biurka
-- KSirc - klient IRC
-- KTalkd - demon Talk
-- KXmlRpcd - demon XmlRpc
-- Lanbrowser - przeglądarka LAN-u
-- KWiFiManager - zarządca sieci bezprzewodowej
 
-%description -l pt_BR.UTF-8
-Aplicações de Rede para o KDE.
+%package libkopete
+Summary:	kopete library
+Summary(pl.UTF-8):	Biblioteka kopete
+Group:		X11/Libraries
+Requires:	kde4-kdelibs >= %{version}
 
-Incluídos neste pacote:
+%description libkopete
+kopete library.
 
-kmail: leitor de correio knu: utilitários de rede korn: ferramenta de
-monitoração da caixa de correio kppp: configuração fácil para
-conexão PPP krn: leitor de notícias
+%description libkopete -l pl.UTF-8
+Biblioteka kopete.
+
+%package libkopete_msn
+Summary:	MSN protocol shared library
+Summary(pl.UTF-8):	Biblioteka współdzielona dla protokołu MSN
+Group:		X11/Libraries
+Requires:	%{name}-libkopete = %{version}-%{release}
+
+%description libkopete_msn
+MSN protocol shared library.
+
+%description libkopete_msn -l pl.UTF-8
+Biblioteka współdzielona dla protokołu MSN.
+
+%package libkopete_oscar
+Summary:	Shared library which adds OSCAR protocol support
+Summary(pl.UTF-8):	Biblioteka dodająca obsługę protokołu OSCAR
+Group:		X11/Applications/Networking
+Requires:	%{name}-libkopete = %{version}-%{release}
+
+%description libkopete_oscar
+A shared library which adds OSCAR protocol support needed eg. by AIM
+and ICQ.
+
+%description libkopete_oscar -l pl.UTF-8
+Biblioteka dodająca obsługę protokołu OSCAR, używanego między
+innymi przez AIM i ICQ.
+
+%package libkopete_videodevice
+Summary:	Video input device support library for kopete
+Summary(pl.UTF-8):	Biblioteka z obsługą urządzeń wejścia video dla kopete
+Group:		X11/Libraries
+Requires:	%{name}-libkopete = %{version}-%{release}
+
+%description libkopete_videodevice
+Video input device support library for kopete.
+
+%description libkopete_videodevice -l pl.UTF-8
+Biblioteka z obsługą urządzeń wejścia video dla kopete.
 
 %package devel
 Summary:	kdenetwork header files
@@ -643,68 +668,6 @@ Connection z użyciem serwera KDE VNC, czyli "dzielenia pulpitu"
 (także dostarczanego przez ten pakiet), jako że najlepiej pasuje do
 specjalnych możliwości Remote Desktop Connection.
 
-%package kxmlrpcd
-Summary:	KDE XmlRpc Daemon
-Summary(pl.UTF-8):	Deamon XmlRpc dla KDE
-Group:		X11/Applications
-Requires:	kde4-kdelibs >= %{version}
-
-%description kxmlrpcd
-KDE XmlRpc Daemon.
-
-%description kxmlrpcd -l pl.UTF-8
-Demon XmlRpc dla KDE.
-
-%package libkopete
-Summary:	kopete library
-Summary(pl.UTF-8):	Biblioteka kopete
-Group:		X11/Libraries
-Requires:	kde4-kdelibs >= %{version}
-
-%description libkopete
-kopete library.
-
-%description libkopete -l pl.UTF-8
-Biblioteka kopete.
-
-%package libkopete_msn
-Summary:	MSN protocol shared library
-Summary(pl.UTF-8):	Biblioteka współdzielona dla protokołu MSN
-Group:		X11/Libraries
-Requires:	%{name}-libkopete = %{version}-%{release}
-
-%description libkopete_msn
-MSN protocol shared library.
-
-%description libkopete_msn -l pl.UTF-8
-Biblioteka współdzielona dla protokołu MSN.
-
-%package libkopete_videodevice
-Summary:	Video input device support library for kopete
-Summary(pl.UTF-8):	Biblioteka z obsługą urządzeń wejścia video dla kopete
-Group:		X11/Libraries
-Requires:	%{name}-libkopete = %{version}-%{release}
-
-%description libkopete_videodevice
-Video input device support library for kopete.
-
-%description libkopete_videodevice -l pl.UTF-8
-Biblioteka z obsługą urządzeń wejścia video dla kopete.
-
-%package libkopete_oscar
-Summary:	Shared library which adds OSCAR protocol support
-Summary(pl.UTF-8):	Biblioteka dodająca obsługę protokołu OSCAR
-Group:		X11/Applications/Networking
-Requires:	%{name}-libkopete = %{version}-%{release}
-
-%description libkopete_oscar
-A shared library which adds OSCAR protocol support needed eg. by AIM
-and ICQ.
-
-%description libkopete_oscar -l pl.UTF-8
-Biblioteka dodająca obsługę protokołu OSCAR, używanego między
-innymi przez AIM i ICQ.
-
 %prep
 %setup -q -n %{orgname}-%{version}
 
@@ -713,16 +676,16 @@ export QTDIR=%{_prefix}
 install -d build
 cd build
 %cmake \
-		-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-		-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
-		../
+	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
+	../
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} -C build/ install \
+%{__make} -C build install \
         DESTDIR=$RPM_BUILD_ROOT \
         kde_htmldir=%{_kdedocdir}
 
@@ -747,26 +710,46 @@ rm -rf $RPM_BUILD_ROOT
 %post	kopete		-p /sbin/ldconfig
 %postun	kopete		-p /sbin/ldconfig
 
+%files libkopete
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopete.so.?
+
+%files libkopete_msn
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopete_msn_shared.so.?
+
+%files libkopete_oscar
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopete_oscar.so.?
+
+%files libkopete_videodevice
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libkopete_videodevice.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopete_videodevice.so.?
+
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libiris_kopete.so
 %attr(755,root,root) %{_libdir}/libkopete.so
 %attr(755,root,root) %{_libdir}/libkopete_msn_shared.so
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so
 %attr(755,root,root) %{_libdir}/libkopete_videodevice.so
-%attr(755,root,root) %{_libdir}/libiris_kopete.so
 %attr(755,root,root) %{_libdir}/libkopeteaddaccountwizard.so
 %attr(755,root,root) %{_libdir}/libkopetechatwindow_shared.so
 %attr(755,root,root) %{_libdir}/libkopeteidentity.so
 %attr(755,root,root) %{_libdir}/libkopeteprivacy.so
-%attr(755,root,root) %{_libdir}/liboscar.so
 %attr(755,root,root) %{_libdir}/libkopetestatusmenu.so
+%attr(755,root,root) %{_libdir}/liboscar.so
 %{_includedir}/kopete
 
 %files filesharing
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde4/fileshare_propsdlgplugin.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_fileshare.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kcmsambaconf.so
+%attr(755,root,root) %{_libdir}/kde4/fileshare_propsdlgplugin.so
 %{_datadir}/kde4/services/fileshare.desktop
 %{_datadir}/kde4/services/fileshare_propsdlgplugin.desktop
 %{_datadir}/kde4/services/kcmsambaconf.desktop
@@ -784,67 +767,66 @@ rm -rf $RPM_BUILD_ROOT
 
 %files kget
 %defattr(644,root,root,755)
-%{_kdedocdir}/en/kget
 %attr(755,root,root) %{_bindir}/kget
-%attr(755,root,root) %{_libdir}/kde4/khtml_kget.so
 %attr(755,root,root) %{_libdir}/kde4/kget_kiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_metalinkfactory.so
+%attr(755,root,root) %{_libdir}/kde4/kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_multisegkiofactory.so
+%attr(755,root,root) %{_libdir}/kde4/khtml_kget.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_kget.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_kget.so
-%attr(755,root,root) %{_libdir}/kde4/kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/libkgetcore.so.4.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkgetcore.so.?
 %attr(755,root,root) %{_libdir}/libkgetcore.so
 %{_datadir}/apps/kget
+%{_datadir}/apps/desktoptheme/default/widgets/kget.svg
+%{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %{_datadir}/config.kcfg/kget.kcfg
 %{_datadir}/config.kcfg/kget_multisegkiofactory.kcfg
 %{_datadir}/config.kcfg/kget_mirrorsearchfactory.kcfg
-%{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
-%{_desktopdir}/kde4/kget.desktop
 %{_datadir}/kde4/services/ServiceMenus/kget_download.desktop
-%{_datadir}/kde4/servicetypes/kget_plugin.desktop
 %{_datadir}/kde4/services/plasma-engine-kget.desktop
 %{_datadir}/kde4/services/plasma-kget-default.desktop
 %{_datadir}/kde4/services/kget_kiofactory.desktop
 %{_datadir}/kde4/services/kget_metalinkfactory.desktop
 %{_datadir}/kde4/services/kget_multisegkiofactory.desktop
 %{_datadir}/kde4/services/kget_mirrorsearchfactory.desktop
+%{_datadir}/kde4/servicetypes/kget_plugin.desktop
 #%{_datadir}/sounds/KGet*.ogg
+%{_desktopdir}/kde4/kget.desktop
 %{_iconsdir}/*/*/*/*kget*
-%{_datadir}/apps/desktoptheme/default/widgets/kget.svg
+%{_kdedocdir}/en/kget
 
 %files knewsticker
 %defattr(644,root,root,755)
-%{_kdedocdir}/en/knewsticker
 %attr(755,root,root) %{_libdir}/kde4/plasma_applet_knewsticker.so
 %{_datadir}/kde4/services/plasma-knewsticker-default.desktop
 %{_iconsdir}/*/*/*/knewsticker.png
+%{_kdedocdir}/en/knewsticker
 
 %files kopete
 %defattr(644,root,root,755)
-%{_kdedocdir}/en/kopete
 %attr(755,root,root) %{_bindir}/kopete
-%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_addbookmarks.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_accountconfig.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_addbookmarks.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_appearanceconfig.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_behaviorconfig.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_chatwindowconfig.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_pipes.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_pluginconfig.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_privacy.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_statusconfig.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_urlpicpreview.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_addbookmarks.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_chatwindow.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_emailwindow.so
+%attr(755,root,root) %{_libdir}/kde4/kopete_pipes.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_privacy.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_qq.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_statistics.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_testbed.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_urlpicpreview.so
 %attr(755,root,root) %{_libdir}/kde4/libkrichtexteditpart.so
-%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_pipes.so
-%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_statusconfig.so
-%attr(755,root,root) %{_libdir}/kde4/kopete_pipes.so
 
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-0.10.pl
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
@@ -860,18 +842,18 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
 
 #### ???
-%attr(755,root,root) %ghost %{_libdir}/libiris_kopete.so.?
 %attr(755,root,root) %{_libdir}/libiris_kopete.so.1.0.0
-%attr(755,root,root) %ghost %{_libdir}/libkopeteaddaccountwizard.so.?
+%attr(755,root,root) %ghost %{_libdir}/libiris_kopete.so.?
 %attr(755,root,root) %{_libdir}/libkopeteaddaccountwizard.so.1.0.0
-%attr(755,root,root) %ghost %{_libdir}/libkopetechatwindow_shared.so.?
+%attr(755,root,root) %ghost %{_libdir}/libkopeteaddaccountwizard.so.?
 %attr(755,root,root) %{_libdir}/libkopetechatwindow_shared.so.1.0.0
-%attr(755,root,root) %ghost %{_libdir}/libkopeteidentity.so.?
+%attr(755,root,root) %ghost %{_libdir}/libkopetechatwindow_shared.so.?
 %attr(755,root,root) %{_libdir}/libkopeteidentity.so.1.0.0
-%attr(755,root,root) %ghost %{_libdir}/libkopeteprivacy.so.?
+%attr(755,root,root) %ghost %{_libdir}/libkopeteidentity.so.?
 %attr(755,root,root) %{_libdir}/libkopeteprivacy.so.1.0.0
-%attr(755,root,root) %ghost %{_libdir}/liboscar.so.?
+%attr(755,root,root) %ghost %{_libdir}/libkopeteprivacy.so.?
 %attr(755,root,root) %{_libdir}/liboscar.so.1.0.0
+%attr(755,root,root) %ghost %{_libdir}/liboscar.so.?
 %attr(755,root,root) %{_libdir}/libkopetestatusmenu.so.1.0.0
 %attr(755,root,root) %ghost %{_libdir}/libkopetestatusmenu.so.?
 ####
@@ -891,15 +873,24 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_datadir}/apps/kopete/*rc
 %{_datadir}/apps/kopete/icons/*/*/actions
+%{_datadir}/apps/kopete/icons/*/*/apps/testbed_protocol.png
+%{_datadir}/apps/kopete/icons/*/*/apps/qq_protocol.png
+%{_datadir}/apps/kopete/icons/*/*/apps/preferences-plugin-text-effect-kopete.png
+%{_datadir}/apps/kopete/icons/*/*/apps/preferences-text-autocorrection-kopete.png
+%{_datadir}/apps/kopete/icons/*/*/apps/preferences-text-highlighting-kopete.png
 #%{_datadir}/apps/kopete/pics/statistics
 %{_datadir}/apps/kopete/styles
 %{_datadir}/apps/kopete_statistics
 %{_datadir}/apps/kopete_privacy
 %{_datadir}/apps/kopeterichtexteditpart
+%{_datadir}/config/kopeterc
 %{_datadir}/config.kcfg/kopeteappearancesettings.kcfg
 %{_datadir}/config.kcfg/kopetebehaviorsettings.kcfg
 %{_datadir}/config.kcfg/kopetestatussettings.kcfg
 %{_datadir}/config.kcfg/urlpicpreview.kcfg
+%{_datadir}/dbus-1/interfaces/org.kde.Kopete.xml
+%{_datadir}/dbus-1/interfaces/org.kde.kopete.Client.xml
+%{_datadir}/dbus-1/interfaces/org.kde.kopete.Statistics.xml
 %{_datadir}/kde4/services/chatwindow.desktop
 %{_datadir}/kde4/services/emailwindow.desktop
 %{_datadir}/kde4/services/kopete_accountconfig.desktop
@@ -928,15 +919,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/actions
 %{_iconsdir}/oxygen/*/*/kopete*
 %{_iconsdir}/*/scalable/apps/kopete.svgz
-%{_datadir}/apps/kopete/icons/*/*/apps/testbed_protocol.png
-%{_datadir}/apps/kopete/icons/*/*/apps/qq_protocol.png
-%{_datadir}/apps/kopete/icons/*/*/apps/preferences-plugin-text-effect-kopete.png
-%{_datadir}/apps/kopete/icons/*/*/apps/preferences-text-autocorrection-kopete.png
-%{_datadir}/apps/kopete/icons/*/*/apps/preferences-text-highlighting-kopete.png
-%{_datadir}/dbus-1/interfaces/org.kde.Kopete.xml
-%{_datadir}/dbus-1/interfaces/org.kde.kopete.Client.xml
-%{_datadir}/dbus-1/interfaces/org.kde.kopete.Statistics.xml
-%{_datadir}/config/kopeterc
+%{_kdedocdir}/en/kopete
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
@@ -949,19 +932,19 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kopete_gadu.so
 %attr(755,root,root) %{_libdir}/libgadu_kopete.so.1.*.*
-%attr(755,root,root) %{_libdir}/libgadu_kopete.so.1
+%attr(755,root,root) %ghost %{_libdir}/libgadu_kopete.so.1
 %attr(755,root,root) %{_libdir}/libgadu_kopete.so
-%{_datadir}/kde4/services/kopete_gadu.desktop
 %{_datadir}/apps/kopete/icons/*/*/*/gadu*
 %{_datadir}/apps/kopete/icons/*/*/*/gg*
+%{_datadir}/kde4/services/kopete_gadu.desktop
 
 %files kopete-protocol-groupwise
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kopete_groupwise.so
 %attr(755,root,root) %{_libdir}/libqgroupwise.so
-%{_datadir}/kde4/services/kopete_groupwise.desktop
 %{_datadir}/apps/kopete/icons/*/*/*/groupwise_protocol.png
 %{_datadir}/apps/kopete_groupwise
+%{_datadir}/kde4/services/kopete_groupwise.desktop
 
 %files kopete-protocol-icq
 %defattr(644,root,root,755)
@@ -973,29 +956,28 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kopete*jabber*.so
 %{_datadir}/apps/kopete_jabber
+%{_datadir}/apps/kopete/icons/*/*/*/jabber*.png
 %{_datadir}/kde4/services/xmpp.protocol
 %{_datadir}/kde4/services/kopete_jabber.desktop
-%{_datadir}/apps/kopete/icons/*/*/*/jabber*.png
 
 %files kopete-protocol-msn
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kopete_msn.so
 %{_datadir}/apps/kopete_msn
-%{_datadir}/kde4/services/kopete_msn.desktop
 %{_datadir}/apps/kopete/icons/*/*/*/msn_*.png
-
+%{_datadir}/kde4/services/kopete_msn.desktop
 
 %if %{with skype}
 %files kopete-protocol-skype
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kopete*skype*.so
+%{_datadir}/apps/kopete_skype
 %{_datadir}/apps/kopete/icons/*/*/*/call.png
 %{_datadir}/apps/kopete/icons/*/*/*/contact_ffc_overlay.png
 %{_datadir}/apps/kopete/icons/*/*/*/contact_unknown_overlay.png
-%{_iconsdir}/*/*/*/call.png
 %{_datadir}/apps/kopete/icons/*/*/*/*skype*
 %{_datadir}/services/kopete_skype.desktop
-%{_datadir}/apps/kopete_skype
+%{_iconsdir}/*/*/*/call.png
 %endif
 
 %files kopete-protocol-sms
@@ -1018,7 +1000,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kopete_yahoo.so
 %attr(755,root,root) %{_libdir}/libkyahoo.so.1.0.0
-%attr(755,root,root) %{_libdir}/libkyahoo.so.1
+%attr(755,root,root) %ghost %{_libdir}/libkyahoo.so.1
 %attr(755,root,root) %{_libdir}/libkyahoo.so
 %{_datadir}/apps/kopete_yahoo
 %{_datadir}/apps/kopete/icons/*/*/*/yahoo*
@@ -1041,8 +1023,8 @@ rm -rf $RPM_BUILD_ROOT
 %files kopete-tool-avdeviceconfig
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_avdeviceconfig.so
-%{_datadir}/kde4/services/kopete_avdeviceconfig.desktop
 %{_datadir}/apps/kopete/icons/*/*/*/kopete_avdevice.png
+%{_datadir}/kde4/services/kopete_avdeviceconfig.desktop
 
 %files kopete-tool-contactnotes
 %defattr(644,root,root,755)
@@ -1056,8 +1038,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_latex.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_latex.so
 %{_datadir}/apps/kopete/icons/*/*/apps/latex.png
-%{_datadir}/config.kcfg/latexconfig.kcfg
 %{_datadir}/apps/kopete_latex
+%{_datadir}/config.kcfg/latexconfig.kcfg
 %{_datadir}/kde4/services/kconfiguredialog/kopete_addbookmarks_config.desktop
 %{_datadir}/kde4/services/kconfiguredialog/kopete_latex_config.desktop
 %{_datadir}/kde4/services/kopete_latex.desktop
@@ -1111,45 +1093,25 @@ rm -rf $RPM_BUILD_ROOT
 
 %files kppp
 %defattr(644,root,root,755)
-%{_kdedocdir}/en/kppp
 %attr(755,root,root) %{_bindir}/kppplogview
 %attr(755,root,root) %{_bindir}/kppp
 %{_datadir}/apps/kppp
+%{_datadir}/dbus-1/interfaces/org.kde.kppp.xml
 %{_desktopdir}/kde4/Kppp.desktop
 %{_desktopdir}/kde4/kppplogview.desktop
 %{_iconsdir}/*/*/*/kppp.png
-%{_datadir}/dbus-1/interfaces/org.kde.kppp.xml
+%{_kdedocdir}/en/kppp
 
 %files krfb
 %defattr(644,root,root,755)
-%{_kdedocdir}/en/krfb
-%{_kdedocdir}/en/krdc
 %attr(755,root,root) %{_bindir}/krdc
 %attr(755,root,root) %{_bindir}/krfb
 %{_datadir}/apps/krdc
 %{_datadir}/apps/krfb
-%{_desktopdir}/kde4/krdc.desktop
+%{_datadir}/config.kcfg/krdc.kcfg
 %{_datadir}/kde4/services/rdp.protocol
 %{_datadir}/kde4/services/vnc.protocol
+%{_desktopdir}/kde4/krdc.desktop
 %{_desktopdir}/kde4/krfb.desktop
-%{_datadir}/config.kcfg/krdc.kcfg
-
-%files libkopete
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkopete.so.?
-
-%files libkopete_videodevice
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkopete_videodevice.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkopete_videodevice.so.?
-
-%files libkopete_msn
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkopete_msn_shared.so.?
-
-%files libkopete_oscar
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkopete_oscar.so.?
+%{_kdedocdir}/en/krdc
+%{_kdedocdir}/en/krfb
