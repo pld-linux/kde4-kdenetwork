@@ -15,14 +15,14 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.0.62
+Version:	4.0.64
 Release:	0.1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	b8b42a5f8a6f9d3533d80718b15430dd
+# Source0-md5:	e96c586d123189f530dae5407e23cfd2
 URL:		http://www.kde.org/
-BuildRequires:	QtOpenGL-devel
+BuildRequires:	QtOpenGL-devel >= 4.4.0
 BuildRequires:	avahi-compat-libdns_sd-devel
 BuildRequires:	cmake
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
