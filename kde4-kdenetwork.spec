@@ -1,12 +1,9 @@
 # TODO
 # - fix kopete-tool-{avdeviceconfig,smpppdcs} summaries/descriptions (copy-pastos!)
 # - what about non-applied libgadu patch?
-# - fix or kill skype support
 # - kill internal libgadu copy
 #
 # Conditional build:
-%bcond_without	xmms			# without xmms support
-%bcond_with	skype			# with skype support (incomplete!)
 #
 %define		_state		unstable
 %define		orgname		kdenetwork
@@ -15,12 +12,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.0.64
+Version:	4.0.65
 Release:	0.1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	e96c586d123189f530dae5407e23cfd2
+# Source0-md5:	e1fb98ef8465229a0247a529472067e3
 URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel >= 4.4.0
 BuildRequires:	avahi-compat-libdns_sd-devel
@@ -44,7 +41,7 @@ BuildRequires:	perl-base
 BuildRequires:	qca-devel >= 2.0
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sqlite3-devel
-%{?with_xmms:BuildRequires:	xmms-devel}
+BuildRequires:	xmms-devel
 BuildRequires:	xorg-lib-libXtst-devel
 Obsoletes:	kdenetwork4
 Conflicts:	kdenetwork4
@@ -335,19 +332,6 @@ Kopete plugin which adds MSN protocol support.
 
 %description kopete-protocol-msn -l pl.UTF-8
 Wtyczka Kopete dodająca obsługę protokołu MSN.
-
-%package kopete-protocol-skype
-Summary:	Kopete plugin which adds Skype protocol support
-Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu Skype
-Group:		X11/Applications/Networking
-Requires:	%{name}-kopete = %{version}-%{release}
-Requires:	skype
-
-%description kopete-protocol-skype
-Kopete plugin which adds Skype protocol support.
-
-%description kopete-protocol-skype -l pl.UTF-8
-Wtyczka Kopete dodająca obsługę protokołu Skype.
 
 %package kopete-protocol-sms
 Summary:	Kopete plugin which adds SMS contact support
@@ -966,19 +950,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kopete_msn
 %{_datadir}/apps/kopete/icons/*/*/*/msn_*.png
 %{_datadir}/kde4/services/kopete_msn.desktop
-
-%if %{with skype}
-%files kopete-protocol-skype
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde4/kopete*skype*.so
-%{_datadir}/apps/kopete_skype
-%{_datadir}/apps/kopete/icons/*/*/*/call.png
-%{_datadir}/apps/kopete/icons/*/*/*/contact_ffc_overlay.png
-%{_datadir}/apps/kopete/icons/*/*/*/contact_unknown_overlay.png
-%{_datadir}/apps/kopete/icons/*/*/*/*skype*
-%{_datadir}/services/kopete_skype.desktop
-%{_iconsdir}/*/*/*/call.png
-%endif
 
 %files kopete-protocol-sms
 %defattr(644,root,root,755)
