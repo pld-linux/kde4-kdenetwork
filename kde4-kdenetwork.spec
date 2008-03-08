@@ -738,6 +738,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/fileshare_propsdlgplugin.desktop
 %{_datadir}/kde4/services/kcmsambaconf.desktop
 %{_iconsdir}/hicolor/16x16/apps/kcmsambaconf.png
+%{_datadir}/kde4/services/ServiceMenus/smb2rdc.desktop
 
 %files kdnssd
 %defattr(644,root,root,755)
