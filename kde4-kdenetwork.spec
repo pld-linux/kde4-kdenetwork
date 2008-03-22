@@ -12,12 +12,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.0.65
+Version:	4.0.66
 Release:	0.1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	e1fb98ef8465229a0247a529472067e3
+# Source0-md5:	6e9f6d5f1897d9cd1f7226c5014f6276
 URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel >= 4.4.0
 BuildRequires:	avahi-compat-libdns_sd-devel
@@ -745,7 +745,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kded_dnssdwatcher.so
 %attr(755,root,root) %{_libdir}/kde4/kio_zeroconf.so
 %{_datadir}/apps/remoteview/zeroconf.desktop
-%{_datadir}/apps/zeroconf
+#%{_datadir}/apps/zeroconf
 %{_datadir}/kde4/services/kded/dnssdwatcher.desktop
 %{_datadir}/kde4/services/zeroconf.protocol
 %{_datadir}/dbus-1/interfaces/org.kde.kdnssd.xml
