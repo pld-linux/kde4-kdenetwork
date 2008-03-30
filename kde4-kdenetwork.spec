@@ -28,6 +28,7 @@ BuildRequires:	libgadu-devel >= 1.4
 BuildRequires:	libidn-devel
 BuildRequires:	libiw-devel >= 27
 BuildRequires:	libjpeg-devel
+BuildRequires:	libotr-devel
 BuildRequires:	libtool
 BuildRequires:	libvncserver-devel
 BuildRequires:	libxml2-progs
@@ -101,6 +102,19 @@ and ICQ.
 Biblioteka dodajÄ…ca obsÅ‚ugÄ™ protokoÅ‚u OSCAR, uÅ¼ywanego miÄ™dzy
 innymi przez AIM i ICQ.
 
+%package libkopete_otr
+Summary:        Shared library which adds OTR protocol support
+Summary(pl.UTF-8):      Biblioteka dodajÄ~Eca obsÅ~BugÄ~Y protokoÅ~Bu OTR
+Group:          X11/Applications/Networking
+Requires:       %{name}-libkopete = %{version}-%{release}
+
+%description libkopete_otr
+A shared library which adds OTR protocol support needed eg. AIM and ICQ.
+
+%description libkopete_otr -l pl.UTF-8
+Biblioteka dodajÄ~Eca obsÅ~BugÄ~Y protokoÅ~Bu OTR, uÅ¼ywanego miÄ~Ydzy
+innymi przez AIM i ICQ.
+
 %package libkopete_videodevice
 Summary:	Video input device support library for kopete
 Summary(pl.UTF-8):	Biblioteka z obsÅ‚ugÄ… urzÄ…dzeÅ„ wejÅ›cia video dla kopete
@@ -119,6 +133,7 @@ Summary(pl.UTF-8):	Pliki nagÅ‚Ã³wkowe kdenetwork
 Group:		X11/Development/Libraries
 Requires:	%{name}-libkopete_msn = %{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{version}-%{release}
+Requires:	%{name}-libkopete_otr = %{version}-%{release}
 Requires:	%{name}-libkopete_videodevice = %{version}-%{release}
 Requires:	kde4-kdelibs-devel >= %{version}
 
@@ -685,6 +700,9 @@ rm -rf $RPM_BUILD_ROOT
 %post	libkopete_oscar	-p /sbin/ldconfig
 %postun	libkopete_oscar	-p /sbin/ldconfig
 
+%post	libkopete_otr	-p /sbin/ldconfig
+%postun	libkopete_otr	-p /sbin/ldconfig
+
 %post	libkopete_videodevice	-p /sbin/ldconfig
 %postun	libkopete_videodevice	-p /sbin/ldconfig
 
@@ -709,6 +727,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkopete_oscar.so.?
 
+%files libkopete_otr
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libkopete_otr_shared.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopete_otr_shared.so.?
+
 %files libkopete_videodevice
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete_videodevice.so.*.*.*
@@ -720,6 +743,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkopete.so
 %attr(755,root,root) %{_libdir}/libkopete_msn_shared.so
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so
+%attr(755,root,root) %{_libdir}/libkopete_otr_shared.so
 %attr(755,root,root) %{_libdir}/libkopete_videodevice.so
 %attr(755,root,root) %{_libdir}/libkopeteaddaccountwizard.so
 %attr(755,root,root) %{_libdir}/libkopetechatwindow_shared.so
@@ -799,6 +823,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_appearanceconfig.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_behaviorconfig.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_chatwindowconfig.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_otr.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_pipes.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_pluginconfig.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_privacy.so
@@ -807,6 +832,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kopete_addbookmarks.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_chatwindow.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_emailwindow.so
+%attr(755,root,root) %{_libdir}/kde4/kopete_otr.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_pipes.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_privacy.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_qq.so
@@ -867,14 +893,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kopete/icons/*/*/apps/preferences-text-highlighting-kopete.png
 #%{_datadir}/apps/kopete/pics/statistics
 %{_datadir}/apps/kopete/styles
-%{_datadir}/apps/kopete_statistics
+%{_datadir}/apps/kopete_otr
 %{_datadir}/apps/kopete_privacy
+%{_datadir}/apps/kopete_statistics
 %{_datadir}/apps/kopeterichtexteditpart
 %{_datadir}/config/kopeterc
 %{_datadir}/config.kcfg/kopeteappearancesettings.kcfg
 %{_datadir}/config.kcfg/kopetebehaviorsettings.kcfg
 %{_datadir}/config.kcfg/kopetestatussettings.kcfg
 %{_datadir}/config.kcfg/urlpicpreview.kcfg
+%{_datadir}/config.kcfg/kopete_otr.kcfg
 %{_datadir}/dbus-1/interfaces/org.kde.Kopete.xml
 %{_datadir}/dbus-1/interfaces/org.kde.kopete.Client.xml
 %{_datadir}/dbus-1/interfaces/org.kde.kopete.Statistics.xml
@@ -894,6 +922,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kopete_privacy.desktop
 %{_datadir}/kde4/services/kopete_pipes.desktop
 %{_datadir}/kde4/services/kopete_statusconfig.desktop
+%{_datadir}/kde4/services/kopete_otr.desktop
 %{_datadir}/kde4/servicetypes/kopeteplugin.desktop
 %{_datadir}/kde4/servicetypes/kopeteprotocol.desktop
 %{_datadir}/kde4/servicetypes/kopeteui.desktop
@@ -905,7 +934,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/*/kopete.png
 %{_iconsdir}/*/*/actions
 %{_iconsdir}/oxygen/*/*/kopete*
+%{_iconsdir}/oxygen/*/status/object-locked-*
 %{_iconsdir}/*/scalable/apps/kopete.svgz
+%{_iconsdir}/*/scalable/status/object-locked-*
 %{_kdedocdir}/en/kopete
 
 %files kopete-protocol-aim
