@@ -753,6 +753,7 @@ rm -rf $RPM_BUILD_ROOT
 %files kget
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kget
+%attr(755,root,root) %{_libdir}/kde4/kget_bittorrentfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_kiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_metalinkfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_mirrorsearchfactory.so
@@ -772,6 +773,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/ServiceMenus/kget_download.desktop
 %{_datadir}/kde4/services/plasma-engine-kget.desktop
 %{_datadir}/kde4/services/plasma-kget-default.desktop
+%{_datadir}/kde4/services/kget_bittorrentfactory.desktop
 %{_datadir}/kde4/services/kget_kiofactory.desktop
 %{_datadir}/kde4/services/kget_metalinkfactory.desktop
 %{_datadir}/kde4/services/kget_multisegkiofactory.desktop
