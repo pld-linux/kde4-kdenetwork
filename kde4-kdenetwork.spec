@@ -104,7 +104,7 @@ innymi przez AIM i ICQ.
 
 %package libkopete_otr
 Summary:        Shared library which adds OTR protocol support
-Summary(pl.UTF-8):      Biblioteka dodajÄ~Eca obsÅ~BugÄ~Y protokoÅ~Bu OTR
+Summary(pl.UTF-8):      Biblioteka dodajÄ…ca obsÅ‚ugÄ™ protokoÅ‚u OTR
 Group:          X11/Applications/Networking
 Requires:       %{name}-libkopete = %{version}-%{release}
 
@@ -112,8 +112,8 @@ Requires:       %{name}-libkopete = %{version}-%{release}
 A shared library which adds OTR protocol support needed eg. AIM and ICQ.
 
 %description libkopete_otr -l pl.UTF-8
-Biblioteka dodajÄ~Eca obsÅ~BugÄ~Y protokoÅ~Bu OTR, uÅ¼ywanego miÄ~Ydzy
-innymi przez AIM i ICQ.
+Biblioteka dodajÄ…ca obsÅ‚ugÄ™ protokoÅ‚u OTR, uÅ¼ywanego miÄ™dzy innymi
+przez AIM i ICQ.
 
 %package libkopete_videodevice
 Summary:	Video input device support library for kopete
