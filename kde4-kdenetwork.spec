@@ -783,20 +783,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_multisegkiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/khtml_kget.so
-%attr(755,root,root) %{_libdir}/kde4/plasma_applet_kget.so
-%attr(755,root,root) %{_libdir}/kde4/plasma_engine_kget.so
 %attr(755,root,root) %{_libdir}/libkgetcore.so.4.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkgetcore.so.?
 %attr(755,root,root) %{_libdir}/libkgetcore.so
 %{_datadir}/apps/kget
-%{_datadir}/apps/desktoptheme/default/widgets/kget.svg
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %{_datadir}/config.kcfg/kget.kcfg
 %{_datadir}/config.kcfg/kget_multisegkiofactory.kcfg
 %{_datadir}/config.kcfg/kget_mirrorsearchfactory.kcfg
 %{_datadir}/kde4/services/ServiceMenus/kget_download.desktop
-%{_datadir}/kde4/services/plasma-engine-kget.desktop
-%{_datadir}/kde4/services/plasma-kget-default.desktop
 %{_datadir}/kde4/services/kget_bittorrentfactory.desktop
 %{_datadir}/kde4/services/kget_kiofactory.desktop
 %{_datadir}/kde4/services/kget_metalinkfactory.desktop
@@ -936,7 +931,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/oxygen/*/*/kopete*
 %{_iconsdir}/oxygen/*/status/object-locked-*
 %{_iconsdir}/*/scalable/apps/kopete.svgz
-%{_iconsdir}/*/scalable/status/object-locked-*
 %{_kdedocdir}/en/kopete
 
 %files kopete-protocol-aim
