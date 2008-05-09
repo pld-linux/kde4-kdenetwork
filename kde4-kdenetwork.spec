@@ -783,6 +783,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_multisegkiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/khtml_kget.so
+%attr(755,root,root) %{_libdir}/kde4/plasma_applet_kget.so
+%attr(755,root,root) %{_libdir}/kde4/plasma_engine_kget.so
 %attr(755,root,root) %{_libdir}/libkgetcore.so.4.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkgetcore.so.?
 %attr(755,root,root) %{_libdir}/libkgetcore.so
@@ -797,6 +799,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kget_metalinkfactory.desktop
 %{_datadir}/kde4/services/kget_multisegkiofactory.desktop
 %{_datadir}/kde4/services/kget_mirrorsearchfactory.desktop
+%{_datadir}/kde4/services/plasma-engine-kget.desktop
+%{_datadir}/kde4/services/plasma-kget-default.desktop
 %{_datadir}/kde4/servicetypes/kget_plugin.desktop
 #%{_datadir}/sounds/KGet*.ogg
 %{_desktopdir}/kde4/kget.desktop
