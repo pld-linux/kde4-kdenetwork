@@ -176,6 +176,7 @@ Summary:	File downloand manager
 Summary(pl.UTF-8):	Zarządca ściągania plików
 Group:		X11/Applications
 Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase-workspace >= %{version}
 
 %description kget
 A GetRight-like file download manager with resuming support and
