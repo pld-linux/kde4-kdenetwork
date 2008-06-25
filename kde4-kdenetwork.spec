@@ -807,6 +807,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/servicetypes/kget_plugin.desktop
 #%{_datadir}/sounds/KGet*.ogg
 %{_desktopdir}/kde4/kget.desktop
+%{_datadir}/apps/desktoptheme/default/widgets/kget.svg
 %{_iconsdir}/*/*/*/*kget*
 %{_kdedocdir}/en/kget
 
