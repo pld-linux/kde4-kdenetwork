@@ -936,7 +936,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
 %{_desktopdir}/kde4/kopete.desktop
 %{_iconsdir}/*/*/*/kopete.png
-%{_iconsdir}/*/*/actions
+%{_iconsdir}/*/*/actions/*
 %{_iconsdir}/oxygen/*/*/kopete*
 %{_iconsdir}/oxygen/*/status/object-locked-*
 %{_iconsdir}/*/scalable/apps/kopete.svgz
