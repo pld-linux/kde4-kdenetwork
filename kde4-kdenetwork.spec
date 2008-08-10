@@ -283,6 +283,18 @@ Kopete plugin which adds AIM protocol support.
 %description kopete-protocol-aim -l pl.UTF-8
 Wtyczka Kopete dodająca obsługę protokołu AIM.
 
+%package kopete-protocol-bonjour
+Summary:	Kopete plugin which adds Bonjour protocol support
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu Bonjour
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{version}-%{release}
+
+%description kopete-protocol-bonjour
+Kopete plugin which adds Bonjour protocol support.
+
+%description kopete-protocol-bonjour -l pl.UTF-8
+Wtyczka Kopete dodająca obsługę protokołu Bonjour.
+
 %package kopete-protocol-gg
 Summary:	Kopete plugin which adds GaduGadu protocol support
 Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu GaduGadu
@@ -786,13 +798,20 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kget
 %attr(755,root,root) %{_libdir}/kde4/kget_bittorrentfactory.so
+%attr(755,root,root) %{_libdir}/kde4/kget_contentfetchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_kiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_metalinkfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_multisegkiofactory.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_kget_bittorrentfactory.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_kget_contentfetchfactory.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_kget_mirrorsearchfactory.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_kget_multisegkiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/khtml_kget.so
-%attr(755,root,root) %{_libdir}/kde4/plasma_applet_kget.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_kget.so
+%attr(755,root,root) %{_libdir}/kde4/plasma_kget_barapplet.so
+%attr(755,root,root) %{_libdir}/kde4/plasma_kget_panelbar.so
+%attr(755,root,root) %{_libdir}/kde4/plasma_kget_piechart.so
 %attr(755,root,root) %{_libdir}/libkgetcore.so.4.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkgetcore.so.?
 %attr(755,root,root) %{_libdir}/libkgetcore.so
@@ -801,6 +820,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/kget.kcfg
 %{_datadir}/config.kcfg/kget_multisegkiofactory.kcfg
 %{_datadir}/config.kcfg/kget_mirrorsearchfactory.kcfg
+%{_datadir}/config.kcfg/kget_contentfetchfactory.kcfg
+%{_datadir}/kde4/services/kget_bittorrentfactory_config.desktop
+%{_datadir}/kde4/services/kget_contentfetchfactory.desktop
+%{_datadir}/kde4/services/kget_contentfetchfactory_config.desktop
+%{_datadir}/kde4/services/kget_mirrorsearchfactory_config.desktop
+%{_datadir}/kde4/services/kget_multisegkiofactory_config.desktop
+%{_datadir}/kde4/services/kgetbarapplet-default.desktop
+%{_datadir}/kde4/services/kgetpanelbarapplet-default.desktop
+%{_datadir}/kde4/services/kgetpiechartapplet-default.desktop
 %{_datadir}/kde4/services/ServiceMenus/kget_download.desktop
 %{_datadir}/kde4/services/kget_bittorrentfactory.desktop
 %{_datadir}/kde4/services/kget_kiofactory.desktop
@@ -808,7 +836,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kget_multisegkiofactory.desktop
 %{_datadir}/kde4/services/kget_mirrorsearchfactory.desktop
 %{_datadir}/kde4/services/plasma-engine-kget.desktop
-%{_datadir}/kde4/services/plasma-kget-default.desktop
 %{_datadir}/kde4/servicetypes/kget_plugin.desktop
 #%{_datadir}/sounds/KGet*.ogg
 %{_desktopdir}/kde4/kget.desktop
@@ -952,6 +979,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kopete/icons/*/*/*/*aim*
 %{_datadir}/kde4/services/aim.protocol
 %{_datadir}/kde4/services/kopete_aim.desktop
+
+%files kopete-protocol-bonjour
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde4/kopete_bonjour.so
+%{_datadir}/apps/kopete/icons/*/*/*/bonjour_protocol.png
+%{_datadir}/kde4/services/kopete_bonjour.desktop
 
 %files kopete-protocol-gg
 %defattr(644,root,root,755)
