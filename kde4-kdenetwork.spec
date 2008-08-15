@@ -24,7 +24,7 @@ URL:		http://www.kde.org/
 Patch0:		%{name}-freenx.patch
 BuildRequires:	QtOpenGL-devel >= %{qtver}
 BuildRequires:	avahi-compat-libdns_sd-devel
-BuildRequires:	cmake >= 2.6.1
+BuildRequires:	cmake >= 2.6.1-2
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	libgadu-devel >= 1.4
@@ -693,7 +693,6 @@ cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
-	-DCMAKE_AR=/usr/bin/ar \
 %if "%{_lib}" == "lib64"
 	-DLIB_SUFFIX=64 \
 %endif
