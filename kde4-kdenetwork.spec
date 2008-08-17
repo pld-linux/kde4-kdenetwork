@@ -14,12 +14,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.1.61
+Version:	4.1.62
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	2d9d17418fbf3561cdb838a9d3a6f1dd
+# Source0-md5:	07fb36dad2e26880ee06efc9c160c16a
 URL:		http://www.kde.org/
 Patch0:		%{name}-freenx.patch
 BuildRequires:	QtOpenGL-devel >= %{qtver}
