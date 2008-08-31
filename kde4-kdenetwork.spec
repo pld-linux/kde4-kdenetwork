@@ -2,6 +2,7 @@
 # - fix kopete-tool-{avdeviceconfig,smpppdcs} summaries/descriptions (copy-pastos!)
 # - what about non-applied libgadu patch?
 # - kill internal libgadu copy
+# - BR phonon-devel
 #
 # Conditional build:
 #
@@ -14,23 +15,25 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.1.62
+Version:	4.1.64
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	07fb36dad2e26880ee06efc9c160c16a
-URL:		http://www.kde.org/
+# Source0-md5:	477344cc7b8adfd96826c0c082e53130
 Patch0:		%{name}-freenx.patch
+URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel >= %{qtver}
 BuildRequires:	avahi-compat-libdns_sd-devel
 BuildRequires:	cmake >= 2.6.1-2
+BuildRequires:	gmp-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	libgadu-devel >= 1.4
 BuildRequires:	libidn-devel
 BuildRequires:	libiw-devel >= 27
 BuildRequires:	libjpeg-devel
+BuildRequires:	libnxcl-devel >= 1.0-0.r612.1
 BuildRequires:	libotr-devel
 BuildRequires:	libtool
 BuildRequires:	libvncserver-devel
