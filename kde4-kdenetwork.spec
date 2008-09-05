@@ -15,12 +15,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.1.64
+Version:	4.1.65
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	477344cc7b8adfd96826c0c082e53130
+# Source0-md5:	6c07d7f8386311d07e9aa306bdeb2a77
 Patch0:		%{name}-freenx.patch
 URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel >= %{qtver}
@@ -885,6 +885,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-jabberpriorityaddition-kconf_update.upd
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.sh
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-jabberproxytype-kconf_update.upd
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-initialstatus.pl
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-initialstatus.upd
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-nameTracking.upd
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader.pl
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader.upd
