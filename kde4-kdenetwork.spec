@@ -15,12 +15,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.1.69
+Version:	4.1.70
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	7548975c4cad1ab4458a100ef4b8e926
+# Source0-md5:	8074abd259cf86e2e3345b0bb0efb977
 Patch0:		%{name}-freenx.patch
 URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel >= %{qtver}
@@ -688,7 +688,7 @@ specjalnych możliwości Remote Desktop Connection.
 
 %prep
 %setup -q -n %{orgname}-%{version}
-%patch0 -p1
+#%patch0 -p1
 
 %build
 install -d build
@@ -845,12 +845,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/*/*kget*
 %{_kdedocdir}/en/kget
 
-%files knewsticker
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde4/plasma_applet_knewsticker.so
-%{_datadir}/kde4/services/plasma-knewsticker-default.desktop
-%{_iconsdir}/*/*/*/knewsticker.png
-%{_kdedocdir}/en/knewsticker
+#%files knewsticker
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_libdir}/kde4/plasma_applet_knewsticker.so
+#%{_datadir}/kde4/services/plasma-knewsticker-default.desktop
+#%{_iconsdir}/*/*/*/knewsticker.png
+#%{_kdedocdir}/en/knewsticker
 
 %files kopete
 %defattr(644,root,root,755)
