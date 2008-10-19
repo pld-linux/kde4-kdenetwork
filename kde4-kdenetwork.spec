@@ -8,7 +8,7 @@
 #
 %define		_state		unstable
 %define		orgname		kdenetwork
-%define		qtver		4.4.1
+%define		qtver		4.4.3
 
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
@@ -842,9 +842,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/servicetypes/kget_plugin.desktop
 #%{_datadir}/sounds/KGet*.ogg
 %{_desktopdir}/kde4/kget.desktop
-%dir %{_datadir}/apps/desktoptheme
-%dir %{_datadir}/apps/desktoptheme/default
-%dir %{_datadir}/apps/desktoptheme/default/widgets
 %{_datadir}/apps/desktoptheme/default/widgets/kget.svg
 %{_iconsdir}/*/*/*/*kget*
 %{_kdedocdir}/en/kget
