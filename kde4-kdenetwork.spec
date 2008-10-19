@@ -792,6 +792,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kio_zeroconf.so
 %{_datadir}/apps/remoteview/zeroconf.desktop
 #%{_datadir}/apps/zeroconf
+%dir %{_datadir}/kde4/services/kded
 %{_datadir}/kde4/services/kded/dnssdwatcher.desktop
 %{_datadir}/kde4/services/zeroconf.protocol
 %{_datadir}/dbus-1/interfaces/org.kde.kdnssd.xml
