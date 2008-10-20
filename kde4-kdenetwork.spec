@@ -158,7 +158,7 @@ do kdenetwork.
 Summary:	File sharing plugins
 Summary(pl.UTF-8):	Wtyczki obsługujące współdzielenie plików
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 
 %description filesharing
 File sharing plugins.
@@ -182,7 +182,7 @@ Nadzorowanie usług DNS-SD.
 Summary:	File downloand manager
 Summary(pl.UTF-8):	Zarządca ściągania plików
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 Requires:	kde4-kdebase-workspace >= %{version}
 
 %description kget
@@ -221,7 +221,7 @@ Summary:	Multi-protocol plugin-based instant messenger
 Summary(pl.UTF-8):	Komunikator obsługujący wiele protokołów
 Group:		X11/Applications
 Requires:	%{name}-libkopete = %{version}-%{release}
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 Obsoletes:	kopete
 Obsoletes:	kopete-plugin-protocols-aim
 Obsoletes:	kopete-plugin-protocols-gg
@@ -623,7 +623,7 @@ Summary:	KDE PPP dialer
 Summary(pl.UTF-8):	Program do połączeń modemowych dla KDE
 Summary(pt_BR.UTF-8):	O discador para Internet
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 Requires:	ppp
 
 %description kppp
@@ -667,7 +667,7 @@ O discador para Internet.
 Summary:	Virtual Desktops
 Summary(pl.UTF-8):	Wirtualne biurka
 Group:		X11/Applications
-Requires:	kde4-kdebase-core >= %{version}
+Requires:	kde4-kdebase >= %{version}
 Suggests:	rdesktop
 
 %description krfb
