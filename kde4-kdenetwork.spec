@@ -16,7 +16,7 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
 Version:	4.1.70
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -792,7 +792,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kio_zeroconf.so
 %{_datadir}/apps/remoteview/zeroconf.desktop
 #%{_datadir}/apps/zeroconf
-%dir %{_datadir}/kde4/services/kded
 %{_datadir}/kde4/services/kded/dnssdwatcher.desktop
 %{_datadir}/kde4/services/zeroconf.protocol
 %{_datadir}/dbus-1/interfaces/org.kde.kdnssd.xml
