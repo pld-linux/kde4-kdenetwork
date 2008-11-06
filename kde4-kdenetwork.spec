@@ -15,12 +15,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.1.70
-Release:	3
+Version:	4.1.72
+Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	8074abd259cf86e2e3345b0bb0efb977
+# Source0-md5:	37a3efe9c9d16aaff3e102a07a31d708
 Patch0:		%{name}-freenx.patch
 URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel >= %{qtver}
@@ -791,7 +791,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kded_dnssdwatcher.so
 %attr(755,root,root) %{_libdir}/kde4/kio_zeroconf.so
 %{_datadir}/apps/remoteview/zeroconf.desktop
-#%{_datadir}/apps/zeroconf
 %{_datadir}/kde4/services/kded/dnssdwatcher.desktop
 %{_datadir}/kde4/services/zeroconf.protocol
 %{_datadir}/dbus-1/interfaces/org.kde.kdnssd.xml
@@ -810,10 +809,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_multisegkiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/khtml_kget.so
-%attr(755,root,root) %{_libdir}/kde4/plasma_engine_kget.so
-%attr(755,root,root) %{_libdir}/kde4/plasma_kget_barapplet.so
-%attr(755,root,root) %{_libdir}/kde4/plasma_kget_panelbar.so
-%attr(755,root,root) %{_libdir}/kde4/plasma_kget_piechart.so
 %attr(755,root,root) %{_libdir}/libkgetcore.so.4.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkgetcore.so.?
 %attr(755,root,root) %{_libdir}/libkgetcore.so
@@ -828,20 +823,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kget_contentfetchfactory_config.desktop
 %{_datadir}/kde4/services/kget_mirrorsearchfactory_config.desktop
 %{_datadir}/kde4/services/kget_multisegkiofactory_config.desktop
-%{_datadir}/kde4/services/kgetbarapplet-default.desktop
-%{_datadir}/kde4/services/kgetpanelbarapplet-default.desktop
-%{_datadir}/kde4/services/kgetpiechartapplet-default.desktop
 %{_datadir}/kde4/services/ServiceMenus/kget_download.desktop
 %{_datadir}/kde4/services/kget_bittorrentfactory.desktop
 %{_datadir}/kde4/services/kget_kiofactory.desktop
 %{_datadir}/kde4/services/kget_metalinkfactory.desktop
 %{_datadir}/kde4/services/kget_multisegkiofactory.desktop
 %{_datadir}/kde4/services/kget_mirrorsearchfactory.desktop
-%{_datadir}/kde4/services/plasma-engine-kget.desktop
 %{_datadir}/kde4/servicetypes/kget_plugin.desktop
-#%{_datadir}/sounds/KGet*.ogg
 %{_desktopdir}/kde4/kget.desktop
-%{_datadir}/apps/desktoptheme/default/widgets/kget.svg
 %{_iconsdir}/*/*/*/*kget*
 %{_kdedocdir}/en/kget
 
