@@ -27,15 +27,15 @@ URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel >= %{qtver}
 BuildRequires:	avahi-compat-libdns_sd-devel
 BuildRequires:	cmake >= 2.6.2
-BuildRequires:	decibel >= 0.7.0
+BuildRequires:	decibel-devel >= 0.7.0
 BuildRequires:	gmp-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	libgadu-devel >= 1.4
-BuildRequires:	libidn-devel >= 1.11
+BuildRequires:	libidn-devel
 BuildRequires:	libiw-devel >= 27
 BuildRequires:	libjpeg-devel
-BuildRequires:	libnxcl-devel >= 1.0-0.r612.1
+#BuildRequires:	libnxcl-devel >= 1.0-0.r612.1
 BuildRequires:	libotr-devel >= 3.2.0
 BuildRequires:	libtool
 BuildRequires:	libvncserver-devel
