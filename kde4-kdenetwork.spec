@@ -358,6 +358,18 @@ Kopete plugin which adds Jabber protocol support.
 %description kopete-protocol-jabber -l pl.UTF-8
 Wtyczka Kopete dodająca obsługę protokołu Jabber.
 
+%package kopete-protocol-meanwhile
+Summary:	Kopete plugin which adds Meanwhile protocol support
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu Meanwhile
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{version}-%{release}
+
+%description kopete-protocol-meanwhile
+Kopete plugin which adds Meanwhile protocol support.
+
+%description kopete-protocol-meanwhile -l pl.UTF-8
+Wtyczka Kopete dodająca obsługę protokołu Meanwhile.
+
 %package kopete-protocol-msn
 Summary:	Kopete plugin which adds MSN protocol support
 Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu MSN
@@ -1032,6 +1044,12 @@ rm -rf $RPM_BUILD_ROOT
 #%{_datadir}/apps/kopete_msn
 #%{_datadir}/apps/kopete/icons/*/*/*/msn_*.png
 #%{_datadir}/kde4/services/kopete_msn.desktop
+
+%files kopete-protocol-meanwhile
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde4/kopete_meanwhile.so
+%{_datadir}/apps/kopete/icons/*/*/*/meanwhile_*.png
+%{_datadir}/kde4/services/kopete_meanwhile.desktop
 
 %files kopete-protocol-sms
 %defattr(644,root,root,755)
