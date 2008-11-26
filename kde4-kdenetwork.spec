@@ -15,12 +15,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.1.73
-Release:	2
+Version:	4.1.80
+Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	2ad514e610d663f2b7c48e256adce9f9
+# Source0-md5:	5ec0fc0bde3239e15af8b487b70ac045
 Patch0:		%{name}-freenx.patch
 Patch1:		%{name}-FindIDN.patch
 Patch2:		%{name}-FindDecibel.patch
@@ -693,8 +693,8 @@ specjalnych możliwości Remote Desktop Connection.
 
 %prep
 %setup -q -n %{orgname}-%{version}
-%patch1 -p0
-%patch2 -p0
+#%patch1 -p0
+#%patch2 -p0
 
 %build
 install -d build
@@ -722,8 +722,8 @@ rm -rf $RPM_BUILD_ROOT
 %post	libkopete	-p /sbin/ldconfig
 %postun	libkopete	-p /sbin/ldconfig
 
-%post	libkopete_msn	-p /sbin/ldconfig
-%postun	libkopete_msn	-p /sbin/ldconfig
+#%post	libkopete_msn	-p /sbin/ldconfig
+#%postun	libkopete_msn	-p /sbin/ldconfig
 
 %post	libkopete_oscar	-p /sbin/ldconfig
 %postun	libkopete_oscar	-p /sbin/ldconfig
@@ -745,10 +745,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkopete.so.?
 
-%files libkopete_msn
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkopete_msn_shared.so.?
+#%files libkopete_msn
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
+#%attr(755,root,root) %ghost %{_libdir}/libkopete_msn_shared.so.?
 
 %files libkopete_oscar
 %defattr(644,root,root,755)
@@ -769,7 +769,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libiris_kopete.so
 %attr(755,root,root) %{_libdir}/libkopete.so
-%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so
+#%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so
 %attr(755,root,root) %{_libdir}/libkopete_otr_shared.so
 %attr(755,root,root) %{_libdir}/libkopete_videodevice.so
@@ -1026,12 +1026,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/xmpp.protocol
 %{_datadir}/kde4/services/kopete_jabber.desktop
 
-%files kopete-protocol-msn
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde4/kopete_msn.so
-%{_datadir}/apps/kopete_msn
-%{_datadir}/apps/kopete/icons/*/*/*/msn_*.png
-%{_datadir}/kde4/services/kopete_msn.desktop
+#%files kopete-protocol-msn
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_libdir}/kde4/kopete_msn.so
+#%{_datadir}/apps/kopete_msn
+#%{_datadir}/apps/kopete/icons/*/*/*/msn_*.png
+#%{_datadir}/kde4/services/kopete_msn.desktop
 
 %files kopete-protocol-sms
 %defattr(644,root,root,755)
