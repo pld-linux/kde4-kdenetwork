@@ -37,6 +37,7 @@ BuildRequires:	libgadu-devel >= 1.4
 BuildRequires:	libidn-devel
 BuildRequires:	libiw-devel >= 27
 BuildRequires:	libjpeg-devel
+BuildRequires:	libmsn-devel >= 4.0
 #BuildRequires:	libnxcl-devel >= 1.0-0.r612.1
 BuildRequires:	libotr-devel >= 3.2.0
 BuildRequires:	libtool
@@ -369,6 +370,18 @@ Kopete plugin which adds Meanwhile protocol support.
 
 %description kopete-protocol-meanwhile -l pl.UTF-8
 Wtyczka Kopete dodająca obsługę protokołu Meanwhile.
+
+%package kopete-protocol-wlm
+Summary:	Kopete plugin which adds WLM protocol support
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu WLM
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{version}-%{release}
+
+%description kopete-protocol-wlm
+Kopete plugin which adds WLM protocol support.
+
+%description kopete-protocol-wlm -l pl.UTF-8
+Wtyczka Kopete dodająca obsługę protokołu WLM.
 
 %package kopete-protocol-msn
 Summary:	Kopete plugin which adds MSN protocol support
@@ -1050,6 +1063,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kopete_meanwhile.so
 %{_datadir}/apps/kopete/icons/*/*/*/meanwhile_*.png
 %{_datadir}/kde4/services/kopete_meanwhile.desktop
+
+%files kopete-protocol-wlm
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde4/kopete_wlm.so
+%{_datadir}/apps/kopete/icons/*/*/*/wlm_*.png
+%{_datadir}/kde4/services/kopete_wlm.desktop
+%dir %{_datadir}/apps/kopete_wlm
+%{_datadir}/apps/kopete_wlm/wlmchatui.rc
 
 %files kopete-protocol-sms
 %defattr(644,root,root,755)
