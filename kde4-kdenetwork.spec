@@ -22,8 +22,7 @@ Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	2c0b9cf13d92477cbf02e6fa37e21175
 Patch0:		%{name}-freenx.patch
-Patch1:		%{name}-FindIDN.patch
-Patch2:		%{name}-FindDecibel.patch
+Patch1:		%{name}-FindDecibel.patch
 URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel >= %{qtver}
 BuildRequires:	avahi-compat-libdns_sd-devel
@@ -718,8 +717,7 @@ specjalnych możliwości Remote Desktop Connection.
 
 %prep
 %setup -q -n %{orgname}-%{version}
-#%patch1 -p0
-#%patch2 -p0
+%patch1 -p0
 
 %build
 install -d build
