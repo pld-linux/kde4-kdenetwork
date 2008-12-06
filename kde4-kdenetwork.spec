@@ -371,16 +371,16 @@ Kopete plugin which adds Meanwhile protocol support.
 Wtyczka Kopete dodająca obsługę protokołu Meanwhile.
 
 %package kopete-protocol-wlm
-Summary:	Kopete plugin which adds WLM protocol support
+Summary:	Kopete plugin which adds WLM (Windows Live Messenger) protocol support
 Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu WLM
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{version}-%{release}
 
 %description kopete-protocol-wlm
-Kopete plugin which adds WLM protocol support.
+Kopete plugin which adds WLM (Windows Live Messenger) protocol support.
 
 %description kopete-protocol-wlm -l pl.UTF-8
-Wtyczka Kopete dodająca obsługę protokołu WLM.
+Wtyczka Kopete dodająca obsługę protokołu WLM (Windows Live Messenger).
 
 %package kopete-protocol-msn
 Summary:	Kopete plugin which adds MSN protocol support
