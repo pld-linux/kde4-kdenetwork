@@ -16,7 +16,7 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
 Version:	4.1.82
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -745,8 +745,10 @@ rm -rf $RPM_BUILD_ROOT
 %post	libkopete	-p /sbin/ldconfig
 %postun	libkopete	-p /sbin/ldconfig
 
-#%post	libkopete_msn	-p /sbin/ldconfig
-#%postun	libkopete_msn	-p /sbin/ldconfig
+%if 0
+%post	libkopete_msn	-p /sbin/ldconfig
+%postun	libkopete_msn	-p /sbin/ldconfig
+%endif
 
 %post	libkopete_oscar	-p /sbin/ldconfig
 %postun	libkopete_oscar	-p /sbin/ldconfig
@@ -768,10 +770,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkopete.so.?
 
-#%files libkopete_msn
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
-#%attr(755,root,root) %ghost %{_libdir}/libkopete_msn_shared.so.?
+%if 0
+%files libkopete_msn
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopete_msn_shared.so.?
+%endif
 
 %files libkopete_oscar
 %defattr(644,root,root,755)
