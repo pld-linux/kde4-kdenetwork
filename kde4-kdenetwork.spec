@@ -86,18 +86,6 @@ kopete library.
 %description libkopete -l pl.UTF-8
 Biblioteka kopete.
 
-%package libkopete_msn
-Summary:	MSN protocol shared library
-Summary(pl.UTF-8):	Biblioteka współdzielona dla protokołu MSN
-Group:		X11/Libraries
-Requires:	%{name}-libkopete = %{version}-%{release}
-
-%description libkopete_msn
-MSN protocol shared library.
-
-%description libkopete_msn -l pl.UTF-8
-Biblioteka współdzielona dla protokołu MSN.
-
 %package libkopete_oscar
 Summary:	Shared library which adds OSCAR protocol support
 Summary(pl.UTF-8):	Biblioteka dodająca obsługę protokołu OSCAR
@@ -142,7 +130,6 @@ Biblioteka z obsługą urządzeń wejścia video dla kopete.
 Summary:	kdenetwork header files
 Summary(pl.UTF-8):	Pliki nagłówkowe kdenetwork
 Group:		X11/Development/Libraries
-Requires:	%{name}-libkopete_msn = %{version}-%{release}
 Requires:	%{name}-libkopete_oscar = %{version}-%{release}
 Requires:	%{name}-libkopete_otr = %{version}-%{release}
 Requires:	%{name}-libkopete_videodevice = %{version}-%{release}
@@ -387,7 +374,6 @@ Summary:	Kopete plugin which adds MSN protocol support
 Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu MSN
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{version}-%{release}
-Requires:	%{name}-libkopete_msn = %{version}-%{release}
 Obsoletes:	kopete-protocol-msn
 
 %description kopete-protocol-msn
@@ -745,9 +731,6 @@ rm -rf $RPM_BUILD_ROOT
 %post	libkopete	-p /sbin/ldconfig
 %postun	libkopete	-p /sbin/ldconfig
 
-%post	libkopete_msn	-p /sbin/ldconfig
-%postun	libkopete_msn	-p /sbin/ldconfig
-
 %post	libkopete_oscar	-p /sbin/ldconfig
 %postun	libkopete_oscar	-p /sbin/ldconfig
 
@@ -767,11 +750,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkopete.so.?
-
-%files libkopete_msn
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkopete_msn_shared.so.?
 
 %files libkopete_oscar
 %defattr(644,root,root,755)
