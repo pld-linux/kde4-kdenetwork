@@ -768,12 +768,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkopete.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkopete.so.?
 
-%if 0
 %files libkopete_msn
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libkopete_msn_shared.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkopete_msn_shared.so.?
-%endif
 
 %files libkopete_oscar
 %defattr(644,root,root,755)
