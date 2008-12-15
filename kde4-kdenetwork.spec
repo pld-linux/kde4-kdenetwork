@@ -745,10 +745,8 @@ rm -rf $RPM_BUILD_ROOT
 %post	libkopete	-p /sbin/ldconfig
 %postun	libkopete	-p /sbin/ldconfig
 
-%if 0
 %post	libkopete_msn	-p /sbin/ldconfig
 %postun	libkopete_msn	-p /sbin/ldconfig
-%endif
 
 %post	libkopete_oscar	-p /sbin/ldconfig
 %postun	libkopete_oscar	-p /sbin/ldconfig
