@@ -15,12 +15,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.1.85
+Version:	4.1.87
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	609e06dce93a061addce565dc3820540
+# Source0-md5:	f8960ac38289cd97c52ad03fa88ef1b9
 Patch0:		%{name}-freenx.patch
 Patch1:		%{name}-FindDecibel.patch
 URL:		http://www.kde.org/
@@ -36,7 +36,7 @@ BuildRequires:	libgadu-devel >= 1.4
 BuildRequires:	libidn-devel
 BuildRequires:	libiw-devel >= 27
 BuildRequires:	libjpeg-devel
-BuildRequires:	libmsn-devel >= 4.0
+BuildRequires:	libmsn-devel >= 4.0-0.beta2.1
 #BuildRequires:	libnxcl-devel >= 1.0-0.r612.1
 BuildRequires:	libotr-devel >= 3.2.0
 BuildRequires:	libtool
@@ -1156,6 +1156,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kcm_kopete_webpresence.so
 %attr(755,root,root) %{_libdir}/kde4/kopete*webpresence*.so
 %{_datadir}/apps/kopete/webpresence
+%{_datadir}/config.kcfg/webpresenceconfig.kcfg
 %{_datadir}/kde4/services/kconfiguredialog/kopete_webpresence_config.desktop
 %{_datadir}/kde4/services/kopete_webpresence.desktop
 
