@@ -16,7 +16,7 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
 Version:	4.2.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -25,6 +25,7 @@ Patch0:		%{name}-freenx.patch
 Patch1:		%{name}-FindDecibel.patch
 URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel >= %{qtver}
+BuildRequires:	automoc4 >= 0.9.88
 BuildRequires:	avahi-compat-libdns_sd-devel
 BuildRequires:	cmake >= 2.6.2
 BuildRequires:	decibel-devel >= 0.7.0
