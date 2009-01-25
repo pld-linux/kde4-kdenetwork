@@ -16,7 +16,7 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
 Version:	4.2.0
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -976,11 +976,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/sounds/Kopete_Sent.ogg
 %{_datadir}/sounds/Kopete_User_is_Online.ogg
 %{_desktopdir}/kde4/kopete.desktop
+%exclude %{_iconsdir}/*/scalable
 %{_iconsdir}/*/*/*/kopete.png
 %{_iconsdir}/*/*/actions/*
 %{_iconsdir}/oxygen/*/*/kopete*
 %{_iconsdir}/oxygen/*/status/object-locked-*
-#%{_iconsdir}/*/scalable/apps/kopete.svgz
 %{_kdedocdir}/en/kopete
 
 %files kopete-protocol-aim
