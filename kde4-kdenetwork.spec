@@ -21,6 +21,7 @@ License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	72193b5eb050ef45fad76422a15e0e1a
+Patch100:	%{name}-branch.diff
 Patch0:		%{name}-FindDecibel.patch
 URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel >= %{qtver}
@@ -703,6 +704,7 @@ specjalnych możliwości Remote Desktop Connection.
 
 %prep
 %setup -q -n %{orgname}-%{version}
+%patch100 -p0
 %patch0 -p0
 
 %build
