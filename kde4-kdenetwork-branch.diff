@@ -1,7 +1,7 @@
 Index: cmake/modules/FindDecibel.cmake
 ===================================================================
---- cmake/modules/FindDecibel.cmake	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ cmake/modules/FindDecibel.cmake	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- cmake/modules/FindDecibel.cmake	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ cmake/modules/FindDecibel.cmake	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -1,45 +0,0 @@
 -# - Try to find Decibel packages (QtTapioca, QtTelepathy)
 -# Once done this will define
@@ -48,10 +48,22 @@ Index: cmake/modules/FindDecibel.cmake
 -FIND_PACKAGE_HANDLE_STANDARD_ARGS(Decibel DEFAULT_MSG DECIBEL_INCLUDES DECIBEL_LIBRARIES )
 -
 -MARK_AS_ADVANCED(QT_TAPIOCA_INCLUDE_DIR QT_TAPIOCA_LIBRARY)
+Index: krdc/mainwindow.cpp
+===================================================================
+--- krdc/mainwindow.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ krdc/mainwindow.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
+@@ -365,6 +365,7 @@
+ 
+     connect(view, SIGNAL(framebufferSizeChanged(int, int)), this, SLOT(resizeTabWidget(int, int)));
+     connect(view, SIGNAL(statusChanged(RemoteView::RemoteStatus)), this, SLOT(statusChanged(RemoteView::RemoteStatus)));
++    connect(view, SIGNAL(disconnected()), this, SLOT(disconnect()));
+ 
+     m_remoteViewList.append(view);
+ 
 Index: kopete/plugins/pipes/kopete_pipes.desktop
 ===================================================================
---- kopete/plugins/pipes/kopete_pipes.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/plugins/pipes/kopete_pipes.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/plugins/pipes/kopete_pipes.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/plugins/pipes/kopete_pipes.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -1,7 +1,7 @@
  [Desktop Entry]
  Type=Service
@@ -63,8 +75,8 @@ Index: kopete/plugins/pipes/kopete_pipes.desktop
  X-KDE-PluginInfo-Author=Charles Connell
 Index: kopete/plugins/pipes/kopete_pipes_config.desktop
 ===================================================================
---- kopete/plugins/pipes/kopete_pipes_config.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/plugins/pipes/kopete_pipes_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/plugins/pipes/kopete_pipes_config.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/plugins/pipes/kopete_pipes_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -1,5 +1,5 @@
  [Desktop Entry]
 -Icon=pipe
@@ -74,8 +86,8 @@ Index: kopete/plugins/pipes/kopete_pipes_config.desktop
  
 Index: kopete/plugins/webpresence/kopete_webpresence.desktop
 ===================================================================
---- kopete/plugins/webpresence/kopete_webpresence.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/plugins/webpresence/kopete_webpresence.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/plugins/webpresence/kopete_webpresence.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/plugins/webpresence/kopete_webpresence.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -123,7 +123,7 @@
  Name[ta]=இணைய இருப்பு
  Name[tg]=Мавҷудияти Web
@@ -87,8 +99,8 @@ Index: kopete/plugins/webpresence/kopete_webpresence.desktop
  Name[zh_CN]=Web 状态
 Index: kopete/plugins/webpresence/kopete_webpresence_config.desktop
 ===================================================================
---- kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -117,7 +117,7 @@
  Name[ta]=இணைய இருப்பு
  Name[tg]=Мавҷудияти Web
@@ -100,8 +112,8 @@ Index: kopete/plugins/webpresence/kopete_webpresence_config.desktop
  Name[zh_CN]=Web 状态
 Index: kopete/protocols/wlm/wlmaccount.cpp
 ===================================================================
---- kopete/protocols/wlm/wlmaccount.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/protocols/wlm/wlmaccount.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/protocols/wlm/wlmaccount.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/protocols/wlm/wlmaccount.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -65,12 +65,6 @@
                             Kopete::ContactList::self ()->myself ()));
      myself ()->setOnlineStatus (WlmProtocol::protocol ()->wlmOffline);
@@ -117,8 +129,8 @@ Index: kopete/protocols/wlm/wlmaccount.cpp
      clientid += MSN::InkGifSupport;
 Index: kopete/protocols/jabber/jabbergroupcontact.cpp
 ===================================================================
---- kopete/protocols/jabber/jabbergroupcontact.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/protocols/jabber/jabbergroupcontact.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/protocols/jabber/jabbergroupcontact.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/protocols/jabber/jabbergroupcontact.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -32,6 +32,7 @@
  #include "jabbergroupmembercontact.h"
  #include "jabbercontactpool.h"
@@ -142,8 +154,8 @@ Index: kopete/protocols/jabber/jabbergroupcontact.cpp
  		// locate the originating contact
 Index: kopete/protocols/jabber/jabbercontact.cpp
 ===================================================================
---- kopete/protocols/jabber/jabbercontact.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/protocols/jabber/jabbercontact.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/protocols/jabber/jabbercontact.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/protocols/jabber/jabbercontact.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -51,6 +51,7 @@
  #include "kopetechatsessionmanager.h"
  #include "kopeteaccountmanager.h"
@@ -173,7 +185,7 @@ Index: kopete/protocols/jabber/jabbercontact.cpp
 Index: kopete/protocols/oscar/liboscar/chatroomhandler.h
 ===================================================================
 --- kopete/protocols/oscar/liboscar/chatroomhandler.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 0)
-+++ kopete/protocols/oscar/liboscar/chatroomhandler.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
++++ kopete/protocols/oscar/liboscar/chatroomhandler.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -0,0 +1,55 @@
 +/*
 +    Kopete Oscar Protocol
@@ -232,8 +244,8 @@ Index: kopete/protocols/oscar/liboscar/chatroomhandler.h
 +#endif
 Index: kopete/protocols/oscar/liboscar/tasks/messagereceivertask.h
 ===================================================================
---- kopete/protocols/oscar/liboscar/tasks/messagereceivertask.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/protocols/oscar/liboscar/tasks/messagereceivertask.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/protocols/oscar/liboscar/tasks/messagereceivertask.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/protocols/oscar/liboscar/tasks/messagereceivertask.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -42,6 +42,7 @@
  signals:
  	
@@ -245,7 +257,7 @@ Index: kopete/protocols/oscar/liboscar/tasks/messagereceivertask.h
 Index: kopete/protocols/oscar/liboscar/tasks/chatroomtask.h
 ===================================================================
 --- kopete/protocols/oscar/liboscar/tasks/chatroomtask.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 0)
-+++ kopete/protocols/oscar/liboscar/tasks/chatroomtask.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
++++ kopete/protocols/oscar/liboscar/tasks/chatroomtask.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -0,0 +1,78 @@
 +/*
 +    Kopete Oscar Protocol
@@ -328,7 +340,7 @@ Index: kopete/protocols/oscar/liboscar/tasks/chatroomtask.h
 Index: kopete/protocols/oscar/liboscar/tasks/chatroomtask.cpp
 ===================================================================
 --- kopete/protocols/oscar/liboscar/tasks/chatroomtask.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 0)
-+++ kopete/protocols/oscar/liboscar/tasks/chatroomtask.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
++++ kopete/protocols/oscar/liboscar/tasks/chatroomtask.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -0,0 +1,123 @@
 +/*
 +    Kopete Oscar Protocol
@@ -455,8 +467,8 @@ Index: kopete/protocols/oscar/liboscar/tasks/chatroomtask.cpp
 +
 Index: kopete/protocols/oscar/liboscar/tasks/chatservicetask.cpp
 ===================================================================
---- kopete/protocols/oscar/liboscar/tasks/chatservicetask.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/protocols/oscar/liboscar/tasks/chatservicetask.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/protocols/oscar/liboscar/tasks/chatservicetask.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/protocols/oscar/liboscar/tasks/chatservicetask.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -74,7 +74,7 @@
      TLV type2, type3, type1;
  
@@ -468,8 +480,8 @@ Index: kopete/protocols/oscar/liboscar/tasks/chatservicetask.cpp
      type3.type = 0x0003;
 Index: kopete/protocols/oscar/liboscar/tasks/profiletask.cpp
 ===================================================================
---- kopete/protocols/oscar/liboscar/tasks/profiletask.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/protocols/oscar/liboscar/tasks/profiletask.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/protocols/oscar/liboscar/tasks/profiletask.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/protocols/oscar/liboscar/tasks/profiletask.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -127,6 +127,8 @@
  		capBuf.addGuid( oscar_caps[CAP_BUDDYICON] ); //can you take my picture?
  		capBuf.addGuid( oscar_caps[CAP_INTEROPERATE] ); //AIM can communicate with ICQ users and ICQ with AIM users.
@@ -481,8 +493,8 @@ Index: kopete/protocols/oscar/liboscar/tasks/profiletask.cpp
  	}
 Index: kopete/protocols/oscar/liboscar/tasks/messagereceivertask.cpp
 ===================================================================
---- kopete/protocols/oscar/liboscar/tasks/messagereceivertask.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/protocols/oscar/liboscar/tasks/messagereceivertask.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/protocols/oscar/liboscar/tasks/messagereceivertask.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/protocols/oscar/liboscar/tasks/messagereceivertask.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -20,6 +20,7 @@
  #include <qtextcodec.h>
  #include <QList>
@@ -612,8 +624,8 @@ Index: kopete/protocols/oscar/liboscar/tasks/messagereceivertask.cpp
  	{	// all real messages (actually their header) seem to have length 0x1B
 Index: kopete/protocols/oscar/liboscar/client.cpp
 ===================================================================
---- kopete/protocols/oscar/liboscar/client.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/protocols/oscar/liboscar/client.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/protocols/oscar/liboscar/client.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/protocols/oscar/liboscar/client.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -73,6 +73,8 @@
  #include "icqtlvinforequesttask.h"
  #include "icqtlvinfoupdatetask.h"
@@ -676,8 +688,8 @@ Index: kopete/protocols/oscar/liboscar/client.cpp
  	Connection* c = d->connections.connectionForFamily( 0x0004 );
 Index: kopete/protocols/oscar/liboscar/client.h
 ===================================================================
---- kopete/protocols/oscar/liboscar/client.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/protocols/oscar/liboscar/client.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/protocols/oscar/liboscar/client.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/protocols/oscar/liboscar/client.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -43,6 +43,7 @@
  class Task;
  class QTextCodec;
@@ -740,8 +752,8 @@ Index: kopete/protocols/oscar/liboscar/client.h
  	void nextICQAwayMessageRequest();
 Index: kopete/protocols/oscar/liboscar/CMakeLists.txt
 ===================================================================
---- kopete/protocols/oscar/liboscar/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/protocols/oscar/liboscar/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/protocols/oscar/liboscar/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/protocols/oscar/liboscar/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -42,6 +42,7 @@
      xtrazxtraznotify.cpp
      xtrazxrandomizerservice.cpp
@@ -761,7 +773,7 @@ Index: kopete/protocols/oscar/liboscar/CMakeLists.txt
 Index: kopete/protocols/oscar/liboscar/chatroomhandler.cpp
 ===================================================================
 --- kopete/protocols/oscar/liboscar/chatroomhandler.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 0)
-+++ kopete/protocols/oscar/liboscar/chatroomhandler.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
++++ kopete/protocols/oscar/liboscar/chatroomhandler.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -0,0 +1,66 @@
 +/*
 +    Kopete Oscar Protocol
@@ -831,8 +843,8 @@ Index: kopete/protocols/oscar/liboscar/chatroomhandler.cpp
 +#include "chatroomhandler.moc"
 Index: kopete/protocols/oscar/aim/aimaccount.cpp
 ===================================================================
---- kopete/protocols/oscar/aim/aimaccount.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/protocols/oscar/aim/aimaccount.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/protocols/oscar/aim/aimaccount.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/protocols/oscar/aim/aimaccount.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -217,8 +217,8 @@
  	mInitialStatusMessage.clear();
  
@@ -846,8 +858,8 @@ Index: kopete/protocols/oscar/aim/aimaccount.cpp
  			this, SLOT( userJoinedChat( Oscar::WORD, const QString&, const QString& ) ) );
 Index: kopete/protocols/oscar/oscaraccount.h
 ===================================================================
---- kopete/protocols/oscar/oscaraccount.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/protocols/oscar/oscaraccount.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/protocols/oscar/oscaraccount.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/protocols/oscar/oscaraccount.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -185,6 +185,8 @@
  	void fileTransferRefused( const Kopete::FileTransferInfo& info );
  	void fileTransferAccept( Kopete::Transfer* t , const QString& fileName );
@@ -859,8 +871,8 @@ Index: kopete/protocols/oscar/oscaraccount.h
  	void accountDisconnected( Kopete::Account::DisconnectReason reason );
 Index: kopete/protocols/oscar/oscaraccount.cpp
 ===================================================================
---- kopete/protocols/oscar/oscaraccount.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/protocols/oscar/oscaraccount.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/protocols/oscar/oscaraccount.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/protocols/oscar/oscaraccount.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -47,6 +47,7 @@
  #include <klocale.h>
  #include <kcodecs.h>
@@ -930,8 +942,8 @@ Index: kopete/protocols/oscar/oscaraccount.cpp
  	QString sender = Oscar::normalize( ftHandler->contact() );
 Index: kopete/protocols/CMakeLists.txt
 ===================================================================
---- kopete/protocols/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/protocols/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/protocols/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/protocols/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -12,7 +12,6 @@
  option(WITH_qq "Enable Kopete QQ protocol" ON)
  option(WITH_sms "Enable Kopete SMS protocol" ON)
@@ -951,10 +963,23 @@ Index: kopete/protocols/CMakeLists.txt
  if(WITH_bonjour)
    add_subdirectory( bonjour )
  endif(WITH_bonjour)
+Index: kopete/kopete/contactlist/kopetemetacontactlvi.cpp
+===================================================================
+--- kopete/kopete/contactlist/kopetemetacontactlvi.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/kopete/contactlist/kopetemetacontactlvi.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
+@@ -479,7 +479,7 @@
+ 				notify->setPixmap(QPixmap::fromImage(m_metaContact->picture().image()));
+ 				connect(notify, SIGNAL(activated(unsigned int )) , this, SLOT( execute() ) );
+ 
+-				notify->addContext( qMakePair( QString::fromLatin1("metacontact") , m_metaContact->metaContactId()) );
++				notify->addContext( qMakePair( QString::fromLatin1("contact") , m_metaContact->metaContactId()) );
+ 				foreach( Kopete::Group *g , m_metaContact->groups() )
+ 				{
+ 					notify->addContext( qMakePair( QString::fromLatin1("group") , QString::number(g->groupId())) );
 Index: kopete/kopete/kopetewindow.h
 ===================================================================
---- kopete/kopete/kopetewindow.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/kopete/kopetewindow.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/kopete/kopetewindow.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/kopete/kopetewindow.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -72,6 +72,7 @@
  	void slotConfGlobalKeys();
  	void slotShowHide();
@@ -965,8 +990,8 @@ Index: kopete/kopete/kopetewindow.h
  	void setStatusMessage( const Kopete::StatusMessage& );
 Index: kopete/kopete/CMakeLists.txt
 ===================================================================
---- kopete/kopete/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/kopete/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/kopete/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/kopete/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -17,7 +17,7 @@
  ${CMAKE_CURRENT_SOURCE_DIR}/contactlist/ 
  ${CMAKE_CURRENT_BINARY_DIR}/contactlist/ 
@@ -987,8 +1012,8 @@ Index: kopete/kopete/CMakeLists.txt
  	kopetestatusmenu
 Index: kopete/kopete/kopetewindow.cpp
 ===================================================================
---- kopete/kopete/kopetewindow.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/kopete/kopetewindow.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/kopete/kopetewindow.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/kopete/kopetewindow.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -4,7 +4,7 @@
      Copyright (c) 2001-2002 by Duncan Mac-Vicar Prett <duncan@kde.org>
      Copyright (c) 2001-2002 by Stefan Gehn            <metz AT gehn.net>
@@ -1027,8 +1052,8 @@ Index: kopete/kopete/kopetewindow.cpp
  // vim: set noet ts=4 sts=4 sw=4:
 Index: kopete/kopete/chatwindow/kopetechatwindow.cpp
 ===================================================================
---- kopete/kopete/chatwindow/kopetechatwindow.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/kopete/chatwindow/kopetechatwindow.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/kopete/chatwindow/kopetechatwindow.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/kopete/chatwindow/kopetechatwindow.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -359,7 +359,7 @@
  	//Default to 'Return' and 'Enter' for sending messages
  	//'Return' is the key in the main part of the keyboard
@@ -1040,8 +1065,8 @@ Index: kopete/kopete/chatwindow/kopetechatwindow.cpp
  
 Index: kopete/CMakeLists.txt
 ===================================================================
---- kopete/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -1,7 +1,7 @@
  project(kopete)
  KDE4_NO_ENABLE_FINAL(kopete)
@@ -1053,8 +1078,8 @@ Index: kopete/CMakeLists.txt
  include (TestBigEndian)
 Index: kopete/libkopete/avdevice/videodevice.cpp
 ===================================================================
---- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -1512,6 +1512,7 @@
  					CLEAR (control);
  					control.id = V4L2_CID_BRIGHTNESS;
@@ -1095,10 +1120,23 @@ Index: kopete/libkopete/avdevice/videodevice.cpp
  
  					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
  					{
+Index: kopete/libkopete/private/kopeteviewmanager.cpp
+===================================================================
+--- kopete/libkopete/private/kopeteviewmanager.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kopete/libkopete/private/kopeteviewmanager.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
+@@ -340,7 +340,7 @@
+ 			Kopete::MetaContact *mc= msg.from()->metaContact();
+ 			if(mc)
+ 			{
+-				notify->addContext( qMakePair( QString::fromLatin1("metacontact") , mc->metaContactId()) );
++				notify->addContext( qMakePair( QString::fromLatin1("contact") , mc->metaContactId()) );
+ 				foreach( Kopete::Group *g , mc->groups() )
+ 				{
+ 					notify->addContext( qMakePair( QString::fromLatin1("group") , QString::number(g->groupId())) );
 Index: kget/mainwindow.cpp
 ===================================================================
---- kget/mainwindow.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kget/mainwindow.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kget/mainwindow.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kget/mainwindow.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -362,6 +362,7 @@
                                               KGuiItem(i18n("Do Not Enable")))
                                               == KMessageBox::Yes) {
@@ -1107,10 +1145,24 @@ Index: kget/mainwindow.cpp
              slotKonquerorIntegration(true);
          }
  
+Index: kget/extensions/webinterface/www/index.htm
+===================================================================
+--- kget/extensions/webinterface/www/index.htm	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kget/extensions/webinterface/www/index.htm	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
+@@ -31,6 +31,9 @@
+         var request = new Request.JSON({url: 'data.json',
+             secure: false,
+             onComplete: function(jsonObj) {
++                $(document.body).getElements('div.tool-tip').each(function(elm) { // remove old tooltips
++                    elm.destroy();
++                });
+                 listDownloads(jsonObj.downloads);
+             }
+         }).send();
 Index: kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop
 ===================================================================
---- kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -45,6 +45,7 @@
  Comment[da]=Gør KGet i stand til at søge efter filen via filspejl-søgemaskiner
  Comment[de]=Ermöglicht es KGet, nach Dateien über Spiegel-Suchmaschinen zu suchen.
@@ -1121,8 +1173,8 @@ Index: kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop
  Comment[fr]=Permettre à KGet la recherche de fichiers depuis les moteurs de recherches de miroir
 Index: kget/transfer-plugins/metalink/kget_metalinkfactory.desktop
 ===================================================================
---- kget/transfer-plugins/metalink/kget_metalinkfactory.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kget/transfer-plugins/metalink/kget_metalinkfactory.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kget/transfer-plugins/metalink/kget_metalinkfactory.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kget/transfer-plugins/metalink/kget_metalinkfactory.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -26,6 +26,7 @@
  Comment[da]=Muliggør download af filer fra Metalink
  Comment[de]=Ermöglicht die Übertragung von Dateien mittels Metalink
@@ -1133,8 +1185,8 @@ Index: kget/transfer-plugins/metalink/kget_metalinkfactory.desktop
  Comment[fr]=Permet de télécharger les fichiers utilisant Metalink
 Index: kget/transfer-plugins/bittorrent/kget_bittorrentfactory.desktop
 ===================================================================
---- kget/transfer-plugins/bittorrent/kget_bittorrentfactory.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kget/transfer-plugins/bittorrent/kget_bittorrentfactory.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kget/transfer-plugins/bittorrent/kget_bittorrentfactory.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kget/transfer-plugins/bittorrent/kget_bittorrentfactory.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -28,6 +28,7 @@
  Comment[da]=Muliggør download af filer med brug af Bittorrent
  Comment[de]=Ermöglicht das Herunterladen von Dateien mit Bittorrent
@@ -1145,8 +1197,8 @@ Index: kget/transfer-plugins/bittorrent/kget_bittorrentfactory.desktop
  Comment[fr]=Permet de télécharger les fichiers utilisant BitTorrent
 Index: kget/CMakeLists.txt
 ===================================================================
---- kget/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kget/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kget/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kget/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -134,6 +134,7 @@
     ui/history/transferhistorycategorizeddelegate.cpp
     ui/history/transferhistorycategorizedview.cpp
@@ -1158,7 +1210,7 @@ Index: kget/CMakeLists.txt
 Index: kget/ui/linkview/kget_sortfilterproxymodel.h
 ===================================================================
 --- kget/ui/linkview/kget_sortfilterproxymodel.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 0)
-+++ kget/ui/linkview/kget_sortfilterproxymodel.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
++++ kget/ui/linkview/kget_sortfilterproxymodel.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -0,0 +1,66 @@
 +/***************************************************************************
 +*   Copyright (C) 2009 Matthias Fuchs <mat69@gmx.net>                     *
@@ -1196,7 +1248,7 @@ Index: kget/ui/linkview/kget_sortfilterproxymodel.h
 +            NoFilter = 0,
 +            VideoFiles = 1,
 +            AudioFiles = 2,
-+            CompressedFiles = 3,
++            CompressedFiles = 3
 +        };
 +
 +        enum FilterMode {
@@ -1228,8 +1280,8 @@ Index: kget/ui/linkview/kget_sortfilterproxymodel.h
 +#endif // KGET_SORTFILTERPROXYMODEL_H
 Index: kget/ui/linkview/kget_linkview.cpp
 ===================================================================
---- kget/ui/linkview/kget_linkview.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kget/ui/linkview/kget_linkview.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kget/ui/linkview/kget_linkview.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kget/ui/linkview/kget_linkview.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -2,6 +2,7 @@
  
     Copyright (C) 2002 Carsten Pfeiffer <pfeiffer@kde.org>
@@ -1706,8 +1758,8 @@ Index: kget/ui/linkview/kget_linkview.cpp
  }
 Index: kget/ui/linkview/kget_linkview.h
 ===================================================================
---- kget/ui/linkview/kget_linkview.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ kget/ui/linkview/kget_linkview.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- kget/ui/linkview/kget_linkview.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ kget/ui/linkview/kget_linkview.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -25,6 +25,7 @@
  class KComboBox;
  class KLineEdit;
@@ -1778,7 +1830,7 @@ Index: kget/ui/linkview/kget_linkview.h
 Index: kget/ui/linkview/kget_sortfilterproxymodel.cpp
 ===================================================================
 --- kget/ui/linkview/kget_sortfilterproxymodel.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 0)
-+++ kget/ui/linkview/kget_sortfilterproxymodel.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
++++ kget/ui/linkview/kget_sortfilterproxymodel.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -0,0 +1,159 @@
 +/***************************************************************************
 +*   Copyright (C) 2009 Matthias Fuchs <mat69@gmx.net>                     *
@@ -1941,8 +1993,8 @@ Index: kget/ui/linkview/kget_sortfilterproxymodel.cpp
 +}
 Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -708,7 +708,7 @@
    _dictMngr->add("server schannel",_interface->serverSchannelCombo,
                   new QStringList(QStringList() << "Yes" << "No" << "Auto" ));
@@ -1989,8 +2041,8 @@ Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp
    _dictMngr->add("winbind enum groups",_interface->winbindEnumGroupsChk);
 Index: filesharing/advanced/kcm_sambaconf/common.cpp
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/common.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ filesharing/advanced/kcm_sambaconf/common.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- filesharing/advanced/kcm_sambaconf/common.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ filesharing/advanced/kcm_sambaconf/common.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -54,7 +54,8 @@
      if (lower=="no" ||
          lower=="0" ||
@@ -2003,8 +2055,8 @@ Index: filesharing/advanced/kcm_sambaconf/common.cpp
        return true;
 Index: filesharing/advanced/kcm_sambaconf/sambashare.cpp
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/sambashare.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ filesharing/advanced/kcm_sambaconf/sambashare.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- filesharing/advanced/kcm_sambaconf/sambashare.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ filesharing/advanced/kcm_sambaconf/sambashare.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -115,9 +115,13 @@
  
    SambaShare* globals = _sambaFile->find("global");
@@ -2031,8 +2083,8 @@ Index: filesharing/advanced/kcm_sambaconf/sambashare.cpp
  
 Index: filesharing/advanced/kcm_sambaconf/dictmanager.cpp
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/dictmanager.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ filesharing/advanced/kcm_sambaconf/dictmanager.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- filesharing/advanced/kcm_sambaconf/dictmanager.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ filesharing/advanced/kcm_sambaconf/dictmanager.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -25,8 +25,8 @@
   *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA  *
   *                                                                            *
@@ -2060,8 +2112,8 @@ Index: filesharing/advanced/kcm_sambaconf/dictmanager.cpp
  
 Index: CMakeLists.txt
 ===================================================================
---- CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 952918)
-+++ CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 952918)
+--- CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
++++ CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
 @@ -57,9 +57,6 @@
  macro_optional_find_package(QCA2)
  macro_log_feature(QCA2_FOUND "QCA2" "Qt Cryptographic Architecture" "http://delta.affinix.com/qca" FALSE "2.0.0" "Needed to build Kopete's GroupWise and Jabber protocols.")
