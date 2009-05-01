@@ -15,12 +15,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.2.2
+Version:	4.2.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	72193b5eb050ef45fad76422a15e0e1a
+# Source0-md5:	7d77ab0322f96251a8d3baf7e4f6990e
 Patch100:	%{name}-branch.diff
 Patch0:		%{name}-FindDecibel.patch
 URL:		http://www.kde.org/
@@ -704,8 +704,8 @@ specjalnych możliwości Remote Desktop Connection.
 
 %prep
 %setup -q -n %{orgname}-%{version}
-%patch100 -p0
-%patch0 -p0
+#%patch100 -p0
+#%patch0 -p0
 
 %build
 install -d build
