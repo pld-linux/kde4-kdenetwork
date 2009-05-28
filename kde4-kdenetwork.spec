@@ -25,6 +25,7 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 #Patch100:	%{name}-branch.diff
 #Patch0:		%{name}-FindDecibel.patch
+Patch1:		%{name}-libknotification.patch
 URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel >= %{qtver}
 BuildRequires:	automoc4 >= 0.9.88
@@ -709,6 +710,7 @@ specjalnych możliwości Remote Desktop Connection.
 %setup -q -n %{orgname}-%{version}svn%{svn}
 #%patch100 -p0
 #%patch0 -p0
+%patch1 -p1
 
 %build
 install -d build
