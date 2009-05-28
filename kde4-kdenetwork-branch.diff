@@ -1,2128 +1,980 @@
-Index: cmake/modules/FindDecibel.cmake
+Index: krfb/krfb.notifyrc
 ===================================================================
---- cmake/modules/FindDecibel.cmake	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ cmake/modules/FindDecibel.cmake	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -1,45 +0,0 @@
--# - Try to find Decibel packages (QtTapioca, QtTelepathy)
--# Once done this will define
--#
--#  DECIBEL_FOUND - Test has found Decibel dependencies
--#  DECIBEL_INCLUDES - Include needed for Decibel
--#  DECIBEL_LIBRARIES - Libraries needed for Decibel
--#  DECIBEL_DEFINITIONS - Compiler swithces required for using Decibel
--#
--#  QT_TELEPATHY_INCLUDE_DIR - Include needed for QtTelepathy
--#  QT_TELEPATHY_LIBRARY - Library for QtTelepathy
--#  QT_TAPIOCA_INCLUDE_DIR - Included need for QtTapioca
--#  QT_TAPIOCA_LIBRARY - Library for QtTapioca
--#
--# use pkg-config to get the directories and then use these values
--# in the FIND_PATH() and FIND_LIBRARY() calls
--#
--# Copyright (c) 2006, Michaël Larouche, <larouche@kde.org>
--#
--# Redistribution and use is allowed according to the terms of the BSD license.
--# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
--
--
--IF (NOT WIN32)
--find_package(PkgConfig)
--pkg_check_modules(QTTAPIOCA QtTapioca)
--
--ENDIF(NOT WIN32)
--
--set(QT_TAPIOCA_INCLUDE_DIR ${QTTAPIOCA_INCLUDE_DIRS})
--
--set(DECIBEL_DEFINITIONS ${QTTAPIOCA_CFLAGS})
--set(DECIBEL_INCLUDES ${QT_TAPIOCA_INCLUDE_DIR} )
--
--FIND_LIBRARY(QT_TAPIOCA_LIBRARY NAMES QtTapioca
--  PATHS
--  ${QTTAPIOCA_LIBRARY_DIRS} 
--  NO_DEFAULT_PATH 
--)
--
--set(DECIBEL_LIBRARIES ${QT_TAPIOCA_LIBRARY})
--
--include(FindPackageHandleStandardArgs)
--FIND_PACKAGE_HANDLE_STANDARD_ARGS(Decibel DEFAULT_MSG DECIBEL_INCLUDES DECIBEL_LIBRARIES )
--
--MARK_AS_ADVANCED(QT_TAPIOCA_INCLUDE_DIR QT_TAPIOCA_LIBRARY)
-Index: krdc/mainwindow.cpp
+--- krfb/krfb.notifyrc	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ krfb/krfb.notifyrc	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -53,8 +53,8 @@
+ Comment[tg]=Истифодаи Муштараки Мизи Корӣ
+ Comment[tr]=Masaüstü Paylaşımı
+ Comment[uk]=Спільні стільниці
++Comment[xh]=Ulwahlulelano lwe Desktop
+ Comment[x-test]=xxDesktop Sharingxx
+-Comment[xh]=Ulwahlulelano lwe Desktop
+ Comment[zh_CN]=桌面共享
+ Comment[zh_HK]=桌面分享
+ Comment[zh_TW]=桌面分享
+@@ -156,8 +156,8 @@
+ Comment[tg]=Корванд пайвастшавиро қабул мекунад
+ Comment[tr]=Kullanıcı bağlantıyı kabul etti
+ Comment[uk]=Користувач приймає з’єднання
++Comment[xh]=Umsebenzisi wamkela uxhulumaniso
+ Comment[x-test]=xxUser accepts connectionxx
+-Comment[xh]=Umsebenzisi wamkela uxhulumaniso
+ Comment[zh_CN]=用户接受连接
+ Comment[zh_HK]=用戶接受連線
+ Comment[zh_TW]=使用者接受連線
+@@ -260,8 +260,8 @@
+ Comment[tg]=Корванд пайвастшавиро рад мекунад
+ Comment[tr]=Kullanıcı bağlantıyı reddetti
+ Comment[uk]=Користувач не приймає з’єднання
++Comment[xh]=Umsebenzisi wala uxhulumaniso
+ Comment[x-test]=xxUser refuses connectionxx
+-Comment[xh]=Umsebenzisi wala uxhulumaniso
+ Comment[zh_CN]=用户拒绝连接
+ Comment[zh_HK]=用戶拒絕連線
+ Comment[zh_TW]=使用者拒絕連線使用者
+@@ -292,6 +292,7 @@
+ Name[ko]=연결이 닫힘
+ Name[lt]=Ryšys baigtas
+ Name[lv]=Savienojums slēgts
++Name[mai]=संबंधन बन्न भ' गेल
+ Name[ml]=ബന്ധം അടച്ചു
+ Name[nb]=Forbindelsen lukket
+ Name[nds]=Afkoppelt
+@@ -367,8 +368,8 @@
+ Comment[uk]=З'єднання закрито
+ Comment[uz]=Aloqa uzildi
+ Comment[uz@cyrillic]=Алоқа узилди
++Comment[xh]=Uxhulumaniso luvaliwe
+ Comment[x-test]=xxConnection closedxx
+-Comment[xh]=Uxhulumaniso luvaliwe
+ Comment[zh_CN]=连接关闭
+ Comment[zh_HK]=連線已關閉
+ Comment[zh_TW]=連線已關閉
+@@ -450,6 +451,7 @@
+ Comment[ko]=잘못된 암호
+ Comment[lt]=Neteisingas slaptažodis
+ Comment[lv]=Parole nav derīga
++Comment[mai]=अवैध कूटशब्द
+ Comment[mk]=Невалидна лозинка
+ Comment[ml]=അസാധുവായ അടയാളവാക്ക്
+ Comment[ms]=Kata laluan tidak sah
+@@ -476,8 +478,8 @@
+ Comment[uz]=Maxfiy soʻz haqiqiy emas
+ Comment[uz@cyrillic]=Махфий сўз ҳақиқий эмас
+ Comment[wa]=Sicret nén valide
++Comment[xh]=Igama lokugqitha elingasebenziyo
+ Comment[x-test]=xxInvalid passwordxx
+-Comment[xh]=Igama lokugqitha elingasebenziyo
+ Comment[zh_CN]=无效密码
+ Comment[zh_HK]=無效的密碼
+ Comment[zh_TW]=不正確的密碼
+@@ -579,8 +581,8 @@
+ Comment[tg]=Корванди дурдаст гузарвожаи нодурустро фиристод. Пайвастшавӣ манъ шудааст.
+ Comment[tr]=Davet edilenden gönderilmiş geçersiz parola. Bağlantı rededildi.
+ Comment[uk]=Запрошений учасник надіслав некоректний пароль. У з’єднанні відмовлено.
++Comment[xh]=Umhlangano omenyiweyo uthumele igama lokugqitha elisebenzayo. Uxhulumano lwa liwe.
+ Comment[x-test]=xxThe invited party sent an invalid password. Connection refused.xx
+-Comment[xh]=Umhlangano omenyiweyo uthumele igama lokugqitha elisebenzayo. Uxhulumano lwa liwe.
+ Comment[zh_CN]=受邀请方发送的密码不对。连接被拒绝。
+ Comment[zh_HK]=被邀請的一方送出無效的密碼。已拒絕連線。
+ Comment[zh_TW]=邀請的人送出了不合法的密碼邀請。連線已拒絕。
+@@ -682,8 +684,8 @@
+ Comment[tg]=Пайвастшавӣ дархоста шудааст, корванд бояд қабул кунад
+ Comment[tr]=Bağlantı isteği, kullanıcı kabul etmeli
+ Comment[uk]=Отримано запит на з’єднання, користувач має його прийняти
++Comment[xh]=Uxhulumaniso luceliwe, umsebenzisi kufanele amkele
+ Comment[x-test]=xxConnection requested, user must acceptxx
+-Comment[xh]=Uxhulumaniso luceliwe, umsebenzisi kufanele amkele
+ Comment[zh_CN]=连接已请求，用户必须接受
+ Comment[zh_HK]=已請求連線，用戶必須接受
+ Comment[zh_TW]=連線已要求，必須等使用者接受
+@@ -786,8 +788,8 @@
+ Comment[tg]=Пайвастшавии нав ба таври худкор барпо мегардад
+ Comment[tr]=Yeni bağlantı otomatik olarak kuruldu
+ Comment[uk]=Автоматично встановлено нове з’єднання
++Comment[xh]=Uxhulumaniso olutsha lufunyenwe ngokuzenzekelayo
+ Comment[x-test]=xxNew connection automatically establishedxx
+-Comment[xh]=Uxhulumaniso olutsha lufunyenwe ngokuzenzekelayo
+ Comment[zh_CN]=自动建立新连接
+ Comment[zh_HK]=已自動建立新連線
+ Comment[zh_TW]=新連線自動建立
+@@ -893,8 +895,8 @@
+ Comment[uk]=Зайнято, у з’єднанні відмовлено
+ Comment[uz]=Band, aloqa rad etildi
+ Comment[uz@cyrillic]=Банд, алоқа рад этилди
++Comment[xh]=Uxhulumaniso, olu xakekileyo lwaliwe
+ Comment[x-test]=xxBusy, connection refusedxx
+-Comment[xh]=Uxhulumaniso, olu xakekileyo lwaliwe
+ Comment[zh_CN]=对方处于忙碌状态，连接被拒绝
+ Comment[zh_HK]=忙碌，已拒絕連線
+ Comment[zh_TW]=忙碌，連線被拒
+@@ -997,8 +999,8 @@
+ Comment[tg]=Пайвастшавии ғайричашмдош қабул гардид, кандашавӣ
+ Comment[tr]=Babul edilmiş beklenmedik bağlantı, durdur
+ Comment[uk]=Отримано з’єднання, яке не очікувалось, припиняється
++Comment[xh]=Ufumene uxhulumaniso olungalindelekanga, lahla
+ Comment[x-test]=xxReceived unexpected connection, abortxx
+-Comment[xh]=Ufumene uxhulumaniso olungalindelekanga, lahla
+ Comment[zh_CN]=收到意外连接，已中止
+ Comment[zh_HK]=接收到非預期的連線，中止
+ Comment[zh_TW]=已接收到未知的連線，中止。
+Index: krfb/kcm_krfb/kcmkrfb.desktop
 ===================================================================
---- krdc/mainwindow.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ krdc/mainwindow.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -365,6 +365,7 @@
- 
-     connect(view, SIGNAL(framebufferSizeChanged(int, int)), this, SLOT(resizeTabWidget(int, int)));
-     connect(view, SIGNAL(statusChanged(RemoteView::RemoteStatus)), this, SLOT(statusChanged(RemoteView::RemoteStatus)));
-+    connect(view, SIGNAL(disconnected()), this, SLOT(disconnect()));
- 
-     m_remoteViewList.append(view);
- 
-Index: kopete/plugins/pipes/kopete_pipes.desktop
+--- krfb/kcm_krfb/kcmkrfb.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ krfb/kcm_krfb/kcmkrfb.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -69,8 +69,8 @@
+ Name[tr]=Masaüstü Paylaşımı
+ Name[uk]=Спільні стільниці
+ Name[vi]=Chia sẻ màn hình nền
++Name[xh]=Ukwehlulelana kwe Desktop
+ Name[x-test]=xxDesktop Sharingxx
+-Name[xh]=Ukwehlulelana kwe Desktop
+ Name[zh_CN]=桌面共享
+ Name[zh_HK]=桌面分享
+ Name[zh_TW]=桌面分享
+@@ -134,8 +134,8 @@
+ Comment[tr]=Masaüstü Paylaşımını Yapılandır
+ Comment[uk]=Налаштувати спільні стільниці
+ Comment[vi]=Cấu hình chia sẻ màn hình nền
++Comment[xh]=Qwalasela Ukusebenzisa ngokuhlangeneyo kwe Desktop 
+ Comment[x-test]=xxConfigure Desktop Sharingxx
+-Comment[xh]=Qwalasela Ukusebenzisa ngokuhlangeneyo kwe Desktop 
+ Comment[zh_CN]=配置桌面共享
+ Comment[zh_HK]=設定桌面分享
+ Comment[zh_TW]=設定桌面分享
+Index: krfb/kinetd/kinetd.desktop
 ===================================================================
---- kopete/plugins/pipes/kopete_pipes.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/plugins/pipes/kopete_pipes.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -1,7 +1,7 @@
- [Desktop Entry]
- Type=Service
- X-Kopete-Version=1000900
--Icon=pipe
-+Icon=mail-message
- X-KDE-Library=kopete_pipes
- X-KDE-ServiceTypes=Kopete/Plugin
- X-KDE-PluginInfo-Author=Charles Connell
-Index: kopete/plugins/pipes/kopete_pipes_config.desktop
+--- krfb/kinetd/kinetd.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ krfb/kinetd/kinetd.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -130,8 +130,8 @@
+ Comment[uz]=Talab qilinganda tarmoq xizmatlarini ishga tushuruvchi Internet demoni
+ Comment[uz@cyrillic]=Талаб қилинганда тармоқ хизматларини ишга тушурувчи Интернет демони
+ Comment[vi]=Một trình nền Mạng mà chạy các dịch vụ mạng theo nhu cầu
++Comment[xh]=Internet daemon eqala iinkonzo zomsebenzi wonatha xa zifunwa
+ Comment[x-test]=xxAn Internet daemon that starts network services on demandxx
+-Comment[xh]=Internet daemon eqala iinkonzo zomsebenzi wonatha xa zifunwa
+ Comment[zh_CN]=按需启动网络服务的守护进程
+ Comment[zh_HK]=自動依需求起動網絡服務的互聯網系統程式
+ Comment[zh_TW]=依要求起動網路服務的 Internet 伺服程式
+Index: krfb/kinetd/kinetd.notifyrc
 ===================================================================
---- kopete/plugins/pipes/kopete_pipes_config.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/plugins/pipes/kopete_pipes_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -1,5 +1,5 @@
- [Desktop Entry]
--Icon=pipe
-+Icon=mail-message
- Type=Service
- X-KDE-ServiceTypes=KCModule
- 
-Index: kopete/plugins/webpresence/kopete_webpresence.desktop
+--- krfb/kinetd/kinetd.notifyrc	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ krfb/kinetd/kinetd.notifyrc	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -58,8 +58,8 @@
+ Name[ta]=உள்வரும் இணைப்புகள்
+ Name[tg]=Пайвастшавии Воридшаванда
+ Name[tr]=Gelen Bağlantı
++Name[xh]=Uxhumaniso Olungenayo
+ Name[x-test]=xxIncomingConnectionxx
+-Name[xh]=Uxhumaniso Olungenayo
+ Name[zh_CN]=进入的连接
+ Name[zh_HK]=進入連線
+ Name[zh_TW]=進來的連線
+@@ -114,8 +114,8 @@
+ Comment[tg]=Пайвастшавии воридшаванда қабул гардид
+ Comment[tr]=Gelen bağlantı alınıyor
+ Comment[uk]=Отримано вхідне з’єднання
++Comment[xh]=Uxhulumano olungenayo olufunyenweyo
+ Comment[x-test]=xxReceived incoming connectionxx
+-Comment[xh]=Uxhulumano olungenayo olufunyenweyo
+ Comment[zh_CN]=收到进入的连接
+ Comment[zh_HK]=已接收的進入連線
+ Comment[zh_TW]=接收到進來的連線
+@@ -125,7 +125,7 @@
+ Name=ProcessFailed
+ Name[ar]=فشلت العملية
+ Name[bn]=প্রসেস ব্যর্থ
+-Name[ca]=Procés fallit
++Name[ca]=Procés erroni
+ Name[cs]=Proces selhal
+ Name[cy]=MethoddProses
+ Name[da]=ProcesMislykkedes
+@@ -169,8 +169,8 @@
+ Name[ta]=செயல் தோல்வியுற்றது
+ Name[tg]=Ҷараён бо Нокомӣ анҷомид
+ Name[tr]=Başarısız İşlemler
++Name[xh]=Inkqubo Yahlulekile
+ Name[x-test]=xxProcessFailedxx
+-Name[xh]=Inkqubo Yahlulekile
+ Name[zh_CN]=处理失败
+ Name[zh_HK]=程序失敗
+ Name[zh_TW]=行程失敗
+@@ -225,8 +225,8 @@
+ Comment[tg]=Барои даскории пайвастшавӣ ҷараён бозхонда нашуд
+ Comment[tr]=Elle bağlantıda başarısız çağrı işlemleri
+ Comment[uk]=Не вдалося викликати процес для з’єднання
++Comment[xh]=Ayikwazanga ukubiza inkqubo ezakuphatha uxhulumano
+ Comment[x-test]=xxCould not call process to handle connectionxx
+-Comment[xh]=Ayikwazanga ukubiza inkqubo ezakuphatha uxhulumano
+ Comment[zh_CN]=无法调用进程处理连接
+ Comment[zh_HK]=無法呼叫處理連線的程序
+ Comment[zh_TW]=無法呼叫行程來處理此連線
+Index: krfb/kinetd/kinetdmodule.desktop
 ===================================================================
---- kopete/plugins/webpresence/kopete_webpresence.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/plugins/webpresence/kopete_webpresence.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -123,7 +123,7 @@
- Name[ta]=இணைய இருப்பு
- Name[tg]=Мавҷудияти Web
- Name[tr]=Web Hazır Bulunması
--Name[uk]=Присутність у Тенет
-+Name[uk]=Присутність у Тенетах
- Name[vi]=Vẻ ngoài của Mạng
- Name[x-test]=xxWeb Presencexx
- Name[zh_CN]=Web 状态
-Index: kopete/plugins/webpresence/kopete_webpresence_config.desktop
+--- krfb/kinetd/kinetdmodule.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ krfb/kinetd/kinetdmodule.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -60,8 +60,8 @@
+ Name[tr]=KDED Modül Türü
+ Name[uk]=Тип модулю KinetD
+ Name[vi]=Kiểu môđun KInetD
++Name[xh]=Udidi Lomqongo womlinganiselo we KInetD
+ Name[x-test]=xxKInetD Module Typexx
+-Name[xh]=Udidi Lomqongo womlinganiselo we KInetD
+ Name[zh_CN]=KInetD 模块类型
+ Name[zh_HK]=KInetD 模組類型
+ Name[zh_TW]=KInetD 模組類型
+Index: kopete/plugins/nowlistening/kopete_nowlistening_config.desktop
 ===================================================================
---- kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -117,7 +117,7 @@
- Name[ta]=இணைய இருப்பு
- Name[tg]=Мавҷудияти Web
- Name[tr]=Web Hazır Bulunması
--Name[uk]=Присутність у Тенет
-+Name[uk]=Присутність у Тенетах
- Name[vi]=Vẻ ngoài của Mạng
- Name[x-test]=xxWeb Presencexx
- Name[zh_CN]=Web 状态
-Index: kopete/protocols/wlm/wlmaccount.cpp
+--- kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -40,6 +40,7 @@
+ Name[ko]=지금 재생 중
+ Name[lt]=Dabar klausau
+ Name[lv]=Šobrīd atskaņo
++Name[mai]=आबि सुनि रहल अछि
+ Name[mk]=Сега слуша
+ Name[ml]=ഇപ്പോള്‍ ശ്രദ്ധിക്കുന്നു
+ Name[nb]=Hører nå på
+Index: kopete/plugins/nowlistening/kopete_nowlistening.desktop
 ===================================================================
---- kopete/protocols/wlm/wlmaccount.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/protocols/wlm/wlmaccount.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -65,12 +65,6 @@
-                            Kopete::ContactList::self ()->myself ()));
-     myself ()->setOnlineStatus (WlmProtocol::protocol ()->wlmOffline);
-     clientid += MSN::MSNC7;
--    clientid += MSN::MSNC6;
--    clientid += MSN::MSNC5;
--    clientid += MSN::MSNC4;
--    clientid += MSN::MSNC3;
--    clientid += MSN::MSNC2;
--    clientid += MSN::MSNC1;
-     clientid += MSN::SupportWinks;
-     clientid += MSN::VoiceClips;
-     clientid += MSN::InkGifSupport;
-Index: kopete/protocols/jabber/jabbergroupcontact.cpp
+--- kopete/plugins/nowlistening/kopete_nowlistening.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/nowlistening/kopete_nowlistening.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -45,6 +45,7 @@
+ Name[ko]=지금 재생 중
+ Name[lt]=Dabar klausau
+ Name[lv]=Šobrīd atskaņo
++Name[mai]=आबि सुनि रहल अछि
+ Name[mk]=Сега слуша
+ Name[ml]=ഇപ്പോള്‍ ശ്രദ്ധിക്കുന്നു
+ Name[nb]=Hører nå på
+Index: kopete/plugins/alias/kopete_alias.desktop
 ===================================================================
---- kopete/protocols/jabber/jabbergroupcontact.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/protocols/jabber/jabbergroupcontact.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
+--- kopete/plugins/alias/kopete_alias.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/alias/kopete_alias.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -37,6 +37,7 @@
+ Name[ko]=별명
+ Name[lt]=Kitas vardas
+ Name[lv]=Īsceļi
++Name[mai]=उपनाम
+ Name[mk]=Други имиња
+ Name[ml]=ചെല്ലപ്പേര്
+ Name[ne]=उपनाम
+Index: kopete/plugins/alias/kopete_alias_config.desktop
+===================================================================
+--- kopete/plugins/alias/kopete_alias_config.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/alias/kopete_alias_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
 @@ -32,6 +32,7 @@
- #include "jabbergroupmembercontact.h"
- #include "jabbercontactpool.h"
- #include "kopetemetacontact.h"
-+#include "kopetepluginmanager.h"
- #include "xmpp_tasks.h"
- 
- /**
-@@ -181,7 +182,11 @@
- 
- 		if( !message.xencrypted().isEmpty () )
- 		{
--			body = QString ("-----BEGIN PGP MESSAGE-----\n\n") + message.xencrypted () + QString ("\n-----END PGP MESSAGE-----\n");
-+			if (Kopete::PluginManager::self()->plugin("kopete_cryptography"))
-+			{
-+				kDebug( JABBER_DEBUG_GLOBAL ) << "Kopete cryptography plugin loaded";
-+				body = QString ("-----BEGIN PGP MESSAGE-----\n\n") + message.xencrypted () + QString ("\n-----END PGP MESSAGE-----\n");
-+			}
- 		}
- 
- 		// locate the originating contact
+ Name[ko]=별명
+ Name[lt]=Kitas vardas
+ Name[lv]=Īsceļi
++Name[mai]=उपनाम
+ Name[mk]=Други имиња
+ Name[ml]=ചെല്ലപ്പേര്
+ Name[ne]=उपनाम
+Index: kopete/plugins/translator/kopete_translator.desktop
+===================================================================
+--- kopete/plugins/translator/kopete_translator.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/translator/kopete_translator.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -46,6 +46,7 @@
+ Name[ku]=Wergêr
+ Name[lt]=Vertėjas
+ Name[lv]=Tulkotājs
++Name[mai]=अनुवादक
+ Name[mk]=Преведувач
+ Name[ml]=പരിഭാഷകന്‍
+ Name[nb]=Oversetter
+Index: kopete/plugins/translator/kopete_translator_config.desktop
+===================================================================
+--- kopete/plugins/translator/kopete_translator_config.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/translator/kopete_translator_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -41,6 +41,7 @@
+ Name[ku]=Wergêr
+ Name[lt]=Vertėjas
+ Name[lv]=Tulkotājs
++Name[mai]=अनुवादक
+ Name[mk]=Преведувач
+ Name[ml]=പരിഭാഷകന്‍
+ Name[nb]=Oversetter
+Index: kopete/plugins/statistics/kopete_statistics.desktop
+===================================================================
+--- kopete/plugins/statistics/kopete_statistics.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/statistics/kopete_statistics.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -46,6 +46,7 @@
+ Name[ku]=Statistîk
+ Name[lt]=Statistika
+ Name[lv]=Statistika
++Name[mai]=सांख्यिकी
+ Name[ml]=സ്ഥിതിവിവരം
+ Name[nb]=Statistikk
+ Name[nds]=Statistik
+Index: kopete/plugins/addbookmarks/kopete_addbookmarks.desktop
+===================================================================
+--- kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -33,6 +33,7 @@
+ Name[ko]=책갈피
+ Name[lt]=Žymelės
+ Name[lv]=Grāmatzīmes
++Name[mai]=पुस्तकचिह्न
+ Name[mk]=Обележувачи
+ Name[ml]=ഓര്‍മ്മക്കുറിപ്പുകള്‍
+ Name[nb]=Bokmerker
+@@ -58,8 +59,8 @@
+ Name[uz]=Xatchoʻplar
+ Name[uz@cyrillic]=Хатчўплар
+ Name[vi]=Dấu hiệu
++Name[xh]=Amanqaku encwadi
+ Name[x-test]=xxBookmarksxx
+-Name[xh]=Amanqaku encwadi
+ Name[zh_CN]=书签
+ Name[zh_HK]=書籤
+ Name[zh_TW]=書籤
+Index: kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop
+===================================================================
+--- kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -33,6 +33,7 @@
+ Name[ko]=책갈피
+ Name[lt]=Žymelės
+ Name[lv]=Grāmatzīmes
++Name[mai]=पुस्तकचिह्न
+ Name[mk]=Обележувачи
+ Name[ml]=ഓര്‍മ്മക്കുറിപ്പുകള്‍
+ Name[nb]=Bokmerker
+@@ -58,8 +59,8 @@
+ Name[uz]=Xatchoʻplar
+ Name[uz@cyrillic]=Хатчўплар
+ Name[vi]=Dấu hiệu
++Name[xh]=Amanqaku encwadi
+ Name[x-test]=xxBookmarksxx
+-Name[xh]=Amanqaku encwadi
+ Name[zh_CN]=书签
+ Name[zh_HK]=書籤
+ Name[zh_TW]=書籤
+Index: kopete/plugins/history/kopete_history.desktop
+===================================================================
+--- kopete/plugins/history/kopete_history.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/history/kopete_history.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -47,6 +47,7 @@
+ Name[ko]=과거 기록
+ Name[lt]=Žurnalas
+ Name[lv]=Vēsture
++Name[mai]=इतिहास
+ Name[mk]=Историја
+ Name[ml]=നാള്‍വഴി
+ Name[nb]=Historie
+@@ -75,8 +76,8 @@
+ Name[uz@cyrillic]=Тарих
+ Name[vi]=Lịch sử
+ Name[wa]=Istwere
++Name[xh]=Imbali
+ Name[x-test]=xxHistoryxx
+-Name[xh]=Imbali
+ Name[zh_CN]=历史
+ Name[zh_HK]=歷程紀錄
+ Name[zh_TW]=歷史
+Index: kopete/plugins/history/kopete_history_config.desktop
+===================================================================
+--- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -42,6 +42,7 @@
+ Name[ko]=과거 기록
+ Name[lt]=Žurnalas
+ Name[lv]=Vēsture
++Name[mai]=इतिहास
+ Name[mk]=Историја
+ Name[ml]=നാള്‍വഴി
+ Name[nb]=Historie
+@@ -70,8 +71,8 @@
+ Name[uz@cyrillic]=Тарих
+ Name[vi]=Lịch sử
+ Name[wa]=Istwere
++Name[xh]=Imbali
+ Name[x-test]=xxHistoryxx
+-Name[xh]=Imbali
+ Name[zh_CN]=历史
+ Name[zh_HK]=歷程紀錄
+ Name[zh_TW]=歷史
+Index: kopete/plugins/highlight/kopete_highlight.desktop
+===================================================================
+--- kopete/plugins/highlight/kopete_highlight.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/highlight/kopete_highlight.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -46,6 +46,7 @@
+ Name[ko]=강조
+ Name[lt]=Paryškinti
+ Name[lv]=Izcelta
++Name[mai]=उभारू
+ Name[mk]=Осветлување
+ Name[ml]=എടുത്തുകാട്ടുക
+ Name[nb]=Marker
+Index: kopete/plugins/highlight/kopete_highlight_config.desktop
+===================================================================
+--- kopete/plugins/highlight/kopete_highlight_config.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/highlight/kopete_highlight_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -40,6 +40,7 @@
+ Name[ko]=강조
+ Name[lt]=Paryškinti
+ Name[lv]=Izcelta
++Name[mai]=उभारू
+ Name[mk]=Осветлување
+ Name[ml]=എടുത്തുകാട്ടുക
+ Name[nb]=Marker
+Index: kopete/plugins/privacy/kopete_privacy_config.desktop
+===================================================================
+--- kopete/plugins/privacy/kopete_privacy_config.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/privacy/kopete_privacy_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -32,6 +32,7 @@
+ Name[ko]=사생활
+ Name[lt]=Privatumas
+ Name[lv]=Privātums
++Name[mai]=गुप्तता
+ Name[ml]=സ്വകാര്യ‌ത
+ Name[nb]=Personvern
+ Name[nds]=Privaatrebeet
+Index: kopete/plugins/privacy/kopete_privacy.desktop
+===================================================================
+--- kopete/plugins/privacy/kopete_privacy.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/plugins/privacy/kopete_privacy.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -38,6 +38,7 @@
+ Name[ko]=사생활
+ Name[lt]=Privatumas
+ Name[lv]=Privātums
++Name[mai]=गुप्तता
+ Name[ml]=സ്വകാര്യ‌ത
+ Name[nb]=Personvern
+ Name[nds]=Privaatrebeet
+Index: kopete/protocols/yahoo/kopete_yahoo.desktop
+===================================================================
+--- kopete/protocols/yahoo/kopete_yahoo.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/protocols/yahoo/kopete_yahoo.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -21,6 +21,7 @@
+ Name[hi]=याहू
+ Name[hne]=याहू
+ Name[km]=យ៉ាហ៊ូ
++Name[mai]=याहू
+ Name[ml]=യാഹൂ
+ Name[ne]=याहू
+ Name[pa]=ਯਾਹੂ
 Index: kopete/protocols/jabber/jabbercontact.cpp
 ===================================================================
---- kopete/protocols/jabber/jabbercontact.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/protocols/jabber/jabbercontact.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -51,6 +51,7 @@
- #include "kopetechatsessionmanager.h"
- #include "kopeteaccountmanager.h"
- #include "kopetemetacontact.h"
-+#include "kopetepluginmanager.h"
- #include "jabberprotocol.h"
- #include "jabberaccount.h"
- #include "jabberclient.h"
-@@ -392,9 +393,15 @@
- 		QString body = message.body ();
- 		if( !message.xencrypted().isEmpty() )
- 		{
--			body = QString ("-----BEGIN PGP MESSAGE-----\n\n") + message.xencrypted () + QString ("\n-----END PGP MESSAGE-----\n");
-+			kDebug ( JABBER_DEBUG_GLOBAL ) << "Received encrypted message";
-+			if (Kopete::PluginManager::self()->plugin("kopete_cryptography"))
-+			{
-+				kDebug( JABBER_DEBUG_GLOBAL ) << "Kopete cryptography plugin loaded";
-+				body = QString ("-----BEGIN PGP MESSAGE-----\n\n") + message.xencrypted () + QString ("\n-----END PGP MESSAGE-----\n");
-+			}
- 		}
--		else if( message.containsHTML() )
-+
-+		if( message.containsHTML() )
- 		{
- 			kDebug ( JABBER_DEBUG_GLOBAL ) << "Received a xHTML message";
- 			newMessage = new Kopete::Message ( this, contactList );
-Index: kopete/protocols/oscar/liboscar/chatroomhandler.h
-===================================================================
---- kopete/protocols/oscar/liboscar/chatroomhandler.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 0)
-+++ kopete/protocols/oscar/liboscar/chatroomhandler.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -0,0 +1,55 @@
-+/*
-+    Kopete Oscar Protocol
-+    Chat Room Handler
-+
-+    Copyright 2009 Benson Tsai <btsai@vrwarp.com>
-+
-+    Kopete ( c ) 2002-2009 by the Kopete developers <kopete-devel@kde.org>
-+
-+    based on filetransferhandler.h and filetransferhandler.cpp
-+
-+    *************************************************************************
-+    *                                                                       *
-+    * This library is free software; you can redistribute it and/or         *
-+    * modify it under the terms of the GNU Lesser General Public            *
-+    * License as published by the Free Software Foundation; either          *
-+    * version 2 of the License, or ( at your option ) any later version.    *
-+    *                                                                       *
-+    *************************************************************************
-+*/
-+#ifndef CHATROOMHANDLER_H
-+#define CHATROOMHANDLER_H
-+
-+#include <QtCore/QObject>
-+#include "oscartypes.h"
-+
-+#include "liboscar_export.h"
-+
-+class ChatRoomTask;
-+
-+class LIBOSCAR_EXPORT ChatRoomHandler : public QObject
-+{
-+	Q_OBJECT
-+public:
-+	ChatRoomHandler( ChatRoomTask* chatRoomTask );
-+
-+	void send();
-+
-+	QString internalId() const;
-+	QString contact() const;
-+	QString invite() const;
-+	Oscar::WORD exchange() const;
-+	QString room() const;
-+
-+public Q_SLOTS:
-+	void reject();
-+	void accept();
-+
-+signals:
-+	void joinChatRoom( const QString& roomName, int exchange );
-+
-+private:
-+	ChatRoomTask* m_chatRoomTask;
-+};
-+
-+#endif
-Index: kopete/protocols/oscar/liboscar/tasks/messagereceivertask.h
-===================================================================
---- kopete/protocols/oscar/liboscar/tasks/messagereceivertask.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/protocols/oscar/liboscar/tasks/messagereceivertask.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -42,6 +42,7 @@
- signals:
- 	
- 	void receivedMessage( const Oscar::Message& );
-+	void chatroomMessage( const Oscar::Message&, const QByteArray & );
- 	void fileMessage( int, const QString, const QByteArray, Buffer );
- 	
- private:
-Index: kopete/protocols/oscar/liboscar/tasks/chatroomtask.h
-===================================================================
---- kopete/protocols/oscar/liboscar/tasks/chatroomtask.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 0)
-+++ kopete/protocols/oscar/liboscar/tasks/chatroomtask.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -0,0 +1,78 @@
-+/*
-+    Kopete Oscar Protocol
-+    Chat Room Task
-+
-+    Copyright 2009 Benson Tsai <btsai@vrwarp.com>
-+
-+    Kopete ( c ) 2002-2009 by the Kopete developers <kopete-devel@kde.org>
-+
-+    based on filetransfertask.h and filetransfertask.cpp
-+
-+    *************************************************************************
-+    *                                                                       *
-+    * This library is free software; you can redistribute it and/or         *
-+    * modify it under the terms of the GNU Lesser General Public            *
-+    * License as published by the Free Software Foundation; either          *
-+    * version 2 of the License, or ( at your option ) any later version.    *
-+    *                                                                       *
-+    *************************************************************************
-+*/
-+
-+
-+#ifndef CHATROOMTASK_H
-+#define CHATROOMTASK_H
-+
-+#include "task.h"
-+
-+#include <QtCore/QFile>
-+#include <QtCore/QTimer>
-+#include <QtNetwork/QAbstractSocket>
-+
-+class QTcpServer;
-+class QTcpSocket;
-+
-+class KJob;
-+class Transfer;
-+namespace Oscar
-+{
-+	class Message;
-+}
-+
-+class ChatRoomTask : public Task
-+{
-+Q_OBJECT
-+public:
-+	/** create an incoming chatroom request */
-+	ChatRoomTask( Task* parent, const QString& contact, const QString& self, QByteArray cookie, const QString& msg, const Oscar::WORD exchange, const QString& room );
-+	~ChatRoomTask();
-+
-+	QString internalId() const;
-+	QString contactName() const;
-+	QString inviteMessage() const;
-+	Oscar::WORD exchange() const;
-+	QString room() const;
-+
-+	//! Task implementation
-+	virtual bool take( Transfer* transfer );
-+
-+protected:
-+	virtual void onGo();
-+
-+public slots:
-+	void doReject();
-+	void doAccept();
-+
-+signals:
-+	void joinChatRoom( const QString& roomName, int exchange );
-+
-+private:
-+	QString m_contactName; //other person's username
-+	QString m_selfName; //my username
-+	QByteArray m_cookie;
-+	QString m_msg;
-+	Oscar::WORD m_exchange;
-+	QString m_room;
-+};
-+
-+#endif
-+//kate: space-indent off; tab-width 4; indent-mode csands;
-Index: kopete/protocols/oscar/liboscar/tasks/chatroomtask.cpp
-===================================================================
---- kopete/protocols/oscar/liboscar/tasks/chatroomtask.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 0)
-+++ kopete/protocols/oscar/liboscar/tasks/chatroomtask.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -0,0 +1,123 @@
-+/*
-+    Kopete Oscar Protocol
-+    Chat Room Task
-+
-+    Copyright 2009 Benson Tsai <btsai@vrwarp.com>
-+
-+    Kopete ( c ) 2002-2009 by the Kopete developers <kopete-devel@kde.org>
-+
-+    based on filetransfertask.h and filetransfertask.cpp
-+
-+    *************************************************************************
-+    *                                                                       *
-+    * This library is free software; you can redistribute it and/or         *
-+    * modify it under the terms of the GNU Lesser General Public            *
-+    * License as published by the Free Software Foundation; either          *
-+    * version 2 of the License, or ( at your option ) any later version.    *
-+    *                                                                       *
-+    *************************************************************************
-+*/
-+
-+#include "chatroomtask.h"
-+
-+#include <QtCore/QFileInfo>
-+#include <QtCore/QTextCodec>
-+#include <QtNetwork/QHostAddress>
-+#include <QtNetwork/QTcpServer>
-+#include <QtNetwork/QTcpSocket>
-+#include <QtXml/QDomDocument>
-+
-+#include <ksocketfactory.h>
-+#include <krandom.h>
-+#include <kio/global.h>
-+
-+#include <klocale.h>
-+#include <kdebug.h>
-+
-+#include "buffer.h"
-+#include "oscarutils.h"
-+#include "oscarmessage.h"
-+#include "connection.h"
-+#include "oscarsettings.h"
-+#include "oftmetatransfer.h"
-+
-+//receive
-+ChatRoomTask::ChatRoomTask(Task* parent, const QString& contact, const QString& self, QByteArray cookie, const QString& msg, const Oscar::WORD exchange, const QString& room)
-+		: Task(parent), m_contactName(contact), m_selfName(self), m_cookie(cookie), m_msg(msg), m_exchange(exchange), m_room(room)
-+{
-+}
-+
-+ChatRoomTask::~ChatRoomTask()
-+{
-+	kDebug(OSCAR_RAW_DEBUG) << "done";
-+}
-+
-+QString ChatRoomTask::internalId() const
-+{
-+	return QString( m_cookie.toHex() );
-+}
-+
-+QString ChatRoomTask::contactName() const
-+{
-+	return m_contactName;
-+}
-+
-+QString ChatRoomTask::inviteMessage() const
-+{
-+	return m_msg;
-+}
-+
-+Oscar::WORD ChatRoomTask::exchange() const
-+{
-+	return m_exchange;
-+}
-+
-+QString ChatRoomTask::room() const
-+{
-+	return m_room;
-+}
-+
-+void ChatRoomTask::onGo()
-+{
-+	return;
-+}
-+
-+bool ChatRoomTask::take( Transfer* transfer )
-+{
-+	Q_UNUSED(transfer);
-+	return false;
-+}
-+
-+void ChatRoomTask::doReject()
-+{
-+	kDebug() << "invitation to join chat " << m_room << " rejected!";
-+
-+	Buffer* b = new Buffer();
-+	b->addString( m_cookie, 8 );
-+	b->addWord( 0x0002 );
-+	// nick name
-+	b->addByte( m_contactName.toUtf8().length() );
-+	b->addString( m_contactName.toUtf8() );
-+	// rejection!
-+	b->addWord( 0x0003 );
-+	b->addWord( 0x0002 );
-+	b->addWord( 0x0001 );
-+
-+	FLAP f = { 0x02, 0, 0 };
-+	SNAC s = { 0x0004, 0x000B, 0x0000, client()->snacSequence() };
-+	Transfer* t = createTransfer( f, s, b );
-+	send( t );
-+	setSuccess( true );
-+}
-+
-+void ChatRoomTask::doAccept()
-+{
-+	kDebug() << "invitation to join chat " << m_room << " accepted!";
-+	emit joinChatRoom( m_room, m_exchange );
-+	setSuccess( true );
-+}
-+
-+
-+#include "chatroomtask.moc"
-+//kate: space-indent off; tab-width 4; indent-mode csands;
-+
-Index: kopete/protocols/oscar/liboscar/tasks/chatservicetask.cpp
-===================================================================
---- kopete/protocols/oscar/liboscar/tasks/chatservicetask.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/protocols/oscar/liboscar/tasks/chatservicetask.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -74,7 +74,7 @@
-     TLV type2, type3, type1;
- 
-     type2.type = 0x0002;
--    type2.length = 0x0008;
-+    type2.length = m_encoding.length();
-     type2.data = m_encoding;
- 
-     type3.type = 0x0003;
-Index: kopete/protocols/oscar/liboscar/tasks/profiletask.cpp
-===================================================================
---- kopete/protocols/oscar/liboscar/tasks/profiletask.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/protocols/oscar/liboscar/tasks/profiletask.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -127,6 +127,8 @@
- 		capBuf.addGuid( oscar_caps[CAP_BUDDYICON] ); //can you take my picture?
- 		capBuf.addGuid( oscar_caps[CAP_INTEROPERATE] ); //AIM can communicate with ICQ users and ICQ with AIM users.
- 
-+		capBuf.addGuid( oscar_caps[CAP_CHAT] );
-+
- 		kDebug(OSCAR_RAW_DEBUG) << "adding capabilities, size=" << capBuf.length();
- 		buffer->addTLV(0x0005, capBuf.buffer());
- 	}
-Index: kopete/protocols/oscar/liboscar/tasks/messagereceivertask.cpp
-===================================================================
---- kopete/protocols/oscar/liboscar/tasks/messagereceivertask.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/protocols/oscar/liboscar/tasks/messagereceivertask.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -20,6 +20,7 @@
- #include <qtextcodec.h>
- #include <QList>
- #include <QByteArray>
-+#include <QRegExp>
- #include <kdebug.h>
- #include "transfer.h"
- #include "buffer.h"
-@@ -209,6 +210,8 @@
- 	kDebug(14151) << "Received Type 2 message. Trying to handle it...";
- 
- 	Oscar::Message msg;
-+	msg.setSender( m_fromUser );
-+	msg.setReceiver( client()->userId() );
- 	QList<TLV> messageTLVList = transfer()->buffer()->getTLVList();
- 	TLV t = Oscar::findTLV( messageTLVList, 0x0005 );
- 	if ( !t )
-@@ -222,6 +225,7 @@
- 	// request type
- 	int requestType = messageBuffer.getWord();
- 	kDebug(14151) << "Request type (0 - request, 1 - cancel, 2 - accept): " << requestType;
-+	msg.setRequestType( requestType );
- 
- 	// skip the message id cookie, already handled above
- 	messageBuffer.skipBytes( 8 );
-@@ -235,6 +239,12 @@
+--- kopete/protocols/jabber/jabbercontact.cpp	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/protocols/jabber/jabbercontact.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -1327,7 +1327,6 @@
+ 		if(!Kopete::AccountManager::self()->registerAccount( transport ))
+ 			return;
+ 		
+-		transport->setIdentity( parentAccount->identity() );
+ 		transport->myself()->setOnlineStatus( status ); //push back the online status
  		return;
  	}
- 
-+	if ( g == oscar_caps[CAP_CHAT] )
-+	{
-+		kDebug(14151) << "**************this is a chat message************";
-+		msg.setMessageType( Oscar::MessageType::Chat );
-+	}
-+
- 	while( messageBuffer.bytesAvailable() > 0 )
- 	{
- 		TLV tlv = messageBuffer.getTLV();
-@@ -256,6 +266,11 @@
- 			kDebug(OSCAR_RAW_DEBUG) << "Got unknown TLV 0x000B: "
- 				<< tlv.length << " data: " << tlv.data << endl;
- 			break;
-+		case 0x000C:
-+			kDebug(OSCAR_RAW_DEBUG) << "Got chat invitation message: "
-+				<< tlv.length << " data: " << tlv.data << endl;
-+			msg.setTextArray(tlv.data);
-+			break;
- 		case 0x000F:
- 			kDebug(OSCAR_RAW_DEBUG) << "Got unknown empty TLV 0x000F";
- 			break;
-@@ -264,22 +279,26 @@
- 			kDebug(OSCAR_RAW_DEBUG) << "Got a TLV 2711";
- 			Buffer tlv2711Buffer( tlv.data );
- 			parseRendezvousData( &tlv2711Buffer, &msg );
--			switch ( requestType )
-+			if(msg.messageType() == Oscar::MessageType::Chat)
-+				emit chatroomMessage( msg, m_icbmCookie );
-+			else
- 			{
--			case 0x00: // some request
--				emit receivedMessage( msg );
--				break;
--			case 0x01:
--				kDebug(OSCAR_RAW_DEBUG) << "Received Abort Mesage";
--				break;
--			case 0x02:
--				kDebug(OSCAR_RAW_DEBUG) << "Received OK Message";
--				break;
--			default:
--			kDebug(OSCAR_RAW_DEBUG) << "Received unknown request type: " << requestType;
--				break;
-+				switch ( requestType )
-+				{
-+				case 0x00: // some request
-+					emit receivedMessage( msg );
-+					break;
-+				case 0x01:
-+					kDebug(OSCAR_RAW_DEBUG) << "Received Abort Mesage";
-+					break;
-+				case 0x02:
-+					kDebug(OSCAR_RAW_DEBUG) << "Received OK Message";
-+					break;
-+				default:
-+				kDebug(OSCAR_RAW_DEBUG) << "Received unknown request type: " << requestType;
-+					break;
-+				}
- 			}
--
- 			break;
- 		} //end case
- 		default:
-@@ -382,6 +401,35 @@
- 
- void MessageReceiverTask::parseRendezvousData( Buffer* b, Oscar::Message* msg )
- {
-+	// Do chat stuff
-+	if ( msg->messageType() == Oscar::MessageType::Chat )
-+	{
-+		// unknown, maybe it is always 00 04 23 21
-+		b->skipBytes( 4 );
-+
-+		QString joinString( b->getBlock( b->length() - 4 ) );
-+
-+		QRegExp rx( "aol://2719:(\\d+)-(\\d+)-(\\w+)" );
-+		if ( rx.exactMatch( joinString ) )
-+		{
-+			bool okay = true;
-+			Oscar::WORD num = rx.cap( 1 ).toUShort( &okay, 10 );
-+			Oscar::WORD exchange = rx.cap( 2 ).toUShort( &okay, 10 );
-+			QString chatroom = rx.cap( 3 );
-+
-+			if ( num != 10 )
-+				kDebug() << "Warning: Expecting 10 but got " << num;
-+
-+			msg->setExchange( exchange );
-+			msg->setChatRoom( chatroom );
-+			return;
-+		}
-+
-+		kDebug() << "Error: Join string '" << joinString << "' did not match the regex.";
-+
-+		return;
-+	}
-+
- 	int length1 =  b->getLEWord();
- 	if ( length1 != 0x001B )
- 	{	// all real messages (actually their header) seem to have length 0x1B
-Index: kopete/protocols/oscar/liboscar/client.cpp
+Index: kopete/protocols/jabber/jabberchatsession.cpp
 ===================================================================
---- kopete/protocols/oscar/liboscar/client.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/protocols/oscar/liboscar/client.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -73,6 +73,8 @@
- #include "icqtlvinforequesttask.h"
- #include "icqtlvinfoupdatetask.h"
- #include "filetransferhandler.h"
-+#include "chatroomtask.h"
-+#include "chatroomhandler.h"
+--- kopete/protocols/jabber/jabberchatsession.cpp	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/protocols/jabber/jabberchatsession.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -146,7 +146,7 @@
+ 	Kopete::ContactPtrList chatMembers = members ();
  
+ 	// make sure we do have members in the chat
+-	if ( !chatMembers.first () )
++	if ( chatMembers.isEmpty () || !chatMembers.first () )
+ 		return;
  
- namespace
-@@ -590,7 +592,7 @@
-         if ( !c )
-             return;
- 
--        kDebug(OSCAR_RAW_DEBUG) << "sending message to chat room";
-+	    kDebug(OSCAR_RAW_DEBUG) << "sending message to chat room: " << msg.chatRoom() << " on exchange " << msg.exchange();
-         ChatServiceTask* cst = new ChatServiceTask( c->rootTask(), msg.exchange(), msg.chatRoom() );
-         cst->setMessage( msg );
-         cst->setEncoding( d->codecProvider->codecForAccount()->name() );
-@@ -820,6 +822,8 @@
- 	         this, SLOT( receivedMessage( const Oscar::Message& ) ) );
- 	connect( d->messageReceiverTask, SIGNAL( fileMessage( int, const QString, const QByteArray, Buffer ) ),
- 	         this, SLOT( gotFileMessage( int, const QString, const QByteArray, Buffer ) ) );
-+	connect( d->messageReceiverTask, SIGNAL( chatroomMessage( const Oscar::Message&, const QByteArray & ) ),
-+	         this, SLOT( gotChatRoomMessage( const Oscar::Message&, const QByteArray & ) ) );
- 
- 	connect( d->messageAckTask, SIGNAL(messageAck(const QString&, uint)),
- 	         this, SIGNAL(messageAck(const QString&, uint)) );
-@@ -1597,10 +1601,10 @@
- 		{
- 			kDebug(OSCAR_RAW_DEBUG) << "setting up chat connection";
- 			ChatServiceTask* cst = new ChatServiceTask( c->rootTask(), exchange, roomName );
--			connect( cst, SIGNAL( userJoinedChat( Oscar::Oscar::WORD, const QString&, const QString& ) ),
--			         this, SIGNAL( userJoinedChat( Oscar::Oscar::WORD, const QString&, const QString& ) ) );
--			connect( cst, SIGNAL( userLeftChat( Oscar::Oscar::WORD, const QString&, const QString& ) ),
--			         this, SIGNAL( userLeftChat( Oscar::Oscar::WORD, const QString&, const QString& ) ) );
-+			connect( cst, SIGNAL( userJoinedChat( Oscar::WORD, const QString&, const QString& ) ),
-+			         this, SIGNAL( userJoinedChat( Oscar::WORD, const QString&, const QString& ) ) );
-+			connect( cst, SIGNAL( userLeftChat( Oscar::WORD, const QString&, const QString& ) ),
-+			         this, SIGNAL( userLeftChat( Oscar::WORD, const QString&, const QString& ) ) );
- 			connect( cst, SIGNAL( newChatMessage( const Oscar::Message& ) ),
- 			         this, SIGNAL( messageReceived( const Oscar::Message& ) ) );
- 		}
-@@ -1765,6 +1769,17 @@
- 	return new FileTransferHandler(ft);
- }
- 
-+void Client::gotChatRoomMessage( const Oscar::Message & msg, const QByteArray & cookie )
-+{
-+	Connection* c = d->connections.connectionForFamily( 0x0004 );
-+	if ( msg.requestType() == 0 )
-+	{
-+		ChatRoomTask *task = new ChatRoomTask( c->rootTask(), msg.sender(), msg.receiver(), cookie, msg.text( QTextCodec::codecForName( "UTF-8" ) ), msg.exchange(), msg.chatRoom() );
-+		task->go( Task::AutoDelete );
-+		emit chatroomRequest( new ChatRoomHandler( task ) );
-+	}
-+}
-+
- void Client::gotFileMessage( int type, const QString from, const QByteArray cookie, Buffer buf)
- {
- 	Connection* c = d->connections.connectionForFamily( 0x0004 );
-Index: kopete/protocols/oscar/liboscar/client.h
+ 	XMPP::Jid jid = static_cast<JabberBaseContact*>(chatMembers.first())->rosterItem().jid();
+Index: kopete/kopete/kopete.notifyrc
 ===================================================================
---- kopete/protocols/oscar/liboscar/client.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/protocols/oscar/liboscar/client.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -43,6 +43,7 @@
- class Task;
- class QTextCodec;
- class FileTransferHandler;
-+class ChatRoomHandler;
- 
- namespace Kopete
- {
-@@ -366,8 +367,6 @@
- 	//! Start uploading a buddy icon
- 	void sendBuddyIcon( const QByteArray& imageData );
- 
--    void joinChatRoom( const QString& roomName, int exchange );
--
- 	void setIgnore( const QString& user, bool ignore );
- 	
- 	void setVisibleTo( const QString& user, bool visible );
-@@ -457,6 +456,9 @@
- 	/** Notify that a socket error has occurred */
- 	void notifySocketError( int errCode, const QString& msg );
- 
-+public slots:
-+	void joinChatRoom( const QString& roomName, int exchange );
-+
- signals:
- 	/** CONNECTION EVENTS */
- 
-@@ -543,6 +545,7 @@
-     void chatRoomConnected( Oscar::WORD, const QString& );
-     void userJoinedChat( Oscar::WORD, const QString& room, const QString& contact );
-     void userLeftChat( Oscar::WORD, const QString& room, const QString& contact );
-+	void chatroomRequest( ChatRoomHandler* handler );
- 
- 	/* service redirection */
- 	void redirectionFinished( Oscar::WORD );
-@@ -587,6 +590,9 @@
- 	/** rendezvous message for a filetransfer task */
- 	void gotFileMessage( int, const QString, const QByteArray, Buffer );
- 
-+	/** rendezvous message for a chatroom task */
-+	void gotChatRoomMessage( const Oscar::Message & msg, const QByteArray & cookie );
-+
- 	void offlineUser( const QString&, const UserDetails& );
- 
- 	void haveServerForRedirect( const QString& host, const QByteArray& cookie, Oscar::WORD family );
-@@ -598,12 +604,12 @@
-      * Set the list of chat room exchanges we have
-      */
-     void setChatExchangeList( const QList<int>& exchanges );
--    
-+
-     /**
-      * set up the connection to a chat room
-      */
-     void setupChatConnection( Oscar::WORD, QByteArray, Oscar::WORD, const QString& );
--    
-+
-     void determineDisconnection( int, const QString& );
- 
- 	void nextICQAwayMessageRequest();
-Index: kopete/protocols/oscar/liboscar/CMakeLists.txt
+--- kopete/kopete/kopete.notifyrc	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/kopete/kopete.notifyrc	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -69,6 +69,7 @@
+ Name[ko]=그룹
+ Name[lt]=Grupė
+ Name[lv]=Grupa
++Name[mai]=समूह
+ Name[ml]=കൂട്ടം
+ Name[nb]=Gruppe
+ Name[nds]=Koppel
+@@ -157,6 +158,7 @@
+ Name[ko]=대화 상대
+ Name[lt]=Kontaktinis asmuo
+ Name[lv]=Kontakts
++Name[mai]=संपर्क
+ Name[ml]=സമ്പര്‍ക്കം
+ Name[nb]=Kontakt
+ Name[nds]=Kontakt
+@@ -245,6 +247,7 @@
+ Name[ko]=등급
+ Name[lt]=Klasė
+ Name[lv]=Klase
++Name[mai]=वर्ग
+ Name[ml]=വിഭാഗം
+ Name[nb]=Klasse
+ Name[nds]=Klass
+@@ -730,6 +733,7 @@
+ Name[ko]=오프라인
+ Name[lt]=Atsijungę
+ Name[lv]=Nesaistē
++Name[mai]=आफलाइन
+ Name[mk]=Не на линија
+ Name[ml]=ഓഫ്‌ലൈന്‍‍
+ Name[nb]=Frakoblet
+@@ -959,6 +963,7 @@
+ Name[ko]=강조
+ Name[lt]=Paryškinti
+ Name[lv]=Izcelta
++Name[mai]=उभारू
+ Name[mk]=Осветлување
+ Name[ml]=എടുത്തുകാട്ടുക
+ Name[nb]=Marker
+@@ -1584,6 +1589,7 @@
+ Name[ko]=연결 오류
+ Name[lt]=Ryšio klaida
+ Name[lv]=Savienojuma kļūda
++Name[mai]=संबंधनमे त्रुटि
+ Name[ml]=ബന്ധപ്പെടുന്നതില്‍ പിശകു്
+ Name[nb]=Tilkoblingsfeil
+ Name[nds]=Verbinnen-Fehler
+Index: kopete/kopete/kopete.desktop
 ===================================================================
---- kopete/protocols/oscar/liboscar/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/protocols/oscar/liboscar/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
+--- kopete/kopete/kopete.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/kopete/kopete.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -40,6 +40,7 @@
+ GenericName[ko]=인스턴트 메신저
+ GenericName[lt]=Momentinių žinučių klientas
+ GenericName[lv]=Tūlītējā ziņojumapmaiņa
++GenericName[mai]=इंसटैंट मैसेंजर
+ GenericName[mk]=Инстант гласник
+ GenericName[ml]=അതിവേഗ ദൂതന്‍
+ GenericName[nb]=Hurtigmelding
+@@ -99,6 +100,7 @@
+ Comment[ko]=인스턴트 메신저
+ Comment[lt]=Momentinių žinučių klientas
+ Comment[lv]=Tūlītējas ziņojumapmaiņas programma
++Comment[mai]=इंसटैंट मैसेंजर
+ Comment[mk]=Инстант гласник
+ Comment[ml]=അതിവേഗ ദൂതന്‍
+ Comment[nb]=Hurtigmeldingssystem
+Index: kopete/kopete/config/accounts/kopete_accountconfig.desktop
+===================================================================
+--- kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
 @@ -42,6 +42,7 @@
-     xtrazxtraznotify.cpp
-     xtrazxrandomizerservice.cpp
-     filetransferhandler.cpp
-+    chatroomhandler.cpp
-     tasks/task.cpp
-     tasks/logintask.cpp
-     tasks/oscarlogintask.cpp
-@@ -84,6 +85,7 @@
-     tasks/icqchangepasswordtask.cpp
-     tasks/icqtlvinforequesttask.cpp
-     tasks/icqtlvinfoupdatetask.cpp
-+    tasks/chatroomtask.cpp
-     utils/rtf.cc
- )
- 
-Index: kopete/protocols/oscar/liboscar/chatroomhandler.cpp
+ Name[ko]=계정
+ Name[lt]=Paskyros
+ Name[lv]=Konti
++Name[mai]=खाता
+ Name[mk]=Сметки
+ Name[ml]=എക്കൌണ്ടുകള്‍
+ Name[nb]=Kontoer
+Index: kopete/kopete/config/behavior/kopete_behaviorconfig.desktop
 ===================================================================
---- kopete/protocols/oscar/liboscar/chatroomhandler.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 0)
-+++ kopete/protocols/oscar/liboscar/chatroomhandler.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -0,0 +1,66 @@
-+/*
-+    Kopete Oscar Protocol
-+    Chat Room Handler
-+
-+    Copyright 2009 Benson Tsai <btsai@vrwarp.com>
-+
-+    Kopete ( c ) 2002-2009 by the Kopete developers <kopete-devel@kde.org>
-+
-+    based on filetransferhandler.h and filetransferhandler.cpp
-+
-+    *************************************************************************
-+    *                                                                       *
-+    * This library is free software; you can redistribute it and/or         *
-+    * modify it under the terms of the GNU Lesser General Public            *
-+    * License as published by the Free Software Foundation; either          *
-+    * version 2 of the License, or ( at your option ) any later version.    *
-+    *                                                                       *
-+    *************************************************************************
-+*/
-+#include "chatroomhandler.h"
-+
-+#include "chatroomtask.h"
-+
-+ChatRoomHandler::ChatRoomHandler( ChatRoomTask* chatRoomTask )
-+		: QObject( chatRoomTask ), m_chatRoomTask( chatRoomTask )
-+{
-+	connect( chatRoomTask, SIGNAL( joinChatRoom( const QString&, int ) ),
-+	         this, SIGNAL( joinChatRoom( const QString&, int ) ) );
-+}
-+
-+QString ChatRoomHandler::internalId() const
-+{
-+	return m_chatRoomTask->internalId();
-+}
-+
-+QString ChatRoomHandler::contact() const
-+{
-+	return m_chatRoomTask->contactName();
-+}
-+
-+QString ChatRoomHandler::invite() const
-+{
-+	return m_chatRoomTask->inviteMessage();
-+}
-+
-+Oscar::WORD ChatRoomHandler::exchange() const
-+{
-+	return m_chatRoomTask->exchange();
-+}
-+
-+QString ChatRoomHandler::room() const
-+{
-+	return m_chatRoomTask->room();
-+}
-+
-+void ChatRoomHandler::reject()
-+{
-+	m_chatRoomTask->doReject();
-+}
-+
-+void ChatRoomHandler::accept()
-+{
-+	m_chatRoomTask->doAccept();
-+}
-+
-+#include "chatroomhandler.moc"
-Index: kopete/protocols/oscar/aim/aimaccount.cpp
+--- kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -43,6 +43,7 @@
+ Name[ko]=행동
+ Name[lt]=Elgsena
+ Name[lv]=Izturēšanās
++Name[mai]=व्यवहार
+ Name[mk]=Однесување
+ Name[ml]=പെരുമാറ്റം
+ Name[nb]=Oppførsel
+Index: kopete/kopete/config/plugins/kopete_pluginconfig.desktop
 ===================================================================
---- kopete/protocols/oscar/aim/aimaccount.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/protocols/oscar/aim/aimaccount.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -217,8 +217,8 @@
- 	mInitialStatusMessage.clear();
- 
- 	m_joinChatDialog = 0;
--	QObject::connect( engine(), SIGNAL( chatRoomConnected( WORD, const QString& ) ),
--			this, SLOT( connectedToChatRoom( WORD, const QString& ) ) );
-+	QObject::connect( engine(), SIGNAL( chatRoomConnected( Oscar::WORD, const QString& ) ),
-+	                  this, SLOT( connectedToChatRoom( Oscar::WORD, const QString& ) ) );
- 
- 	QObject::connect( engine(), SIGNAL( userJoinedChat( Oscar::WORD, const QString&, const QString& ) ),
- 			this, SLOT( userJoinedChat( Oscar::WORD, const QString&, const QString& ) ) );
-Index: kopete/protocols/oscar/oscaraccount.h
+--- kopete/kopete/config/plugins/kopete_pluginconfig.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/kopete/config/plugins/kopete_pluginconfig.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -36,6 +36,7 @@
+ Name[ko]=플러그인
+ Name[lt]=Įskiepiai
+ Name[lv]=Spraudņi
++Name[mai]=प्लगिन
+ Name[ml]=സംയോജകങ്ങള്‍
+ Name[nb]=Programtillegg
+ Name[nds]=Modulen
+Index: kopete/kopete/config/status/kopete_statusconfig.desktop
 ===================================================================
---- kopete/protocols/oscar/oscaraccount.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/protocols/oscar/oscaraccount.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -185,6 +185,8 @@
- 	void fileTransferRefused( const Kopete::FileTransferInfo& info );
- 	void fileTransferAccept( Kopete::Transfer* t , const QString& fileName );
- 
-+	void chatroomRequest( ChatRoomHandler* handler );
-+
- signals:
- 
- 	void accountDisconnected( Kopete::Account::DisconnectReason reason );
-Index: kopete/protocols/oscar/oscaraccount.cpp
-===================================================================
---- kopete/protocols/oscar/oscaraccount.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/protocols/oscar/oscaraccount.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -47,6 +47,7 @@
- #include <klocale.h>
- #include <kcodecs.h>
- #include <kmessagebox.h>
-+#include <kdialog.h>
- #include <kpassivepopup.h>
- #include <kstandarddirs.h>
- 
-@@ -62,6 +63,7 @@
- #include "kopeteversion.h"
- #include "oscarversionupdater.h"
- #include "filetransferhandler.h"
-+#include "chatroomhandler.h"
- #include "nscainfoevent.h"
- #include "oscarpresence.h"
- #include "oscarprotocol.h"
-@@ -152,6 +154,8 @@
- 	                  this, SLOT( slotSendBuddyIcon() ) );
- 	QObject::connect( d->engine, SIGNAL(incomingFileTransfer(FileTransferHandler*)),
- 	                  this, SLOT(incomingFileTransfer(FileTransferHandler*)) );
-+	QObject::connect( d->engine, SIGNAL(chatroomRequest(ChatRoomHandler*)),
-+	                  this, SLOT(chatroomRequest(ChatRoomHandler*)) );
- 
- 	Kopete::TransferManager *tm = Kopete::TransferManager::transferManager();
- 	QObject::connect( tm, SIGNAL(refused(const Kopete::FileTransferInfo&)),
-@@ -444,6 +448,41 @@
-     d->olnscDialog = 0L;
- }
- 
-+void OscarAccount::chatroomRequest( ChatRoomHandler* handler )
-+{
-+	KGuiItem buttonYes( KStandardGuiItem::yes() );
-+	KGuiItem buttonNo( KStandardGuiItem::no() );
-+	buttonYes.setText( i18nc( "@action:button filter-yes", "%1", KStandardGuiItem::yes().text() ) );
-+	buttonNo.setText( i18nc( "@action:button filter-no", "%1", KStandardGuiItem::no().text() ) );
-+	i18nc( "@action:button post-filter", "." );
-+
-+	KDialog *dialog = new KDialog( NULL, Qt::Dialog );
-+	dialog->setCaption( i18n( "Chat Room Invitation" ) );
-+	dialog->setButtons( KDialog::Yes | KDialog::No );
-+	dialog->setObjectName( "questionYesNoCancel" );
-+	dialog->setModal( false );
-+	dialog->showButtonSeparator( true );
-+	dialog->setButtonGuiItem( KDialog::Yes, buttonYes );
-+	dialog->setButtonGuiItem( KDialog::No, buttonNo );
-+	dialog->setDefaultButton( KDialog::Yes );
-+	dialog->setEscapeButton( KDialog::No );
-+
-+	QObject::connect( dialog, SIGNAL( yesClicked() ),
-+	                  handler, SLOT( accept() ) );
-+	QObject::connect( dialog, SIGNAL( noClicked() ),
-+	                  handler, SLOT( reject() ) );
-+	QObject::connect( handler, SIGNAL( joinChatRoom( const QString&, int ) ),
-+	                  engine(), SLOT( joinChatRoom( const QString&, int ) ) );
-+
-+	KMessageBox::createKMessageBox( dialog, QMessageBox::Question,
-+	                                ( handler->contact() + ": " + handler->invite() ), QStringList(),
-+	                                QString(), NULL, KMessageBox::NoExec );
-+
-+	dialog->show();
-+	dialog->raise();
-+	dialog->activateWindow();
-+}
-+
- void OscarAccount::incomingFileTransfer( FileTransferHandler* ftHandler )
- {
- 	QString sender = Oscar::normalize( ftHandler->contact() );
-Index: kopete/protocols/CMakeLists.txt
-===================================================================
---- kopete/protocols/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/protocols/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -12,7 +12,6 @@
- option(WITH_qq "Enable Kopete QQ protocol" ON)
- option(WITH_sms "Enable Kopete SMS protocol" ON)
- option(WITH_groupwise "Enable Novell GroupWise Messenger protocol" ON)
--option(WITH_telepathy "Enable Telepathy testbed protocol" OFF)
- option(WITH_winpopup "Enable Kopete winpopup protocol" ON)
- option(WITH_gadu "Enable Kopete Gadu-Gadu protocol" ON)
- option(WITH_jabber "Enable Kopete Jabber protocol" ON)
-@@ -75,10 +74,6 @@
-   add_subdirectory( testbed )
- endif(WITH_testbed)
- 
--if(WITH_telepathy AND DECIBEL_FOUND)
--  add_subdirectory( telepathy )
--endif(WITH_telepathy AND DECIBEL_FOUND)
--
- if(WITH_bonjour)
-   add_subdirectory( bonjour )
- endif(WITH_bonjour)
-Index: kopete/kopete/contactlist/kopetemetacontactlvi.cpp
-===================================================================
---- kopete/kopete/contactlist/kopetemetacontactlvi.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/kopete/contactlist/kopetemetacontactlvi.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -479,7 +479,7 @@
- 				notify->setPixmap(QPixmap::fromImage(m_metaContact->picture().image()));
- 				connect(notify, SIGNAL(activated(unsigned int )) , this, SLOT( execute() ) );
- 
--				notify->addContext( qMakePair( QString::fromLatin1("metacontact") , m_metaContact->metaContactId()) );
-+				notify->addContext( qMakePair( QString::fromLatin1("contact") , m_metaContact->metaContactId()) );
- 				foreach( Kopete::Group *g , m_metaContact->groups() )
- 				{
- 					notify->addContext( qMakePair( QString::fromLatin1("group") , QString::number(g->groupId())) );
-Index: kopete/kopete/kopetewindow.h
-===================================================================
---- kopete/kopete/kopetewindow.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/kopete/kopetewindow.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -72,6 +72,7 @@
- 	void slotConfGlobalKeys();
- 	void slotShowHide();
- 	void slotToggleAway();
-+	void slotNewInfoEvent();
- 
- 
- 	void setStatusMessage( const Kopete::StatusMessage& );
-Index: kopete/kopete/CMakeLists.txt
-===================================================================
---- kopete/kopete/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/kopete/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -17,7 +17,7 @@
- ${CMAKE_CURRENT_SOURCE_DIR}/contactlist/ 
- ${CMAKE_CURRENT_BINARY_DIR}/contactlist/ 
- ${CMAKE_CURRENT_SOURCE_DIR}/config/plugins/
--${BLITZ_INCLUDES}
-+${QIMAGEBLITZ_INCLUDES}
- )
- 
- link_directories( 
-@@ -77,7 +77,7 @@
- 	${KDE4_KDE3SUPPORT_LIBS}
- 	${KDE4_KABC_LIBS}
- 	${KDE4_SOLID_LIBRARY}
--	${BLITZ_LIBRARIES}
-+	${QIMAGEBLITZ_LIBRARIES}
- 	kopete 
- 	kopeteaddaccountwizard
- 	kopetestatusmenu
-Index: kopete/kopete/kopetewindow.cpp
-===================================================================
---- kopete/kopete/kopetewindow.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/kopete/kopetewindow.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -4,7 +4,7 @@
-     Copyright (c) 2001-2002 by Duncan Mac-Vicar Prett <duncan@kde.org>
-     Copyright (c) 2001-2002 by Stefan Gehn            <metz AT gehn.net>
-     Copyright (c) 2002-2003 by Martijn Klingens       <klingens@kde.org>
--    Copyright (c) 2002-2005 by Olivier Goffart        <ogoffart at kde.org>
-+    Copyright (c) 2002-2009 by Olivier Goffart        <ogoffart at kde.org>
-     Copyright (c) 2005-2006 by Will Stephenson        <wstephenson@kde.org>
-     Copyright (c) 2008      by Roman Jarosz           <kedgedev@centrum.cz>
- 
-@@ -272,6 +272,7 @@
- 	connect ( infoLabel, SIGNAL(clicked()), this, SLOT(slotInfoIconClicked()) );
- 	statusBarMessageLayout->addWidget ( infoLabel );
- 	statusBarMessageLayout->addSpacing ( 1 );
-+	connect( Kopete::InfoEventManager::self(), SIGNAL(eventAdded(Kopete::InfoEvent*)), this, SLOT(slotNewInfoEvent()) );
- 
- 	d->globalStatusMessage = new KSqueezedTextLabel ( statusBarMessage );
- 	connect ( Kopete::StatusManager::self(), SIGNAL ( globalStatusChanged() ),
-@@ -1361,5 +1362,18 @@
- }
- 
- 
-+void KopeteWindow::slotNewInfoEvent()
-+{
-+	if ( !d->infoEventWidget->isVisible() )
-+	{
-+		if ( d->identitywidget->isVisible() )
-+		{
-+			d->identitywidget->setIdentity( 0 );
-+			d->identitywidget->setVisible( false );
-+		}
-+		d->infoEventWidget->setVisible( true );
-+	}
-+}
-+
- #include "kopetewindow.moc"
- // vim: set noet ts=4 sts=4 sw=4:
-Index: kopete/kopete/chatwindow/kopetechatwindow.cpp
-===================================================================
---- kopete/kopete/chatwindow/kopetechatwindow.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/kopete/chatwindow/kopetechatwindow.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -359,7 +359,7 @@
- 	//Default to 'Return' and 'Enter' for sending messages
- 	//'Return' is the key in the main part of the keyboard
- 	//'Enter' is on the Numpad
--	KShortcut chatSendShortcut( QKeySequence(Qt::Key_Return), QKeySequence(Qt::Key_Enter) );
-+	KShortcut chatSendShortcut( QKeySequence((int)Qt::Key_Return), QKeySequence((int)Qt::Key_Enter) );
- 	chatSend->setShortcut( chatSendShortcut );
- 	chatSend->setEnabled( false );
- 
-Index: kopete/CMakeLists.txt
-===================================================================
---- kopete/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -1,7 +1,7 @@
- project(kopete)
- KDE4_NO_ENABLE_FINAL(kopete)
- 
--FIND_PACKAGE(Blitz REQUIRED)
-+FIND_PACKAGE(QImageBlitz REQUIRED)
- 
- # Configure checks
- include (TestBigEndian)
-Index: kopete/libkopete/avdevice/videodevice.cpp
-===================================================================
---- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -1512,6 +1512,7 @@
- 					CLEAR (control);
- 					control.id = V4L2_CID_BRIGHTNESS;
- 					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getBrightness());
-+					control.value += queryctrl.minimum;
- 
- 					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
- 					{
-@@ -1582,6 +1583,7 @@
- 					CLEAR (control);
- 					control.id = V4L2_CID_CONTRAST;
- 					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getContrast());
-+					control.value += queryctrl.minimum;
- 
- 					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
- 					{
-@@ -1652,6 +1654,7 @@
- 					CLEAR (control);
- 					control.id = V4L2_CID_SATURATION;
- 					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getSaturation());
-+					control.value += queryctrl.minimum;
- 
- 					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
- 					{
-@@ -1722,6 +1725,7 @@
- 					CLEAR (control);
- 					control.id = V4L2_CID_WHITENESS;
- 					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getWhiteness());
-+					control.value += queryctrl.minimum;
- 
- 					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
- 					{
-@@ -1792,6 +1796,7 @@
- 					CLEAR (control);
- 					control.id = V4L2_CID_HUE;
- 					control.value = (__s32)((queryctrl.maximum - queryctrl.minimum)*getHue());
-+					control.value += queryctrl.minimum;
- 
- 					if (-1 == xioctl (VIDIOC_S_CTRL, &control))
- 					{
-Index: kopete/libkopete/private/kopeteviewmanager.cpp
-===================================================================
---- kopete/libkopete/private/kopeteviewmanager.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kopete/libkopete/private/kopeteviewmanager.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -340,7 +340,7 @@
- 			Kopete::MetaContact *mc= msg.from()->metaContact();
- 			if(mc)
- 			{
--				notify->addContext( qMakePair( QString::fromLatin1("metacontact") , mc->metaContactId()) );
-+				notify->addContext( qMakePair( QString::fromLatin1("contact") , mc->metaContactId()) );
- 				foreach( Kopete::Group *g , mc->groups() )
- 				{
- 					notify->addContext( qMakePair( QString::fromLatin1("group") , QString::number(g->groupId())) );
-Index: kget/mainwindow.cpp
-===================================================================
---- kget/mainwindow.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kget/mainwindow.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -362,6 +362,7 @@
-                                              KGuiItem(i18n("Do Not Enable")))
-                                              == KMessageBox::Yes) {
-             Settings::setKonquerorIntegration(true);
-+            m_konquerorIntegration->setChecked(Settings::konquerorIntegration());
-             slotKonquerorIntegration(true);
-         }
- 
-Index: kget/extensions/webinterface/www/index.htm
-===================================================================
---- kget/extensions/webinterface/www/index.htm	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kget/extensions/webinterface/www/index.htm	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -31,6 +31,9 @@
-         var request = new Request.JSON({url: 'data.json',
-             secure: false,
-             onComplete: function(jsonObj) {
-+                $(document.body).getElements('div.tool-tip').each(function(elm) { // remove old tooltips
-+                    elm.destroy();
-+                });
-                 listDownloads(jsonObj.downloads);
-             }
-         }).send();
-Index: kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop
-===================================================================
---- kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -45,6 +45,7 @@
- Comment[da]=Gør KGet i stand til at søge efter filen via filspejl-søgemaskiner
- Comment[de]=Ermöglicht es KGet, nach Dateien über Spiegel-Suchmaschinen zu suchen.
- Comment[el]=Επιτρέπει στο KGet την αναζήτηση του αρχείου σε μηχανές αναζήτησης αντίγραφα
-+Comment[en_GB]=Enable KGet to search for the file using mirror search engines
- Comment[es]=Habilitar que KGet pueda buscar el archivo por medio de réplicas de los motores de búsqueda
- Comment[et]=Võimaldab KGetil otsida faile peegelotsingumootorite vahendusel
- Comment[fr]=Permettre à KGet la recherche de fichiers depuis les moteurs de recherches de miroir
-Index: kget/transfer-plugins/metalink/kget_metalinkfactory.desktop
-===================================================================
---- kget/transfer-plugins/metalink/kget_metalinkfactory.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kget/transfer-plugins/metalink/kget_metalinkfactory.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
+--- kopete/kopete/config/status/kopete_statusconfig.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/kopete/config/status/kopete_statusconfig.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
 @@ -26,6 +26,7 @@
- Comment[da]=Muliggør download af filer fra Metalink
- Comment[de]=Ermöglicht die Übertragung von Dateien mittels Metalink
- Comment[el]=Επιτρέπει τη λήψη αρχείων από το Metalink
-+Comment[en_GB]=Allows download of files from Metalink
- Comment[es]=Permitir la descarga de archivos desde Metalink
- Comment[et]=Võimaldab laadida faile alla Metalinkist
- Comment[fr]=Permet de télécharger les fichiers utilisant Metalink
-Index: kget/transfer-plugins/bittorrent/kget_bittorrentfactory.desktop
+ Name[ko]=상태
+ Name[lt]=Būsena
+ Name[lv]=Statuss
++Name[mai]=स्थिति
+ Name[ml]=സ്ഥിതി
+ Name[pa]=ਹਾਲਤ
+ Name[pt]=Estado
+Index: kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop
 ===================================================================
---- kget/transfer-plugins/bittorrent/kget_bittorrentfactory.desktop	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kget/transfer-plugins/bittorrent/kget_bittorrentfactory.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -28,6 +28,7 @@
- Comment[da]=Muliggør download af filer med brug af Bittorrent
- Comment[de]=Ermöglicht das Herunterladen von Dateien mit Bittorrent
- Comment[el]=Επιτρέπει τη λήψη αρχείων με χρήση του Bittorrent
-+Comment[en_GB]=Allows downloading of files using Bittorrent
- Comment[es]=Permitir la descarga de archivos usando Bittorrent
- Comment[et]=Võimaldab faile alla laadida Bittorrenti abil
- Comment[fr]=Permet de télécharger les fichiers utilisant BitTorrent
-Index: kget/CMakeLists.txt
+--- kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -22,6 +22,7 @@
+ Name[ja]=映像
+ Name[km]=វីដេអូ
+ Name[ko]=비디오
++Name[mai]=वीडियो
+ Name[ml]=ചലനചിത്രം
+ Name[oc]=Vidèo
+ Name[pa]=ਵੀਡਿਓ
+Index: kopete/kopete/config/chatwindow/kopete_chatwindowconfig.desktop
 ===================================================================
---- kget/CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kget/CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -134,6 +134,7 @@
-    ui/history/transferhistorycategorizeddelegate.cpp
-    ui/history/transferhistorycategorizedview.cpp
-    ui/linkview/kget_linkview.cpp
-+   ui/linkview/kget_sortfilterproxymodel.cpp
-    mainwindow.cpp
-    main.cpp
- 
-Index: kget/ui/linkview/kget_sortfilterproxymodel.h
+--- kopete/kopete/config/chatwindow/kopete_chatwindowconfig.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/kopete/config/chatwindow/kopete_chatwindowconfig.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -30,6 +30,7 @@
+ Name[ko]=대화 창
+ Name[lt]=Pokalbių langas
+ Name[lv]=Tērzēšanas logs
++Name[mai]=चैट विंडो
+ Name[ml]=കുശല ജാലകം
+ Name[nb]=Pratevindu
+ Name[nds]=Klöönfinster
+Index: kopete/libkopete/kopeteaccountmanager.cpp
 ===================================================================
---- kget/ui/linkview/kget_sortfilterproxymodel.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 0)
-+++ kget/ui/linkview/kget_sortfilterproxymodel.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -0,0 +1,66 @@
-+/***************************************************************************
-+*   Copyright (C) 2009 Matthias Fuchs <mat69@gmx.net>                     *
-+*                                                                         *
-+*   This program is free software; you can redistribute it and/or modify  *
-+*   it under the terms of the GNU General Public License as published by  *
-+*   the Free Software Foundation; either version 2 of the License, or     *
-+*   (at your option) any later version.                                   *
-+*                                                                         *
-+*   This program is distributed in the hope that it will be useful,       *
-+*   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
-+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
-+*   GNU General Public License for more details.                          *
-+*                                                                         *
-+*   You should have received a copy of the GNU General Public License     *
-+*   along with this program; if not, write to the                         *
-+*   Free Software Foundation, Inc.,                                       *
-+*   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
-+***************************************************************************/
+--- kopete/libkopete/kopeteaccountmanager.cpp	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/libkopete/kopeteaccountmanager.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -218,6 +218,21 @@
+ 
+ 	connect(account, SIGNAL(accountDestroyed(const Kopete::Account *)) , this, SLOT( unregisterAccount(const Kopete::Account *) ));
+ 
++	if ( !account->identity() )
++	{
++		// the account's Identity must be set here instead of in the Kopete::Account ctor, because there the
++		// identity cannot pick up any state set in the derived Account ctor
++		Identity *identity = Kopete::IdentityManager::self()->findIdentity( account->configGroup()->readEntry("Identity", QString()) );
++		// if the identity was not found, use the default one which will for sure exist
++		// FIXME: get rid of this, the account's identity should always exist at this point
++		if (!identity)
++		{
++			kWarning( 14010 ) << "No identity for account " << account->accountId() << ": falling back to default";
++			identity = Kopete::IdentityManager::self()->defaultIdentity();
++		}
++		account->setIdentity( identity );
++	}
 +
-+#ifndef KGET_SORTFILTERPROXYMODEL_H
-+#define KGET_SORTFILTERPROXYMODEL_H
-+
-+#include <QSortFilterProxyModel>
-+
-+class KGetSortFilterProxyModel : public QSortFilterProxyModel
-+{
-+    Q_OBJECT
-+
-+    public:
-+        KGetSortFilterProxyModel(QObject *parent = 0);
-+        virtual ~KGetSortFilterProxyModel();
-+
-+        enum DownloadFilterType {
-+            NoFilter = 0,
-+            VideoFiles = 1,
-+            AudioFiles = 2,
-+            CompressedFiles = 3
-+        };
-+
-+        enum FilterMode {
-+            Contain = 0,
-+            DoesNotContain = 1
-+        };
-+
-+        DownloadFilterType filterType() const;
-+        FilterMode filterMode() const;
-+        bool showWebContent() const;
-+
-+    public slots:
-+        void setFilterType(DownloadFilterType filterType);
-+        void setFilterType(int filterType);
-+        void setFilterMode(FilterMode filterMode);
-+        void setFilterMode(int filterMode);
-+        void setShowWebContent(bool show);
-+        void setShowWebContent(int show);
-+
-+    protected:
-+        virtual bool filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const;
-+
-+    private:
-+        DownloadFilterType m_filterType;
-+        FilterMode m_filterMode;
-+        bool m_showWebContent;
-+};
-+
-+#endif // KGET_SORTFILTERPROXYMODEL_H
-Index: kget/ui/linkview/kget_linkview.cpp
+ 	emit accountRegistered( account );
+ 	return account;
+ }
+@@ -394,17 +409,6 @@
+ 				"Failed to create account for '" << accountId << "'" << endl;
+ 			continue;
+ 		}
+-		// the account's Identity must be set here instead of in the Kopete::Account ctor, because there the
+-		// identity cannot pick up any state set in the derived Account ctor
+-		Identity *identity = Kopete::IdentityManager::self()->findIdentity( account->configGroup()->readEntry("Identity", QString()) );
+-		// if the identity was not found, use the default one which will for sure exist
+-		// FIXME: get rid of this, the account's identity should always exist at this point
+-		if (!identity)
+-		{
+-			kWarning( 14010 ) << "No identity for account " << accountId << ": falling back to default";
+-			identity = Kopete::IdentityManager::self()->defaultIdentity();
+-		}
+-		account->setIdentity( identity );
+ 	}
+ }
+ 
+Index: kopete/libkopete/kopeteversion.h
 ===================================================================
---- kget/ui/linkview/kget_linkview.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kget/ui/linkview/kget_linkview.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -2,6 +2,7 @@
+--- kopete/libkopete/kopeteversion.h	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kopete/libkopete/kopeteversion.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -14,10 +14,10 @@
+ #ifndef _KOPETE_VERSION_H_
+ #define _KOPETE_VERSION_H_
  
-    Copyright (C) 2002 Carsten Pfeiffer <pfeiffer@kde.org>
-    Copyright (C) 2007 Urs Wolfer <uwolfer @ kde.org>
-+   Copyright (C) 2009 Matthias Fuchs <mat69@gmx.net>
+-#define KOPETE_VERSION_STRING "0.70.2"
++#define KOPETE_VERSION_STRING "0.70.4"
+ #define KOPETE_VERSION_MAJOR 0
+ #define KOPETE_VERSION_MINOR 70
+-#define KOPETE_VERSION_RELEASE 2
++#define KOPETE_VERSION_RELEASE 4
+ #define KOPETE_MAKE_VERSION( a,b,c ) (((a) << 16) | ((b) << 8) | (c))
  
-    This program is free software; you can redistribute it and/or
-    modify it under the terms of the GNU General Public
-@@ -10,6 +11,7 @@
- */
- 
- #include "kget_linkview.h"
-+#include "kget_sortfilterproxymodel.h"
- #include "core/kget.h"
- #include "core/linkimporter.h"
- #include "ui/newtransferdialog.h"
-@@ -24,14 +26,12 @@
- #include <QProcess>
- #include <QProgressBar>
- #include <QPushButton>
--#include <QSortFilterProxyModel>
- #include <QStandardItemModel>
- #include <QTreeView>
- #include <QVBoxLayout>
- 
- #include <KActionCollection>
- #include <KComboBox>
--#include <KDebug>
- #include <KIcon>
- #include <KIconLoader>
- #include <KLineEdit>
-@@ -43,20 +43,23 @@
- #include <KStandardAction>
- #include <KUrlRequester>
- 
--static const char* WEB_CONTENT_REGEXP = "(^.(?:(?!(\\.php|\\.html|\\.xhtml|\\.htm|\\.asp|\\.aspx|\\.jsp)).)*$)";
--static const char* VIDEO_FILES_REGEXP = "(.(?=(\\.avi|\\.mpeg|\\.mpg|\\.mov|\\.mp4|\\.wmv|\\.ogg)))";
--static const char* AUDIO_FILES_REGEXP = "(.(?:\\.mp3|\\.ogg|\\.wma|\\.wav|\\.mpc|\\.flac))";
--static const char* COMPRESSED_FILES_REGEXP = "(.(?:\\.zip|\\.tar|\\.tar.bz|\\.bz|\\.bz2|\\.tar.gz|\\.rar|\\.arj|\\.7z))";
-+// icon, name, regular expression, and default of the filter buttons
-+static const filterDefinition filters [] = {
-+    {QString("view-list-icons"), i18nc("filter: show all file types", "All"), KGetSortFilterProxyModel::NoFilter, true},
-+    {QString("video-x-generic"), i18n("Videos"), KGetSortFilterProxyModel::VideoFiles, false},
-+    {QString("audio-x-generic"), i18n("Audio"), KGetSortFilterProxyModel::AudioFiles, false},
-+    {QString("package-x-generic"), i18n("Archives"), KGetSortFilterProxyModel::CompressedFiles, false}
-+};
- 
- KGetLinkView::KGetLinkView(QWidget *parent)
--  : KDialog(parent),
--    m_showWebContent(false)
-+  : KDialog(parent)
- {
-     setCaption(i18n("Import Links"));
- 
-     // proxy model to filter links
--    m_proxyModel = new QSortFilterProxyModel();
-+    m_proxyModel = new KGetSortFilterProxyModel();
-     m_proxyModel->setDynamicSortFilter(true);
-+    m_proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
- 
-     m_treeWidget = new QTreeView(this);
-     m_treeWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-@@ -67,7 +70,6 @@
-     m_treeWidget->setRootIsDecorated(false);
-     m_treeWidget->setSortingEnabled(true);
-     m_treeWidget->setAllColumnsShowFocus(true);
--    m_treeWidget->setColumnWidth(0, 200); // make the filename column bigger by default
- 
-     connect(m_treeWidget, SIGNAL(doubleClicked(const QModelIndex &)),
-                         this, SLOT(uncheckItem(const QModelIndex &)));
-@@ -75,25 +77,27 @@
-     m_searchLine = new KLineEdit(this);
-     m_searchLine->setClearButtonShown(true);
-     m_searchLine->setClickMessage(i18n("Filter files here..."));
--    connect(m_searchLine, SIGNAL(textChanged(QString)), SLOT(updateSelectAllText(QString)));
-+    connect(m_searchLine, SIGNAL(textChanged(QString)), SLOT(setTextFilter(QString)));
- 
-     // filter mode combobox [contains, does not contain]
-     m_filterModeBox = new KComboBox(this);
--    m_filterModeBox->addItem(i18n("Contains"), QVariant(KGetLinkView::Contain));
--    m_filterModeBox->addItem(i18n("Does not Contain"), QVariant(KGetLinkView::DoesNotContain));
--    connect(m_filterModeBox, SIGNAL(currentIndexChanged(int)), SLOT(updateSelectAllText()));
-+    m_filterModeBox->addItem(i18n("Contains"), QVariant(KGetSortFilterProxyModel::Contain));
-+    m_filterModeBox->addItem(i18n("Does not Contain"), QVariant(KGetSortFilterProxyModel::DoesNotContain));
-+    connect(m_filterModeBox, SIGNAL(currentIndexChanged(int)), m_proxyModel, SLOT(setFilterMode(int)));
-+    connect(filterButtonsGroup, SIGNAL(buttonClicked(int)), SLOT(updateSelectionButtons()));
- 
-     setButtons(KDialog::None);
- 
-     filterButtonsGroup = new QButtonGroup(this);
-     filterButtonsGroup->setExclusive(true);
--    connect(filterButtonsGroup, SIGNAL(buttonClicked(int)), SLOT(doFilter(int)));
-+    connect(filterButtonsGroup, SIGNAL(buttonClicked(int)), m_proxyModel, SLOT(setFilterType(int)));
- 
-     // filter buttons and filter line text box
-     QHBoxLayout *filterLayout = new QHBoxLayout;
-     filterLayout->addWidget(new QLabel(i18n("Show:")));
- 
--    for (uint i = 0; i < sizeof(filters) / sizeof(*filters); ++i) {
-+    for (uint i = 0; i < sizeof(filters) / sizeof(*filters); ++i)
-+    {
-         filterLayout->addWidget(createFilterButton(filters[i].icon, filters[i].name,
-                                 filterButtonsGroup, filters[i].type, filters[i].defaultFilter));
-     }
-@@ -150,7 +154,7 @@
-     connect(m_checkSelectedButton, SIGNAL(clicked()), this, SLOT(slotCheckSelected()));
-     connect(m_invertSelectionButton, SIGNAL(clicked()), this, SLOT(slotInvertSelection()));
-     connect(downloadCheckedButton, SIGNAL(clicked()), this, SLOT(slotStartLeech()));
--    connect(showWebContentButton, SIGNAL(stateChanged(int)), this, SLOT(slotShowWebContent(int)));
-+    connect(showWebContentButton, SIGNAL(stateChanged(int)), m_proxyModel, SLOT(setShowWebContent(int)));
-     connect(m_importButton, SIGNAL(clicked()), this, SLOT(slotStartImport()));
-     connect(m_treeWidget->selectionModel(), SIGNAL(selectionChanged(const QItemSelection &, const QItemSelection &)),
-                                             SLOT(selectionChanged()));
-@@ -191,7 +195,8 @@
- {
-     QString clipboardContent = QApplication::clipboard()->text(QClipboard::Clipboard);
- 
--    if (clipboardContent.length() > 0) {
-+    if (clipboardContent.length() > 0)
-+    {
-         delete m_linkImporter;
- 
-         m_linkImporter = new LinkImporter(this);
-@@ -205,7 +210,8 @@
- void KGetLinkView::setLinks(const QList <QString> &links)
- {
-     m_links = QList <QString> ();
--    foreach(const QString &link, links) {
-+    foreach(const QString &link, links)
-+    {
-         m_links << link;
-     }
- 
-@@ -222,11 +228,14 @@
-     model->setHeaderData(3, Qt::Horizontal, i18nc("list header: type of file", "File Type"));
-     model->setHeaderData(4, Qt::Horizontal, i18n("Location (URL)"));
- 
--    foreach (const QString &linkitem, links) {
-+    foreach (const QString &linkitem, links)
-+    {
-         KUrl url(linkitem);
-         QString file = url.fileName();
-         if (file.isEmpty())
-+        {
-             file = QString(url.host());
-+        }
- 
-         KMimeType::Ptr mt = KMimeType::findByUrl(linkitem, 0, true, true);
- 
-@@ -236,7 +245,7 @@
-         item->setIcon(KIcon(mt->iconName()));
-         item->setCheckable(true);
-         item->setData(QVariant(url.fileName()), Qt::DisplayRole);
--        item->setData(QVariant(url.prettyUrl()), Qt::UserRole);
-+        item->setData(QVariant(mt->name()), Qt::UserRole); // used for filtering DownloadFilterType
- 
-         items << new QStandardItem(QString::number(model->rowCount()));
-         items << item;
-@@ -252,25 +261,35 @@
-     m_proxyModel->setFilterKeyColumn(1);
- 
-     m_treeWidget->header()->hideSection(0);
-+    m_treeWidget->setColumnWidth(0, 200); // make the filename column bigger by default
- 
--    slotShowWebContent(false);
-+    selectionChanged(); // adapt buttons to the new situation
- }
- 
- void KGetLinkView::slotStartLeech()
- {
--    QStandardItemModel *model = (QStandardItemModel*) m_proxyModel->sourceModel();
--    KUrl::List urls;
-+    QStandardItemModel *model = qobject_cast<QStandardItemModel *>(m_proxyModel->sourceModel());
-+    if (model)
-+    {
-+        KUrl::List urls;
- 
--    for(int row=0;row<model->rowCount();row++) {
--        QStandardItem *checkeableItem = model->item(row, 1);
-+        for (int row=0 ; row < model->rowCount(); row++)
-+        {
-+            QStandardItem *checkeableItem = model->item(row, 1);
- 
--        if(checkeableItem->checkState() == Qt::Checked) {
--            urls.append(KUrl(model->data(model->index(row, 1), Qt::UserRole).toString()));
-+            if (checkeableItem->checkState() == Qt::Checked)
-+            {
-+                urls.append(KUrl(model->data(model->index(row, 4)).toString()));
-+            }
-         }
-+
-+        NewTransferDialog::instance()->showDialog(urls);
-+        accept(); // close the dialog
-     }
--
--    NewTransferDialog::instance()->showDialog(urls);
--    accept(); // close the dialog
-+    else
-+    {
-+        reject();
-+    }
- }
- 
- void KGetLinkView::setPageUrl( const QString& url )
-@@ -280,16 +299,18 @@
- 
- void KGetLinkView::importUrl(const QString &url)
- {
--    if(url.isEmpty()) {
-+    if (url.isEmpty())
-+    {
-         KUrl clipboardUrl = KUrl(QApplication::clipboard()->text(QClipboard::Clipboard).trimmed());
--        if(clipboardUrl.isValid() && (
--            (!clipboardUrl.scheme().isEmpty() && !clipboardUrl.host().isEmpty())
--                ||
--            (clipboardUrl.isLocalFile()))) {
-+        if (clipboardUrl.isValid() &&
-+            ((!clipboardUrl.scheme().isEmpty() && !clipboardUrl.host().isEmpty()) ||
-+            (clipboardUrl.isLocalFile())))
-+        {
-             m_urlRequester->setUrl(clipboardUrl);
-         }
-     }
--    else {
-+    else
-+    {
-         m_urlRequester->setUrl(KUrl(url));
-         slotStartImport();
-     }
-@@ -297,131 +318,123 @@
- 
- void KGetLinkView::selectionChanged()
- {
--    bool buttonEnabled = false;
--    int count = 0;
--    QStandardItemModel *model = (QStandardItemModel*) m_proxyModel->sourceModel();
-+    QStandardItemModel *model = qobject_cast<QStandardItemModel *>(m_proxyModel->sourceModel());
-+    if (model)
-+    {
-+        const int modelRowCount = model->rowCount();
-+        bool buttonEnabled = false;
-+        int count = 0;
- 
--    for(int row=0;row<model->rowCount();row++) {
--        QStandardItem *checkeableItem = model->item(row, 1);
-+        for (int row = 0; row < modelRowCount; row++)
-+        {
-+            QStandardItem *checkeableItem = model->item(row, 1);
- 
--        if(checkeableItem->checkState() == Qt::Checked) {
--            buttonEnabled = true;
--            count++;
-+            if ((checkeableItem->checkState() == Qt::Checked))
-+            {
-+                buttonEnabled = true;
-+
-+                // only count the checked files that are currently visible
-+                if (m_proxyModel->mapFromSource(model->index(row, 1)).isValid())
-+                {
-+                    count++;
-+                }
-+            }
-         }
--    }
- 
--    const int modelRowCount = m_proxyModel->rowCount();
--    checkAllButton->setEnabled( !(!modelRowCount || count == modelRowCount ) );
-+        checkAllButton->setEnabled( !(!modelRowCount || count == m_proxyModel->rowCount() ) );
-+        uncheckAllButton->setEnabled( count > 0 );
-+        m_invertSelectionButton->setEnabled( count > 0 );
-+        m_checkSelectedButton->setEnabled(m_treeWidget->selectionModel()->selectedIndexes().size() > 0);
- 
--    uncheckAllButton->setEnabled( count > 0 );
--    m_invertSelectionButton->setEnabled( count > 0 );
--    m_checkSelectedButton->setEnabled(m_treeWidget->selectionModel()->selectedIndexes().size() > 0);
--    downloadCheckedButton->setEnabled(buttonEnabled);
--}
--
--void KGetLinkView::updateSelectAllText(const QString &text)
--{
--    if(text.isEmpty()) {
--        doFilter(filterButtonsGroup->checkedId(), m_searchLine->text());
-+        downloadCheckedButton->setEnabled(buttonEnabled);
-     }
--    else {
--        doFilter(filterButtonsGroup->checkedId(), text);
--    }
- }
- 
--void KGetLinkView::doFilter(int id, const QString &textFilter)
-+void KGetLinkView::setTextFilter(const QString &text)
- {
-     // TODO: escape user input for avoding malicious user input! (FiNEX)
--    QString filter;
--    switch(id) {
--        case KGetLinkView::AudioFiles:
--            filter = QString(AUDIO_FILES_REGEXP);
--            break;
--        case KGetLinkView::VideoFiles:
--            filter = QString(VIDEO_FILES_REGEXP);
--            break;
--        case KGetLinkView::CompressedFiles:
--            filter = QString(COMPRESSED_FILES_REGEXP);
--            break;
--        case KGetLinkView::NoFilter:
--        default:
--            filter =  m_showWebContent ? QString() : QString(WEB_CONTENT_REGEXP);
--    }
-+    QString temp = text.isEmpty() ? m_searchLine->text() : text;
-+    m_proxyModel->setFilterWildcard(temp);
- 
--    if(!textFilter.isEmpty()) {
--        if(filter.isEmpty()) {
--            filter = textFilter;
--        }
--        else {
--            if ( !m_showWebContent && KGetLinkView::NoFilter == id ) {
--                filter.replace("(^.", '(' + textFilter  );
--              } else {
--                filter.replace("(.", "(.*" + textFilter + '*');
--            }
--        }
--    }
-+    updateSelectionButtons();
-+}
- 
--    if(m_filterModeBox->itemData(m_filterModeBox->currentIndex()).toInt() == KGetLinkView::DoesNotContain) {
--        filter = "(?!" + filter + ')';
--    }
-+void KGetLinkView::updateSelectionButtons()
-+{
-+    const bool isFiltered = !m_searchLine->text().isEmpty() || (filterButtonsGroup->checkedId() != KGetSortFilterProxyModel::NoFilter);
-+    checkAllButton->setText(isFiltered ? i18n("Select all filtered") : i18n("Select all"));
-+    uncheckAllButton->setText(isFiltered ? i18n("Deselect all filtered") : i18n("Deselect all"));
- 
--    kDebug() << "Applying filter " << filter;
--
--    const bool isFiltered = textFilter.isEmpty() && id == KGetLinkView::NoFilter;
--    checkAllButton->setText( isFiltered ? i18n("Select all") : i18n("Select all filtered"));
--    uncheckAllButton->setText( isFiltered ? i18n("Deselect all") : i18n("Deselect all filtered"));
--
--    m_proxyModel->setFilterRegExp(QRegExp(filter, Qt::CaseInsensitive));
-+    selectionChanged();
- }
- 
- void KGetLinkView::checkAll()
- {
--    QStandardItemModel *itemsModel  = qobject_cast<QStandardItemModel *> (m_proxyModel->sourceModel());
--    for(int row=0;row<m_proxyModel->rowCount();row++) {
--        const QModelIndex index = m_proxyModel->mapToSource(m_proxyModel->index(row, 3));
--        QStandardItem *item = itemsModel->item(index.row(), 1);
--        item->setCheckState(Qt::Checked);
-+    QStandardItemModel *itemsModel  = qobject_cast<QStandardItemModel *>(m_proxyModel->sourceModel());
-+    if (itemsModel)
-+    {
-+        for (int row = 0; row < m_proxyModel->rowCount(); row++)
-+        {
-+            const QModelIndex index = m_proxyModel->mapToSource(m_proxyModel->index(row, 3));
-+            QStandardItem *item = itemsModel->item(index.row(), 1);
-+            item->setCheckState(Qt::Checked);
-+        }
-     }
- }
- 
- void KGetLinkView::uncheckAll()
- {
--    QStandardItemModel *itemsModel  = qobject_cast<QStandardItemModel *> (m_proxyModel->sourceModel());
--    for(int row=0;row<m_proxyModel->rowCount();row++) {
--        const QModelIndex index = m_proxyModel->mapToSource(m_proxyModel->index(row, 3));
--        QStandardItem *item = itemsModel->item(index.row(), 1);
--        item->setCheckState(Qt::Unchecked);
-+    QStandardItemModel *itemsModel  = qobject_cast<QStandardItemModel *>(m_proxyModel->sourceModel());
-+    if (itemsModel)
-+    {
-+        for (int row = 0; row < m_proxyModel->rowCount(); row++)
-+        {
-+            const QModelIndex index = m_proxyModel->mapToSource(m_proxyModel->index(row, 3));
-+            QStandardItem *item = itemsModel->item(index.row(), 1);
-+            item->setCheckState(Qt::Unchecked);
-+        }
-     }
- }
- 
- void KGetLinkView::uncheckItem(const QModelIndex &index)
- {
--    QStandardItemModel *model = (QStandardItemModel*) m_proxyModel->sourceModel();
--    if(index.column() != 0) {
--        QStandardItem *item = model->itemFromIndex(model->index(m_proxyModel->mapToSource(index).row(), 1));
--        item->setCheckState(item->checkState() == Qt::Checked ? Qt::Unchecked : Qt::Checked);
-+    QStandardItemModel *model = qobject_cast<QStandardItemModel *>(m_proxyModel->sourceModel());
-+    if (model)
-+    {
-+        if (index.column() != 0)
-+        {
-+            QStandardItem *item = model->itemFromIndex(model->index(m_proxyModel->mapToSource(index).row(), 1));
-+            item->setCheckState(item->checkState() == Qt::Checked ? Qt::Unchecked : Qt::Checked);
-+        }
-     }
- }
- 
- void KGetLinkView::slotCheckSelected()
- {
--    QStandardItemModel *model = (QStandardItemModel*) m_proxyModel->sourceModel();
--    foreach(const QModelIndex &index, m_treeWidget->selectionModel()->selectedIndexes()) {
--        QModelIndex sourceIndex = m_proxyModel->mapToSource(index);
--        QStandardItem *item = model->item(sourceIndex.row(), 1);
-+    QStandardItemModel *model = qobject_cast<QStandardItemModel *>(m_proxyModel->sourceModel());
-+    if (model)
-+    {
-+        foreach(const QModelIndex &index, m_treeWidget->selectionModel()->selectedIndexes())
-+        {
-+            QModelIndex sourceIndex = m_proxyModel->mapToSource(index);
-+            QStandardItem *item = model->item(sourceIndex.row(), 1);
- 
--        item->setCheckState(Qt::Checked);
-+            item->setCheckState(Qt::Checked);
-+        }
-     }
- }
- 
- void KGetLinkView::slotInvertSelection()
- {
--    QStandardItemModel *itemsModel  = qobject_cast<QStandardItemModel *> (m_proxyModel->sourceModel());
--
--    for(int row=0;row<m_proxyModel->rowCount();row++) {
--        const QModelIndex index = m_proxyModel->mapToSource(m_proxyModel->index(row, 3));
--        QStandardItem *item = itemsModel->item(index.row(), 1);
--        item->setCheckState((item->checkState() == Qt::Checked) ? Qt::Unchecked : Qt::Checked);
-+    QStandardItemModel *itemsModel  = qobject_cast<QStandardItemModel *>(m_proxyModel->sourceModel());
-+    if (itemsModel)
-+    {
-+        for (int row = 0; row < m_proxyModel->rowCount(); row++)
-+        {
-+            const QModelIndex index = m_proxyModel->mapToSource(m_proxyModel->index(row, 3));
-+            QStandardItem *item = itemsModel->item(index.row(), 1);
-+            item->setCheckState((item->checkState() == Qt::Checked) ? Qt::Unchecked : Qt::Checked);
-+        }
-     }
- }
- 
-@@ -434,7 +447,8 @@
-     connect(m_linkImporter, SIGNAL(progress(int)), SLOT(slotImportProgress(int)));
-     connect(m_linkImporter, SIGNAL(finished()), SLOT(slotImportFinished()));
- 
--    if(!m_urlRequester->url().isLocalFile()) {
-+    if (!m_urlRequester->url().isLocalFile())
-+    {
-         m_linkImporter->copyRemoteFile();
-     }
- 
-@@ -466,19 +480,16 @@
-     return filterButton;
- }
- 
--void KGetLinkView::slotShowWebContent(int mode)
--{
--    m_showWebContent = (mode == Qt::Checked);
--    doFilter(filterButtonsGroup->checkedId());
--}
--
- void KGetLinkView::updateImportButtonStatus(const QString &text)
- {
-     bool enabled = false;
--    if (!text.isEmpty()) {
-+    if (!text.isEmpty())
-+    {
-         KUrl url(text);
-         if (url.isValid())
-+        {
-             enabled = true;
-+        }
-     }
-     m_importButton->setEnabled(enabled);
- }
-Index: kget/ui/linkview/kget_linkview.h
+ #define KOPETE_VERSION \
+Index: kget/sounds/kget.notifyrc
 ===================================================================
---- kget/ui/linkview/kget_linkview.h	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ kget/ui/linkview/kget_linkview.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
+--- kget/sounds/kget.notifyrc	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kget/sounds/kget.notifyrc	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -507,6 +507,7 @@
+ Name[ko]=정보
+ Name[lt]=Informacija
+ Name[lv]=Informācija
++Name[mai]=सूचना
+ Name[ml]=വിവരം
+ Name[nb]=Informasjon
+ Name[nds]=Informatschonen
+Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop
+===================================================================
+--- filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -111,6 +111,7 @@
+ Name[he]=סמבה
+ Name[hi]=साम्बा
+ Name[hne]=साम्बा
++Name[mai]=साम्बा
+ Name[ml]=സാംബ
+ Name[ne]=साम्बा
+ Name[pa]=ਸਾਂਬਾ
+Index: filesharing/advanced/nfs/nfsfile.cpp
+===================================================================
+--- filesharing/advanced/nfs/nfsfile.cpp	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ filesharing/advanced/nfs/nfsfile.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -71,7 +71,7 @@
+      return 0L;
+ 
+   QString testPath = path.trimmed();
+-  if ( testPath[testPath.length()-1] != '/' )
++  if ( !testPath.endsWith('/') )
+        testPath += '/';
+ 
+   for (NFSEntry* entry = _entries.first(); entry; entry = _entries.next())
+@@ -129,7 +129,7 @@
+       completeLine = currentLine;
+ 
+     // is the line continued in the next line ?
+-    if ( completeLine[completeLine.length()-1] == '\\' )
++    if ( completeLine.endsWith('\\') )
+     {
+       continuedLine = true;
+       // remove the ending backslash
+@@ -144,7 +144,7 @@
+     }
+ 
+     // comments
+-    if ('#' == completeLine[0]) {
++    if (completeLine.startsWith('#') ) {
+       _lines.append(new NFSComment(completeLine));
+       continue;
+     }
+@@ -153,7 +153,7 @@
+     QString hosts;
+ 
+     // Handle quotation marks
+-    if ( completeLine[0] == '"' ) {
++    if ( completeLine.startsWith('"') ) {
+       int i = completeLine.indexOf('"',1);
+       if (i == -1) {
+         kError() << "NFSFile: Parse error: Missing quotation mark: "
+@@ -177,7 +177,7 @@
+     }
+ 
+     // normalize path
+-    if ( path[path.length()-1] != '/' )
++    if ( !path.endsWith('/') )
+             path += '/';
+ 
+     kDebug(5009) << "KNFSShare: Found path: '" << path << "'";
+Index: kppp/DB/Provider/Norway/.directory
+===================================================================
+--- kppp/DB/Provider/Norway/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/Norway/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
 @@ -25,6 +25,7 @@
- class KComboBox;
- class KLineEdit;
- class KUrlRequester;
-+class KGetSortFilterProxyModel;
- 
- 
- struct filterDefinition {
-@@ -39,18 +40,6 @@
-     Q_OBJECT
- 
- public:
--    enum DownloadFilterType {
--        NoFilter = 0,
--        VideoFiles = 1,
--        AudioFiles = 2,
--        CompressedFiles = 3
--    };
--
--    enum FilterMode {
--        Contain = 0,
--        DoesNotContain = 1
--    };
--
-     KGetLinkView(QWidget *parent = 0);
-     ~KGetLinkView();
- 
-@@ -65,14 +54,13 @@
- private slots:
-     void slotStartLeech();
-     void selectionChanged();
--    void updateSelectAllText(const QString &text = QString());
--    void doFilter(int id, const QString &textFilter = QString());
-+    void setTextFilter(const QString &text = QString());
-     void checkAll();
-     void uncheckAll();
--    void slotShowWebContent(int mode);
-     void uncheckItem(const QModelIndex &index);
-     void slotCheckSelected();
-     void slotInvertSelection();
-+    void updateSelectionButtons();
- 
-     // import links slots
-     void slotStartImport();
-@@ -89,8 +77,7 @@
-     QList<QString> m_links;
- 
-     QTreeView *m_treeWidget;
--    QSortFilterProxyModel *m_proxyModel;
--    bool m_showWebContent;
-+    KGetSortFilterProxyModel *m_proxyModel;
- 
-     QButtonGroup *filterButtonsGroup;
-     KLineEdit *m_searchLine;
-@@ -109,12 +96,4 @@
-     QProgressBar *m_progressBar;
- };
- 
--// icon, name, regular expression, and default of the filter buttons
--static const filterDefinition filters [] = {
--    {QString("view-list-icons"), i18nc("filter: show all file types", "All"), KGetLinkView::NoFilter, true},
--    {QString("video-x-generic"), i18n("Videos"), KGetLinkView::VideoFiles, false},
--    {QString("audio-x-generic"), i18n("Audio"), KGetLinkView::AudioFiles, false},
--    {QString("package-x-generic"), i18n("Archives"), KGetLinkView::CompressedFiles, false}
--};
--
- #endif // KGET_LINKVIEW_H
-Index: kget/ui/linkview/kget_sortfilterproxymodel.cpp
+ Name[ko]=노르웨이
+ Name[lt]=Norvegija
+ Name[lv]=Norvēģija
++Name[mai]=नार्वे
+ Name[ml]=നോര്‍വ്വെ
+ Name[nb]=Norge
+ Name[nds]=Norwegen
+Index: kppp/DB/Provider/Slovenia/.directory
 ===================================================================
---- kget/ui/linkview/kget_sortfilterproxymodel.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 0)
-+++ kget/ui/linkview/kget_sortfilterproxymodel.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -0,0 +1,159 @@
-+/***************************************************************************
-+*   Copyright (C) 2009 Matthias Fuchs <mat69@gmx.net>                     *
-+*                                                                         *
-+*   This program is free software; you can redistribute it and/or modify  *
-+*   it under the terms of the GNU General Public License as published by  *
-+*   the Free Software Foundation; either version 2 of the License, or     *
-+*   (at your option) any later version.                                   *
-+*                                                                         *
-+*   This program is distributed in the hope that it will be useful,       *
-+*   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
-+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
-+*   GNU General Public License for more details.                          *
-+*                                                                         *
-+*   You should have received a copy of the GNU General Public License     *
-+*   along with this program; if not, write to the                         *
-+*   Free Software Foundation, Inc.,                                       *
-+*   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .        *
-+***************************************************************************/
-+
-+#include "kget_sortfilterproxymodel.h"
-+
-+#include <QtCore/QStringList>
-+
-+static const QStringList MIME_TYPES = QString(";video/;audio/;archive/").split(';');
-+static const QString ARCHIVES = QString("/x-7z-compressed,/x-ace,/x-archive,/x-arj,/x-bzip,/x-bzip-compressed-tar,/x-compressed-tar,/x-rar,/x-tar,/x-tarz,/zip");
-+static const QString WEB_CONTENT = QString("/html,/x-asp,/xhtml+xml,/x-php,");
-+
-+KGetSortFilterProxyModel::KGetSortFilterProxyModel(QObject *parent) :
-+    QSortFilterProxyModel(parent), m_filterType(KGetSortFilterProxyModel::NoFilter),
-+    m_filterMode(KGetSortFilterProxyModel::Contain), m_showWebContent(false)
-+{
-+}
-+
-+KGetSortFilterProxyModel::~KGetSortFilterProxyModel()
-+{
-+}
-+
-+KGetSortFilterProxyModel::DownloadFilterType KGetSortFilterProxyModel::filterType() const
-+{
-+    return m_filterType;
-+}
-+
-+KGetSortFilterProxyModel::FilterMode KGetSortFilterProxyModel::filterMode() const
-+{
-+    return m_filterMode;
-+}
-+
-+bool KGetSortFilterProxyModel::showWebContent() const
-+{
-+    return m_showWebContent;
-+}
-+
-+void KGetSortFilterProxyModel::setFilterType(KGetSortFilterProxyModel::DownloadFilterType filterType)
-+{
-+    m_filterType = filterType;
-+    invalidateFilter();
-+}
-+
-+void KGetSortFilterProxyModel::setFilterType(int filterType)
-+{
-+    switch (filterType)
-+    {
-+        case AudioFiles:
-+            m_filterType = AudioFiles;
-+            break;
-+        case KGetSortFilterProxyModel::VideoFiles:
-+            m_filterType = VideoFiles;
-+            break;
-+        case KGetSortFilterProxyModel::CompressedFiles:
-+            m_filterType = CompressedFiles;
-+            break;
-+        case KGetSortFilterProxyModel::NoFilter:
-+        default:
-+            m_filterType = NoFilter;
-+    }
-+
-+    invalidateFilter();
-+}
-+
-+void KGetSortFilterProxyModel::setFilterMode(KGetSortFilterProxyModel::FilterMode filterMode)
-+{
-+    m_filterMode = filterMode;
-+    invalidateFilter();
-+}
-+
-+void KGetSortFilterProxyModel::setFilterMode(int filterMode)
-+{
-+    switch (filterMode)
-+    {
-+        case DoesNotContain:
-+            m_filterMode = DoesNotContain;
-+            break;
-+        case Contain:
-+        default:
-+            m_filterMode = Contain;
-+    }
-+
-+    invalidateFilter();
-+}
-+
-+void KGetSortFilterProxyModel::setShowWebContent(bool show)
-+{
-+    m_showWebContent = show;
-+    invalidateFilter();
-+}
-+
-+void KGetSortFilterProxyModel::setShowWebContent(int show)
-+{
-+    m_showWebContent = show;
-+    invalidateFilter();
-+}
-+
-+bool KGetSortFilterProxyModel::filterAcceptsRow(int sourceRow, const QModelIndex &sourceParent) const
-+{
-+    const QModelIndex index = sourceModel()->index(sourceRow, 1, sourceParent);
-+    if (!index.isValid() || index.data(Qt::UserRole).toString().isEmpty())
-+    {
-+        return false;
-+    }
-+
-+    const QString meta = index.data(Qt::UserRole).toString();
-+    const QString name = index.data(Qt::DisplayRole).toString();
-+    bool show = false;
-+
-+    //do not show empty files when not using NoFilter and m_showWebContent
-+    if (!name.isEmpty() && (m_filterType != NoFilter))
-+    {
-+        show = meta.startsWith(MIME_TYPES[m_filterType]);
-+
-+        if (m_filterType == CompressedFiles)
-+        {
-+            show = ARCHIVES.contains(meta.mid(meta.indexOf('/')));
-+        }
-+    }
-+    else if (m_filterType == NoFilter)
-+    {
-+        if (m_showWebContent)
-+        {
-+            show = true;
-+        }
-+        else
-+        {
-+            show = !name.isEmpty() && !WEB_CONTENT.contains(meta.mid(meta.indexOf('/')));
-+        }
-+    }
-+
-+    if (show)
-+    {
-+        //look if the text-filter matches
-+        const QRegExp re = filterRegExp();
-+        show = (re.indexIn(name) != -1) ? true : false;
-+        if ((m_filterMode == DoesNotContain) && !re.isEmpty())
-+        {
-+            show = !show;
-+        }
-+    }
-+
-+    return show;
-+}
-Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp
+--- kppp/DB/Provider/Slovenia/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/Slovenia/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -23,6 +23,7 @@
+ Name[ko]=슬로베니아
+ Name[lt]=Slovėnija
+ Name[lv]=Slovēnija
++Name[mai]=स्लोवेनिया
+ Name[ml]=സ്ലോവേനിയ
+ Name[nds]=Slowenien
+ Name[ne]=स्लोभेनिया
+Index: kppp/DB/Provider/Denmark/.directory
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -708,7 +708,7 @@
-   _dictMngr->add("server schannel",_interface->serverSchannelCombo,
-                  new QStringList(QStringList() << "Yes" << "No" << "Auto" ));
-   _dictMngr->add("server signing",_interface->serverSigningCombo,
--                 new QStringList(QStringList() << "Auto" << "Mandatory" << "Disabled" ));
-+                 new QStringList(QStringList() << "Auto" << "Mandatory" << "No" ));
- 
-   _dictMngr->add("client lanman auth",_interface->clientLanmanAuthChk);
-   _dictMngr->add("client plaintext auth",_interface->clientPlaintextAuthChk);
-@@ -717,7 +717,7 @@
-   _dictMngr->add("client schannel",_interface->clientSchannelCombo,
-                  new QStringList(QStringList() << "Yes" << "No" << "Auto" ));
-   _dictMngr->add("client signing",_interface->clientSigningCombo,
--                 new QStringList(QStringList() << "Auto" << "Mandatory" << "Disabled" ));
-+                 new QStringList(QStringList() << "Auto" << "Mandatory" << "No" ));
- 
- 
- 
-@@ -863,13 +863,13 @@
-                  new QStringList(QStringList() << "NT" << "NT workstation" << "win95" << "WfW"));
- 
-   _dictMngr->add("protocol", _interface->protocolCombo,
--                 new QStringList(QStringList() << "NT" << "lanman2" << "lanman1" << "core" << "coreplus" ));
-+                 new QStringList(QStringList() << "NT1" << "lanman2" << "lanman1" << "core" << "coreplus" ));
- 
-   _dictMngr->add("max protocol", _interface->maxProtocolCombo,
--                 new QStringList(QStringList() << "NT" << "lanman2" << "lanman1" << "core" << "coreplus"));
-+                 new QStringList(QStringList() << "NT1" << "lanman2" << "lanman1" << "core" << "coreplus"));
- 
-   _dictMngr->add("min protocol", _interface->minProtocolCombo,
--                 new QStringList(QStringList() << "NT" << "lanman2" << "lanman1" << "core" << "coreplus"));
-+                 new QStringList(QStringList() << "NT1" << "lanman2" << "lanman1" << "core" << "coreplus"));
- 
- }
- 
-@@ -985,7 +985,7 @@
- 
-   _dictMngr->add("winbind cache time", _interface->winbindCacheTimeSpin);
-   _dictMngr->add("acl compatibility",_interface->aclCompatibilityCombo,
--                 new QStringList(QStringList() << "winnt" << "win2k" << ""));
-+                 new QStringList(QStringList() << "auto" << "winnt" << "win2k" << ""));
- 
-   _dictMngr->add("winbind enum users",_interface->winbindEnumUsersChk);
-   _dictMngr->add("winbind enum groups",_interface->winbindEnumGroupsChk);
-Index: filesharing/advanced/kcm_sambaconf/common.cpp
+--- kppp/DB/Provider/Denmark/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/Denmark/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -26,6 +26,7 @@
+ Name[ko]=덴마크
+ Name[lt]=Danija
+ Name[lv]=Dānija
++Name[mai]=डेनमार्क
+ Name[ml]=ഡെന്‍മാര്‍ക്ക്
+ Name[nb]=Danmark
+ Name[nds]=Dänmark
+Index: kppp/DB/Provider/Yugoslavia/.directory
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/common.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ filesharing/advanced/kcm_sambaconf/common.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -54,7 +54,8 @@
-     if (lower=="no" ||
-         lower=="0" ||
-         lower=="false" ||
--        lower=="off")
-+        lower=="off" ||
-+        lower=="disabled")
-       return false;
-     else
-       return true;
-Index: filesharing/advanced/kcm_sambaconf/sambashare.cpp
+--- kppp/DB/Provider/Yugoslavia/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/Yugoslavia/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -23,6 +23,7 @@
+ Name[ko]=유고슬라비아
+ Name[lt]=Jugoslavija
+ Name[lv]=Dienvidslāvija
++Name[mai]=युगोस्लाविया
+ Name[ml]=യൂഗോസ്ലാവ്യ
+ Name[nb]=Serbia og Montenegro
+ Name[nds]=Jugoslawien
+Index: kppp/DB/Provider/Taiwan/.directory
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/sambashare.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ filesharing/advanced/kcm_sambaconf/sambashare.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -115,9 +115,13 @@
- 
-   SambaShare* globals = _sambaFile->find("global");
- 
--  QString s = globals->getValue(name,false,defaultValue);
-+  QString ret;
-+  if (globals != 0)
-+    ret = globals->getValue(name,false,defaultValue);
-+  else if (defaultValue)
-+    ret = getDefaultValue(name);
- 
--  return s;
-+  return ret;
- }
- 
- 
-@@ -163,7 +167,6 @@
-   if (lname == "idmap gid") return "winbind gid";
-   if (lname == "vfs object") return "vfs objects";
- 
--
-   return lname;
- }
- 
-Index: filesharing/advanced/kcm_sambaconf/dictmanager.cpp
+--- kppp/DB/Provider/Taiwan/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/Taiwan/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -16,6 +16,7 @@
+ Name[ko]=대만
+ Name[lt]=Taivanis
+ Name[lv]=Taivāna
++Name[mai]=ताइवान
+ Name[ml]=തായ്‌വാന്‍
+ Name[ne]=ताइवान
+ Name[pa]=ਤਾਈਵਾਨ
+Index: kppp/DB/Provider/Sweden/.directory
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/dictmanager.cpp	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ filesharing/advanced/kcm_sambaconf/dictmanager.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -25,8 +25,8 @@
-  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA  *
-  *                                                                            *
-  ******************************************************************************/
-+
-  
-- 
- #include <qlineedit.h>
- #include <qcheckbox.h>
- #include <qspinbox.h>
-@@ -208,8 +208,12 @@
-     QStringList* values = comboBoxValuesDict[comboBoxIt.currentKey()];
-     
-     int i = comboBoxIt.current()->currentItem();
--    share->setValue(comboBoxIt.currentKey(),(*values)[i], globalValue, defaultValue );
--  }
-+    if (i >= 0) {
-+      share->setValue(comboBoxIt.currentKey(),(*values)[i], globalValue, defaultValue );
-+    } else {
-+      kDebug(DEBUG) << comboBoxIt.currentKey() << " not set! " << endl;
-+    }
-+  }  
-     
- }
- 
+--- kppp/DB/Provider/Sweden/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/Sweden/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -26,6 +26,7 @@
+ Name[ku]=Swêd
+ Name[lt]=Švedija
+ Name[lv]=Zviedrija
++Name[mai]=स्वीडन
+ Name[ml]=സ്വീഡന്‍
+ Name[nb]=Sverige
+ Name[ne]=स्वीडेन
+Index: kppp/DB/Provider/New_Zealand/.directory
+===================================================================
+--- kppp/DB/Provider/New_Zealand/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/New_Zealand/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -24,6 +24,7 @@
+ Name[ko]=뉴질랜드
+ Name[lt]=Naujoji Zelandija
+ Name[lv]=Jaunzēlande
++Name[mai]=न्यूजीलैंड
+ Name[ml]=ന്യൂ‌ സിലാന്‍ഡ്
+ Name[nds]=Niegseeland
+ Name[ne]=न्यूजिल्यान्ड
+Index: kppp/DB/Provider/Belarus/.directory
+===================================================================
+--- kppp/DB/Provider/Belarus/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/Belarus/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -25,6 +25,7 @@
+ Name[ko]=벨라루스
+ Name[lt]=Baltarusija
+ Name[lv]=Baltkrievija
++Name[mai]=बेलारूस
+ Name[ml]=ബെലാറസ്
+ Name[nb]=Hviterussland
+ Name[nds]=Wittrussland
+Index: kppp/DB/Provider/Portugal/.directory
+===================================================================
+--- kppp/DB/Provider/Portugal/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/Portugal/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -16,6 +16,7 @@
+ Name[ko]=포르투갈
+ Name[lt]=Portugalija
+ Name[lv]=Portugāle
++Name[mai]=पुर्तगाल
+ Name[ml]=പോര്‍ച്ചുഗല്‍
+ Name[ne]=पोर्चुगल
+ Name[pa]=ਪੁਰਤਗਾਲ
+Index: kppp/DB/Provider/Ukraine/.directory
+===================================================================
+--- kppp/DB/Provider/Ukraine/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/Ukraine/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -22,6 +22,7 @@
+ Name[ko]=우크라이나
+ Name[lt]=Ukraina
+ Name[lv]=Ukraina
++Name[mai]=उक्रेन
+ Name[ml]=ഉക്രൈന്‍
+ Name[nb]=Ukraina
+ Name[ne]=युक्रेन
+Index: kppp/DB/Provider/France/.directory
+===================================================================
+--- kppp/DB/Provider/France/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/France/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -26,6 +26,7 @@
+ Name[ku]=Fransa
+ Name[lt]=Prancūzija
+ Name[lv]=Francija
++Name[mai]=फ्रांस
+ Name[ml]=ഫ്രാന്‍സ്
+ Name[nb]=Frankrike
+ Name[nds]=Frankriek
+Index: kppp/DB/Provider/United_Kingdom/.directory
+===================================================================
+--- kppp/DB/Provider/United_Kingdom/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/United_Kingdom/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -25,6 +25,7 @@
+ Name[ko]=영국
+ Name[lt]=Jungtinė Karalystė
+ Name[lv]=Lielbritānija
++Name[mai]=यूनाइटेड किंगडम
+ Name[ml]=യുണൈറ്റഡ് കിങ്ഡം
+ Name[nb]=Storbritannia
+ Name[nds]=Grootbritannien
+Index: kppp/DB/Provider/Germany/.directory
+===================================================================
+--- kppp/DB/Provider/Germany/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/Germany/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -27,6 +27,7 @@
+ Name[ku]=Almanya
+ Name[lt]=Vokietija
+ Name[lv]=Vācija
++Name[mai]=जर्मनी
+ Name[ml]=ജര്‍മ്മനി
+ Name[nb]=Tyskland
+ Name[nds]=Düütschland
+Index: kppp/DB/Provider/Switzerland/.directory
+===================================================================
+--- kppp/DB/Provider/Switzerland/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/Switzerland/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -25,6 +25,7 @@
+ Name[ko]=스위스
+ Name[lt]=Šveicarija
+ Name[lv]=Šveice
++Name[mai]=स्विट्जरलैंड
+ Name[ml]=സ്വിറ്റ്സര്‍ലാന്‍ഡ്
+ Name[nb]=Sveits
+ Name[nds]=Swiez
+Index: kppp/DB/Provider/Netherlands/.directory
+===================================================================
+--- kppp/DB/Provider/Netherlands/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/Netherlands/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -25,6 +25,7 @@
+ Name[ko]=네덜란드
+ Name[lt]=Olandija
+ Name[lv]=Nīderlande
++Name[mai]=नीदरलैंड्स
+ Name[ml]=നെതര്‍ലാന്റ്സ്
+ Name[nb]=Nederland
+ Name[nds]=Nedderlannen
+Index: kppp/DB/Provider/Austria/.directory
+===================================================================
+--- kppp/DB/Provider/Austria/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/Austria/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -22,6 +22,7 @@
+ Name[ko]=오스트리아
+ Name[lt]=Austrija
+ Name[lv]=Austrija
++Name[mai]=आस्ट्रिया
+ Name[ml]=ആസ്ത്രിയ
+ Name[nb]=Østerrike
+ Name[nds]=Österriek
+Index: kppp/DB/Provider/Ireland/.directory
+===================================================================
+--- kppp/DB/Provider/Ireland/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ kppp/DB/Provider/Ireland/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -26,6 +26,7 @@
+ Name[ko]=아일랜드
+ Name[lt]=Airija
+ Name[lv]=Īrija
++Name[mai]=आयरलैंड
+ Name[ml]=അയര്‍ലണ്ട്
+ Name[nb]=Irland
+ Name[nds]=Irland
 Index: CMakeLists.txt
 ===================================================================
---- CMakeLists.txt	(.../tags/KDE/4.2.2/kdenetwork)	(wersja 956243)
-+++ CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 956243)
-@@ -57,9 +57,6 @@
- macro_optional_find_package(QCA2)
- macro_log_feature(QCA2_FOUND "QCA2" "Qt Cryptographic Architecture" "http://delta.affinix.com/qca" FALSE "2.0.0" "Needed to build Kopete's GroupWise and Jabber protocols.")
- 
--macro_optional_find_package(Decibel)
--macro_log_feature(DECIBEL_FOUND "Decibel"  "KDE framework for real-time communication" "http://decibel.kde.org/" FALSE "" "Used by the Kopete telepathy protocol.")
--
- macro_optional_find_package(IDN)
- macro_log_feature(IDN_FOUND "IDN" "GNU Libidn Internationalized Domain Name (IDN) implemenation" "http://www.gnu.org/software/libidn/" FALSE "" "Used by the Kopete Jabber plugin.")
+--- CMakeLists.txt	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
++++ CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
+@@ -35,8 +35,7 @@
+ find_package(Speex)
+ find_package(QCA2)
+ find_package(JPEG)
+-find_package(X11VidMode)
+-find_package(Decibel)
++# find_package(Decibel) not used at this time
+ find_package(IDN)
+ find_package(LibVNCServer)
  
 
 Zmiany atrybutów dla: .
