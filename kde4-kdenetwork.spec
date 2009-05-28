@@ -6,23 +6,25 @@
 #
 # Conditional build:
 #
-%define		_state		stable
+%define		_state		unstable
 %define		orgname		kdenetwork
 %define		qtver		4.5.0
+%define		svn		969966
 
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.2.3
-Release:	3
+Version:	4.2.87
+Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	7d77ab0322f96251a8d3baf7e4f6990e
-Patch100:	%{name}-branch.diff
-Patch0:		%{name}-FindDecibel.patch
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}svn%{svn}.tar.bz2
+# Source0-md5:	a91e36653e166e20e5962b221693a0fb
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
+#Patch100:	%{name}-branch.diff
+#Patch0:		%{name}-FindDecibel.patch
 URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel >= %{qtver}
 BuildRequires:	automoc4 >= 0.9.88
@@ -41,6 +43,7 @@ BuildRequires:	libmsn-devel >= 4.0-0.beta2.1
 #BuildRequires:	libnxcl-devel >= 1.0-0.r612.1
 BuildRequires:	libotr-devel >= 3.2.0
 BuildRequires:	libtool
+BuildRequires:	libv4l-devel >= 0.5.8
 BuildRequires:	libvncserver-devel
 BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel >= 1.0.7
@@ -703,7 +706,7 @@ Connection z użyciem serwera KDE VNC, czyli "dzielenia pulpitu"
 specjalnych możliwości Remote Desktop Connection.
 
 %prep
-%setup -q -n %{orgname}-%{version}
+%setup -q -n %{orgname}-%{version}svn%{svn}
 #%patch100 -p0
 #%patch0 -p0
 
