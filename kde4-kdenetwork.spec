@@ -1083,6 +1083,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kopete_skype.desktop
 %{_datadir}/kde4/services/skype.protocol
 %{_datadir}/kde4/services/tel.protocol
+%{_datadir}/apps/kopete/icons/*/*/*/skype_protocol.png
 
 %files kopete-protocol-sms
 %defattr(644,root,root,755)
