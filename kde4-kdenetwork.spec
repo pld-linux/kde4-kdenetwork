@@ -374,6 +374,19 @@ Kopete plugin which adds WLM (Windows Live Messenger) protocol support.
 %description kopete-protocol-wlm -l pl.UTF-8
 Wtyczka Kopete dodająca obsługę protokołu WLM (Windows Live Messenger).
 
+%package kopete-protocol-skype
+Summary:	Kopete plugin which adds Skype(tm) protocol support
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu Skype(tm)
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{version}-%{release}
+
+%description kopete-protocol-skype
+Kopete plugin which adds Skype(tm) protocol support.
+
+%description kopete-protocol-skype -l pl.UTF-8
+Wtyczka Kopete dodająca obsługę protokołu Skype(tm).
+
+
 %package kopete-protocol-msn
 Summary:	Kopete plugin which adds MSN protocol support
 Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu MSN
@@ -776,7 +789,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libiris_kopete.so
 %attr(755,root,root) %{_libdir}/libkopete.so
 #%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so
@@ -788,7 +800,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkopeteprivacy.so
 %attr(755,root,root) %{_libdir}/libkopetestatusmenu.so
 %attr(755,root,root) %{_libdir}/liboscar.so
+%attr(755,root,root) %{_libdir}/libkrdccore.so
+%attr(755,root,root) %{_libdir}/libkopetecontactlist.so
 %{_includedir}/kopete
+%{_includedir}/krdc
 
 %files filesharing
 %defattr(644,root,root,755)
@@ -819,7 +834,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kget_metalinkfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_multisegkiofactory.so
-%attr(755,root,root) %{_libdir}/kde4/kcm_kget_bittorrentfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_contentfetchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_multisegkiofactory.so
@@ -838,7 +852,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/kget_multisegkiofactory.kcfg
 %{_datadir}/config.kcfg/kget_mirrorsearchfactory.kcfg
 %{_datadir}/config.kcfg/kget_contentfetchfactory.kcfg
-%{_datadir}/kde4/services/kget_bittorrentfactory_config.desktop
 %{_datadir}/kde4/services/kget_contentfetchfactory.desktop
 %{_datadir}/kde4/services/kget_contentfetchfactory_config.desktop
 %{_datadir}/kde4/services/kget_mirrorsearchfactory_config.desktop
@@ -889,7 +902,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kopete_statistics.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_testbed.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_urlpicpreview.so
-%attr(755,root,root) %{_libdir}/kde4/libkrichtexteditpart.so
 
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-0.10.pl
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
@@ -907,8 +919,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
 
 #### ???
-%attr(755,root,root) %{_libdir}/libiris_kopete.so.1.0.0
-%attr(755,root,root) %ghost %{_libdir}/libiris_kopete.so.?
 %attr(755,root,root) %{_libdir}/libkopeteaddaccountwizard.so.1.0.0
 %attr(755,root,root) %ghost %{_libdir}/libkopeteaddaccountwizard.so.?
 %attr(755,root,root) %{_libdir}/libkopetechatwindow_shared.so.1.0.0
@@ -921,6 +931,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/liboscar.so.?
 %attr(755,root,root) %{_libdir}/libkopetestatusmenu.so.1.0.0
 %attr(755,root,root) %ghost %{_libdir}/libkopetestatusmenu.so.?
+%attr(755,root,root) %{_libdir}/libkopetecontactlist.so.1
+%attr(755,root,root) %{_libdir}/libkopetecontactlist.so.1.0.0
+%attr(755,root,root) %{_libdir}/kde4/libchattexteditpart.so
 ####
 
 %dir %{_datadir}/apps/kopete
@@ -943,6 +956,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kopete/icons/*/*/apps/preferences-plugin-text-effect-kopete.png
 %{_datadir}/apps/kopete/icons/*/*/apps/preferences-text-autocorrection-kopete.png
 %{_datadir}/apps/kopete/icons/*/*/apps/preferences-text-highlighting-kopete.png
+%{_datadir}/apps/kopete/CompactContactListLayouts.xml
+%{_datadir}/apps/kopete/DefaultContactListLayouts.xml
 #%{_datadir}/apps/kopete/pics/statistics
 %{_datadir}/apps/kopete/styles
 %{_datadir}/apps/kopete_otr
@@ -1006,9 +1021,6 @@ rm -rf $RPM_BUILD_ROOT
 %files kopete-protocol-gg
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kopete_gadu.so
-%attr(755,root,root) %{_libdir}/libgadu_kopete.so.1.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgadu_kopete.so.1
-%attr(755,root,root) %{_libdir}/libgadu_kopete.so
 %{_datadir}/apps/kopete/icons/*/*/*/gadu*
 %{_datadir}/apps/kopete/icons/*/*/*/gg*
 %{_datadir}/kde4/services/kopete_gadu.desktop
@@ -1055,6 +1067,22 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kopete_wlm.desktop
 %dir %{_datadir}/apps/kopete_wlm
 %{_datadir}/apps/kopete_wlm/wlmchatui.rc
+
+%files kopete-protocol-skype
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/skype-action-handler
+# someone find a way to package this
+#/usr/lib/mozilla/plugins/libskypebuttons.so
+%attr(755,root,root) %{_libdir}/kde4/kopete_skype.so
+%dir %{_datadir}/apps/kopete_skype
+%{_datadir}/apps/kopete_skype/call_end
+%{_datadir}/apps/kopete_skype/call_start
+%{_datadir}/apps/kopete_skype/skypechatui.rc
+%{_datadir}/apps/kopete_skype/skypeui.rc
+%{_datadir}/kde4/services/callto.protocol
+%{_datadir}/kde4/services/kopete_skype.desktop
+%{_datadir}/kde4/services/skype.protocol
+%{_datadir}/kde4/services/tel.protocol
 
 %files kopete-protocol-sms
 %defattr(644,root,root,755)
@@ -1183,11 +1211,24 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krdc
 %attr(755,root,root) %{_bindir}/krfb
+%attr(755,root,root) %ghost %{_libdir}/libkrdccore.so.?
+%attr(755,root,root) %{_libdir}/libkrdccore.so.4.3.0
+%attr(755,root,root) %{_libdir}/kde4/krdc_rdpplugin.so
+%attr(755,root,root) %{_libdir}/kde4/krdc_testplugin.so
+%attr(755,root,root) %{_libdir}/kde4/krdc_vncplugin.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_krdc_rdpplugin.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_krdc_vncplugin.so
 %{_datadir}/apps/krdc
 %{_datadir}/apps/krfb
 %{_datadir}/config.kcfg/krdc.kcfg
 %{_datadir}/kde4/services/rdp.protocol
 %{_datadir}/kde4/services/vnc.protocol
+%{_datadir}/kde4/services/krdc_rdp.desktop
+%{_datadir}/kde4/services/krdc_rdp_config.desktop
+%{_datadir}/kde4/services/krdc_test.desktop
+%{_datadir}/kde4/services/krdc_vnc.desktop
+%{_datadir}/kde4/services/krdc_vnc_config.desktop
+%{_datadir}/kde4/servicetypes/krdc_plugin.desktop
 %{_desktopdir}/kde4/krdc.desktop
 %{_desktopdir}/kde4/krfb.desktop
 %{_kdedocdir}/en/krdc
