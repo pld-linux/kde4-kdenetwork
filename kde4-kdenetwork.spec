@@ -16,12 +16,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.2.88
+Version:	4.2.95
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}svn%{svn}.tar.bz2
-# Source0-md5:	8594d398e18bdada451767bae23318e5
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
+# Source0-md5:	0db7bca09f892a8d697d3741d415fa4d
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 #Patch100:	%{name}-branch.diff
 #Patch0:		%{name}-FindDecibel.patch
@@ -720,7 +720,7 @@ Connection z użyciem serwera KDE VNC, czyli "dzielenia pulpitu"
 specjalnych możliwości Remote Desktop Connection.
 
 %prep
-%setup -q -n %{orgname}-%{version}svn%{svn}
+%setup -q -n %{orgname}-%{version}
 #%patch100 -p0
 #%patch0 -p0
 %patch1 -p1
@@ -834,6 +834,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kget_metalinkfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_multisegkiofactory.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_kget_bittorrentfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_contentfetchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_multisegkiofactory.so
@@ -852,6 +853,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/kget_multisegkiofactory.kcfg
 %{_datadir}/config.kcfg/kget_mirrorsearchfactory.kcfg
 %{_datadir}/config.kcfg/kget_contentfetchfactory.kcfg
+%{_datadir}/kde4/services/kget_bittorrentfactory_config.desktop
 %{_datadir}/kde4/services/kget_contentfetchfactory.desktop
 %{_datadir}/kde4/services/kget_contentfetchfactory_config.desktop
 %{_datadir}/kde4/services/kget_mirrorsearchfactory_config.desktop
@@ -1018,12 +1020,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kopete/icons/*/*/*/bonjour_protocol.png
 %{_datadir}/kde4/services/kopete_bonjour.desktop
 
-%files kopete-protocol-gg
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde4/kopete_gadu.so
-%{_datadir}/apps/kopete/icons/*/*/*/gadu*
-%{_datadir}/apps/kopete/icons/*/*/*/gg*
-%{_datadir}/kde4/services/kopete_gadu.desktop
+#%files kopete-protocol-gg
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_libdir}/kde4/kopete_gadu.so
+#%{_datadir}/apps/kopete/icons/*/*/*/gadu*
+#%{_datadir}/apps/kopete/icons/*/*/*/gg*
+#%{_datadir}/kde4/services/kopete_gadu.desktop
 
 %files kopete-protocol-groupwise
 %defattr(644,root,root,755)
@@ -1111,12 +1113,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kopete/icons/*/*/*/yahoo*
 %{_datadir}/kde4/services/kopete_yahoo.desktop
 
-%files kopete-tool-alias
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_alias.so
-%attr(755,root,root) %{_libdir}/kde4/kopete_alias.so
-%{_datadir}/kde4/services/kconfiguredialog/kopete_alias_config.desktop
-%{_datadir}/kde4/services/kopete_alias.desktop
+#%files kopete-tool-alias
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_alias.so
+#%attr(755,root,root) %{_libdir}/kde4/kopete_alias.so
+#%{_datadir}/kde4/services/kconfiguredialog/kopete_alias_config.desktop
+#%{_datadir}/kde4/services/kopete_alias.desktop
 
 %files kopete-tool-autoreplace
 %defattr(644,root,root,755)
