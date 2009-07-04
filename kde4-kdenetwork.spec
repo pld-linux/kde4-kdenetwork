@@ -1,7 +1,5 @@
 # TODO
 # - fix kopete-tool-{avdeviceconfig,smpppdcs} summaries/descriptions (copy-pastos!)
-# - what about non-applied libgadu patch?
-# - kill internal libgadu copy
 # - BR phonon-devel
 #
 # Conditional build:
@@ -17,15 +15,15 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
 Version:	4.2.95
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 # Source0-md5:	0db7bca09f892a8d697d3741d415fa4d
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 #Patch100:	%{name}-branch.diff
-#Patch0:		%{name}-FindDecibel.patch
-Patch1:		%{name}-libknotification.patch
+Patch0:		%{name}-libknotification.patch
+Patch1:		%{name}-FindLibgadu.patch
 URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel >= %{qtver}
 BuildRequires:	automoc4 >= 0.9.88
@@ -36,7 +34,7 @@ BuildRequires:	gmp-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
-BuildRequires:	libgadu-devel >= 1.4
+BuildRequires:	libgadu-devel >= 1.8.0
 BuildRequires:	libidn-devel
 BuildRequires:	libiw-devel >= 27
 BuildRequires:	libjpeg-devel
@@ -722,8 +720,8 @@ specjalnych możliwości Remote Desktop Connection.
 %prep
 %setup -q -n %{orgname}-%{version}
 #%patch100 -p0
-#%patch0 -p0
-%patch1 -p1
+%patch0 -p1
+%patch1 -p0
 
 %build
 install -d build
@@ -1020,12 +1018,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kopete/icons/*/*/*/bonjour_protocol.png
 %{_datadir}/kde4/services/kopete_bonjour.desktop
 
-#%files kopete-protocol-gg
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_libdir}/kde4/kopete_gadu.so
-#%{_datadir}/apps/kopete/icons/*/*/*/gadu*
-#%{_datadir}/apps/kopete/icons/*/*/*/gg*
-#%{_datadir}/kde4/services/kopete_gadu.desktop
+%files kopete-protocol-gg
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/kde4/kopete_gadu.so
+%{_datadir}/apps/kopete/icons/*/*/*/gadu*
+%{_datadir}/apps/kopete/icons/*/*/*/gg*
+%{_datadir}/kde4/services/kopete_gadu.desktop
 
 %files kopete-protocol-groupwise
 %defattr(644,root,root,755)
