@@ -14,12 +14,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.2.95
-Release:	2
+Version:	4.2.96
+Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	0db7bca09f892a8d697d3741d415fa4d
+# Source0-md5:	411b4dc5d3c6b802a06334c9e319d60d
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 #Patch100:	%{name}-branch.diff
 Patch0:		%{name}-libknotification.patch
@@ -918,6 +918,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader.upd
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-gaim_to_pidgin_style.pl
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-gaim_to_pidgin_style.upd
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-update_yahoo_server.pl
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-update_yahoo_server.upd
+
 
 #### ???
 %attr(755,root,root) %{_libdir}/libkopeteaddaccountwizard.so.1.0.0
