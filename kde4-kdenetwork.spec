@@ -58,6 +58,7 @@ BuildRequires:	sqlite3-devel
 BuildRequires:	xmms-devel
 BuildRequires:	xorg-lib-libXtst-devel
 Obsoletes:	kdenetwork4
+Obsoletes:	kde4-kdenetwork-kopete-tool-alias
 Conflicts:	kdenetwork4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
