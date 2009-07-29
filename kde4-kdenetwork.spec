@@ -7,19 +7,18 @@
 %define		_state		unstable
 %define		orgname		kdenetwork
 %define		qtver		4.5.2
-%define		svn		973768
 
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.2.98
+Version:	4.3.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	a65bbab7dabb887a3a3d9cb27c0f2409
+# Source0-md5:	f9695ff06d0d67a78a71fb9b3ddbd4f3
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 #Patch100:	%{name}-branch.diff
 Patch0:		%{name}-libknotification.patch
