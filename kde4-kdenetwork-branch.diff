@@ -1,980 +1,1707 @@
-Index: krfb/krfb.notifyrc
+Index: krdc/test/krdc_test.desktop
 ===================================================================
---- krfb/krfb.notifyrc	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ krfb/krfb.notifyrc	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -53,8 +53,8 @@
- Comment[tg]=Истифодаи Муштараки Мизи Корӣ
- Comment[tr]=Masaüstü Paylaşımı
- Comment[uk]=Спільні стільниці
-+Comment[xh]=Ulwahlulelano lwe Desktop
- Comment[x-test]=xxDesktop Sharingxx
--Comment[xh]=Ulwahlulelano lwe Desktop
- Comment[zh_CN]=桌面共享
- Comment[zh_HK]=桌面分享
- Comment[zh_TW]=桌面分享
-@@ -156,8 +156,8 @@
- Comment[tg]=Корванд пайвастшавиро қабул мекунад
- Comment[tr]=Kullanıcı bağlantıyı kabul etti
- Comment[uk]=Користувач приймає з’єднання
-+Comment[xh]=Umsebenzisi wamkela uxhulumaniso
- Comment[x-test]=xxUser accepts connectionxx
--Comment[xh]=Umsebenzisi wamkela uxhulumaniso
- Comment[zh_CN]=用户接受连接
- Comment[zh_HK]=用戶接受連線
- Comment[zh_TW]=使用者接受連線
-@@ -260,8 +260,8 @@
- Comment[tg]=Корванд пайвастшавиро рад мекунад
- Comment[tr]=Kullanıcı bağlantıyı reddetti
- Comment[uk]=Користувач не приймає з’єднання
-+Comment[xh]=Umsebenzisi wala uxhulumaniso
- Comment[x-test]=xxUser refuses connectionxx
--Comment[xh]=Umsebenzisi wala uxhulumaniso
- Comment[zh_CN]=用户拒绝连接
- Comment[zh_HK]=用戶拒絕連線
- Comment[zh_TW]=使用者拒絕連線使用者
-@@ -292,6 +292,7 @@
- Name[ko]=연결이 닫힘
- Name[lt]=Ryšys baigtas
- Name[lv]=Savienojums slēgts
-+Name[mai]=संबंधन बन्न भ' गेल
- Name[ml]=ബന്ധം അടച്ചു
- Name[nb]=Forbindelsen lukket
- Name[nds]=Afkoppelt
-@@ -367,8 +368,8 @@
- Comment[uk]=З'єднання закрито
- Comment[uz]=Aloqa uzildi
- Comment[uz@cyrillic]=Алоқа узилди
-+Comment[xh]=Uxhulumaniso luvaliwe
- Comment[x-test]=xxConnection closedxx
--Comment[xh]=Uxhulumaniso luvaliwe
- Comment[zh_CN]=连接关闭
- Comment[zh_HK]=連線已關閉
- Comment[zh_TW]=連線已關閉
-@@ -450,6 +451,7 @@
- Comment[ko]=잘못된 암호
- Comment[lt]=Neteisingas slaptažodis
- Comment[lv]=Parole nav derīga
-+Comment[mai]=अवैध कूटशब्द
- Comment[mk]=Невалидна лозинка
- Comment[ml]=അസാധുവായ അടയാളവാക്ക്
- Comment[ms]=Kata laluan tidak sah
-@@ -476,8 +478,8 @@
- Comment[uz]=Maxfiy soʻz haqiqiy emas
- Comment[uz@cyrillic]=Махфий сўз ҳақиқий эмас
- Comment[wa]=Sicret nén valide
-+Comment[xh]=Igama lokugqitha elingasebenziyo
- Comment[x-test]=xxInvalid passwordxx
--Comment[xh]=Igama lokugqitha elingasebenziyo
- Comment[zh_CN]=无效密码
- Comment[zh_HK]=無效的密碼
- Comment[zh_TW]=不正確的密碼
-@@ -579,8 +581,8 @@
- Comment[tg]=Корванди дурдаст гузарвожаи нодурустро фиристод. Пайвастшавӣ манъ шудааст.
- Comment[tr]=Davet edilenden gönderilmiş geçersiz parola. Bağlantı rededildi.
- Comment[uk]=Запрошений учасник надіслав некоректний пароль. У з’єднанні відмовлено.
-+Comment[xh]=Umhlangano omenyiweyo uthumele igama lokugqitha elisebenzayo. Uxhulumano lwa liwe.
- Comment[x-test]=xxThe invited party sent an invalid password. Connection refused.xx
--Comment[xh]=Umhlangano omenyiweyo uthumele igama lokugqitha elisebenzayo. Uxhulumano lwa liwe.
- Comment[zh_CN]=受邀请方发送的密码不对。连接被拒绝。
- Comment[zh_HK]=被邀請的一方送出無效的密碼。已拒絕連線。
- Comment[zh_TW]=邀請的人送出了不合法的密碼邀請。連線已拒絕。
-@@ -682,8 +684,8 @@
- Comment[tg]=Пайвастшавӣ дархоста шудааст, корванд бояд қабул кунад
- Comment[tr]=Bağlantı isteği, kullanıcı kabul etmeli
- Comment[uk]=Отримано запит на з’єднання, користувач має його прийняти
-+Comment[xh]=Uxhulumaniso luceliwe, umsebenzisi kufanele amkele
- Comment[x-test]=xxConnection requested, user must acceptxx
--Comment[xh]=Uxhulumaniso luceliwe, umsebenzisi kufanele amkele
- Comment[zh_CN]=连接已请求，用户必须接受
- Comment[zh_HK]=已請求連線，用戶必須接受
- Comment[zh_TW]=連線已要求，必須等使用者接受
-@@ -786,8 +788,8 @@
- Comment[tg]=Пайвастшавии нав ба таври худкор барпо мегардад
- Comment[tr]=Yeni bağlantı otomatik olarak kuruldu
- Comment[uk]=Автоматично встановлено нове з’єднання
-+Comment[xh]=Uxhulumaniso olutsha lufunyenwe ngokuzenzekelayo
- Comment[x-test]=xxNew connection automatically establishedxx
--Comment[xh]=Uxhulumaniso olutsha lufunyenwe ngokuzenzekelayo
- Comment[zh_CN]=自动建立新连接
- Comment[zh_HK]=已自動建立新連線
- Comment[zh_TW]=新連線自動建立
-@@ -893,8 +895,8 @@
- Comment[uk]=Зайнято, у з’єднанні відмовлено
- Comment[uz]=Band, aloqa rad etildi
- Comment[uz@cyrillic]=Банд, алоқа рад этилди
-+Comment[xh]=Uxhulumaniso, olu xakekileyo lwaliwe
- Comment[x-test]=xxBusy, connection refusedxx
--Comment[xh]=Uxhulumaniso, olu xakekileyo lwaliwe
- Comment[zh_CN]=对方处于忙碌状态，连接被拒绝
- Comment[zh_HK]=忙碌，已拒絕連線
- Comment[zh_TW]=忙碌，連線被拒
-@@ -997,8 +999,8 @@
- Comment[tg]=Пайвастшавии ғайричашмдош қабул гардид, кандашавӣ
- Comment[tr]=Babul edilmiş beklenmedik bağlantı, durdur
- Comment[uk]=Отримано з’єднання, яке не очікувалось, припиняється
-+Comment[xh]=Ufumene uxhulumaniso olungalindelekanga, lahla
- Comment[x-test]=xxReceived unexpected connection, abortxx
--Comment[xh]=Ufumene uxhulumaniso olungalindelekanga, lahla
- Comment[zh_CN]=收到意外连接，已中止
- Comment[zh_HK]=接收到非預期的連線，中止
- Comment[zh_TW]=已接收到未知的連線，中止。
-Index: krfb/kcm_krfb/kcmkrfb.desktop
+--- krdc/test/krdc_test.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ krdc/test/krdc_test.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -28,6 +28,7 @@
+ Name[zh_TW]=測試
+ Comment=Testplugin for KRDC development
+ Comment[ca]=Connector de prova del desenvolupament del KRDC
++Comment[cs]=Demonstrační modul pro vývoj KRDC
+ Comment[da]=Test-plugin til KRDC-udvikling
+ Comment[de]=Testmodul für die KRDC-Entwicklung
+ Comment[el]=Πρόσθετο δοκιμής για την ανάπτυξη του KRDC
+@@ -47,8 +48,10 @@
+ Comment[nds]=Testmoduul för't Utwickeln vun KRDC
+ Comment[nl]=Testplugin voor KRDC-ontwikkeling
+ Comment[nn]=Programtillegg for demonstrasjon og opplæring i KRDC-utvikling
++Comment[pl]=Wtyczka demonstracyjna do nauki programowania KRDC
+ Comment[pt]='Plugin' de demonstração para o desenvolvimento com o KRDC
+ Comment[pt_BR]=Plug-in de teste para o desenvolvimento no KRDC
++Comment[ro]=Modul de testare pentru dezvoltarea KRDC
+ Comment[ru]=Демонстрационный модуль для изучения программирования модулей KRDC
+ Comment[sl]=Poskusni vstavek za razvoj KRDC
+ Comment[sr]=Пробни прикључак за развој КРДЦ‑а
+Index: krdc/krdcui.rc
 ===================================================================
---- krfb/kcm_krfb/kcmkrfb.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ krfb/kcm_krfb/kcmkrfb.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -69,8 +69,8 @@
- Name[tr]=Masaüstü Paylaşımı
- Name[uk]=Спільні стільниці
- Name[vi]=Chia sẻ màn hình nền
-+Name[xh]=Ukwehlulelana kwe Desktop
- Name[x-test]=xxDesktop Sharingxx
--Name[xh]=Ukwehlulelana kwe Desktop
- Name[zh_CN]=桌面共享
- Name[zh_HK]=桌面分享
- Name[zh_TW]=桌面分享
-@@ -134,8 +134,8 @@
- Comment[tr]=Masaüstü Paylaşımını Yapılandır
- Comment[uk]=Налаштувати спільні стільниці
- Comment[vi]=Cấu hình chia sẻ màn hình nền
-+Comment[xh]=Qwalasela Ukusebenzisa ngokuhlangeneyo kwe Desktop 
- Comment[x-test]=xxConfigure Desktop Sharingxx
--Comment[xh]=Qwalasela Ukusebenzisa ngokuhlangeneyo kwe Desktop 
- Comment[zh_CN]=配置桌面共享
- Comment[zh_HK]=設定桌面分享
- Comment[zh_TW]=設定桌面分享
-Index: krfb/kinetd/kinetd.desktop
+--- krdc/krdcui.rc	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ krdc/krdcui.rc	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+-<gui name="krdc" version="6">
++<gui name="krdc" version="7">
+ <MenuBar>
+     <Menu name="file">
+         <Action name="new_vnc_connection" />
+@@ -9,7 +9,7 @@
+         <Action name="zeroconf_page" />
+     </Menu>
+     <Menu noMerge="1" name="session"><text>&amp;Session</text>
+-        <Action name="fullscreen" />
++        <Action name="switch_fullscreen" />
+         <Action name="take_screenshot" />
+         <Action name="view_only" />
+         <Action name="show_local_cursor" />
+@@ -23,7 +23,7 @@
+     </Menu>
+ </MenuBar>
+ <ToolBar fullWidth="false" name="krdc_remote_view_toolbar" iconText="icononly" newline="false"><text>Remote View Toolbar</text>
+-    <Action name="fullscreen" />
++    <Action name="switch_fullscreen" />
+     <Action name="take_screenshot" />
+     <Action name="view_only" />
+     <Action name="show_local_cursor" />
+Index: krdc/rdp/krdc_rdp.desktop
 ===================================================================
---- krfb/kinetd/kinetd.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ krfb/kinetd/kinetd.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -130,8 +130,8 @@
- Comment[uz]=Talab qilinganda tarmoq xizmatlarini ishga tushuruvchi Internet demoni
- Comment[uz@cyrillic]=Талаб қилинганда тармоқ хизматларини ишга тушурувчи Интернет демони
- Comment[vi]=Một trình nền Mạng mà chạy các dịch vụ mạng theo nhu cầu
-+Comment[xh]=Internet daemon eqala iinkonzo zomsebenzi wonatha xa zifunwa
- Comment[x-test]=xxAn Internet daemon that starts network services on demandxx
--Comment[xh]=Internet daemon eqala iinkonzo zomsebenzi wonatha xa zifunwa
- Comment[zh_CN]=按需启动网络服务的守护进程
- Comment[zh_HK]=自動依需求起動網絡服務的互聯網系統程式
- Comment[zh_TW]=依要求起動網路服務的 Internet 伺服程式
+--- krdc/rdp/krdc_rdp.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ krdc/rdp/krdc_rdp.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -27,6 +27,7 @@
+ Comment[nds]=RDP-Törns över KRDC plegen
+ Comment[nl]=Staat het beheer van RDP-sessies toe via KRDC
+ Comment[nn]=Lèt deg handtera RDP-økter gjennom KRDC
++Comment[pl]=Pozwala na zarządzanie sesjami RDP przez KRDC
+ Comment[pt]=Permite a gestão de sessões RDP através do KRDC
+ Comment[pt_BR]=Permite o gerenciamento de sessões RDP através do KRDC
+ Comment[ro]=Permite gestiunea sesiunilor RDP prin KRDC
+Index: krdc/nx/krdc_nx.desktop
+===================================================================
+--- krdc/nx/krdc_nx.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ krdc/nx/krdc_nx.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -26,6 +26,7 @@
+ Comment[nds]=NX-Törns över KRDC plegen
+ Comment[nl]=Staat het beheren van NX-sessies toe via KRDC
+ Comment[nn]=Lèt deg handtera NX-økter gjennom KRDC
++Comment[pl]=Pozwala na zarządzanie sesjami NX przez KRDC
+ Comment[pt]=Permite a gestão de sessões NX através do KRDC
+ Comment[pt_BR]=Permite o gerenciamento de sessões NX através do KRDC
+ Comment[ro]=Permite gestiunea sesiunilor NX prin KRDC
+Index: krdc/vnc/krdc_vnc.desktop
+===================================================================
+--- krdc/vnc/krdc_vnc.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ krdc/vnc/krdc_vnc.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -26,6 +26,7 @@
+ Comment[nds]=VNC-Törns över KRDC plegen
+ Comment[nl]=Staat het beheer van VNC-sessies toe via KRDC
+ Comment[nn]=Lèt deg handtera VNC-økter gjennom KRDC
++Comment[pl]=Pozwala na zarządzanie sesjami VNC przez KRDC
+ Comment[pt]=Permite a gestão de sessões VNC através do KRDC
+ Comment[pt_BR]=Permite o gerenciamento de sessões VNC através do KRDC
+ Comment[ro]=Permite gestiunea sesiunilor VNC prin KRDC
+Index: krdc/core/krdc_plugin.desktop
+===================================================================
+--- krdc/core/krdc_plugin.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ krdc/core/krdc_plugin.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -24,6 +24,7 @@
+ Name[nl]=KRDC-plugin
+ Name[nn]=KRDC-programtillegg
+ Name[pa]=KRDC ਪਲੱਗਇਨ
++Name[pl]=Wtyczka KRDC
+ Name[pt]='Plugin' do KRDC 
+ Name[pt_BR]=Plug-in KRDC
+ Name[ro]=Modul KRDC
+Index: krdc/mainwindow.cpp
+===================================================================
+--- krdc/mainwindow.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ krdc/mainwindow.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -185,6 +185,12 @@
+     screenshotAction->setIcon(KIcon("ksnapshot"));
+     connect(screenshotAction, SIGNAL(triggered()), SLOT(takeScreenshot()));
+ 
++    KAction *fullscreenAction = actionCollection()->addAction("switch_fullscreen"); // note: please do not switch to KStandardShortcut unless you know what you are doing (see history of this file)
++    fullscreenAction->setText(i18n("Switch to Full Screen Mode"));
++    fullscreenAction->setIcon(KIcon("view-fullscreen"));
++    fullscreenAction->setShortcut(KStandardShortcut::fullScreen());
++    connect(fullscreenAction, SIGNAL(triggered()), SLOT(switchFullscreen()));
++
+     QAction *viewOnlyAction = actionCollection()->addAction("view_only");
+     viewOnlyAction->setCheckable(true);
+     viewOnlyAction->setText(i18n("View Only"));
+@@ -215,7 +221,6 @@
+     scaleAction->setText(i18n("Scale Remote Screen to Fit Window Size"));
+     connect(scaleAction, SIGNAL(triggered(bool)), SLOT(scale(bool)));
+ 
+-    KStandardAction::fullScreen(this, SLOT(switchFullscreen()), 0, actionCollection());
+     KStandardAction::quit(this, SLOT(quit()), actionCollection());
+     KStandardAction::preferences(this, SLOT(preferences()), actionCollection());
+     KStandardAction::configureToolbars(this, SLOT(configureToolbars()), actionCollection());
+@@ -517,7 +522,7 @@
+     RemoteView* view = m_remoteViewList.at(m_currentRemoteView);
+ 
+     if (m_fullscreenWindow) {
+-        // Leaving fullscreen mode
++        // Leaving full screen mode
+         view->enableScaling(view->hostPreferences()->windowedScale());
+         show();
+         restoreGeometry(m_mainWindowGeometry);
+@@ -538,14 +543,17 @@
+             m_toolBar = 0;
+         }
+ 
++        actionCollection()->action("switch_fullscreen")->setIcon(KIcon("view-fullscreen"));
++        actionCollection()->action("switch_fullscreen")->setText(i18n("Switch to Full Screen Mode"));
++
+         m_fullscreenWindow->deleteLater();
+ 
+         m_fullscreenWindow = 0;
+     } else {
+-        // Entering fullscreen mode
++        // Entering full screen mode
+         m_fullscreenWindow = new QWidget(this, Qt::Window);
+-        m_fullscreenWindow->setWindowTitle(i18nc("window title when in fullscreen mode (for example displayed in tasklist)",
+-                                                 "KDE Remote Desktop Client (Fullscreen)"));
++        m_fullscreenWindow->setWindowTitle(i18nc("window title when in full screen mode (for example displayed in tasklist)",
++                                                 "KDE Remote Desktop Client (Full Screen)"));
+ 
+         QScrollArea *scrollArea = createScrollArea(m_fullscreenWindow, view);
+         scrollArea->setFrameShape(QFrame::NoFrame);
+@@ -602,7 +610,7 @@
+ 
+         saveHostPrefs(view);
+     } else {
+-        if (m_fullscreenWindow) { // first close fullscreen view
++        if (m_fullscreenWindow) { // first close full screen view
+             switchFullscreen();
+         }
+ 
+@@ -693,7 +701,7 @@
+     RemoteView *view = qobject_cast<RemoteView*>(scrollArea->widget());
+     if (!view) return;
+ 
+-    const QString url = view->url().url();
++    const QString url = view->url().prettyUrl(KUrl::RemoveTrailingSlash);
+     kDebug(5010) << url;
+ 
+     KMenu *menu = new KMenu(this);
+@@ -760,6 +768,9 @@
+     kDebug(5010);
+ 
+     if (!m_toolBar) {
++        actionCollection()->action("switch_fullscreen")->setIcon(KIcon("view-restore"));
++        actionCollection()->action("switch_fullscreen")->setText(i18n("Switch to Window Mode"));
++
+         m_toolBar = new FloatingToolBar(m_fullscreenWindow, m_fullscreenWindow);
+         m_toolBar->winId(); // force it to be a native widget (prevents problem with QX11EmbedContainer)
+         m_toolBar->setSide(FloatingToolBar::Top);
+@@ -782,11 +793,11 @@
+         m_toolBar->addWidget(sessionComboBox);
+ #endif
+ 
+-        m_toolBar->addAction(actionCollection()->action("fullscreen"));
++        m_toolBar->addAction(actionCollection()->action("switch_fullscreen"));
+ 
+         QAction *minimizeAction = new QAction(m_toolBar);
+         minimizeAction->setIcon(KIcon("go-down"));
+-        minimizeAction->setText(i18n("Minimize Fullscreen Window"));
++        minimizeAction->setText(i18n("Minimize Full Screen Window"));
+         connect(minimizeAction, SIGNAL(triggered()), m_fullscreenWindow, SLOT(showMinimized()));
+         m_toolBar->addAction(minimizeAction);
+ 
+@@ -832,7 +843,7 @@
+ 
+     RemoteView* view = m_currentRemoteView >= 0 ? m_remoteViewList.at(m_currentRemoteView) : NULL;
+     
+-    actionCollection()->action("fullscreen")->setEnabled(enabled);
++    actionCollection()->action("switch_fullscreen")->setEnabled(enabled);
+     actionCollection()->action("take_screenshot")->setEnabled(enabled);
+     actionCollection()->action("disconnect")->setEnabled(enabled);
+ 
+Index: krdc/konsole/krdc_konsole.desktop
+===================================================================
+--- krdc/konsole/krdc_konsole.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ krdc/konsole/krdc_konsole.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -10,6 +10,7 @@
+ Name[mai]=कंसोल
+ Name[nn]=Konsoll
+ Name[pa]=ਕਨਸੋਲ
++Name[pl]=Konsola
+ Name[ro]=Konsolă
+ Name[sl]=Konzola
+ Name[sr]=Конзола
+@@ -36,6 +37,7 @@
+ Comment[nds]=SSH- oder Telnet-Törns över KRDC plegen
+ Comment[nl]=Staat het beheer van ssh- of telnet-sessies toe via KRDC
+ Comment[nn]=Lèt deg handtera SSH- eller Telnet-økter gjennom KRDC
++Comment[pl]=Pozwala zarządzać sesjami SSH lub Telnet za pomocą KRDC
+ Comment[pt]=Permite a gestão de sessões SSH ou Telnet através do KRDC
+ Comment[pt_BR]=Permite o gerenciamento de sessões SSH ou Telnet através do KRDC
+ Comment[ro]=Permite gestiunea sesiunilor SSH sau Telnet prin KRDC
 Index: krfb/kinetd/kinetd.notifyrc
 ===================================================================
---- krfb/kinetd/kinetd.notifyrc	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ krfb/kinetd/kinetd.notifyrc	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -58,8 +58,8 @@
- Name[ta]=உள்வரும் இணைப்புகள்
- Name[tg]=Пайвастшавии Воридшаванда
- Name[tr]=Gelen Bağlantı
-+Name[xh]=Uxhumaniso Olungenayo
- Name[x-test]=xxIncomingConnectionxx
--Name[xh]=Uxhumaniso Olungenayo
- Name[zh_CN]=进入的连接
- Name[zh_HK]=進入連線
- Name[zh_TW]=進來的連線
-@@ -114,8 +114,8 @@
- Comment[tg]=Пайвастшавии воридшаванда қабул гардид
- Comment[tr]=Gelen bağlantı alınıyor
- Comment[uk]=Отримано вхідне з’єднання
-+Comment[xh]=Uxhulumano olungenayo olufunyenweyo
- Comment[x-test]=xxReceived incoming connectionxx
--Comment[xh]=Uxhulumano olungenayo olufunyenweyo
- Comment[zh_CN]=收到进入的连接
- Comment[zh_HK]=已接收的進入連線
- Comment[zh_TW]=接收到進來的連線
-@@ -125,7 +125,7 @@
- Name=ProcessFailed
- Name[ar]=فشلت العملية
- Name[bn]=প্রসেস ব্যর্থ
--Name[ca]=Procés fallit
-+Name[ca]=Procés erroni
- Name[cs]=Proces selhal
- Name[cy]=MethoddProses
- Name[da]=ProcesMislykkedes
-@@ -169,8 +169,8 @@
- Name[ta]=செயல் தோல்வியுற்றது
- Name[tg]=Ҷараён бо Нокомӣ анҷомид
- Name[tr]=Başarısız İşlemler
-+Name[xh]=Inkqubo Yahlulekile
- Name[x-test]=xxProcessFailedxx
--Name[xh]=Inkqubo Yahlulekile
- Name[zh_CN]=处理失败
- Name[zh_HK]=程序失敗
- Name[zh_TW]=行程失敗
-@@ -225,8 +225,8 @@
- Comment[tg]=Барои даскории пайвастшавӣ ҷараён бозхонда нашуд
- Comment[tr]=Elle bağlantıda başarısız çağrı işlemleri
- Comment[uk]=Не вдалося викликати процес для з’єднання
-+Comment[xh]=Ayikwazanga ukubiza inkqubo ezakuphatha uxhulumano
- Comment[x-test]=xxCould not call process to handle connectionxx
--Comment[xh]=Ayikwazanga ukubiza inkqubo ezakuphatha uxhulumano
- Comment[zh_CN]=无法调用进程处理连接
- Comment[zh_HK]=無法呼叫處理連線的程序
- Comment[zh_TW]=無法呼叫行程來處理此連線
-Index: krfb/kinetd/kinetdmodule.desktop
+--- krfb/kinetd/kinetd.notifyrc	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ krfb/kinetd/kinetd.notifyrc	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -101,7 +101,7 @@
+ Comment[nl]=Inkomende verbinding ontvangen
+ Comment[nn]=Fekk ei innkommande tilkopling
+ Comment[pa]=ਮਿਲੇ ਆ ਰਹੇ ਕੁਨੈਕਸ਼ਨ
+-Comment[pl]=Otrzymano połącznie przychodzące
++Comment[pl]=Otrzymano połączenie przychodzące
+ Comment[pt]=Foi recebida uma ligação
+ Comment[pt_BR]=Recebendo conexão de entrada
+ Comment[ro]=Conexiune de intrare recepționată
+Index: kopete/plugins/pipes/kopete_pipes.desktop
 ===================================================================
---- krfb/kinetd/kinetdmodule.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ krfb/kinetd/kinetdmodule.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -60,8 +60,8 @@
- Name[tr]=KDED Modül Türü
- Name[uk]=Тип модулю KinetD
- Name[vi]=Kiểu môđun KInetD
-+Name[xh]=Udidi Lomqongo womlinganiselo we KInetD
- Name[x-test]=xxKInetD Module Typexx
--Name[xh]=Udidi Lomqongo womlinganiselo we KInetD
- Name[zh_CN]=KInetD 模块类型
- Name[zh_HK]=KInetD 模組類型
- Name[zh_TW]=KInetD 模組類型
-Index: kopete/plugins/nowlistening/kopete_nowlistening_config.desktop
+--- kopete/plugins/pipes/kopete_pipes.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/plugins/pipes/kopete_pipes.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -26,6 +26,7 @@
+ Name[ga]=Píopaí
+ Name[hne]=पाइप
+ Name[hu]=Csövek
++Name[is]=Pípur
+ Name[it]=Canali
+ Name[ja]=パイプ
+ Name[km]=បំពង់
+@@ -64,6 +65,7 @@
+ Comment[ga]=Píopáil teachtaireachtaí trí ríomhchlár nó script sheachtrach
+ Comment[gl]=Canaliza as mensaxes mediante un programa ou script externo
+ Comment[hu]=Az üzenetek átengedése külső programon vagy szűrőn
++Comment[is]=Dælir skilaboðum í gegnum ytra forrit eða skriftu
+ Comment[it]=Incanala i messaggi in un programma o in uno script
+ Comment[ja]=メッセージを外部プログラムやスクリプトにパイプします
+ Comment[km]=សារ​បំពង់​តាម​កម្មវិធី ឬ​ស្គ្រីប​ខាងក្រៅ
+Index: kopete/plugins/pipes/kopete_pipes_config.desktop
 ===================================================================
---- kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/nowlistening/kopete_nowlistening_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -40,6 +40,7 @@
- Name[ko]=지금 재생 중
- Name[lt]=Dabar klausau
- Name[lv]=Šobrīd atskaņo
-+Name[mai]=आबि सुनि रहल अछि
- Name[mk]=Сега слуша
- Name[ml]=ഇപ്പോള്‍ ശ്രദ്ധിക്കുന്നു
- Name[nb]=Hører nå på
-Index: kopete/plugins/nowlistening/kopete_nowlistening.desktop
+--- kopete/plugins/pipes/kopete_pipes_config.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/plugins/pipes/kopete_pipes_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -21,6 +21,7 @@
+ Name[ga]=Píopaí
+ Name[hne]=पाइप
+ Name[hu]=Csövek
++Name[is]=Pípur
+ Name[it]=Canali
+ Name[ja]=パイプ
+ Name[km]=បំពង់
+@@ -59,6 +60,7 @@
+ Comment[ga]=Píopáil teachtaireachtaí trí ríomhchlár nó script sheachtrach
+ Comment[gl]=Canaliza as mensaxes mediante un programa ou script externo
+ Comment[hu]=Az üzenetek átengedése külső programon vagy szűrőn
++Comment[is]=Dælir skilaboðum í gegnum ytra forrit eða skriftu
+ Comment[it]=Incanala i messaggi in un programma o in uno script
+ Comment[ja]=メッセージを外部プログラムやスクリプトにパイプします
+ Comment[km]=សារ​បំពង់​តាម​កម្មវិធី ឬ​ស្គ្រីប​ខាងក្រៅ
+Index: kopete/plugins/urlpicpreview/kopete_urlpicpreview.desktop
 ===================================================================
---- kopete/plugins/nowlistening/kopete_nowlistening.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/nowlistening/kopete_nowlistening.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -45,6 +45,7 @@
- Name[ko]=지금 재생 중
- Name[lt]=Dabar klausau
- Name[lv]=Šobrīd atskaņo
-+Name[mai]=आबि सुनि रहल अछि
- Name[mk]=Сега слуша
- Name[ml]=ഇപ്പോള്‍ ശ്രദ്ധിക്കുന്നു
- Name[nb]=Hører nå på
-Index: kopete/plugins/alias/kopete_alias.desktop
+--- kopete/plugins/urlpicpreview/kopete_urlpicpreview.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/plugins/urlpicpreview/kopete_urlpicpreview.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -22,13 +22,16 @@
+ Name[et]=Piltide eelvaatlus vestluses
+ Name[fr]=Aperçu des photos dans les discussions
+ Name[gl]=Previsualizar as imaxes nos chats
++Name[is]=Forskoðar myndir í spjalli
+ Name[it]=Anteprima di immagini in chat
+ Name[km]=មើល​រូបភាព​​ជា​មុន​នៅ​ក្នុង​គំនូស​តាង
+ Name[lv]=Attēlu priekšskatījumi tērzēšanā
+ Name[nb]=Forhåndsvis bilder i pratevinduer
+ Name[nds]=Vöransichten vun Biller bi't Klönen
+ Name[nl]=Voorbeeld van afbeeldingen in gesprekken
++Name[nn]=Førehandsvising av bilete i prat
+ Name[pa]=ਗੱਲਾਂ 'ਚ ਤਸਵੀਰਾਂ ਦੀ ਝਲਕ
++Name[pl]=Podgląd obrazków w rozmowie
+ Name[pt]=Antevisão das Imagens nas Conversas
+ Name[pt_BR]=Pré-visualização de imagens em bate-papos
+ Name[ro]=Previzualizarea imaginilor în discuții
+@@ -60,6 +63,7 @@
+ Comment[hi]=गपशप में छवियों के पूर्वावलोकन दिखाता है
+ Comment[hne]=गपसप मं फोटू मन के प्रिव्यू देखाथे 
+ Comment[hu]=Megjeleníti a csevegésekben előforduló képek előnézetét
++Comment[is]=Sýnir forskoðun mynda í spjalli
+ Comment[it]=Mostra un'anteprima di immagini in chat
+ Comment[ja]=チャットに画像のプレビューを表示します
+ Comment[km]=បង្ហាញ​ការ​មើល​រូបភាព​ជាមុន​ក្នុង​ជជែក​កំសាន្ត
+Index: kopete/plugins/urlpicpreview/kopete_urlpicpreview_config.desktop
 ===================================================================
---- kopete/plugins/alias/kopete_alias.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/alias/kopete_alias.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -37,6 +37,7 @@
- Name[ko]=별명
- Name[lt]=Kitas vardas
- Name[lv]=Īsceļi
-+Name[mai]=उपनाम
- Name[mk]=Други имиња
- Name[ml]=ചെല്ലപ്പേര്
- Name[ne]=उपनाम
-Index: kopete/plugins/alias/kopete_alias_config.desktop
+--- kopete/plugins/urlpicpreview/kopete_urlpicpreview_config.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/plugins/urlpicpreview/kopete_urlpicpreview_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -25,6 +25,7 @@
+ Name[hi]=यूआरएलपिकप्रीव्यू प्लगइन कॉन्फ़िगरेशन
+ Name[hne]=यूआरएलपिकप्रीव्यू प्लगइन कान्फिगरेसन
+ Name[hu]=Az URLPicPreview modul beállításai
++Name[is]=Stillingar URLPicPreview íforrits
+ Name[it]=Configurazione dell'estensione URLPicPreview
+ Name[ja]=URLPicPreview プラグインの設定
+ Name[km]=ការ​កំណត់​រចនាសម្ព័ន្ធ​កម្មវិធី​ជំនួយ URLPicPreview
+@@ -69,6 +70,7 @@
+ Comment[hi]=यूआरएलपिकप्रीव्यू प्लगइन
+ Comment[hne]=यूआरएलपिकप्रीव्यू प्लगइन
+ Comment[hu]=URLPicPreview modul
++Comment[is]=URLPicPreview íforrit
+ Comment[it]=Estensione URLPicPreview
+ Comment[ja]=URLPicPreview プラグイン
+ Comment[km]=កម្មវិធី​ជំនួយ URLPicPreview
+Index: kopete/plugins/otr/kopete_otr.desktop
 ===================================================================
---- kopete/plugins/alias/kopete_alias_config.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/alias/kopete_alias_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -32,6 +32,7 @@
- Name[ko]=별명
- Name[lt]=Kitas vardas
- Name[lv]=Īsceļi
-+Name[mai]=उपनाम
- Name[mk]=Други имиња
- Name[ml]=ചെല്ലപ്പേര്
- Name[ne]=उपनाम
-Index: kopete/plugins/translator/kopete_translator.desktop
+--- kopete/plugins/otr/kopete_otr.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/plugins/otr/kopete_otr.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -27,6 +27,7 @@
+ Comment[ga]=Criptigh seisiúin chomhráite le criptiú Off-The-Record
+ Comment[gl]=Cifra as sesións de conversa mediante cifraxe non rexistrada
+ Comment[hu]=A csevegések titkosítása Off-The-Record kódolással
++Comment[is]=Dulkóða spjallsetur með Off-The-Record dulkóðun
+ Comment[it]=Cifra le sessioni di chat con la cifratura Off-The-Record
+ Comment[ja]=OTR (Off-the-Record) プロトコルでチャットセッションを暗号化します
+ Comment[km]=អ៊ិនគ្រីប​សម័យ​ជជែក​កំសាន្ត​ជា​មួយ​នឹង​កា​របិទ​កា​រអ៊ិនគ្រីប​ថត
+Index: kopete/plugins/otr/kopete_otr_config.desktop
 ===================================================================
---- kopete/plugins/translator/kopete_translator.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/translator/kopete_translator.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -46,6 +46,7 @@
- Name[ku]=Wergêr
- Name[lt]=Vertėjas
- Name[lv]=Tulkotājs
-+Name[mai]=अनुवादक
- Name[mk]=Преведувач
- Name[ml]=പരിഭാഷകന്‍
- Name[nb]=Oversetter
-Index: kopete/plugins/translator/kopete_translator_config.desktop
-===================================================================
---- kopete/plugins/translator/kopete_translator_config.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/translator/kopete_translator_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -41,6 +41,7 @@
- Name[ku]=Wergêr
- Name[lt]=Vertėjas
- Name[lv]=Tulkotājs
-+Name[mai]=अनुवादक
- Name[mk]=Преведувач
- Name[ml]=പരിഭാഷകന്‍
- Name[nb]=Oversetter
-Index: kopete/plugins/statistics/kopete_statistics.desktop
-===================================================================
---- kopete/plugins/statistics/kopete_statistics.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/statistics/kopete_statistics.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -46,6 +46,7 @@
- Name[ku]=Statistîk
- Name[lt]=Statistika
- Name[lv]=Statistika
-+Name[mai]=सांख्यिकी
- Name[ml]=സ്ഥിതിവിവരം
- Name[nb]=Statistikk
- Name[nds]=Statistik
-Index: kopete/plugins/addbookmarks/kopete_addbookmarks.desktop
-===================================================================
---- kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -33,6 +33,7 @@
- Name[ko]=책갈피
- Name[lt]=Žymelės
- Name[lv]=Grāmatzīmes
-+Name[mai]=पुस्तकचिह्न
- Name[mk]=Обележувачи
- Name[ml]=ഓര്‍മ്മക്കുറിപ്പുകള്‍
- Name[nb]=Bokmerker
-@@ -58,8 +59,8 @@
- Name[uz]=Xatchoʻplar
- Name[uz@cyrillic]=Хатчўплар
- Name[vi]=Dấu hiệu
-+Name[xh]=Amanqaku encwadi
- Name[x-test]=xxBookmarksxx
--Name[xh]=Amanqaku encwadi
- Name[zh_CN]=书签
- Name[zh_HK]=書籤
- Name[zh_TW]=書籤
-Index: kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop
-===================================================================
---- kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -33,6 +33,7 @@
- Name[ko]=책갈피
- Name[lt]=Žymelės
- Name[lv]=Grāmatzīmes
-+Name[mai]=पुस्तकचिह्न
- Name[mk]=Обележувачи
- Name[ml]=ഓര്‍മ്മക്കുറിപ്പുകള്‍
- Name[nb]=Bokmerker
-@@ -58,8 +59,8 @@
- Name[uz]=Xatchoʻplar
- Name[uz@cyrillic]=Хатчўплар
- Name[vi]=Dấu hiệu
-+Name[xh]=Amanqaku encwadi
- Name[x-test]=xxBookmarksxx
--Name[xh]=Amanqaku encwadi
- Name[zh_CN]=书签
- Name[zh_HK]=書籤
- Name[zh_TW]=書籤
-Index: kopete/plugins/history/kopete_history.desktop
-===================================================================
---- kopete/plugins/history/kopete_history.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/history/kopete_history.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -47,6 +47,7 @@
- Name[ko]=과거 기록
- Name[lt]=Žurnalas
- Name[lv]=Vēsture
-+Name[mai]=इतिहास
- Name[mk]=Историја
- Name[ml]=നാള്‍വഴി
- Name[nb]=Historie
-@@ -75,8 +76,8 @@
- Name[uz@cyrillic]=Тарих
- Name[vi]=Lịch sử
- Name[wa]=Istwere
-+Name[xh]=Imbali
- Name[x-test]=xxHistoryxx
--Name[xh]=Imbali
- Name[zh_CN]=历史
- Name[zh_HK]=歷程紀錄
- Name[zh_TW]=歷史
-Index: kopete/plugins/history/kopete_history_config.desktop
-===================================================================
---- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -42,6 +42,7 @@
- Name[ko]=과거 기록
- Name[lt]=Žurnalas
- Name[lv]=Vēsture
-+Name[mai]=इतिहास
- Name[mk]=Историја
- Name[ml]=നാള്‍വഴി
- Name[nb]=Historie
-@@ -70,8 +71,8 @@
- Name[uz@cyrillic]=Тарих
- Name[vi]=Lịch sử
- Name[wa]=Istwere
-+Name[xh]=Imbali
- Name[x-test]=xxHistoryxx
--Name[xh]=Imbali
- Name[zh_CN]=历史
- Name[zh_HK]=歷程紀錄
- Name[zh_TW]=歷史
-Index: kopete/plugins/highlight/kopete_highlight.desktop
-===================================================================
---- kopete/plugins/highlight/kopete_highlight.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/highlight/kopete_highlight.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -46,6 +46,7 @@
- Name[ko]=강조
- Name[lt]=Paryškinti
- Name[lv]=Izcelta
-+Name[mai]=उभारू
- Name[mk]=Осветлување
- Name[ml]=എടുത്തുകാട്ടുക
- Name[nb]=Marker
-Index: kopete/plugins/highlight/kopete_highlight_config.desktop
-===================================================================
---- kopete/plugins/highlight/kopete_highlight_config.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/highlight/kopete_highlight_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -40,6 +40,7 @@
- Name[ko]=강조
- Name[lt]=Paryškinti
- Name[lv]=Izcelta
-+Name[mai]=उभारू
- Name[mk]=Осветлување
- Name[ml]=എടുത്തുകാട്ടുക
- Name[nb]=Marker
+--- kopete/plugins/otr/kopete_otr_config.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/plugins/otr/kopete_otr_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -22,6 +22,7 @@
+ Comment[ga]=Criptigh seisiúin chomhráite le criptiú Off-The-Record
+ Comment[gl]=Cifra as sesións de conversa mediante cifraxe non rexistrada
+ Comment[hu]=A csevegések titkosítása Off-The-Record kódolással
++Comment[is]=Dulkóða spjallsetur með Off-The-Record dulkóðun
+ Comment[it]=Cifra le sessioni di chat con la cifratura Off-The-Record
+ Comment[ja]=OTR (Off-the-Record) プロトコルでチャットセッションを暗号化します
+ Comment[km]=អ៊ិនគ្រីប​សម័យ​ជជែក​កំសាន្ត​ជា​មួយ​នឹង​កា​របិទ​កា​រអ៊ិនគ្រីប​ថត
 Index: kopete/plugins/privacy/kopete_privacy_config.desktop
 ===================================================================
---- kopete/plugins/privacy/kopete_privacy_config.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/privacy/kopete_privacy_config.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -32,6 +32,7 @@
- Name[ko]=사생활
- Name[lt]=Privatumas
- Name[lv]=Privātums
-+Name[mai]=गुप्तता
- Name[ml]=സ്വകാര്യ‌ത
- Name[nb]=Personvern
- Name[nds]=Privaatrebeet
+--- kopete/plugins/privacy/kopete_privacy_config.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/plugins/privacy/kopete_privacy_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -27,6 +27,7 @@
+ Name[hi]=गोपनीयता
+ Name[hne]=गोपनीयता
+ Name[hu]=Adatvédelem
++Name[is]=Privacy persónuvernd
+ Name[it]=Riservatezza
+ Name[ja]=プライバシー
+ Name[km]=ភាព​ឯកជន
+@@ -75,6 +76,7 @@
+ Comment[hi]=प्राइवेसी प्लगइन
+ Comment[hne]=प्राइवेसी प्लगइन
+ Comment[hu]=Adatvédelem modul
++Comment[is]=Privacy persónuverndaríforritið
+ Comment[it]=Estensione riservatezza
+ Comment[ja]=プライバシープラグイン
+ Comment[km]=កម្មវិធី​ជំនួយ​ភាព​ឯកជន
 Index: kopete/plugins/privacy/kopete_privacy.desktop
 ===================================================================
---- kopete/plugins/privacy/kopete_privacy.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/plugins/privacy/kopete_privacy.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -38,6 +38,7 @@
- Name[ko]=사생활
- Name[lt]=Privatumas
- Name[lv]=Privātums
-+Name[mai]=गुप्तता
- Name[ml]=സ്വകാര്യ‌ത
- Name[nb]=Personvern
- Name[nds]=Privaatrebeet
-Index: kopete/protocols/yahoo/kopete_yahoo.desktop
+--- kopete/plugins/privacy/kopete_privacy.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/plugins/privacy/kopete_privacy.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -33,6 +33,7 @@
+ Name[hi]=गोपनीयता
+ Name[hne]=गोपनीयता
+ Name[hu]=Adatvédelem
++Name[is]=Privacy persónuvernd
+ Name[it]=Riservatezza
+ Name[ja]=プライバシー
+ Name[km]=ភាព​ឯកជន
+@@ -81,6 +82,7 @@
+ Comment[hi]=आवक संदेशों को फिल्टर करता है
+ Comment[hne]=आवक संदेस मन ल छनइया करथे 
+ Comment[hu]=Szűrés a bejövő üzenetekre
++Comment[is]=Sía innkomandi skeyti
+ Comment[it]=Filtra i messaggi in arrivo
+ Comment[ja]=受信メッセージをフィルタします
+ Comment[kk]=Хабарларды бояулау
+Index: kopete/protocols/skype/libskype/skype.h
 ===================================================================
---- kopete/protocols/yahoo/kopete_yahoo.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/protocols/yahoo/kopete_yahoo.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -21,6 +21,7 @@
- Name[hi]=याहू
- Name[hne]=याहू
- Name[km]=យ៉ាហ៊ូ
-+Name[mai]=याहू
- Name[ml]=യാഹൂ
- Name[ne]=याहू
- Name[pa]=ਯਾਹੂ
-Index: kopete/protocols/jabber/jabbercontact.cpp
+--- kopete/protocols/skype/libskype/skype.h	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/skype/libskype/skype.h	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -214,6 +214,9 @@
+ 		void setDisplayName(const QString &user, const QString &name);
+ 		/**
+ 		 * Open skype file transfer dilog to send file via skype
++		 * @param user Skype user
++		 * @url url of local file
++		 * @return true if transfer opened
+ 		 */
+ 		bool openFileTransfer(const QString &user, const QString &url = QString::null);
+ 	public slots:
+Index: kopete/protocols/skype/libskype/skypedbus/skypeconnection.h
 ===================================================================
---- kopete/protocols/jabber/jabbercontact.cpp	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/protocols/jabber/jabbercontact.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -1327,7 +1327,6 @@
- 		if(!Kopete::AccountManager::self()->registerAccount( transport ))
- 			return;
- 		
--		transport->setIdentity( parentAccount->identity() );
- 		transport->myself()->setOnlineStatus( status ); //push back the online status
- 		return;
+--- kopete/protocols/skype/libskype/skypedbus/skypeconnection.h	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/skype/libskype/skypedbus/skypeconnection.h	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -20,10 +20,6 @@
+ #ifndef SKYPECONNECTION_H
+ #define SKYPECONNECTION_H
+ 
+-#ifndef SKYPE_DEBUG_GLOBAL
+-	#define SKYPE_DEBUG_GLOBAL 14311
+-#endif
+-
+ #include <qobject.h>
+ 
+ typedef enum {
+Index: kopete/protocols/skype/libskype/skypedbus/skypeconnection.cpp
+===================================================================
+--- kopete/protocols/skype/libskype/skypedbus/skypeconnection.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/skype/libskype/skypedbus/skypeconnection.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -72,7 +72,8 @@
+ 	disconnectSkype();//disconnect before you leave
+ 	if ( d->skypeProcess.state() != QProcess::NotRunning )//if we started skype process kill it
+ 		d->skypeProcess.kill();
+-	QProcess::execute("bash -c \"pkill -6 -U $USER -x skype.*\"");//try find skype process (skype, skype.real, ...) and kill it if we dont start skype or use skype.real wrapper
++	QProcess::execute("bash -c \"pkill -6 -U $USER -x ^skype.*$\"");//try find skype process (skype, skype.real, ...) and kill it if we dont start skype or use skype.real wrapper
++	QProcess::execute("bash -c \"pkill -6 -U $USER -x skype\"");
+ 	delete d;//Remove the D pointer
+ }
+ 
+@@ -154,8 +155,13 @@
+ 
+ 	new SkypeAdaptor(this);
+ 	QDBusConnection busConn = BUS;
+-	busConn.registerObject("/com/Skype/Client", this); //Register skype client to dbus for receiving messages to slot Notify
++	bool registred = busConn.registerObject("/com/Skype/Client", this); //Register skype client to dbus for receiving messages to slot Notify
+ 
++	if ( ! registred ) {
++		kDebug(SKYPE_DEBUG_GLOBAL) << "Cant register Skype communication for Kopete on DBus";
++		return;
++	}
++
+ 	{
+ 		QDBusInterface interface("com.Skype.API", "/com/Skype", "com.Skype.API", BUS);
+ 		QDBusReply <QString> reply = interface.call("Invoke", "PING");
+@@ -212,6 +218,9 @@
+ void SkypeConnection::disconnectSkype(skypeCloseReason reason) {
+ 	kDebug(SKYPE_DEBUG_GLOBAL);
+ 
++	QDBusConnection busConn = BUS;
++	busConn.unregisterObject("/com/Skype/Client");
++
+ 	if (d->startTimer) {
+ 		d->startTimer->stop();
+ 		d->startTimer->deleteLater();
+Index: kopete/protocols/skype/skypecontact.h
+===================================================================
+--- kopete/protocols/skype/skypecontact.h	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/skype/skypecontact.h	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -139,7 +139,7 @@
+ 		/**
+ 		 * Send file
+ 		 */
+-		virtual void sendFile(const KUrl &, const QString &, uint);
++		virtual void sendFile(const KUrl &url, const QString &, uint);
+ 	signals:
+ 		/**
+ 		 * There is a request to get/refresh the contact info from skype
+Index: kopete/protocols/skype/skypeprotocol.cpp
+===================================================================
+--- kopete/protocols/skype/skypeprotocol.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/skype/skypeprotocol.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -65,7 +65,7 @@
+ 	Connecting(Kopete::OnlineStatus::Connecting, 0, this, 8, QStringList("skype_connecting"), i18n("Connecting")),
+ 	NotInList(Kopete::OnlineStatus::Offline, 0, this, 9, QStringList("skype_contact_unknown"), i18n("Not in Skype list")),
+ 	NoAuth(Kopete::OnlineStatus::Offline, 0, this, 10, QStringList("skype_contact_unknown"), i18n("Not authorized")),
+-	Phone(Kopete::OnlineStatus::Online, 0, this, 11, QStringList("skype_contact_skypeout"), i18n("SkypeOut contact")),
++	Phone(Kopete::OnlineStatus::Offline, 0, this, 11, QStringList("skype_contact_skypeout"), i18n("SkypeOut contact")), //Skype Out contact permanently offline TODO: add option for changing
+ 	/** Contact property templates */
+ 	propFullName(Kopete::Global::Properties::self()->fullName()),
+ 	propPrivatePhone(Kopete::Global::Properties::self()->privatePhone()),
+Index: kopete/protocols/skype/skypeaccount.h
+===================================================================
+--- kopete/protocols/skype/skypeaccount.h	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/skype/skypeaccount.h	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -20,10 +20,6 @@
+ #ifndef SKYPEACCOUNT_H
+ #define SKYPEACCOUNT_H
+ 
+-#ifndef SKYPE_DEBUG_GLOBAL
+-	#define SKYPE_DEBUG_GLOBAL 14311
+-#endif
+-
+ #include <kopeteaccount.h>
+ #include <kactionmenu.h>
+ #include <kmenu.h>
+Index: kopete/protocols/skype/skypeconference.cpp
+===================================================================
+--- kopete/protocols/skype/skypeconference.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/skype/skypeconference.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -20,7 +20,6 @@
+ 
+ #include "skypeconference.h"
+ #include "skypecalldialog.h"
+-#include "skypeaccount.h"
+ 
+ #include <qstring.h>
+ #include <qlayout.h>
+Index: kopete/protocols/skype/CMakeLists.txt
+===================================================================
+--- kopete/protocols/skype/CMakeLists.txt	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/skype/CMakeLists.txt	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -14,6 +14,8 @@
+ 	${CMAKE_CURRENT_BUILD_DIR}
+ )
+ 
++add_definitions(-DSKYPE_DEBUG_GLOBAL=14311)
++
+ ########### next target ###############
+ 
+ set(
+Index: kopete/protocols/skype/skypecontact.cpp
+===================================================================
+--- kopete/protocols/skype/skypecontact.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/skype/skypecontact.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -52,8 +52,6 @@
+ 
+ class SkypeContactPrivate {
+ 	public:
+-		///Full name of the contact
+-		QString fullName;
+ 		///Acount that this contact belongs to
+ 		SkypeAccount *account;
+ 		///Is it some user or is it something special (myself contact or such)
+@@ -123,8 +121,6 @@
+ 	if (account->canComunicate() && user)
+ 		emit infoRequest(contactId());//retrieve information
+ 
+-	setNickName(id);//Just default, should be replaced later by something..
+-
+ 	setOnlineStatus(account->protocol()->Offline);
+ 
+ 	d->id = id;
+@@ -247,7 +243,7 @@
+ QString SkypeContact::formattedName() const {
+ 	if (!d->user)
+ 		return nickName();
+-	return d->fullName;
++	return property( Kopete::Global::Properties::self()->fullName() ).value().toString();
+ }
+ 
+ void SkypeContact::resetStatus() {
+@@ -456,9 +452,9 @@
+ 	d->account->blockUser(contactId());
+ }
+ 
+-void SkypeContact::sendFile(const KUrl &, const QString &, uint) {
++void SkypeContact::sendFile(const KUrl &url, const QString &, uint) {
+ 	kDebug(SKYPE_DEBUG_GLOBAL);
+-	d->account->openFileTransfer(contactId()); //TODO: open KUrl location
++	d->account->openFileTransfer(contactId(), url.toLocalFile());
+ }
+ 
+ #include "skypecontact.moc"
+Index: kopete/protocols/skype/skypeaccount.cpp
+===================================================================
+--- kopete/protocols/skype/skypeaccount.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/skype/skypeaccount.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -358,9 +358,11 @@
+ 
+ 	Kopete::Group * skypeGroup;
+ 
+-	if (group.isEmpty() || groupID == -1) // If skype group hasnt name, in kopete will be in top
++	bool root = false;
++	if (group.isEmpty() || groupID == -1) { // If skype group hasnt name, in kopete will be in top
+ 		skypeGroup = Kopete::Group::topLevel();
+-	else {
++		root = true;
++	} else {
+ 		skypeGroup = Kopete::ContactList::self()->findGroup(group); //get kopete group by skype group name. If skype group in kopete doesnt exist, create it automatically
+ 		if ( skypeGroup == Kopete::Group::topLevel() ){ //if group in skype has name i18n("Top Level") kopete get top level group, but in skype top level group is group without name
+ 			QList <Kopete::Group *> groups = Kopete::ContactList::self()->groups(); //get all groups
+@@ -380,7 +382,7 @@
+ 
+ 	Kopete::Contact * contact = contacts().value(name);
+ 	if (contact){
+-		if (skypeGroup != contact->metaContact()->groups().first()){ // if skype Group is different like kopete group, move metacontact to skype group
++		if (!root && skypeGroup != contact->metaContact()->groups().first()){ //if skype Group is different like kopete group (and skype group isnt root), move metacontact to skype group
+ 			kDebug(SKYPE_DEBUG_GLOBAL) << "Moving contact" << name << "to group" << group;
+ 			contact->metaContact()->moveToGroup(contact->metaContact()->groups().first(), skypeGroup);
+ 		}
+@@ -503,7 +505,7 @@
+ void SkypeAccount::newCall(const QString &callId, const QString &userId) {
+ 	kDebug(SKYPE_DEBUG_GLOBAL);
+ 
+-	if (d->callControl) {//Show the skype call control window
++	if (d->callControl) {//Show the kopete call control window
+ 		SkypeCallDialog *dialog = new SkypeCallDialog(callId, userId, this);//It should free itself when it is closed
+ 
+ 		QObject::connect(&d->skype, SIGNAL(callStatus(const QString&, const QString& )), dialog, SLOT(updateStatus(const QString&, const QString& )));
+@@ -558,7 +560,7 @@
+ 	Kopete::Contact *cont = contact(userId);
+ 
+ 	if (!cont) {
+-		addContact(userId, QString::null, 0L, Temporary);//create a temporary contact
++		addContact(userId, d->skype.getDisplayName(userId), 0L, Temporary);//create a temporary contact
+ 
+ 		cont = (contacts().value(userId));//It should be there now
+ 		if (!cont)
+@@ -621,7 +623,7 @@
+ SkypeContact *SkypeAccount::getContact(const QString &userId) {
+ 	SkypeContact *cont = static_cast<SkypeContact *> (contacts().value(userId));//get the contact
+ 	if (!cont) {//We do not know such contact
+-		addContact(userId, QString::null, 0L, Temporary);//create a temporary contact
++		addContact(userId, d->skype.getDisplayName(userId), 0L, Temporary);//create a temporary contact
+ 
+ 		cont = static_cast<SkypeContact *> (contacts().value(userId));//It should be there now
  	}
-Index: kopete/protocols/jabber/jabberchatsession.cpp
+@@ -1039,7 +1041,7 @@
+ 		openFileTransfer(user);//Open file transfer dialog
+ 	} else if ( command == "userinfo" ) {//TODO: Open option dialog (with all thisa options instead userinfo) and support unknow contacts who arent in contact list
+ 		if ( ! contact(user) ) {
+-			addContact(user, QString::null, 0L, Temporary);//create a temporary contact
++			addContact(user, d->skype.getDisplayName(user), 0L, Temporary);//create a temporary contact
+ 			if ( ! contact(user) )
+ 				return;//contact arent in contact list - skip it
+ 		}
+Index: kopete/protocols/skype/skypeprotocol.h
 ===================================================================
---- kopete/protocols/jabber/jabberchatsession.cpp	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/protocols/jabber/jabberchatsession.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -146,7 +146,7 @@
- 	Kopete::ContactPtrList chatMembers = members ();
+--- kopete/protocols/skype/skypeprotocol.h	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/skype/skypeprotocol.h	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -19,10 +19,6 @@
+ #ifndef SKYPEPROTOCOL_H
+ #define SKYPEPROTOCOL_H
  
- 	// make sure we do have members in the chat
--	if ( !chatMembers.first () )
-+	if ( chatMembers.isEmpty () || !chatMembers.first () )
- 		return;
+-#ifndef SKYPE_DEBUG_GLOBAL
+-	#define SKYPE_DEBUG_GLOBAL 14311
+-#endif
+-
+ #include "kopeteprotocol.h"
+ #include "kopeteproperty.h"
+ #include <qstring.h>
+Index: kopete/protocols/skype/kopete_skype.desktop
+===================================================================
+--- kopete/protocols/skype/kopete_skype.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/skype/kopete_skype.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -38,7 +38,9 @@
+ Comment[nb]=Programtillegg for Skype-protokoll (et omslag)
+ Comment[nds]=Skype-Protokollmoduul (Ümto-Programm)
+ Comment[nl]=Plugin voor het Skype-protocol (een 'wrapper')
++Comment[nn]=Skype-tillegg
+ Comment[pa]=ਸਕਾਈਪੀ ਪਰੋਟੋਕਾਲ ਪਲੱਗਇਨ (ਰੇਪਰ)
++Comment[pl]=Wtyczka protokołu Skype (nakładka)
+ Comment[pt]='Plugin' do protocolo Skype (uma interface)
+ Comment[pt_BR]=Plug-in do protocolo Skype (um adaptador)
+ Comment[ru]=Модуль для работы с протоколом Skype через официальный клиент
+Index: kopete/protocols/skype/skypebuttons/skypeactionhandler.cpp
+===================================================================
+--- kopete/protocols/skype/skypebuttons/skypeactionhandler.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/skype/skypebuttons/skypeactionhandler.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -1,19 +1,16 @@
+-/*  Skype Action Handler for Kopete
+-    Copyright (C) 2009 Pali Rohár <pali.rohar@gmail.com>
++/*
++    skypeactionhandler.cpp - Skype Action Handler for Kopete
  
- 	XMPP::Jid jid = static_cast<JabberBaseContact*>(chatMembers.first())->rosterItem().jid();
+-    This library is free software; you can redistribute it and/or
+-    modify it under the terms of the GNU Library General Public
+-    License version 2 as published by the Free Software Foundation.
++    Copyright (c) 2009 by Pali Rohár <pali.rohar@gmail.com>
+ 
+-    This library is distributed in the hope that it will be useful,
+-    but WITHOUT ANY WARRANTY; without even the implied warranty of
+-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+-    Library General Public License for more details.
+-
+-    You should have received a copy of the GNU Library General Public License
+-    along with this library; see the file COPYING.LIB.  If not, write to
+-    the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+-    Boston, MA 02111-1307, USA.
++    *************************************************************************
++    *                                                                       *
++    * This library is free software; you can redistribute it and/or         *
++    * modify it under the terms of the GNU General Public                   *
++    * License as published by the Free Software Foundation; either          *
++    * version 2 of the License, or (at your option) any later version.      *
++    *                                                                       *
++    *************************************************************************
+ */
+ 
+ #include <QCoreApplication>
+Index: kopete/protocols/skype/skypebuttons/skypebuttons.cpp
+===================================================================
+--- kopete/protocols/skype/skypebuttons/skypebuttons.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/skype/skypebuttons/skypebuttons.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -1,7 +1,25 @@
++/*
++    skypebuttons.cpp - Skype Action Handler for Kopete
+ 
++    Copyright (c) 2009 by Pali Rohár <pali.rohar@gmail.com>
++
++    *************************************************************************
++    *                                                                       *
++    * This library is free software; you can redistribute it and/or         *
++    * modify it under the terms of the GNU General Public                   *
++    * License as published by the Free Software Foundation; either          *
++    * version 2 of the License, or (at your option) any later version.      *
++    *                                                                       *
++    *************************************************************************
++*/
++
+ #include <QtGui>
+ #include <qtbrowserplugin.h>
+ 
++/**
++ * @author Pali Rohár
++ * This NS plugin only register application/x-skype mime type to web browser for using Skype Action Handler
++ */
+ class SkypeButtons : public QWidget
+ {
+ 	Q_OBJECT
+@@ -11,5 +29,5 @@
+ #include "skypebuttons.moc"
+ 
+ QTNPFACTORY_BEGIN("Skype Buttons for Kopete", "Mime Type x-skype for Skype Buttons")
+-QTNPCLASS(SkypeButtons)
++	QTNPCLASS(SkypeButtons)
+ QTNPFACTORY_END()
+Index: kopete/protocols/bonjour/kopete_bonjour.desktop
+===================================================================
+--- kopete/protocols/bonjour/kopete_bonjour.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/protocols/bonjour/kopete_bonjour.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -41,6 +41,8 @@
+ Comment[nb]=Lokal XMPP-meldingstjeneste med tjenerløs lenke
+ Comment[nds]=Link-Local-XMPP-Kortnarichten ahn Server
+ Comment[nl]=XMPP-berichtgeving op de lokale koppeling zonder server
++Comment[nn]=Tenarlause lokale XMPP-meldingar
++Comment[pl]=Lokalne komunikaty XMPP bez serwera
+ Comment[pt]=Mensagens XMPP de Ligação Local sem Servidor
+ Comment[pt_BR]=Mensagens XMPP com link local sem servidor
+ Comment[sl]=Krajevno sporočanje prek XMPP brez povezave s strežnikom
 Index: kopete/kopete/kopete.notifyrc
 ===================================================================
---- kopete/kopete/kopete.notifyrc	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/kopete/kopete.notifyrc	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -69,6 +69,7 @@
- Name[ko]=그룹
- Name[lt]=Grupė
- Name[lv]=Grupa
-+Name[mai]=समूह
- Name[ml]=കൂട്ടം
- Name[nb]=Gruppe
- Name[nds]=Koppel
-@@ -157,6 +158,7 @@
- Name[ko]=대화 상대
- Name[lt]=Kontaktinis asmuo
- Name[lv]=Kontakts
-+Name[mai]=संपर्क
- Name[ml]=സമ്പര്‍ക്കം
- Name[nb]=Kontakt
- Name[nds]=Kontakt
-@@ -245,6 +247,7 @@
- Name[ko]=등급
- Name[lt]=Klasė
- Name[lv]=Klase
-+Name[mai]=वर्ग
- Name[ml]=വിഭാഗം
- Name[nb]=Klasse
- Name[nds]=Klass
-@@ -730,6 +733,7 @@
- Name[ko]=오프라인
- Name[lt]=Atsijungę
- Name[lv]=Nesaistē
-+Name[mai]=आफलाइन
- Name[mk]=Не на линија
- Name[ml]=ഓഫ്‌ലൈന്‍‍
- Name[nb]=Frakoblet
-@@ -959,6 +963,7 @@
- Name[ko]=강조
- Name[lt]=Paryškinti
- Name[lv]=Izcelta
-+Name[mai]=उभारू
- Name[mk]=Осветлување
- Name[ml]=എടുത്തുകാട്ടുക
- Name[nb]=Marker
-@@ -1584,6 +1589,7 @@
- Name[ko]=연결 오류
- Name[lt]=Ryšio klaida
- Name[lv]=Savienojuma kļūda
-+Name[mai]=संबंधनमे त्रुटि
- Name[ml]=ബന്ധപ്പെടുന്നതില്‍ പിശകു്
- Name[nb]=Tilkoblingsfeil
- Name[nds]=Verbinnen-Fehler
-Index: kopete/kopete/kopete.desktop
-===================================================================
---- kopete/kopete/kopete.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/kopete/kopete.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -40,6 +40,7 @@
- GenericName[ko]=인스턴트 메신저
- GenericName[lt]=Momentinių žinučių klientas
- GenericName[lv]=Tūlītējā ziņojumapmaiņa
-+GenericName[mai]=इंसटैंट मैसेंजर
- GenericName[mk]=Инстант гласник
- GenericName[ml]=അതിവേഗ ദൂതന്‍
- GenericName[nb]=Hurtigmelding
-@@ -99,6 +100,7 @@
- Comment[ko]=인스턴트 메신저
- Comment[lt]=Momentinių žinučių klientas
- Comment[lv]=Tūlītējas ziņojumapmaiņas programma
-+Comment[mai]=इंसटैंट मैसेंजर
- Comment[mk]=Инстант гласник
- Comment[ml]=അതിവേഗ ദൂതന്‍
- Comment[nb]=Hurtigmeldingssystem
+--- kopete/kopete/kopete.notifyrc	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/kopete/kopete.notifyrc	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -65,6 +65,7 @@
+ Name[hi]=समूह
+ Name[hne]=समूह
+ Name[hu]=Csoport
++Name[is]=Hópur
+ Name[it]=Gruppo
+ Name[ja]=グループ
+ Name[km]=ក្រុម
+@@ -79,7 +80,7 @@
+ Name[nn]=Gruppe
+ Name[oc]=Grop
+ Name[pa]=ਗਰੁੱਪ
+-Name[pl]=Groupa
++Name[pl]=Grupa
+ Name[pt]=Grupo
+ Name[pt_BR]=Grupo de usuário
+ Name[ro]=Grup
+@@ -111,6 +112,7 @@
+ Comment[hi]=समूह जहाँ सम्पर्क रहते हैं
+ Comment[hne]=समूह जहाँ सम्पर्क रहथें 
+ Comment[hu]=A partner csoportja
++Comment[is]=Hópur þar sem tengiliðurinn er geymdur
+ Comment[it]=Il gruppo del contatto
+ Comment[ja]=コンタクトが所属するグループ
+ Comment[km]=ក្រុម​ដែល​ទំនាក់ទំនង​នៅ
+@@ -156,6 +158,7 @@
+ Name[hi]=सम्पर्क
+ Name[hne]=सम्पर्क
+ Name[hu]=Névjegy
++Name[is]=Tengiliður
+ Name[it]=Contatto
+ Name[ja]=コンタクト
+ Name[km]=ទំនាក់ទំនង
+@@ -200,6 +203,7 @@
+ Comment[hi]=निर्धारित सम्पर्क
+ Comment[hne]=निरधारित सम्पर्क
+ Comment[hu]=A megadott névjegy
++Comment[is]=Tilgreindur tengiliður
+ Comment[it]=Il contatto specificato
+ Comment[ja]=指定されたコンタクト
+ Comment[km]=ទំនាក់ទំនង​ដែល​បាន​បញ្ជាក់
+@@ -247,6 +251,7 @@
+ Name[hi]=वर्ग
+ Name[hne]=वर्ग
+ Name[hu]=Osztály
++Name[is]=Flokkur
+ Name[it]=Classe
+ Name[ja]=クラス
+ Name[km]=ថ្នាក់
+@@ -293,6 +298,7 @@
+ Comment[hi]=संदेश वर्ग
+ Comment[hne]=संदेस वर्ग
+ Comment[hu]=Üzenetosztály
++Comment[is]=Flokkur skilaboða
+ Comment[it]=La classe del messaggio
+ Comment[ja]=メッセージのクラス
+ Comment[km]=ថ្នាក់​សារ
+@@ -341,6 +347,7 @@
+ Name[hi]=आवक संदेश
+ Name[hne]=आवक संदेस
+ Name[hu]=Bejövő üzenet
++Name[is]=Innkomið skeyti
+ Name[it]=Messaggio in arrivo
+ Name[ja]=受信メッセージ
+ Name[km]=សារ​មក​ដល់
+@@ -443,6 +450,7 @@
+ Name[gl]=Recebeuse unha mensaxe entrante na conversa activa
+ Name[hne]=सक्रिय गपसप मं आवक संदेस
+ Name[hu]=Bejövő üzenet egy aktív csevegésben
++Name[is]=Ný skilaboð í virku spjalli
+ Name[it]=Messaggio in arrivo nella chat attiva
+ Name[ja]=アクティブなチャットの受信メッセージ
+ Name[km]=សារ​ចូល​នៅ​ក្នុង​ការ​ជជែក​ដែល​សកម្ម
+@@ -483,6 +491,7 @@
+ Comment[ga]=Fuarthas teachtaireacht isteach i bhfuinneog an chomhrá ghníomhaigh
+ Comment[gl]=Recebeuse unha mensaxe entrante na fiestra de conversa activa
+ Comment[hu]=Új üzenet érkezett az aktív csevegőablakban
++Comment[is]=Tekið hefur verið á móti skilaboðum í virka spjallglugganum
+ Comment[it]=È stato ricevuto un nuovo messaggio nella chat attiva
+ Comment[ja]=アクティブなチャットウィンドウに受信メッセージが届きました
+ Comment[km]=សារ​ចូល​នៅ​ក្នុង​​បង្អួចជជែក​​​សកម្មត្រូវ​បាន​ទទួល
+@@ -531,6 +540,7 @@
+ Name[hi]=जावक संदेश
+ Name[hne]=जावक संदेस
+ Name[hu]=Kimenő üzenet
++Name[is]=Skilaboð á leið út
+ Name[it]=Messaggio in uscita
+ Name[ja]=送信メッセージ
+ Name[km]=សារ​ចេញ
+@@ -635,6 +645,7 @@
+ Name[hi]=एक सम्पर्क ऑनलाइन हुआ
+ Name[hne]=एक सम्पर्क आनलाइन होइस
+ Name[hu]=Egy partner online állapotúvá vált
++Name[is]=Notandi hefur tengst
+ Name[it]=Utente connesso
+ Name[ja]=コンタクトがオンライン
+ Name[km]=ទំនាក់​ទំនង​ឡើង "លើ​បណ្ដាញ"
+@@ -1083,6 +1094,7 @@
+ Name[hi]=निम्न प्राथमिकता का संदेश
+ Name[hne]=निम्न प्राथमिकता के संदेस
+ Name[hu]=Alacsony prioritású üzenetek
++Name[is]=Skilaboð með lágum forgangi
+ Name[it]=Messaggi a bassa priorità
+ Name[ja]=優先度の低いメッセージ
+ Name[km]=សារ​អាទិភាព​ទាប
+@@ -1756,6 +1768,7 @@
+ Comment[hi]=कनेक्शन टूट गया
+ Comment[hne]=कनेक्सन टूट गिस
+ Comment[hu]=A kapcsolat megszakadt
++Comment[is]=Tengingin tapaðist
+ Comment[it]=La connessione è stata chiusa
+ Comment[ja]=接続が失われました
+ Comment[km]=បាន​បាត់បង់​ការ​តភ្ជាប់
+@@ -2061,6 +2074,7 @@
+ Comment[hi]=सर्विस में आंतरिक त्रुटि हुई
+ Comment[hne]=सर्विस मं अंदर के गलती होइस
+ Comment[hu]=Belső hiba történt a szolgáltatásban
++Comment[is]=Innri villa hefur átt sér stað í þjónustu
+ Comment[it]=Si è verificato un errore interno del servizio
+ Comment[ja]=サービスの内部エラーが発生しました
+ Comment[km]=កំហុស​ខាង​ក្នុង​សេវា​បាន​កើត​ឡើង
+@@ -2204,6 +2218,7 @@
+ Name[hi]=संदेश छोड़ा
+ Name[hne]=संदेस छोड़ा
+ Name[hu]=Egy üzenet el lett dobva
++Name[is]=Hætt hefur verið við skilaboðin
+ Name[it]=Messaggio scartato
+ Name[ja]=メッセージを除去
+ Name[km]=បាន​លុប​សារ
+@@ -2248,6 +2263,7 @@
+ Comment[hi]=प्राइवेसी प्लगइन द्वारा एक संदेश फिल्टर किया गया
+ Comment[hne]=प्राइवेसी प्लगइन से एक संदेस छनइया करिस
+ Comment[hu]=Az üzenetet az Adatvédelmi modul kiszűrte
++Comment[is]=Skilaboð voru síuð út af Privacy persónuverndaríforritinu
+ Comment[it]=Un messaggio è stato filtrato dall'estensione di riservatezza
+ Comment[ja]=プライバシープラグインのフィルタによってメッセージを除去しました
+ Comment[km]=បាន​ត្រង​សារ​ដោយ​កម្មវិធី​ជំនួយ​ភាព​ឯកជន
+@@ -2295,6 +2311,7 @@
+ Name[hi]=आईसीक्यू पढ़ने की स्थिति
+ Name[hne]=आईसीक्यू पढ़े के स्थिति
+ Name[hu]=ICQ olvasási állapot
++Name[is]=Staða ICQ aflestrar (reading status)
+ Name[it]=Lettura stato ICQ
+ Name[ja]=ICQ の状態を読んでいます
+ Name[km]=ស្ថានភាព​អាន​របស់ ICQ
+@@ -2339,6 +2356,7 @@
+ Comment[hi]=एक आईसीक्यू उपयोक्ता आपकी स्थिति संदेश को पढ़ रहा है
+ Comment[hne]=एक आईसीक्यू कमइया आप मन के स्थिति संदेस ल पढ़ रहा हे
+ Comment[hu]=Egy ICQ-felhasználó olvassa az Ön állapotüzenetét
++Comment[is]=Einhver ICQ er að lesa stöðuskilaboðin þín
+ Comment[it]=Un utente ICQ sta leggendo il tuo messaggio di stato
+ Comment[ja]=ICQ ユーザがあなたの状態メッセージを読んでいます
+ Comment[km]=អ្នក​ប្រើ ICQ កំពុង​អាន​សារ​ស្ថានភាព​របស់​អ្នក
+@@ -2382,6 +2400,7 @@
+ Name[gl]=Mensaxe do servizo
+ Name[hne]=सेवा संदेस
+ Name[hu]=Szolgáltatásüzenet
++Name[is]=Þjónustuskilaboð
+ Name[it]=Messaggio di servizio
+ Name[ja]=サービスメッセージ
+ Name[km]=សារ​សេវា
+@@ -2423,6 +2442,7 @@
+ Comment[ga]=Fuarthas teachtaireacht seirbhíse (m.sh. iarratas údaraithe)
+ Comment[gl]=Recibeuse unha mensaxe do servizo (p. ex. un pedido de autorización)
+ Comment[hu]=Szolgáltatásüzenet érkezett (pl. felhasználóazonosítási kérés)
++Comment[is]=Tekið hefur verið á móti þjónustuskilaboðum (t.d. beiðni um auðkenningu)
+ Comment[it]=È stato ricevuto un messaggio di servizio (ad es una richiesta di autorizzazione)
+ Comment[ja]=サービスメッセージ (例: 許可要求) を受け取りました
+ Comment[km]=បាន​ទទួល​សារ​សេវា (ឧ. សំណើ​ផ្ទៀងផ្ទាត់​ភាព​ត្រឹមត្រូវ)
 Index: kopete/kopete/config/accounts/kopete_accountconfig.desktop
 ===================================================================
---- kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -42,6 +42,7 @@
- Name[ko]=계정
- Name[lt]=Paskyros
- Name[lv]=Konti
-+Name[mai]=खाता
- Name[mk]=Сметки
- Name[ml]=എക്കൌണ്ടുകള്‍
- Name[nb]=Kontoer
+--- kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/kopete/config/accounts/kopete_accountconfig.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -91,6 +91,7 @@
+ Comment[gl]=Xestiona as súas identidades e contas
+ Comment[hne]=अपन खाता अउ पहिचान के प्रबंधन करव
+ Comment[hu]=Itt lehet kezelni az azonosítókat és identitásokat
++Comment[is]=Stýra auðkennum og áskriftum
+ Comment[it]=Gestisci gli account e le identità
+ Comment[ja]=アカウントと分身の管理
+ Comment[km]=គ្រប់គ្រង​គណនី និង​អត្តសញ្ញាណ​របស់​អ្នក
+Index: kopete/kopete/config/appearance/kopete_appearanceconfig.desktop
+===================================================================
+--- kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -25,6 +25,7 @@
+ Name[gl]=Lista de contactos
+ Name[hne]=सम्पर्क सूची
+ Name[hu]=Partnerek
++Name[is]=Tengiliðalisti
+ Name[it]=Lista contatti
+ Name[ja]=コンタクトリスト
+ Name[km]=បញ្ជី​ទំនាក់​ទំនង
+@@ -69,6 +70,7 @@
+ Comment[gl]=Configuración do aspeito e comportamento da lista de contactos
+ Comment[hne]=सम्पर्क सूची के रूप आकार ल कान्फिगर करव
+ Comment[hu]=A partnerlista megjelenése
++Comment[is]=Hér er hægt að breyta útliti og viðmóti tengiliðalistans
+ Comment[it]=Configura l'aspetto della lista dei contatti
+ Comment[ja]=コンタクトリストの外観を設定
+ Comment[km]=កំណត់​រចនា​សម្ព័ន្ធ​រូបរាង និង​មុខងារ​បញ្ជី​ទំនាក់ទំនង
 Index: kopete/kopete/config/behavior/kopete_behaviorconfig.desktop
 ===================================================================
---- kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -43,6 +43,7 @@
- Name[ko]=행동
- Name[lt]=Elgsena
- Name[lv]=Izturēšanās
-+Name[mai]=व्यवहार
- Name[mk]=Однесување
- Name[ml]=പെരുമാറ്റം
- Name[nb]=Oppførsel
+--- kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/kopete/config/behavior/kopete_behaviorconfig.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -96,6 +96,7 @@
+ Comment[hi]=के-ऑप्टी के व्यवहार को पर्सनलाइज करें
+ Comment[hne]=के-ओप्टी के व्यवहार ल पर्सनलाइज करव
+ Comment[hu]=Itt lehet megváltoztatni a Kopete működési jellemzőit
++Comment[is]=Hér geturðu breytt hegðun Kopete
+ Comment[it]=Personalizza il comportamento di Kopete
+ Comment[ja]=Kopete の挙動をカスタマイズ
+ Comment[km]=តម្រូវ​ឥរិយាបថ​របស់ Kopete តាម​បុគ្គល
 Index: kopete/kopete/config/plugins/kopete_pluginconfig.desktop
 ===================================================================
---- kopete/kopete/config/plugins/kopete_pluginconfig.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/kopete/config/plugins/kopete_pluginconfig.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -36,6 +36,7 @@
- Name[ko]=플러그인
- Name[lt]=Įskiepiai
- Name[lv]=Spraudņi
-+Name[mai]=प्लगिन
- Name[ml]=സംയോജകങ്ങള്‍
- Name[nb]=Programtillegg
- Name[nds]=Modulen
+--- kopete/kopete/config/plugins/kopete_pluginconfig.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/kopete/config/plugins/kopete_pluginconfig.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -30,6 +30,7 @@
+ Name[hne]=प्लगइन्स
+ Name[hsb]=Pluginy
+ Name[hu]=Modulok
++Name[is]=Íforrit
+ Name[it]=Estensioni
+ Name[ja]=プラグイン
+ Name[km]=កម្មវិធី​ជំនួយ
+@@ -76,6 +77,7 @@
+ Comment[gl]=Selección e configuración das extensións
+ Comment[hne]=प्लगइन चुनव अउ कान्फिगर करव
+ Comment[hu]=Kopete-modulok beállítása
++Comment[is]=Velja og stilla íforrit
+ Comment[it]=Scegli e configura le estensioni
+ Comment[ja]=プラグインの選択と設定
+ Comment[km]=ជ្រើស និង​កំណត់​រចនា​សម្ព័ន្ធ​កម្មវិធី​ជំនួយ
 Index: kopete/kopete/config/status/kopete_statusconfig.desktop
 ===================================================================
---- kopete/kopete/config/status/kopete_statusconfig.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/kopete/config/status/kopete_statusconfig.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -26,6 +26,7 @@
- Name[ko]=상태
- Name[lt]=Būsena
- Name[lv]=Statuss
-+Name[mai]=स्थिति
- Name[ml]=സ്ഥിതി
- Name[pa]=ਹਾਲਤ
- Name[pt]=Estado
+--- kopete/kopete/config/status/kopete_statusconfig.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/kopete/config/status/kopete_statusconfig.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -21,6 +21,7 @@
+ Name[gl]=Estado
+ Name[hne]=स्थिति
+ Name[hu]=Állapot
++Name[is]=Staða
+ Name[it]=Stato
+ Name[ja]=状態
+ Name[km]=ស្ថានភាព
+@@ -56,6 +57,7 @@
+ Comment[gl]=Xestiona os seus estados
+ Comment[hne]=अपन स्थिति के प्रबंधन करव
+ Comment[hu]=Itt lehet kezelni az állapotokat
++Comment[is]=Stýra stöðskilaboðum þínum
+ Comment[it]=Gestisci i tuoi stati
+ Comment[ja]=あなたの状態の管理
+ Comment[km]=គ្រប់គ្រង​ស្ថានភាព​របស់​អ្នក
 Index: kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop
 ===================================================================
---- kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -22,6 +22,7 @@
+--- kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/kopete/config/avdevice/kopete_avdeviceconfig.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -20,6 +20,7 @@
+ Name[gl]=Vídeo
+ Name[hne]=वीडियो
+ Name[hu]=Videó
++Name[is]=Vídeó
  Name[ja]=映像
  Name[km]=វីដេអូ
  Name[ko]=비디오
-+Name[mai]=वीडियो
- Name[ml]=ചലനചിത്രം
- Name[oc]=Vidèo
- Name[pa]=ਵੀਡਿਓ
+@@ -53,6 +54,7 @@
+ Comment[gl]=Configurar os dispositivos de vídeo
+ Comment[hne]=वीडियो उपकरन कान्फिगर करव
+ Comment[hu]=Videóeszközök beállítása
++Comment[is]=Stilla vídeótæki
+ Comment[it]=Configura i dispositivi video
+ Comment[ja]=映像デバイスの設定
+ Comment[km]=កំណត់​រចនា​សម្ព័ន្ធ​ឧបករណ៍​វីដេអូ
 Index: kopete/kopete/config/chatwindow/kopete_chatwindowconfig.desktop
 ===================================================================
---- kopete/kopete/config/chatwindow/kopete_chatwindowconfig.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/kopete/config/chatwindow/kopete_chatwindowconfig.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -30,6 +30,7 @@
- Name[ko]=대화 창
- Name[lt]=Pokalbių langas
- Name[lv]=Tērzēšanas logs
-+Name[mai]=चैट विंडो
- Name[ml]=കുശല ജാലകം
- Name[nb]=Pratevindu
- Name[nds]=Klöönfinster
-Index: kopete/libkopete/kopeteaccountmanager.cpp
+--- kopete/kopete/config/chatwindow/kopete_chatwindowconfig.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/kopete/config/chatwindow/kopete_chatwindowconfig.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -25,6 +25,7 @@
+ Name[gl]=Fiestra de conversa
+ Name[hne]=गपसप-विंडो
+ Name[hu]=Csevegési ablak
++Name[is]=Spjallgluggi
+ Name[it]=Finestra di chat
+ Name[ja]=チャットウィンドウ
+ Name[km]=បង្អួច​ជជែក​កំសាន្ត
+@@ -69,6 +70,7 @@
+ Comment[gl]=Configuración do aspeito e comportamento da fiestra de conversa
+ Comment[hne]=गपसप विंडो के रूप आकार ल कान्फिगर करव
+ Comment[hu]=Itt lehet megváltoztatni a csevegőablak grafikai megjelenését
++Comment[is]=Hér er hægt að breyta útliti og viðmóti spjallglugga
+ Comment[it]=Configura l'aspetto della finestra di chat
+ Comment[ja]=チャットウィンドウの外観を設定
+ Comment[km]=កំណត់​រចនា​សម្ព័ន្ធ​រូបរាង និង​មុខងារ​បង្អួច​ជជែក​កំសាន្ត
+Index: kopete/doc/t1/kopete_tutorialplugin.desktop
 ===================================================================
---- kopete/libkopete/kopeteaccountmanager.cpp	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/libkopete/kopeteaccountmanager.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -218,6 +218,21 @@
+--- kopete/doc/t1/kopete_tutorialplugin.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/doc/t1/kopete_tutorialplugin.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -20,6 +20,7 @@
+ Name[hi]=शिक्षण पाठ प्लगइन
+ Name[hne]=सिक्छन पाठ प्लगइन
+ Name[hu]=Oktatómodul
++Name[is]=Kennsluíforrit
+ Name[it]=Estensione di esercitazione
+ Name[ja]=チュートリアルプラグイン
+ Name[km]=កម្មវិធី​ជំនួយ​ការ​បង្រៀន
+@@ -67,6 +68,7 @@
+ Comment[hi]=के-ऑपीट डेवलपमेंट शिक्षण के लिए प्रदर्शन प्लगइन
+ Comment[hne]=के-ओपीट डेवलपमेंट सिक्छन बर प्रदर्सन प्लगइन
+ Comment[hu]=Bemutatómodul a Kopete fejlesztésének kérdéseiről
++Comment[is]=Íforrit sem sýnir hvernig forritun/þróun Kopete fer fram
+ Comment[it]=Estensione dimostrativa per insegnare lo sviluppo di Kopete
+ Comment[ja]=Kopete の開発方法を教えるデモプラグイン
+ Comment[km]=កម្មវិធី​ជំនួយ​ការ​បង្ហាញ​សម្រាប់​បង្រៀន​ការ​អភិវឌ្ឍន៍ Kopete
+Index: kopete/doc/t2/kopete_tutorialplugin.desktop
+===================================================================
+--- kopete/doc/t2/kopete_tutorialplugin.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/doc/t2/kopete_tutorialplugin.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -20,6 +20,7 @@
+ Name[hi]=शिक्षण पाठ प्लगइन
+ Name[hne]=सिक्छन पाठ प्लगइन
+ Name[hu]=Oktatómodul
++Name[is]=Kennsluíforrit
+ Name[it]=Estensione di esercitazione
+ Name[ja]=チュートリアルプラグイン
+ Name[km]=កម្មវិធី​ជំនួយ​ការ​បង្រៀន
+@@ -67,6 +68,7 @@
+ Comment[hi]=के-ऑपीट डेवलपमेंट शिक्षण के लिए प्रदर्शन प्लगइन
+ Comment[hne]=के-ओपीट डेवलपमेंट सिक्छन बर प्रदर्सन प्लगइन
+ Comment[hu]=Bemutatómodul a Kopete fejlesztésének kérdéseiről
++Comment[is]=Íforrit sem sýnir hvernig forritun/þróun Kopete fer fram
+ Comment[it]=Estensione dimostrativa per insegnare lo sviluppo di Kopete
+ Comment[ja]=Kopete の開発方法を教えるデモプラグイン
+ Comment[km]=កម្មវិធី​ជំនួយ​ការ​បង្ហាញ​សម្រាប់​បង្រៀន​ការ​អភិវឌ្ឍន៍ Kopete
+Index: kopete/doc/t3/kopete_tutorialplugin.desktop
+===================================================================
+--- kopete/doc/t3/kopete_tutorialplugin.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/doc/t3/kopete_tutorialplugin.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -20,6 +20,7 @@
+ Name[hi]=शिक्षण पाठ प्लगइन
+ Name[hne]=सिक्छन पाठ प्लगइन
+ Name[hu]=Oktatómodul
++Name[is]=Kennsluíforrit
+ Name[it]=Estensione di esercitazione
+ Name[ja]=チュートリアルプラグイン
+ Name[km]=កម្មវិធី​ជំនួយ​ការ​បង្រៀន
+@@ -67,6 +68,7 @@
+ Comment[hi]=के-ऑपीट डेवलपमेंट शिक्षण के लिए प्रदर्शन प्लगइन
+ Comment[hne]=के-ओपीट डेवलपमेंट सिक्छन बर प्रदर्सन प्लगइन
+ Comment[hu]=Bemutatómodul a Kopete fejlesztésének kérdéseiről
++Comment[is]=Íforrit sem sýnir hvernig forritun/þróun Kopete fer fram
+ Comment[it]=Estensione dimostrativa per insegnare lo sviluppo di Kopete
+ Comment[ja]=Kopete の開発方法を教えるデモプラグイン
+ Comment[km]=កម្មវិធី​ជំនួយ​ការ​បង្ហាញ​សម្រាប់​បង្រៀន​ការ​អភិវឌ្ឍន៍ Kopete
+Index: kopete/doc/t3/kopete_tutorialplugin_config.desktop
+===================================================================
+--- kopete/doc/t3/kopete_tutorialplugin_config.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kopete/doc/t3/kopete_tutorialplugin_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -21,6 +21,7 @@
+ Name[hi]=शिक्षण पाठ
+ Name[hne]=सिक्छन पाठ
+ Name[hu]=Bemutató
++Name[is]=Kennsluefni
+ Name[it]=Esercitazione
+ Name[ja]=チュートリアル
+ Name[km]=បង្រៀន
+@@ -66,6 +67,7 @@
+ Comment[hi]=सामान्य जनता को सुपर केऑप्टी डेवलपर में परिवर्तित कर देता है
+ Comment[hne]=सामान्य जनता ल सुपर केओप्टी डेवलपर मं बदल देथे 
+ Comment[hu]=Oktatómodul azoknak, akik Kopete-fejlesztők szeretnének lenni
++Comment[is]=Breytir venjulegu fólki í ofurforritara fyrir Kopete
+ Comment[it]=Trasforma persone normali in Super Sviluppatori di Kopete
+ Comment[ja]=普通の人を Kopete のスーパー開発者に変えます
+ Comment[km]=ប្រែ​ក្លាយ​មនុស្ស​ធម្មតា​ឲ្យ​ទៅ​ជា​កំពូល​អ្នក​អភិវឌ្ឍន៍ Kopete
+Index: kget/core/jobqueue.cpp
+===================================================================
+--- kget/core/jobqueue.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/core/jobqueue.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -136,7 +136,7 @@
+     }
+     else
+     {
+-        m_jobs.insert(m_jobs.indexOf(after) +1, job);
++        m_jobs.insert(m_jobs.indexOf(after) + 1, job);
+     }
  
- 	connect(account, SIGNAL(accountDestroyed(const Kopete::Account *)) , this, SLOT( unregisterAccount(const Kopete::Account *) ));
+     m_scheduler->jobQueueMovedJobEvent(this, job);
+Index: kget/core/kget.cpp
+===================================================================
+--- kget/core/kget.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/core/kget.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -322,13 +322,12 @@
+     Transfer * t = transfer->m_transfer;
+     t->stop();
  
-+	if ( !account->identity() )
-+	{
-+		// the account's Identity must be set here instead of in the Kopete::Account ctor, because there the
-+		// identity cannot pick up any state set in the derived Account ctor
-+		Identity *identity = Kopete::IdentityManager::self()->findIdentity( account->configGroup()->readEntry("Identity", QString()) );
-+		// if the identity was not found, use the default one which will for sure exist
-+		// FIXME: get rid of this, the account's identity should always exist at this point
-+		if (!identity)
-+		{
-+			kWarning( 14010 ) << "No identity for account " << account->accountId() << ": falling back to default";
-+			identity = Kopete::IdentityManager::self()->defaultIdentity();
-+		}
-+		account->setIdentity( identity );
-+	}
+-    m_transferTreeModel->delTransfer(t);
+-
+     //Here I delete the Transfer. The other possibility is to move it to a list
+     //and to delete all these transfers when kget gets closed. Obviously, after
+     //the notification to the views that the transfer has been removed, all the
+     //pointers to it are invalid.
+     transfer->postDeleteEvent();
++    m_transferTreeModel->delTransfer(t);
+     delete t;
+     return true;
+ }
+Index: kget/core/transfergroup.cpp
+===================================================================
+--- kget/core/transfergroup.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/core/transfergroup.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -12,7 +12,6 @@
+ 
+ #include "core/transfergrouphandler.h"
+ #include "core/kget.h"
+-#include "core/transferhistorystore.h"
+ 
+ #include <KDebug>
+ #include <KMessageBox>
+@@ -119,7 +118,6 @@
+ 
+ void TransferGroup::remove(Transfer * transfer)
+ {
+-    TransferHistoryStore::getStore()->saveItem(TransferHistoryItem(*transfer));
+     JobQueue::remove(transfer);
+ 
+     m_handler->postRemovedTransferEvent(transfer);
+Index: kget/core/transfer.cpp
+===================================================================
+--- kget/core/transfer.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/core/transfer.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -16,6 +16,7 @@
+ #include "core/transferhandler.h"
+ #include "core/plugin/transferfactory.h"
+ #include "core/scheduler.h"
++#include "core/transferhistorystore.h"
+ 
+ #include <kiconloader.h>
+ #include <klocale.h>
+@@ -53,6 +54,8 @@
+ 
+ Transfer::~Transfer()
+ {
++    TransferHistoryStore::getStore()->saveItem(TransferHistoryItem(*this));
 +
- 	emit accountRegistered( account );
- 	return account;
- }
-@@ -394,17 +409,6 @@
- 				"Failed to create account for '" << accountId << "'" << endl;
- 			continue;
- 		}
--		// the account's Identity must be set here instead of in the Kopete::Account ctor, because there the
--		// identity cannot pick up any state set in the derived Account ctor
--		Identity *identity = Kopete::IdentityManager::self()->findIdentity( account->configGroup()->readEntry("Identity", QString()) );
--		// if the identity was not found, use the default one which will for sure exist
--		// FIXME: get rid of this, the account's identity should always exist at this point
--		if (!identity)
--		{
--			kWarning( 14010 ) << "No identity for account " << accountId << ": falling back to default";
--			identity = Kopete::IdentityManager::self()->defaultIdentity();
--		}
--		account->setIdentity( identity );
- 	}
- }
+     if(status() == Job::Delayed)
+         m_scheduler->stopDelayTimer(this);
  
-Index: kopete/libkopete/kopeteversion.h
+Index: kget/core/transfertreemodel.cpp
 ===================================================================
---- kopete/libkopete/kopeteversion.h	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kopete/libkopete/kopeteversion.h	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -14,10 +14,10 @@
- #ifndef _KOPETE_VERSION_H_
- #define _KOPETE_VERSION_H_
+--- kget/core/transfertreemodel.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/core/transfertreemodel.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -1,6 +1,7 @@
+ /* This file is part of the KDE project
  
--#define KOPETE_VERSION_STRING "0.70.2"
-+#define KOPETE_VERSION_STRING "0.70.4"
- #define KOPETE_VERSION_MAJOR 0
- #define KOPETE_VERSION_MINOR 70
--#define KOPETE_VERSION_RELEASE 2
-+#define KOPETE_VERSION_RELEASE 4
- #define KOPETE_MAKE_VERSION( a,b,c ) (((a) << 16) | ((b) << 8) | (c))
+    Copyright (C) 2006 Dario Massarin <nekkar@libero.it>
++   Copyright (C) 2009 Lukas Appelhans <l.appelhans@gmx.de>
  
- #define KOPETE_VERSION \
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public
+@@ -86,34 +87,32 @@
+         return;
+ 
+     int removePosition = transfer->group()->indexOf(transfer);
+-    int insertPosition = destGroup->size();
+-    int groupIndex = m_transferGroups.indexOf(destGroup);
++    int insertPosition = after ? destGroup->indexOf(after) + 1 : 0;
+ 
+-    beginRemoveRows(createIndex(groupIndex, 0, destGroup->handler()), removePosition, removePosition);
++    kDebug() << "INSERT POSITION" << insertPosition << "TRANSFER AFTER:" << after << "REMOVE POSITION:" << removePosition;
+ 
+-    beginInsertRows(createIndex(m_transferGroups.indexOf(destGroup), 0, destGroup->handler()), insertPosition, insertPosition);
++    emit layoutAboutToBeChanged();
+ 
+     if(destGroup == transfer->group())
+     {
+-        if(after)
++        if (after)
+             destGroup->move(transfer, after);
+         else
+-            destGroup->move(transfer, static_cast<Transfer *>(destGroup->last()));
++            destGroup->move(transfer, 0);
+     }
+     else
+     {
+         transfer->group()->remove(transfer);
+ 
+-        if(destGroup->size() != 0)
+-            destGroup->insert(transfer, static_cast<Transfer *>(destGroup->last()));
++        if (after)
++            destGroup->insert(transfer, after);
+         else
+-            destGroup->append(transfer);
++            destGroup->prepend(transfer);
+ 
+         transfer->m_jobQueue = destGroup;
+     }
+ 
+-    endInsertRows();
+-    endRemoveRows();
++    emit layoutChanged();
+ 
+     KGet::selectionModel()->clearSelection();
+ }
+@@ -488,7 +487,9 @@
+ 
+     QDataStream stream(&encodedData, QIODevice::WriteOnly);
+ 
+-    foreach (const QModelIndex &index, indexes) 
++    QModelIndexList sortedIndexes = indexes;
++    qSort(sortedIndexes.begin(), sortedIndexes.end(), qGreater<QModelIndex>());
++    foreach (const QModelIndex &index, sortedIndexes) 
+     {
+         if (index.isValid())
+         {
+@@ -512,9 +513,6 @@
+     if (!mdata->hasFormat("application/vnd.text.list"))
+         return false;
+ 
+-    if (column > 0)
+-        return false;
+-
+     if (parent.isValid())
+         kDebug(5001) << "TransferTreeModel::dropMimeData" << " " << row << " " 
+                                                           << column << endl;
+@@ -536,6 +534,7 @@
+     kDebug(5001) << stringList;
+ 
+ 
++    Transfer * after = 0;
+     for(int i=0; i < rows; i++)
+     {
+ //         TransferGroup * group = findGroup(stringList[i]);
+@@ -545,9 +544,23 @@
+         TransferGroup * destGroup = findGroup(data(parent, Qt::DisplayRole).toString());
+ 
+         TransferHandler * transferHandler = (TransferHandler *) stringList[++i].toInt(0, 16);
++        
++        if (destGroup) {
++            bool b = destGroup->size() > row && row - 1 >= 0;
++            if (b)
++                kDebug() << "TRANSFER AFTER:" << destGroup->operator[](row - 1)->source();
++            else
++                kDebug() << "TRANSFER AFTER NOT EXISTING";
+ 
+-        if(destGroup)
+-            moveTransfer(transferHandler->m_transfer, destGroup);
++            if (!after) {
++                bool droppedInsideGroup = parent.isValid();
++                bool rowValid = (row - 1 >= 0) && (destGroup->size() >= row);
++                if (droppedInsideGroup && rowValid) {
++                    after = destGroup->operator[](row - 1);//insert at the correct position
++                }
++            }
++            moveTransfer(transferHandler->m_transfer, destGroup, after);
++         }
+     }
+     return true;
+ }
+Index: kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop
+===================================================================
+--- kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -16,6 +16,7 @@
+ Name[gl]=Procura de Réplicas
+ Name[hne]=मिरर खोज
+ Name[hu]=Tükörkiszolgáló keresése
++Name[is]=Leit að skráaspeglum
+ Name[it]=Ricerca mirror
+ Name[ja]=ミラー検索
+ Name[km]=ការ​ស្វែងរក​កញ្ចក់
+@@ -51,6 +52,7 @@
+ Comment[fr]=Permettre à KGet la recherche de fichiers depuis les moteurs de recherches de miroir
+ Comment[ga]=Ceadaíonn sé seo do KGet comhaid a lorg trí innill chuardaigh scáthánaithe
+ Comment[gl]=Permite que KGeto procure ficheiros en buscadores
++Comment[is]=Leyfir KGet að leita eftir skrám í leitarvélaspeglum
+ Comment[it]=Abilita KGet a cercare il file attraverso motori di ricerca di mirror
+ Comment[ja]=KGet でミラー検索エンジンを使ってファイルを検索します
+ Comment[km]=អនុញ្ញាត KGet ស្វែងរក​ឯកសារ​តាមរយៈ​ម៉ាស៊ីន​ស្វែងរក​កញ្ចក់
+@@ -60,6 +62,7 @@
+ Comment[nds]=Lett KGet Dateien över Spegelserver-Söökmaschinen söken
+ Comment[nl]=Staat KGet toe om bestanden te zoeken met mirrorzoekmachines
+ Comment[nn]=Lèt deg søkja etter filer gjennom MirrorSearch i KGet
++Comment[pl]=Włącza wyszukiwanie plików w KGet za pomocą zwierciadlanych wyszukiwarek
+ Comment[pt]=Permite ao KGet procurar pelos ficheiros nas réplicas dos motores de busca
+ Comment[pt_BR]=Permite ao KGet pesquisar por arquivos através de mecanismos de pesquisa de mirrors
+ Comment[ro]=Permite KGet să caute fișiere prin motoare de căutare a oglinzilor
+Index: kget/transfer-plugins/multisegmentkio/kget_multisegkiofactory_config.desktop
+===================================================================
+--- kget/transfer-plugins/multisegmentkio/kget_multisegkiofactory_config.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/transfer-plugins/multisegmentkio/kget_multisegkiofactory_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -12,6 +12,7 @@
+ Name[fr]=KIO multi-segment
+ Name[hne]=मल्टी सेगमेंट केआईओ
+ Name[hu]=Többszakaszos KIO letöltéskezelő
++Name[is]=Marghluta KIO
+ Name[ko]=다중 세그먼트 KIO
+ Name[lv]=MultisegmentuKIO
+ Name[ml]=ബഹുഖണ്ഡകിയോ
+Index: kget/transfer-plugins/multisegmentkio/kget_multisegkiofactory.desktop
+===================================================================
+--- kget/transfer-plugins/multisegmentkio/kget_multisegkiofactory.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/transfer-plugins/multisegmentkio/kget_multisegkiofactory.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -18,6 +18,7 @@
+ Name[gl]=KIO multisegmento
+ Name[hne]=मल्टी सेगमेंट केआईओ
+ Name[hu]=Többszakaszos KIO
++Name[is]=Marghluta KIO
+ Name[ja]=マルチセグメントの KIO
+ Name[km]=ផ្នែក​ច្រើន​របស់ KIO
+ Name[ko]=다중 세그먼트 KIO
+@@ -45,6 +46,7 @@
+ Comment=Multithreaded file download plugin
+ Comment[ar]=ملحق تعدد تنزيل الملف
+ Comment[ca]=Connector de transferències multifil per al KGet
++Comment[cs]=Modul pro stahování ve více vláknech
+ Comment[da]=Plugin til flertrådet fildownload
+ Comment[de]=Multithread-Übertragungsmodul für KGet
+ Comment[el]=Πολυνηματικό πρόσθετο λήψης αρχείων
+@@ -56,6 +58,7 @@
+ Comment[gl]=Extensión multifío de transferencias de ficheiros
+ Comment[hne]=मल्टीथ्रेडेड फाइल डाउनलोड प्लगइन
+ Comment[hu]=Többszálas fájlletöltő modul
++Comment[is]=Margþráða niðurhalsíforrit
+ Comment[it]=Estensione di scaricamento file in blocchi
+ Comment[ja]=マルチスレッドのファイルダウンロード用プラグイン
+ Comment[km]=កម្មវិធី​ជំនួយ​ទាញយក​ឯកសារ​របស់ Multithreaded
+Index: kget/transfer-plugins/multisegmentkio/segmentfactory.cpp
+===================================================================
+--- kget/transfer-plugins/multisegmentkio/segmentfactory.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/transfer-plugins/multisegmentkio/segmentfactory.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -397,13 +397,14 @@
+ void SegmentFactory::slotSegmentTimeOut()
+ {
+     kDebug(5001) <<  m_TimeOutSegments.size();
++
+     if(m_TimeOutSegments.isEmpty())
+         return;
+-    QList<Segment*>::const_iterator it = m_TimeOutSegments.constBegin();
+-    QList<Segment*>::const_iterator itEnd = m_TimeOutSegments.constEnd();
+-    for ( ; it!=itEnd ; ++it )
++    
++    while(!m_TimeOutSegments.isEmpty())
+     {
+-        (*it)->restartTransfer( nextUrl() );
++        Segment * segment = m_TimeOutSegments.takeFirst();
++        segment->restartTransfer( nextUrl() );
+     }
+ }
+ 
+Index: kget/transfer-plugins/kio/kget_kiofactory.desktop
+===================================================================
+--- kget/transfer-plugins/kio/kget_kiofactory.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/transfer-plugins/kio/kget_kiofactory.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -26,6 +26,7 @@
+ Comment[ga]=Breiseán clasaiceach íosluchtaithe comhad
+ Comment[gl]=Extensión de transferidor clásico
+ Comment[hu]=Klasszikus fájlletöltő modul
++Comment[is]=Klassískt íforrit til niðurhals
+ Comment[it]=Estensione del gestore classico di scaricamento file
+ Comment[ja]=従来のファイルダウンロード用プラグイン
+ Comment[km]=កម្មវិធី​ជំនួយ​របស់​កម្មវិធីទាញយក​ឯកសារ​បុរាណ
+Index: kget/transfer-plugins/contentfetch/kget_contentfetchfactory_config.desktop
+===================================================================
+--- kget/transfer-plugins/contentfetch/kget_contentfetchfactory_config.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/transfer-plugins/contentfetch/kget_contentfetchfactory_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -16,6 +16,7 @@
+ Name[gl]=Obtentor de contidos
+ Name[hne]=सामग्री लावइया
+ Name[hu]=Letöltő
++Name[is]=Nær í innihald
+ Name[it]=Gestore contenuti
+ Name[ja]=コンテンツ取得
+ Name[km]=កម្មវិធី​ទៅ​យក​មាតិកា
+Index: kget/transfer-plugins/contentfetch/kget_contentfetchfactory.desktop
+===================================================================
+--- kget/transfer-plugins/contentfetch/kget_contentfetchfactory.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/transfer-plugins/contentfetch/kget_contentfetchfactory.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -16,6 +16,7 @@
+ Name[gl]=Obter contidos
+ Name[hne]=सामग्री लाव
+ Name[hu]=Letöltés
++Name[is]=Ná í innihald
+ Name[it]=Scaricamento contenuti
+ Name[ja]=コンテンツ取得
+ Name[km]=កា​រទៅ​យក​មាតិកា
+@@ -53,6 +54,7 @@
+ Comment[ga]=Faigh ábhar le scripteanna saincheaptha.
+ Comment[gl]=Obtén contidos con scripts personalizados.
+ Comment[hu]=Letöltés szkripttel.
++Comment[is]=Ná í innihald með sérsniðnum skriftum.
+ Comment[it]=Scarica contenuti con script personalizzati.
+ Comment[ja]=カスタムスクリプトを使ってコンテンツを取得します
+ Comment[km]=ទៅ​យក​មាតិកា​ដែល​មាន​ស្គ្រីប​ផ្ទាល់ខ្លួន ។
+Index: kget/transfer-plugins/metalink/kget_metalinkfactory.desktop
+===================================================================
+--- kget/transfer-plugins/metalink/kget_metalinkfactory.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/transfer-plugins/metalink/kget_metalinkfactory.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -31,6 +31,7 @@
+ Comment[fr]=Permet de télécharger les fichiers de Metalink
+ Comment[ga]=Ceadaíonn sé seo comhaid a íosluchtú trí Metalink
+ Comment[gl]=Permítelle obter ficheiros de Metalink 
++Comment[is]=Leyfir að skrám sé halað niður frá Metalink
+ Comment[it]=Consente di scaricare file da Metalink
+ Comment[ja]=メタリンクからファイルをダウンロードします
+ Comment[km]=អនុញ្ញាត​ឲ្យ​ទាញយក​ឯកសារ​ពី​តំណ​មេតា
+@@ -41,6 +42,7 @@
+ Comment[nl]=Staat toe bestanden te downloaden met behulp van Metalink
+ Comment[nn]=Lèt deg lasta ned filer frå MetaLink
+ Comment[pa]=ਮੇਟਾ-ਲਿੰਕ ਤੋਂ ਫਾਇਲਾਂ ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ ਸਹਾਇਕ
++Comment[pl]=Pozwala pobierać pliki z Metalink
+ Comment[pt]=Permite transferir os ficheiros a partir do Metalink
+ Comment[pt_BR]=Permite baixar arquivos do Metalink
+ Comment[ro]=Permite descărcarea fișierelor de pe Metalink
+Index: kget/transfer-plugins/bittorrent/kget_bittorrentfactory.desktop
+===================================================================
+--- kget/transfer-plugins/bittorrent/kget_bittorrentfactory.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/transfer-plugins/bittorrent/kget_bittorrentfactory.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -34,6 +34,7 @@
+ Comment[fr]=Permet de télécharger les fichiers en utilisant BitTorrent
+ Comment[ga]=Ceadaíonn sé seo comhaid a íosluchtú trí Bittorrent
+ Comment[gl]=Permite obter ficheiros mediante Bittorrent
++Comment[is]=Leyfir að skrám sé halað niður með Bittorrent
+ Comment[it]=Consente di scaricare file utilizzando Bittorrent
+ Comment[ja]=BitTorrent を使ってファイルをダウンロードします
+ Comment[km]=អនុញ្ញាត​ឲ្យ​ទាញ​យក​ឯកសារ​ដោយ​ប្រើ Bittorrent
+@@ -44,6 +45,7 @@
+ Comment[nl]=Laat toe bestanden met Bittorrent te downloaden
+ Comment[nn]=Lèt deg lasta ned filer ved å bruka BitTorrent.
+ Comment[pa]=ਬਿੱਟ-ਟੋਰੈੱਟ ਦੀ ਵਰਤੋਂ ਕਰਕੇ ਫਾਇਲਾਂ ਡਾਊਨਲੋਡ ਕਰਨ ਲਈ ਸਹਾਇਕ
++Comment[pl]=Pozwala pobierać pliki za pomocą Bittorenta
+ Comment[pt]=Permite transferir ficheiros com o Bittorrent
+ Comment[pt_BR]=Permite baixar arquivos usando o Bittorrent
+ Comment[ro]=Permite descărcarea fișierelor prin Bittorrent
+Index: kget/transfer-plugins/mms/kget_mmsfactory.desktop
+===================================================================
+--- kget/transfer-plugins/mms/kget_mmsfactory.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/transfer-plugins/mms/kget_mmsfactory.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -25,6 +25,7 @@
+ Comment[gl]=Extensión de transferencias MMS para KGet
+ Comment[hne]=केगेट बर एमएमएस-ट्रांसफर प्लगइन
+ Comment[hu]=KGet MMS-alapú letöltőmodul
++Comment[is]=MMS-flutnings íforrit fyrir KGet
+ Comment[it]=Plugin MMS-Transfer per KGet
+ Comment[ja]=KGet の MMS 転送プラグイン
+ Comment[km]=MMS-កម្មវិធី​ជំនួយ​ការ​ផ្ទេរ​សម្រាប់ KGet
 Index: kget/sounds/kget.notifyrc
 ===================================================================
---- kget/sounds/kget.notifyrc	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kget/sounds/kget.notifyrc	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -507,6 +507,7 @@
- Name[ko]=정보
- Name[lt]=Informacija
- Name[lv]=Informācija
-+Name[mai]=सूचना
- Name[ml]=വിവരം
- Name[nb]=Informasjon
- Name[nds]=Informatschonen
-Index: filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop
+--- kget/sounds/kget.notifyrc	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/sounds/kget.notifyrc	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -413,6 +413,7 @@
+ [Event/error]
+ Name=Error Occurred
+ Name[ca]=Hi ha hagut un error
++Name[cs]=Nastala chyba
+ Name[da]=Fejl opstod
+ Name[de]=Fehler aufgetreten
+ Name[el]=Παρουσιάστηκε σφάλμα
+@@ -433,6 +434,7 @@
+ Name[nl]=Er deed zich een fout voor
+ Name[nn]=Det oppstod ein feil
+ Name[pa]=ਗਲਤੀ ਆਈ ਹੈ
++Name[pl]=Wystąpił błąd
+ Name[pt]=Ocorreu um Erro
+ Name[pt_BR]=Ocorreu um erro
+ Name[ro]=A intervenit o eroare
+@@ -448,6 +450,7 @@
+ Name[zh_TW]=發生錯誤
+ Comment=An Error has Occurred
+ Comment[ca]=Hi ha hagut un error
++Comment[cs]=Nastala chyba
+ Comment[da]=En fejl er opstået
+ Comment[de]=Es ist ein Fehler aufgetreten
+ Comment[el]=Παρουσιάστηκε ένα σφάλμα
+@@ -468,6 +471,7 @@
+ Comment[nl]=Er is een fout opgetreden
+ Comment[nn]=Det oppstod ein feil
+ Comment[pa]=ਇੱਕ ਗਲਤੀ ਆਈ ਹੈ
++Comment[pl]=Wystąpił błąd
+ Comment[pt]=Ocorreu um Erro
+ Comment[pt_BR]=Ocorreu um erro
+ Comment[ro]=A intervenit o eroare
+@@ -528,6 +532,7 @@
+ Name[zh_TW]=資訊
+ Comment=User Notified of Information
+ Comment[ca]=L'usuari ha estat informat
++Comment[cs]=Uživatel upozorněn na informace
+ Comment[da]=Brugeren er bekendtgjort med information
+ Comment[de]=Der Benutzer wurde benachrichtigt
+ Comment[el]=Ενημέρωση χρήστη με πληροφορίες
+@@ -537,6 +542,7 @@
+ Comment[fr]=Notification de l'utilisateur de l'information
+ Comment[ga]=Cuireadh Eolas in Iúl don Úsáideoir
+ Comment[gl]=Notificouse o Usuario
++Comment[is]=Notandi látinn vita um upplýsingar
+ Comment[it]=Notifica all'utente dell'informazione
+ Comment[km]=ព័ត៌មាន​ដែលបាន​ជូនដំណឹង​ដោយ​អ្នកប្រើ
+ Comment[ko]=사용자에 의한 정보 알림
+@@ -545,6 +551,7 @@
+ Comment[nds]=En Bruker hett en Bescheed kregen
+ Comment[nl]=Gebruiker gewezen op informatie
+ Comment[nn]=Brukaren har fått informasjon
++Comment[pl]=Użytkownik powiadomiony o informacji
+ Comment[pt]=Utilizador Notificado da Informação
+ Comment[pt_BR]=Usuários notificados da informação
+ Comment[ro]=Utilizator notificat de informație
+Index: kget/plasma/applet/piechart/kgetpiechartapplet-default.desktop
 ===================================================================
---- filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ filesharing/advanced/kcm_sambaconf/kcmsambaconf.desktop	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -111,6 +111,7 @@
- Name[he]=סמבה
- Name[hi]=साम्बा
- Name[hne]=साम्बा
-+Name[mai]=साम्बा
- Name[ml]=സാംബ
- Name[ne]=साम्बा
- Name[pa]=ਸਾਂਬਾ
-Index: filesharing/advanced/nfs/nfsfile.cpp
+--- kget/plasma/applet/piechart/kgetpiechartapplet-default.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/plasma/applet/piechart/kgetpiechartapplet-default.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -2,6 +2,7 @@
+ Encoding=UTF-8
+ Name=KGet Piechart Applet
+ Name[ca]=Miniaplicació de diagrama de sectors del KGet
++Name[cs]=Applet pro koláčový graf v KGet
+ Name[da]=KGet cirkeldiagram-applet
+ Name[de]=KGet Tortengrafik-Modul
+ Name[el]=Μικροεφαρμογή γραφήματος πίτας KGet
+@@ -16,7 +17,9 @@
+ Name[nb]=Miniprogram for KGet-kakediagram
+ Name[nds]=KGet-Kokengrafik-Lüttprogramm
+ Name[nl]=Taartpuntapplet voor KGet
++Name[nn]=KGet-kakediagram
+ Name[pa]=ਕੇ-ਗਿੱਟ ਬਾਰਚਾਰਟ ਐਪਲਿਟ
++Name[pl]=Wykres kołowy w KGet
+ Name[pt]='Applet' de Gráfico Circular do KGet
+ Name[pt_BR]=Miniaplicativo de gráfico circular do KGet
+ Name[ro]=Miniaplicație KGet DiagramăDisc
+@@ -32,6 +35,7 @@
+ Comment=KGet piechart applet
+ Comment[ar]=بريمج KGet piechart
+ Comment[ca]=Miniaplicació de diagrama de sectors del KGet
++Comment[cs]=Applet pro koláčový graf v KGet
+ Comment[da]=KGet cirkeldiagram-applet
+ Comment[de]=KGet Tortengrafik-Modul
+ Comment[el]=Μικροεφαρμογή γραφήματος πίτας KGet
+Index: kget/plasma/applet/panelbar/kgetpanelbarapplet-default.desktop
 ===================================================================
---- filesharing/advanced/nfs/nfsfile.cpp	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ filesharing/advanced/nfs/nfsfile.cpp	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -71,7 +71,7 @@
-      return 0L;
+--- kget/plasma/applet/panelbar/kgetpanelbarapplet-default.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/plasma/applet/panelbar/kgetpanelbarapplet-default.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -16,7 +16,9 @@
+ Name[nb]=Miniprogram for KGet-panelstolpe
+ Name[nds]=KGet-Paneelbalken-Lüttprogramm
+ Name[nl]=Paneelbalkapplet voor KGet
++Name[nn]=KGet-panellinje
+ Name[pa]=ਕੇ-ਗਿੱਟ ਪੈਨਲਬਾਰ ਐਪਲਿਟ
++Name[pl]=Wykres w panelu KGet
+ Name[pt]='Applet' de Barra de Painéis do KGet
+ Name[pt_BR]=Miniaplicativo de barra de painel do KGet
+ Name[ro]=Miniaplicație KGet BarăPanou
+Index: kget/plasma/applet/panelbar/kgetpanelbar.cpp
+===================================================================
+--- kget/plasma/applet/panelbar/kgetpanelbar.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/plasma/applet/panelbar/kgetpanelbar.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -180,6 +180,7 @@
  
-   QString testPath = path.trimmed();
--  if ( testPath[testPath.length()-1] != '/' )
-+  if ( !testPath.endsWith('/') )
-        testPath += '/';
+ KGetPanelBar::~KGetPanelBar()
+ {
++    delete m_dialog;
+ }
  
-   for (NFSEntry* entry = _entries.first(); entry; entry = _entries.next())
-@@ -129,7 +129,7 @@
-       completeLine = currentLine;
+ void KGetPanelBar::init()
+Index: kget/plasma/applet/barapplet/kgetbarapplet-default.desktop
+===================================================================
+--- kget/plasma/applet/barapplet/kgetbarapplet-default.desktop	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/plasma/applet/barapplet/kgetbarapplet-default.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -2,6 +2,7 @@
+ Encoding=UTF-8
+ Name=KGet Barchart Applet
+ Name[ca]=Miniaplicació de diagrama de barres del KGet
++Name[cs]=Applet pro sloupcový graf v KGet
+ Name[da]=KGet søjlediagram-applet
+ Name[de]=KGet Balkengrafik-Modul
+ Name[el]=Μικροεφαρμογή ραβδογραφήματος KGet
+@@ -16,7 +17,9 @@
+ Name[nb]=Miniprogram for KGet-stolpediagram
+ Name[nds]=KGet-Balkengrafik-Lüttprogramm
+ Name[nl]=Balkgrafiekapplet voor KGet
++Name[nn]=KGet-søylediagram
+ Name[pa]=ਕੇ-ਗਿੱਟ ਬਾਰਚਾਰਟ ਐਪਲਿਟ
++Name[pl]=Wykres słupkowy w KGet
+ Name[pt]='Applet' de Gráfico de Barras do KGet
+ Name[pt_BR]=Miniaplicativo de gráfico de barras do KGet
+ Name[ro]=Miniaplicație KGet DiagramăBară
+@@ -32,6 +35,7 @@
+ Comment=KGet barchart applet
+ Comment[ar]=بريمج KGet عمود خُطاطة
+ Comment[ca]=Miniaplicació de diagrama de barres del KGet
++Comment[cs]=Applet pro sloupcový graf v KGet
+ Comment[da]=KGet søjlediagram-applet
+ Comment[de]=KGet Balkengrafik-Modul
+ Comment[el]=Μικροεφαρμογή ραβδογραφήματος KGet
+Index: kget/ui/newtransferdialog.cpp
+===================================================================
+--- kget/ui/newtransferdialog.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/ui/newtransferdialog.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -296,7 +296,7 @@
+         {
+             QList<TransferGroupHandler*> groups = KGet::groupsFromExceptions(url);
+             if (!groups.isEmpty())
+-                KGet::addTransfer(url, groups.first()->defaultFolder(), groups.first()->name());
++                KGet::addTransfer(url, groups.first()->defaultFolder(), "", groups.first()->name());
+             else
+                 cleanedList << url;
+         }
+Index: kget/ui/transfersview.cpp
+===================================================================
+--- kget/ui/transfersview.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/ui/transfersview.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -174,6 +174,7 @@
+     TransfersViewDelegate *view_delegate = static_cast <TransfersViewDelegate *> (itemDelegate());
  
-     // is the line continued in the next line ?
--    if ( completeLine[completeLine.length()-1] == '\\' )
-+    if ( completeLine.endsWith('\\') )
-     {
-       continuedLine = true;
-       // remove the ending backslash
-@@ -144,7 +144,7 @@
+     view_delegate->closeExpandableDetails();
++    QTreeView::dragMoveEvent(event);
+ }
+ 
+ void TransfersView::toggleMainGroup()
+Index: kget/ui/contextmenu.cpp
+===================================================================
+--- kget/ui/contextmenu.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/ui/contextmenu.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -101,9 +101,10 @@
+         items << KFileItem(KFileItem::Unknown, KFileItem::Unknown, handler->dest());
+ 
+         KonqMenuActions menuActions;
+-//        menuActions.setItemListProperties(KFileItemListProperties(items));
+-//        menuActions.setParentWidget(parent);
+ 
++        menuActions.setItemListProperties(KFileItemListProperties(items));
++        menuActions.setParentWidget(parent);
++
+         menuActions.addActionsTo(popup);
+         menuActions.addOpenWithActionsTo(popup, "DesktopEntryName != 'kget'");
+ 
+Index: kget/ui/droptarget.cpp
+===================================================================
+--- kget/ui/droptarget.cpp	(.../tags/KDE/4.3.0/kdenetwork)	(wersja 1013414)
++++ kget/ui/droptarget.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1013414)
+@@ -303,7 +303,7 @@
+         move( QCursor::pos().x() - dx, QCursor::pos().y() - dy );
+         e->accept();
      }
+-    if (mask().contains(mapFromGlobal(QCursor::pos())))
++    if (isVisible() && mask().contains(mapFromGlobal(QCursor::pos())))
+         QToolTip::showText(QCursor::pos(),tooltipText,this,rect());
+ }
  
-     // comments
--    if ('#' == completeLine[0]) {
-+    if (completeLine.startsWith('#') ) {
-       _lines.append(new NFSComment(completeLine));
-       continue;
-     }
-@@ -153,7 +153,7 @@
-     QString hosts;
- 
-     // Handle quotation marks
--    if ( completeLine[0] == '"' ) {
-+    if ( completeLine.startsWith('"') ) {
-       int i = completeLine.indexOf('"',1);
-       if (i == -1) {
-         kError() << "NFSFile: Parse error: Missing quotation mark: "
-@@ -177,7 +177,7 @@
-     }
- 
-     // normalize path
--    if ( path[path.length()-1] != '/' )
-+    if ( !path.endsWith('/') )
-             path += '/';
- 
-     kDebug(5009) << "KNFSShare: Found path: '" << path << "'";
-Index: kppp/DB/Provider/Norway/.directory
-===================================================================
---- kppp/DB/Provider/Norway/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/Norway/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -25,6 +25,7 @@
- Name[ko]=노르웨이
- Name[lt]=Norvegija
- Name[lv]=Norvēģija
-+Name[mai]=नार्वे
- Name[ml]=നോര്‍വ്വെ
- Name[nb]=Norge
- Name[nds]=Norwegen
-Index: kppp/DB/Provider/Slovenia/.directory
-===================================================================
---- kppp/DB/Provider/Slovenia/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/Slovenia/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -23,6 +23,7 @@
- Name[ko]=슬로베니아
- Name[lt]=Slovėnija
- Name[lv]=Slovēnija
-+Name[mai]=स्लोवेनिया
- Name[ml]=സ്ലോവേനിയ
- Name[nds]=Slowenien
- Name[ne]=स्लोभेनिया
-Index: kppp/DB/Provider/Denmark/.directory
-===================================================================
---- kppp/DB/Provider/Denmark/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/Denmark/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -26,6 +26,7 @@
- Name[ko]=덴마크
- Name[lt]=Danija
- Name[lv]=Dānija
-+Name[mai]=डेनमार्क
- Name[ml]=ഡെന്‍മാര്‍ക്ക്
- Name[nb]=Danmark
- Name[nds]=Dänmark
-Index: kppp/DB/Provider/Yugoslavia/.directory
-===================================================================
---- kppp/DB/Provider/Yugoslavia/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/Yugoslavia/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -23,6 +23,7 @@
- Name[ko]=유고슬라비아
- Name[lt]=Jugoslavija
- Name[lv]=Dienvidslāvija
-+Name[mai]=युगोस्लाविया
- Name[ml]=യൂഗോസ്ലാവ്യ
- Name[nb]=Serbia og Montenegro
- Name[nds]=Jugoslawien
-Index: kppp/DB/Provider/Taiwan/.directory
-===================================================================
---- kppp/DB/Provider/Taiwan/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/Taiwan/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -16,6 +16,7 @@
- Name[ko]=대만
- Name[lt]=Taivanis
- Name[lv]=Taivāna
-+Name[mai]=ताइवान
- Name[ml]=തായ്‌വാന്‍
- Name[ne]=ताइवान
- Name[pa]=ਤਾਈਵਾਨ
-Index: kppp/DB/Provider/Sweden/.directory
-===================================================================
---- kppp/DB/Provider/Sweden/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/Sweden/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -26,6 +26,7 @@
- Name[ku]=Swêd
- Name[lt]=Švedija
- Name[lv]=Zviedrija
-+Name[mai]=स्वीडन
- Name[ml]=സ്വീഡന്‍
- Name[nb]=Sverige
- Name[ne]=स्वीडेन
-Index: kppp/DB/Provider/New_Zealand/.directory
-===================================================================
---- kppp/DB/Provider/New_Zealand/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/New_Zealand/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -24,6 +24,7 @@
- Name[ko]=뉴질랜드
- Name[lt]=Naujoji Zelandija
- Name[lv]=Jaunzēlande
-+Name[mai]=न्यूजीलैंड
- Name[ml]=ന്യൂ‌ സിലാന്‍ഡ്
- Name[nds]=Niegseeland
- Name[ne]=न्यूजिल्यान्ड
-Index: kppp/DB/Provider/Belarus/.directory
-===================================================================
---- kppp/DB/Provider/Belarus/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/Belarus/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -25,6 +25,7 @@
- Name[ko]=벨라루스
- Name[lt]=Baltarusija
- Name[lv]=Baltkrievija
-+Name[mai]=बेलारूस
- Name[ml]=ബെലാറസ്
- Name[nb]=Hviterussland
- Name[nds]=Wittrussland
-Index: kppp/DB/Provider/Portugal/.directory
-===================================================================
---- kppp/DB/Provider/Portugal/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/Portugal/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -16,6 +16,7 @@
- Name[ko]=포르투갈
- Name[lt]=Portugalija
- Name[lv]=Portugāle
-+Name[mai]=पुर्तगाल
- Name[ml]=പോര്‍ച്ചുഗല്‍
- Name[ne]=पोर्चुगल
- Name[pa]=ਪੁਰਤਗਾਲ
-Index: kppp/DB/Provider/Ukraine/.directory
-===================================================================
---- kppp/DB/Provider/Ukraine/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/Ukraine/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -22,6 +22,7 @@
- Name[ko]=우크라이나
- Name[lt]=Ukraina
- Name[lv]=Ukraina
-+Name[mai]=उक्रेन
- Name[ml]=ഉക്രൈന്‍
- Name[nb]=Ukraina
- Name[ne]=युक्रेन
-Index: kppp/DB/Provider/France/.directory
-===================================================================
---- kppp/DB/Provider/France/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/France/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -26,6 +26,7 @@
- Name[ku]=Fransa
- Name[lt]=Prancūzija
- Name[lv]=Francija
-+Name[mai]=फ्रांस
- Name[ml]=ഫ്രാന്‍സ്
- Name[nb]=Frankrike
- Name[nds]=Frankriek
-Index: kppp/DB/Provider/United_Kingdom/.directory
-===================================================================
---- kppp/DB/Provider/United_Kingdom/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/United_Kingdom/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -25,6 +25,7 @@
- Name[ko]=영국
- Name[lt]=Jungtinė Karalystė
- Name[lv]=Lielbritānija
-+Name[mai]=यूनाइटेड किंगडम
- Name[ml]=യുണൈറ്റഡ് കിങ്ഡം
- Name[nb]=Storbritannia
- Name[nds]=Grootbritannien
-Index: kppp/DB/Provider/Germany/.directory
-===================================================================
---- kppp/DB/Provider/Germany/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/Germany/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -27,6 +27,7 @@
- Name[ku]=Almanya
- Name[lt]=Vokietija
- Name[lv]=Vācija
-+Name[mai]=जर्मनी
- Name[ml]=ജര്‍മ്മനി
- Name[nb]=Tyskland
- Name[nds]=Düütschland
-Index: kppp/DB/Provider/Switzerland/.directory
-===================================================================
---- kppp/DB/Provider/Switzerland/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/Switzerland/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -25,6 +25,7 @@
- Name[ko]=스위스
- Name[lt]=Šveicarija
- Name[lv]=Šveice
-+Name[mai]=स्विट्जरलैंड
- Name[ml]=സ്വിറ്റ്സര്‍ലാന്‍ഡ്
- Name[nb]=Sveits
- Name[nds]=Swiez
-Index: kppp/DB/Provider/Netherlands/.directory
-===================================================================
---- kppp/DB/Provider/Netherlands/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/Netherlands/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -25,6 +25,7 @@
- Name[ko]=네덜란드
- Name[lt]=Olandija
- Name[lv]=Nīderlande
-+Name[mai]=नीदरलैंड्स
- Name[ml]=നെതര്‍ലാന്റ്സ്
- Name[nb]=Nederland
- Name[nds]=Nedderlannen
-Index: kppp/DB/Provider/Austria/.directory
-===================================================================
---- kppp/DB/Provider/Austria/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/Austria/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -22,6 +22,7 @@
- Name[ko]=오스트리아
- Name[lt]=Austrija
- Name[lv]=Austrija
-+Name[mai]=आस्ट्रिया
- Name[ml]=ആസ്ത്രിയ
- Name[nb]=Østerrike
- Name[nds]=Österriek
-Index: kppp/DB/Provider/Ireland/.directory
-===================================================================
---- kppp/DB/Provider/Ireland/.directory	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ kppp/DB/Provider/Ireland/.directory	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -26,6 +26,7 @@
- Name[ko]=아일랜드
- Name[lt]=Airija
- Name[lv]=Īrija
-+Name[mai]=आयरलैंड
- Name[ml]=അയര്‍ലണ്ട്
- Name[nb]=Irland
- Name[nds]=Irland
-Index: CMakeLists.txt
-===================================================================
---- CMakeLists.txt	(.../tags/KDE/4.2.3/kdenetwork)	(wersja 974232)
-+++ CMakeLists.txt	(.../branches/KDE/4.2/kdenetwork)	(wersja 974232)
-@@ -35,8 +35,7 @@
- find_package(Speex)
- find_package(QCA2)
- find_package(JPEG)
--find_package(X11VidMode)
--find_package(Decibel)
-+# find_package(Decibel) not used at this time
- find_package(IDN)
- find_package(LibVNCServer)
+@@ -424,7 +424,7 @@
+        tooltipText = dataList.join("\n");
+     else
+        tooltipText = i18n("Ready"); 
+-    if (mask().contains(mapFromGlobal(QCursor::pos())))
++    if (isVisible() && mask().contains(mapFromGlobal(QCursor::pos())))
+         QToolTip::showText(QCursor::pos(),tooltipText,this,rect());
+ }
  
 
 Zmiany atrybutów dla: .
