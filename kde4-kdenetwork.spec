@@ -4,7 +4,8 @@
 #
 # Conditional build:
 #
-%define		_state		stable
+%define		_state		unstable
+%define		snap		svn1013471
 %define		orgname		kdenetwork
 %define		qtver		4.5.2
 
@@ -13,13 +14,14 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.3.0
-Release:	2
+Version:	4.3.65
+Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	f9695ff06d0d67a78a71fb9b3ddbd4f3
-Patch100:	%{name}-branch.diff
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}%{snap}.tar.bz2
+# Source0-md5:	6aa75cf192d06df0c1a25487eec2b71a
+#Patch100:	%{name}-branch.diff
 Patch0:		%{name}-libknotification.patch
 Patch1:		%{name}-FindLibgadu.patch
 URL:		http://www.kde.org/
@@ -717,8 +719,8 @@ Connection z użyciem serwera KDE VNC, czyli "dzielenia pulpitu"
 specjalnych możliwości Remote Desktop Connection.
 
 %prep
-%setup -q -n %{orgname}-%{version}
-%patch100 -p0
+%setup -q -n %{orgname}-%{version}%{snap}
+#%patch100 -p0
 %patch0 -p1
 %patch1 -p0
 
@@ -1080,8 +1082,6 @@ rm -rf $RPM_BUILD_ROOT
 #/usr/lib/mozilla/plugins/libskypebuttons.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_skype.so
 %dir %{_datadir}/apps/kopete_skype
-%{_datadir}/apps/kopete_skype/call_end
-%{_datadir}/apps/kopete_skype/call_start
 %{_datadir}/apps/kopete_skype/skypechatui.rc
 %{_datadir}/apps/kopete_skype/skypeui.rc
 %{_datadir}/kde4/services/callto.protocol
@@ -1218,7 +1218,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/krdc
 %attr(755,root,root) %{_bindir}/krfb
 %attr(755,root,root) %ghost %{_libdir}/libkrdccore.so.?
-%attr(755,root,root) %{_libdir}/libkrdccore.so.4.3.0
+%attr(755,root,root) %{_libdir}/libkrdccore.so.*.*.*
 %attr(755,root,root) %{_libdir}/kde4/krdc_rdpplugin.so
 %attr(755,root,root) %{_libdir}/kde4/krdc_testplugin.so
 %attr(755,root,root) %{_libdir}/kde4/krdc_vncplugin.so
