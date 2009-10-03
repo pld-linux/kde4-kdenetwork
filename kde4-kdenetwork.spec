@@ -6,7 +6,7 @@
 #
 %define		_state		stable
 %define		orgname		kdenetwork
-%define		qtver		4.5.2
+%define		qtver		4.5.3
 
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
