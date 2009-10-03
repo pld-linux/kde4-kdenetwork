@@ -13,17 +13,18 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.3.1
+Version:	4.3.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	496000ae85856da0c6fb0e014d03d0d7
+# Source0-md5:	57b44a9b59c35366a0c287c591bb9bdc
 Patch100:	%{name}-branch.diff
 Patch0:		%{name}-libknotification.patch
 Patch1:		%{name}-FindLibgadu.patch
 URL:		http://www.kde.org/
 BuildRequires:	QtOpenGL-devel >= %{qtver}
+BuildRequires:	QtScript-devel >= %{qtver}
 BuildRequires:	automoc4 >= 0.9.88
 BuildRequires:	avahi-compat-libdns_sd-devel
 BuildRequires:	cmake >= 2.6.3
@@ -1098,7 +1099,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files kopete-protocol-winpopup
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/winpopup*.sh
+%attr(755,root,root) %{_bindir}/winpopup*
 %attr(755,root,root) %{_libdir}/kde4/kopete_wp.so
 %{_datadir}/apps/kopete/icons/*/*/*/wp*
 %{_datadir}/kde4/services/kopete_wp.desktop
