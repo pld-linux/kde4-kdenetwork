@@ -5,22 +5,22 @@
 # Conditional build:
 #
 %define		_state		unstable
-%define		snap		svn1027298
+%define		snap		svn1035674
 %define		orgname		kdenetwork
-%define		qtver		4.5.3
+%define		qtver		4.6.0
 
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.3.69
+Version:	4.3.72
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}%{snap}.tar.bz2
-# Source0-md5:	e0d7998c8ff82b6447730968cb90a614
+# Source0-md5:	b842cfb75352327c03b78465e7c26f47
 #Patch100: %{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 URL:		http://www.kde.org/
@@ -801,6 +801,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/liboscar.so
 %attr(755,root,root) %{_libdir}/libkrdccore.so
 %attr(755,root,root) %{_libdir}/libkopetecontactlist.so
+%attr(755,root,root) %{_libdir}/libkrfb.so
 %{_includedir}/kopete
 %{_includedir}/krdc
 
@@ -840,15 +841,17 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_metalinkfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_multisegkiofactory.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_krunner_kget.so
+%attr(755,root,root) %{_libdir}/kde4/krunner_kget.so
 %attr(755,root,root) %{_libdir}/kde4/khtml_kget.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_kget.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_kget_barapplet.so
-%attr(755,root,root) %{_libdir}/kde4/plasma_kget_panelbar.so
+#%attr(755,root,root) %{_libdir}/kde4/plasma_kget_panelbar.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_kget_piechart.so
 %attr(755,root,root) %{_libdir}/libkgetcore.so.4.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkgetcore.so.?
 %attr(755,root,root) %{_libdir}/libkgetcore.so
-%{_datadir}/apps/desktoptheme/default/widgets/kget.svg
+#%{_datadir}/apps/desktoptheme/default/widgets/kget.svg
 %{_datadir}/apps/kget
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %{_datadir}/config.kcfg/kget.kcfg
@@ -871,13 +874,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kget_multisegkiofactory.desktop
 %{_datadir}/kde4/services/kget_mirrorsearchfactory.desktop
 %{_datadir}/kde4/services/kgetbarapplet-default.desktop
-%{_datadir}/kde4/services/kgetpanelbarapplet-default.desktop
+#%{_datadir}/kde4/services/kgetpanelbarapplet-default.desktop
 %{_datadir}/kde4/services/kgetpiechartapplet-default.desktop
 %{_datadir}/kde4/services/plasma-engine-kget.desktop
 %{_datadir}/kde4/servicetypes/kget_plugin.desktop
+%{_datadir}/kde4/services/plasma-runner-kget.desktop
+%{_datadir}/kde4/services/plasma-runner-kget_config.desktop
 %{_desktopdir}/kde4/kget.desktop
+%{_datadir}/dbus-1/services/org.kde.kget.service
 %{_iconsdir}/*/*/*/*kget*
-%{_kdedocdir}/en/kget
+#%{_kdedocdir}/en/kget
 
 #%files knewsticker
 #%defattr(644,root,root,755)
@@ -1014,9 +1020,9 @@ rm -rf $RPM_BUILD_ROOT
 %exclude %{_iconsdir}/*/scalable
 %{_iconsdir}/*/*/*/kopete.png
 %{_iconsdir}/*/*/actions/*
-%{_iconsdir}/oxygen/*/*/kopete*
+#%{_iconsdir}/oxygen/*/*/kopete*
 %{_iconsdir}/oxygen/*/status/object-locked-*
-%{_kdedocdir}/en/kopete
+#%{_kdedocdir}/en/kopete
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
@@ -1218,7 +1224,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/Kppp.desktop
 %{_desktopdir}/kde4/kppplogview.desktop
 %{_iconsdir}/*/*/*/kppp.png
-%{_kdedocdir}/en/kppp
+#%{_kdedocdir}/en/kppp
 
 %files krfb
 %defattr(644,root,root,755)
@@ -1226,9 +1232,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/krfb
 %attr(755,root,root) %ghost %{_libdir}/libkrdccore.so.?
 %attr(755,root,root) %{_libdir}/libkrdccore.so.*.*.*
+%attr(755,root,root) %{_libdir}/libkrfb.so.*.*.*
 %attr(755,root,root) %{_libdir}/kde4/krdc_rdpplugin.so
 %attr(755,root,root) %{_libdir}/kde4/krdc_testplugin.so
 %attr(755,root,root) %{_libdir}/kde4/krdc_vncplugin.so
+%attr(755,root,root) %{_libdir}/kde4/krfb_framebuffer_qt.so
+%attr(755,root,root) %{_libdir}/kde4/krfb_framebuffer_x11.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_krdc_rdpplugin.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_krdc_vncplugin.so
 %{_datadir}/apps/krdc
@@ -1236,13 +1245,19 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/krdc.kcfg
 %{_datadir}/kde4/services/rdp.protocol
 %{_datadir}/kde4/services/vnc.protocol
+%{_datadir}/kde4/services/krfb_framebuffer_qt.desktop
+%{_datadir}/kde4/services/krfb_framebuffer_x11.desktop
 %{_datadir}/kde4/services/krdc_rdp.desktop
 %{_datadir}/kde4/services/krdc_rdp_config.desktop
 %{_datadir}/kde4/services/krdc_test.desktop
 %{_datadir}/kde4/services/krdc_vnc.desktop
 %{_datadir}/kde4/services/krdc_vnc_config.desktop
 %{_datadir}/kde4/servicetypes/krdc_plugin.desktop
+%{_datadir}/kde4/servicetypes/krfb-framebuffer.desktop
+/usr/share/kde4/services/krfb_framebuffer_qt.desktop
+/usr/share/kde4/services/krfb_framebuffer_x11.desktop
 %{_desktopdir}/kde4/krdc.desktop
 %{_desktopdir}/kde4/krfb.desktop
-%{_kdedocdir}/en/krdc
-%{_kdedocdir}/en/krfb
+%{_includedir}/KRfb
+#%{_kdedocdir}/en/krdc
+#%{_kdedocdir}/en/krfb
