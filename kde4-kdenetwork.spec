@@ -5,7 +5,7 @@
 # Conditional build:
 #
 %define		_state		unstable
-%define		snap		svn1035674
+%define		snap		svn1040395
 %define		orgname		kdenetwork
 %define		qtver		4.6.0
 
@@ -14,13 +14,13 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.3.72
+Version:	4.3.73
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}%{snap}.tar.bz2
-# Source0-md5:	b842cfb75352327c03b78465e7c26f47
+# Source0-md5:	fd38b42303eddb731fccbce31c96294c
 #Patch100: %{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 URL:		http://www.kde.org/
@@ -883,7 +883,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/kget.desktop
 %{_datadir}/dbus-1/services/org.kde.kget.service
 %{_iconsdir}/*/*/*/*kget*
-#%{_kdedocdir}/en/kget
+%{_kdedocdir}/en/kget
 
 #%files knewsticker
 #%defattr(644,root,root,755)
@@ -1022,7 +1022,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/actions/*
 #%{_iconsdir}/oxygen/*/*/kopete*
 %{_iconsdir}/oxygen/*/status/object-locked-*
-#%{_kdedocdir}/en/kopete
+%{_kdedocdir}/en/kopete
 
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
@@ -1089,7 +1089,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files kopete-protocol-skype
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/skype-action-handler
+#%attr(755,root,root) %{_bindir}/skype-action-handler
 # someone find a way to package this
 #%{_prefix}/lib/mozilla/plugins/libskypebuttons.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_skype.so
@@ -1224,7 +1224,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde4/Kppp.desktop
 %{_desktopdir}/kde4/kppplogview.desktop
 %{_iconsdir}/*/*/*/kppp.png
-#%{_kdedocdir}/en/kppp
+%{_kdedocdir}/en/kppp
 
 %files krfb
 %defattr(644,root,root,755)
@@ -1254,10 +1254,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/krdc_vnc_config.desktop
 %{_datadir}/kde4/servicetypes/krdc_plugin.desktop
 %{_datadir}/kde4/servicetypes/krfb-framebuffer.desktop
-/usr/share/kde4/services/krfb_framebuffer_qt.desktop
-/usr/share/kde4/services/krfb_framebuffer_x11.desktop
 %{_desktopdir}/kde4/krdc.desktop
 %{_desktopdir}/kde4/krfb.desktop
 %{_includedir}/KRfb
-#%{_kdedocdir}/en/krdc
-#%{_kdedocdir}/en/krfb
+%{_kdedocdir}/en/krdc
+%{_kdedocdir}/en/krfb
