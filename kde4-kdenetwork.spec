@@ -5,22 +5,22 @@
 # Conditional build:
 #
 %define		_state		unstable
-%define		snap		svn1040395
 %define		orgname		kdenetwork
 %define		qtver		4.6.0
+%define		snap		svn1048496
 
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.3.73
+Version:	4.3.75
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}%{snap}.tar.bz2
-# Source0-md5:	fd38b42303eddb731fccbce31c96294c
+# Source0-md5:	51b14a3a946a6ee261037c683a201665
 #Patch100: %{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 URL:		http://www.kde.org/
