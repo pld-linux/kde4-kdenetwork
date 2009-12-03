@@ -24,7 +24,12 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 #Patch100: %{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 URL:		http://www.kde.org/
+BuildRequires:	Qt3Support-devel
 BuildRequires:	QtOpenGL-devel >= %{qtver}
+BuildRequires:	QtSql-devel
+BuildRequires:	QtSvg-devel
+BuildRequires:	QtTest-devel
+BuildRequires:	alsa-lib-devel
 BuildRequires:	automoc4 >= 0.9.88
 BuildRequires:	avahi-compat-libdns_sd-devel
 BuildRequires:	cmake >= 2.6.3
@@ -51,10 +56,17 @@ BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	ortp-devel
 BuildRequires:	pcre-devel
 BuildRequires:	perl-base
+BuildRequires:	pkgconfig
 BuildRequires:	qca-devel >= 2.0
+BuildRequires:	qimageblitz-devel
+BuildRequires:	qt4-build
 BuildRequires:	rpmbuild(macros) >= 1.268
+BuildRequires:	soprano-devel
+BuildRequires:	speex-devel
 BuildRequires:	sqlite3-devel
+BuildRequires:	strigi-devel
 BuildRequires:	xmms-devel
+BuildRequires:	xorg-lib-libXdamage-devel
 BuildRequires:	xorg-lib-libXtst-devel
 Obsoletes:	kde4-kdenetwork-kopete-tool-alias
 Obsoletes:	kdenetwork4
