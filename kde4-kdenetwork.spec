@@ -14,21 +14,20 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.3.75
+Version:	4.3.80
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
-#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}%{snap}.tar.bz2
-# Source0-md5:	51b14a3a946a6ee261037c683a201665
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
+# Source0-md5:	87f2d595ba44cec7853e0fad75ad2ff3
 #Patch100: %{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 URL:		http://www.kde.org/
-BuildRequires:	Qt3Support-devel
+BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtOpenGL-devel >= %{qtver}
-BuildRequires:	QtSql-devel
-BuildRequires:	QtSvg-devel
-BuildRequires:	QtTest-devel
+BuildRequires:	QtSql-devel >= %{qtver}
+BuildRequires:	QtSvg-devel >= %{qtver}
+BuildRequires:	QtTest-devel >= %{qtver}
 BuildRequires:	alsa-lib-devel
 BuildRequires:	automoc4 >= 0.9.88
 BuildRequires:	avahi-compat-libdns_sd-devel
@@ -61,10 +60,11 @@ BuildRequires:	qca-devel >= 2.0
 BuildRequires:	qimageblitz-devel
 BuildRequires:	qt4-build
 BuildRequires:	rpmbuild(macros) >= 1.268
-BuildRequires:	soprano-devel
+BuildRequires:	shared-desktop-ontologies-devel >= 0.2
+BuildRequires:	soprano-devel >= 2.3.70
 BuildRequires:	speex-devel
 BuildRequires:	sqlite3-devel
-BuildRequires:	strigi-devel
+BuildRequires:	strigi-devel >= 0.7.0
 BuildRequires:	xmms-devel
 BuildRequires:	xorg-lib-libXdamage-devel
 BuildRequires:	xorg-lib-libXtst-devel
@@ -731,7 +731,7 @@ dostarczanego przez ten pakiet), jako że najlepiej pasuje do
 specjalnych możliwości Remote Desktop Connection.
 
 %prep
-%setup -q -n %{orgname}-%{version}%{snap}
+%setup -q -n %{orgname}-%{version}
 #%patch100 -p0
 %patch0 -p0
 
@@ -813,7 +813,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/liboscar.so
 %attr(755,root,root) %{_libdir}/libkrdccore.so
 %attr(755,root,root) %{_libdir}/libkopetecontactlist.so
-%attr(755,root,root) %{_libdir}/libkrfb.so
+%attr(755,root,root) %{_libdir}/libkrfbprivate.so
 %{_includedir}/kopete
 %{_includedir}/krdc
 
@@ -840,14 +840,14 @@ rm -rf $RPM_BUILD_ROOT
 %files kget
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kget
-%attr(755,root,root) %{_libdir}/kde4/kget_bittorrentfactory.so
+#%attr(755,root,root) %{_libdir}/kde4/kget_bittorrentfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_checksumsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_contentfetchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_kiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_metalinkfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_multisegkiofactory.so
-%attr(755,root,root) %{_libdir}/kde4/kcm_kget_bittorrentfactory.so
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kget_bittorrentfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_checksumsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_contentfetchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_metalinkfactory.so
@@ -871,7 +871,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/kget_mirrorsearchfactory.kcfg
 %{_datadir}/config.kcfg/kget_checksumsearchfactory.kcfg
 %{_datadir}/config.kcfg/kget_contentfetchfactory.kcfg
-%{_datadir}/kde4/services/kget_bittorrentfactory_config.desktop
+#%{_datadir}/kde4/services/kget_bittorrentfactory_config.desktop
 %{_datadir}/kde4/services/kget_checksumsearchfactory.desktop
 %{_datadir}/kde4/services/kget_checksumsearchfactory_config.desktop
 %{_datadir}/kde4/services/kget_contentfetchfactory.desktop
@@ -880,7 +880,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kget_mirrorsearchfactory_config.desktop
 %{_datadir}/kde4/services/kget_multisegkiofactory_config.desktop
 %{_datadir}/kde4/services/ServiceMenus/kget_download.desktop
-%{_datadir}/kde4/services/kget_bittorrentfactory.desktop
+#%{_datadir}/kde4/services/kget_bittorrentfactory.desktop
 %{_datadir}/kde4/services/kget_kiofactory.desktop
 %{_datadir}/kde4/services/kget_metalinkfactory.desktop
 %{_datadir}/kde4/services/kget_multisegkiofactory.desktop
@@ -1244,7 +1244,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/krfb
 %attr(755,root,root) %ghost %{_libdir}/libkrdccore.so.?
 %attr(755,root,root) %{_libdir}/libkrdccore.so.*.*.*
-%attr(755,root,root) %{_libdir}/libkrfb.so.*.*.*
+%attr(755,root,root) %{_libdir}/libkrfbprivate.so.*.*.*
 %attr(755,root,root) %{_libdir}/kde4/krdc_rdpplugin.so
 %attr(755,root,root) %{_libdir}/kde4/krdc_testplugin.so
 %attr(755,root,root) %{_libdir}/kde4/krdc_vncplugin.so
@@ -1268,6 +1268,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/servicetypes/krfb-framebuffer.desktop
 %{_desktopdir}/kde4/krdc.desktop
 %{_desktopdir}/kde4/krfb.desktop
-%{_includedir}/KRfb
+#%{_includedir}/KRfb
 %{_kdedocdir}/en/krdc
 %{_kdedocdir}/en/krfb
