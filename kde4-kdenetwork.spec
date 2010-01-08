@@ -14,7 +14,7 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
 Version:	4.3.4
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -22,6 +22,7 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 Patch100:	%{name}-branch.diff
 Patch0:		%{name}-libknotification.patch
 Patch1:		%{name}-FindLibgadu.patch
+Patch2:		%{name}-msn.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel
 BuildRequires:	QtOpenGL-devel >= %{qtver}
@@ -734,6 +735,7 @@ specjalnych możliwości Remote Desktop Connection.
 #%patch100 -p0
 %patch0 -p1
 %patch1 -p0
+%patch2 -p1
 
 %build
 install -d build
