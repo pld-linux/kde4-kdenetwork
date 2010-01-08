@@ -1,0 +1,99 @@
+--- kdenetwork/kopete/protocols/wlm/wlmlibmsn.cpp	2009/06/26 03:07:48	987423
++++ kdenetwork/kopete/protocols/wlm/wlmlibmsn.cpp	2009/07/23 03:56:06	1001377
+@@ -50,6 +50,7 @@
+ #include <string>
+ #include <iostream>
+ #include <kdebug.h>
++#include <kmime/kmime_util.h>
+ 
+ #include <QObject>
+ #include <QApplication>
+@@ -554,18 +555,11 @@
+ {
+     Q_UNUSED( conn );
+     Q_UNUSED( msgs_inbox );
+-    Q_UNUSED( unread_inbox );
+     Q_UNUSED( msgs_folders );
+     Q_UNUSED( unread_folders );
+-/*
+-    if (unread_inbox > 0)
+-        printf ("You have %d new messages in your Inbox. Total: %d\n",
+-                unread_inbox, msgs_inbox);
+ 
+-    if (unread_folders > 0)
+-        printf ("You have %d new messages in other folders. Total: %d\n",
+-                unread_folders, msgs_folders);
+-*/
++    if (unread_inbox > 0)
++        emit initialEmailNotification (unread_inbox);
+ }
+ 
+ void
+@@ -573,11 +567,20 @@
+                                     std::string from, std::string subject)
+ {
+     Q_UNUSED( conn );
+-    Q_UNUSED( from );
+-    Q_UNUSED( subject );
+-//    printf ("New e-mail has arrived from %s.\nSubject: %s\n", from.c_str (),
+-//            subject.c_str ());
++#ifdef LIBMSN_INBOX_URL_ENABLED
++    emit newEmailNotification (QString(from.c_str()), KMime::decodeRFC2047String(subject.c_str()));
++#endif
++}
++
++#ifdef LIBMSN_INBOX_URL_ENABLED
++void
++Callbacks::gotInboxUrl (MSN::NotificationServerConnection * conn,
++                        MSN::hotmailInfo info)
++{
++    Q_UNUSED( conn );
++    emit inboxUrl (info);
+ }
++#endif
+ 
+ void
+ Callbacks::fileTransferProgress (MSN::SwitchboardServerConnection * conn,
+--- kdenetwork/kopete/protocols/wlm/wlmlibmsn.h	2009/05/20 20:29:02	970799
++++ kdenetwork/kopete/protocols/wlm/wlmlibmsn.h	2009/07/23 03:56:06	1001377
+@@ -279,6 +279,11 @@
+         std::string
+     getSecureHTTPProxy ();
+ 
++#ifdef LIBMSN_INBOX_URL_ENABLED
++    virtual void
++    gotInboxUrl (MSN::NotificationServerConnection *conn, MSN::hotmailInfo info);
++#endif
++
+   public:
+     WlmServer * m_server;
+     QList <WlmSocket*> socketList;
+@@ -448,6 +453,15 @@
+ 
+     void socketError( int error );
+ 
++    void
++    initialEmailNotification(const int unread_inbox);
++
++    void
++    newEmailNotification(const QString from, const QString subject);
++
++    void
++    inboxUrl(MSN::hotmailInfo & info);
++
+ private slots:
+     void emitSocketError( QAbstractSocket::SocketError error );
+ };
+--- kdenetwork/kopete/protocols/wlm/wlmlibmsn.h	2009/07/23 03:56:06	1001377
++++ kdenetwork/kopete/protocols/wlm/wlmlibmsn.h	2009/07/24 18:41:46	1002000
+@@ -459,8 +459,10 @@
+     void
+     newEmailNotification(const QString from, const QString subject);
+ 
++#ifdef LIBMSN_INBOX_URL_ENABLED
+     void
+     inboxUrl(MSN::hotmailInfo & info);
++#endif
+ 
+ private slots:
+     void emitSocketError( QAbstractSocket::SocketError error );
