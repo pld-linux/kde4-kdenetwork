@@ -14,12 +14,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.3.85
+Version:	4.3.90
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	e67b465a242a15d2fbb375890afd978e
+# Source0-md5:	1a6a1bfaf1ce1bd836d7dfb816163ded
 #Patch100: %{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 URL:		http://www.kde.org/
@@ -41,7 +41,7 @@ BuildRequires:	libgadu-devel >= 1.8.0
 BuildRequires:	libidn-devel
 BuildRequires:	libiw-devel >= 27
 BuildRequires:	libjpeg-devel
-BuildRequires:	libmsn-devel >= 4.0-0.beta2.1
+BuildRequires:	libmsn-devel >= 4.0-1
 #BuildRequires:	libnxcl-devel >= 1.0-0.r612.1
 BuildRequires:	libotr-devel >= 3.2.0
 BuildRequires:	libtool
