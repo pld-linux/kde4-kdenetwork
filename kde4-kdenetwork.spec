@@ -50,6 +50,7 @@ BuildRequires:	libvncserver-devel
 BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	meanwhile-devel >= 1.0.1
+BuildRequires:	mediastreamer-devel >= 2.3.0
 BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	ortp-devel
@@ -65,6 +66,7 @@ BuildRequires:	soprano-devel >= 2.3.70
 BuildRequires:	speex-devel
 BuildRequires:	sqlite3-devel
 BuildRequires:	strigi-devel >= 0.7.0
+BuildRequires:	telepathy-qt4-devel
 BuildRequires:	xmms-devel
 BuildRequires:	xorg-lib-libXdamage-devel
 BuildRequires:	xorg-lib-libXtst-devel
