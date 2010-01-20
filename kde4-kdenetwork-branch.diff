@@ -1,1454 +1,250 @@
-Index: krdc/mainwindow.cpp
+Index: krdc/rdp/rdpview.cpp
 ===================================================================
---- krdc/mainwindow.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ krdc/mainwindow.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -635,6 +635,9 @@
-         Settings::setShowStartPage(false);
-         m_tabWidget->removeTab(0);
-         m_showStartPage = false;
-+        // HACK : call tabChanged since when the start page is closed and it's called, m_showStartPage is still true
-+        // which lead to a crash if the user click on any button like "grab all keys"
-+        tabChanged(m_tabWidget->currentIndex());
- 	updateActionStatus();
-         return;
-     }
-Index: kopete/plugins/webpresence/kopete_webpresence.desktop
+--- krdc/rdp/rdpview.cpp	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ krdc/rdp/rdpview.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -163,6 +163,7 @@
+     if (!m_url.password().isNull())
+         arguments << "-p" << m_url.password();
+ 
++    arguments << "-D";  // request the window has no decorations
+     arguments << "-X" << QString::number(m_container->winId());
+     arguments << "-a" << QString::number((m_hostPreferences->colorDepth() + 1) * 8);
+ 
+Index: krfb/kinetd/kinetd.notifyrc
 ===================================================================
---- kopete/plugins/webpresence/kopete_webpresence.desktop	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/plugins/webpresence/kopete_webpresence.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -60,8 +60,8 @@
- Comment[ru]=Отображает состояние вашего списка контактов (или его части) на странице в Сети
- Comment[sk]=Zobrazenie stavu (časti) zo zoznamu kontaktov na webovej stránke
- Comment[sl]=Pokaže stanje (dela) vašega seznama stikov na spletni strani
--Comment[sr]=Приказивање стања (делова) вашег списка контаката на веб страници
--Comment[sr@latin]=Prikazivanje stanja (delova) vašeg spiska kontakata na veb stranici
-+Comment[sr]=Приказивање стања (делова) ваше листе контаката на веб страници
-+Comment[sr@latin]=Prikazivanje stanja (delova) vaše liste kontakata na veb stranici
- Comment[sv]=Visa status för (delar av) din kontaktlista på en webbsida
- Comment[ta]=இணைய பக்கத்தில் உங்கள் தொடர்பாளரின் நிலைப்பட்டியலை காட்டு
- Comment[tg]=Ҳолати (қисме аз) рӯйхати пайвастшавии шуморо дар саҳифаи шабака нишон медиҳад
-Index: kopete/plugins/webpresence/kopete_webpresence_config.desktop
+--- krfb/kinetd/kinetd.notifyrc	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ krfb/kinetd/kinetd.notifyrc	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -105,7 +105,7 @@
+ Name[ro]=ConexiuneDeIntrare
+ Name[ru]=Входящее соединение
+ Name[sk]=Prichádzajúce spojenia
+-Name[sl]=Prihajajoča povezava
++Name[sl]=Prejeta povezava
+ Name[sr]=Долазна веза
+ Name[sr@latin]=Dolazna veza
+ Name[sv]=Inkommande anslutning
+Index: kopete/plugins/addbookmarks/kopete_addbookmarks.desktop
 ===================================================================
---- kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/plugins/webpresence/kopete_webpresence_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -54,8 +54,8 @@
- Comment[ru]=Отображает состояние вашего списка контактов (или его части) на странице в Сети
- Comment[sk]=Zobrazenie stavu (časti) zo zoznamu kontaktov na webovej stránke
- Comment[sl]=Pokaže stanje (dela) vašega seznama stikov na spletni strani
--Comment[sr]=Приказивање стања (делова) вашег списка контаката на веб страници
--Comment[sr@latin]=Prikazivanje stanja (delova) vašeg spiska kontakata na veb stranici
-+Comment[sr]=Приказивање стања (делова) ваше листе контаката на веб страници
-+Comment[sr@latin]=Prikazivanje stanja (delova) vaše liste kontakata na veb stranici
- Comment[sv]=Visa status för (delar av) din kontaktlista på en webbsida
- Comment[ta]=இணைய பக்கத்தில் உங்கள் தொடர்பாளரின் நிலைப்பட்டியலை காட்டு
- Comment[tg]=Ҳолати (қисме аз) рӯйхати пайвастшавии шуморо дар саҳифаи шабака нишон медиҳад
-Index: kopete/protocols/wlm/wlmtransfermanager.cpp
+--- kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -112,7 +112,7 @@
+ Comment[ro]=Pune automat semn de carte la legăturile din mesajele de intrare
+ Comment[ru]=Автоматическое добавление ссылок из входных сообщений в закладки
+ Comment[sk]=Automaticky vytvorí záložky odkazov v prichádzajúcich správach
+-Comment[sl]=Samodejno doda povezave v prihajajočih sporočilih med zaznamke
++Comment[sl]=Samodejno doda povezave iz prejetih sporočilih med zaznamke
+ Comment[sr]=Аутоматски маркирај везе у долазним порукама
+ Comment[sr@latin]=Automatski markiraj veze u dolaznim porukama
+ Comment[sv]=Bokmärk automatiskt länkar i inkommande meddelande.
+Index: kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop
 ===================================================================
---- kopete/protocols/wlm/wlmtransfermanager.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/protocols/wlm/wlmtransfermanager.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -18,6 +18,7 @@
- #include "wlmcontact.h"
- #include "kopetecontact.h"
- #include "kopeteuiglobal.h"
-+#include "kopetetransfermanager.h"
- 
- #include <QObject>
- #include <kmessagebox.h>
-Index: kopete/protocols/wlm/wlmchatsession.cpp
+--- kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -112,7 +112,7 @@
+ Comment[ro]=Pune automat semn de carte la legăturile din mesajele de intrare
+ Comment[ru]=Автоматическое добавление ссылок из входных сообщений в закладки
+ Comment[sk]=Automaticky vytvorí záložky odkazov v prichádzajúcich správach
+-Comment[sl]=Samodejno doda povezave v prihajajočih sporočilih med zaznamke
++Comment[sl]=Samodejno doda povezave iz prejetih sporočilih med zaznamke
+ Comment[sr]=Аутоматски маркирај везе у долазним порукама
+ Comment[sr@latin]=Automatski markiraj veze u dolaznim porukama
+ Comment[sv]=Bokmärk automatiskt länkar i inkommande meddelande.
+Index: kopete/plugins/history/kopete_history_config.desktop
 ===================================================================
---- kopete/protocols/wlm/wlmchatsession.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/protocols/wlm/wlmchatsession.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -55,6 +55,7 @@
- #include "kopeteview.h"
- #include "kopeteutils.h"
- #include "private/kopeteemoticons.h"
-+#include "kopetetransfermanager.h"
- 
- #include "wlmcontact.h"
- #include "wlmprotocol.h"
-Index: kopete/protocols/wlm/wlmtransfermanager.h
+--- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -133,7 +133,7 @@
+ Comment[ta]=வரலாற்று செருகல்
+ Comment[tg]=Модули Номнависи сӯҳбатҳо
+ Comment[tr]=Geçmiş Eklentisi
+-Comment[uk]=Втулок історії
++Comment[uk]=Додаток історії
+ Comment[uz]=Tarix plagini
+ Comment[uz@cyrillic]=Тарих плагини
+ Comment[vi]=Phần bổ sung lịch sử
+Index: kopete/plugins/privacy/kopete_privacy_config.desktop
 ===================================================================
---- kopete/protocols/wlm/wlmtransfermanager.h	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/protocols/wlm/wlmtransfermanager.h	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -18,11 +18,16 @@
- #define WLMTRANSFERMANAGER_H
- 
- #include <QObject>
--#include "kopetetransfermanager.h"
- 
- #include "wlmaccount.h"
- #include <msn/msn.h>
- 
-+namespace Kopete
-+{
-+	class Transfer;
-+	class FileTransferInfo;
-+}
-+
- class WlmTransferManager:public QObject
- {
-   Q_OBJECT 
-Index: kopete/protocols/wlm/wlmaccount.h
+--- kopete/plugins/privacy/kopete_privacy_config.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ kopete/plugins/privacy/kopete_privacy_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -105,7 +105,7 @@
+ Comment[sr@latin]=Priključak za privatnost
+ Comment[sv]=Integritetsinsticksprogram
+ Comment[tr]=Gizlilik Eklentisi
+-Comment[uk]=Втулок конфіденційності
++Comment[uk]=Додаток конфіденційності
+ Comment[vi]=Phần bổ sung riêng tư
+ Comment[x-test]=xxPrivacy Pluginxx
+ Comment[zh_CN]=隐私插件
+Index: kopete/plugins/privacy/kopete_privacy.desktop
 ===================================================================
---- kopete/protocols/wlm/wlmaccount.h	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/protocols/wlm/wlmaccount.h	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -24,7 +24,6 @@
- #include "wlmchatsession.h"
- #include "wlmtransfermanager.h"
- #include "wlmchatmanager.h"
--#include "kopetetransfermanager.h"
- 
- class KActionMenu;
- namespace Kopete
-Index: kopete/protocols/yahoo/libkyahoo/yahooclientstream.cpp
+--- kopete/plugins/privacy/kopete_privacy.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ kopete/plugins/privacy/kopete_privacy.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -107,7 +107,7 @@
+ Comment[pt_BR]=Filtrar mensagens recebidas
+ Comment[ro]=Filtreză mesajele de intrare
+ Comment[ru]=Фильтрация входящих сообщений
+-Comment[sl]=Filtrira prihajajoča sporočila
++Comment[sl]=Filtrira prejeta sporočila
+ Comment[sr]=Филтрира долазне поруке
+ Comment[sr@latin]=Filtrira dolazne poruke
+ Comment[sv]=Filtrerar inkommande meddelanden
+Index: kopete/kopete/kopete.notifyrc
 ===================================================================
---- kopete/protocols/yahoo/libkyahoo/yahooclientstream.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/protocols/yahoo/libkyahoo/yahooclientstream.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -135,6 +135,7 @@
- 		
- 		// reset connector
- 		if(d->bs) {
-+			disconnect(d->bs, 0, this, 0);
- 			d->bs->close();
- 			d->bs = 0;
- 		}
-@@ -296,6 +297,9 @@
- 
- void ClientStream::cp_outgoingData( const QByteArray& outgoingBytes )
- {
-+	if ( !d->bs )
-+		return;
-+	
- 	// take formatted bytes from CoreProtocol and put them on the wire
- 	kDebug(YAHOO_RAW_DEBUG) << "[data size: " << outgoingBytes.size() << "]";
- 	//cs_dump( outgoingBytes );
-Index: kopete/protocols/jabber/jabberprotocol.cpp
+--- kopete/kopete/kopete.notifyrc	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ kopete/kopete/kopete.notifyrc	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -397,7 +397,7 @@
+ Name[pt_BR]=Mensagem recebida
+ Name[ro]=Mesaj de intrare
+ Name[ru]=Входящее сообщение
+-Name[sl]=Prihajajoče sporočilo
++Name[sl]=Prejeto sporočilo
+ Name[sr]=Долазна порука
+ Name[sr@latin]=Dolazna poruka
+ Name[sv]=Inkommande meddelande
+@@ -504,7 +504,7 @@
+ Name[pt_BR]=Mensagem recebida no bate-papo ativo
+ Name[ro]=Mesaj de intrare în discuția activă
+ Name[ru]=Входящее сообщение в активной беседе
+-Name[sl]=Prihajajoče sporočilo v aktivnem klepetu
++Name[sl]=Prejeto sporočilo v aktivnem klepetu
+ Name[sr]=Долазна порука у активном ћаскању
+ Name[sr@latin]=Dolazna poruka u aktivnom ćaskanju
+ Name[sv]=Inkommande meddelande i aktiv chatt
+@@ -1843,7 +1843,7 @@
+ Name[sr@latin]=Veza izgubljena
+ Name[sv]=Anslutning förlorad
+ Name[tr]=Bağlantı Kesildi
+-Name[uk]=Загублено з'єднання
++Name[uk]=З'єднання розірвано
+ Name[uz]=Ulanish uzildi
+ Name[uz@cyrillic]=Уланиш узилди
+ Name[x-test]=xxConnection Lostxx
+Index: kopete/libkopete/kopeteui.desktop
 ===================================================================
---- kopete/protocols/jabber/jabberprotocol.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/protocols/jabber/jabberprotocol.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -65,7 +65,7 @@
- 	JabberKOSChatty(Kopete::OnlineStatus::Online,        100, this, JabberFreeForChat, QStringList("jabber_chatty"), i18n ("Free for Chat"), i18n ("Free for Chat"), Kopete::OnlineStatusManager::FreeForChat, Kopete::OnlineStatusManager::HasStatusMessage ),
- 	JabberKOSOnline(Kopete::OnlineStatus::Online,         90, this, JabberOnline, QStringList(), i18n ("Online"), i18n ("Online"), Kopete::OnlineStatusManager::Online, Kopete::OnlineStatusManager::HasStatusMessage ),
- 	JabberKOSAway(Kopete::OnlineStatus::Away,             80, this, JabberAway, QStringList("contact_away_overlay"), i18n ("Away"), i18n ("Away"), Kopete::OnlineStatusManager::Away, Kopete::OnlineStatusManager::HasStatusMessage),
--	JabberKOSXA(Kopete::OnlineStatus::Away,               70, this, JabberXA, QStringList("contact_xa_overlay"), i18n ("Extended Away"), i18n ("Extended Away"), 0, Kopete::OnlineStatusManager::HasStatusMessage),
-+	JabberKOSXA(Kopete::OnlineStatus::Away,               70, this, JabberXA, QStringList("contact_xa_overlay"), i18n ("Extended Away"), i18n ("Extended Away"), Kopete::OnlineStatusManager::ExtendedAway, Kopete::OnlineStatusManager::HasStatusMessage),
- 	JabberKOSDND(Kopete::OnlineStatus::Away,              60, this, JabberDND, QStringList("contact_busy_overlay"), i18n ("Do not Disturb"), i18n ("Do not Disturb"), Kopete::OnlineStatusManager::Busy, Kopete::OnlineStatusManager::HasStatusMessage),
- 	JabberKOSOffline(Kopete::OnlineStatus::Offline,       50, this, JabberOffline, QStringList(), i18n ("Offline") ,i18n ("Offline"), Kopete::OnlineStatusManager::Offline, Kopete::OnlineStatusManager::HasStatusMessage ),
- 	JabberKOSInvisible(Kopete::OnlineStatus::Invisible,   40, this, JabberInvisible, QStringList("contact_invisible_overlay"),   i18n ("Invisible") ,i18n ("Invisible"), Kopete::OnlineStatusManager::Invisible),
-@@ -250,6 +250,7 @@
- 		}
- 		else
- 		{
-+			status = JabberKOSOnline; // Assume that contact is online bug 210558
- 			kDebug (JABBER_DEBUG_GLOBAL) << "Unknown status <show>" << resource.status ().show () << "</show> for contact. One of your contact is probably using a broken client, ask him to report a bug";
- 		}
- 	}
-Index: kopete/protocols/oscar/liboscar/client.cpp
+--- kopete/libkopete/kopeteui.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ kopete/libkopete/kopeteui.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -57,7 +57,7 @@
+ Comment[ta]=ஒரு Kopete UI செருகல்
+ Comment[tg]=Модули Интерфейси Корвандии Kopete
+ Comment[tr]=Bir Kopete UI Eklentisi
+-Comment[uk]=Втулок інтерфейсу для Kopete
++Comment[uk]=Додаток інтерфейсу для Kopete
+ Comment[vi]=Phần bổ sung giao diện người dùng Kopete
+ Comment[wa]=On tchôke-divins d' eterface grafike po Kopete
+ Comment[x-test]=xxA Kopete UI Pluginxx
+Index: kopete/libkopete/kopeteprotocol.desktop
 ===================================================================
---- kopete/protocols/oscar/liboscar/client.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/protocols/oscar/liboscar/client.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -353,7 +353,8 @@
- 		}
- 
- 		ProfileTask* pt = new ProfileTask( c->rootTask() );
--		pt->setAwayMessage( msg );
-+		if ( !d->isIcq ) // Don't break EA, DND... for ICQ
-+			pt->setAwayMessage( msg );
- 
- 		if ( d->isIcq && xtrazChanged )
- 			pt->setXtrazStatus( xtraz );
-Index: kopete/protocols/oscar/icq/icqcontact.cpp
+--- kopete/libkopete/kopeteprotocol.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ kopete/libkopete/kopeteprotocol.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -58,7 +58,7 @@
+ Comment[ta]=Kopete விதிமுறை செருகல்
+ Comment[tg]=Модули Қарордоди Kopete 
+ Comment[tr]=Kopete İletişim Kuralı Eklentisi
+-Comment[uk]=Втулок протоколу для Kopete
++Comment[uk]=Додаток протоколу для Kopete
+ Comment[vi]=Phần bổ sung giao thức Kopete
+ Comment[wa]=Tchôke-divins di protocole po Kopete
+ Comment[x-test]=xxKopete Protocol Pluginxx
+Index: kopete/libkopete/avdevice/videodevice.cpp
 ===================================================================
---- kopete/protocols/oscar/icq/icqcontact.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/protocols/oscar/icq/icqcontact.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -628,6 +628,13 @@
+--- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -1047,6 +1047,12 @@
+ 					(uint) m_rawbuffers.size() <= v4l2buffer.index)
+ 					return EXIT_FAILURE;
  
- void ICQContact::slotUserInfo()
- {
-+	if ( m_infoWidget )
-+	{
-+		m_infoWidget->showNormal();
-+		m_infoWidget->activateWindow();
-+		return;
-+	}
++				if (m_rawbuffers[v4l2buffer.index].length < m_currentbuffer.data.size())
++				{
++					kDebug() <<  "Buffer size mismatch: expecting raw buffer length to be" << m_currentbuffer.data.size() << "but it was" << m_rawbuffers[v4l2buffer.index].length;
++					return EXIT_FAILURE;
++				}
 +
- 	m_infoWidget = new ICQUserInfoWidget( this, Kopete::UI::Global::mainWidget() );
- 	QObject::connect( m_infoWidget, SIGNAL(finished()), this, SLOT(closeUserInfoDialog()) );
- 	QObject::connect( m_infoWidget, SIGNAL(okClicked()), this, SLOT(storeUserInfoDialog()) );
-Index: kopete/protocols/oscar/oscaraccount.cpp
+ 				memcpy(&m_currentbuffer.data[0], m_rawbuffers[v4l2buffer.index].start, m_currentbuffer.data.size());
+ 				if (-1 == xioctl (VIDIOC_QBUF, &v4l2buffer))
+ 					return errnoReturn ("VIDIOC_QBUF");
+Index: kopete/libkopete/kopeteplugin.desktop
 ===================================================================
---- kopete/protocols/oscar/oscaraccount.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/protocols/oscar/oscaraccount.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -1260,6 +1260,7 @@
- 				  accountId(), acctType) ;
- 		}
- 		break;
-+	case 0x001B:
- 	case 0x001C:
- 		OscarVersionUpdater::self()->update( d->versionUpdaterStamp );
- 		if ( !d->versionAlreadyUpdated )
-Index: kopete/protocols/irc/irctransferhandler.h
+--- kopete/libkopete/kopeteplugin.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ kopete/libkopete/kopeteplugin.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -58,7 +58,7 @@
+ Comment[ta]=Kopete செருகல்
+ Comment[tg]=Модули Kopete 
+ Comment[tr]=Kopete Eklentisi
+-Comment[uk]=Втулок Kopete
++Comment[uk]=Додаток до Kopete
+ Comment[uz]=Kopete plagini
+ Comment[uz@cyrillic]=Kopete плагини
+ Comment[vi]=Phần bổ sung Kopete
+Index: kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory_config.desktop
 ===================================================================
---- kopete/protocols/irc/irctransferhandler.h	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/protocols/irc/irctransferhandler.h	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -18,11 +18,10 @@
- #ifndef IRCTRANSFERHANDLER_H
- #define IRCTRANSFERHANDLER_H
+--- kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory_config.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -7,7 +7,7 @@
  
--#include <kopetetransfermanager.h>
--
- namespace Kopete
- {
- 	class Transfer;
-+	class FileTransferInfo;
- }
- 
- namespace KIRC
-Index: kopete/kopete/contactlist/kopetelviprops.cpp
+ Name=MirrorSearch
+ Name[ar]=بحث المرآة
+-Name[ca]=CercaMirall
++Name[ca]=Cerca de rèplica
+ Name[cs]=MirrorSearch
+ Name[da]=MirrorSearch
+ Name[de]=MirrorSearch
+Index: kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop
 ===================================================================
---- kopete/kopete/contactlist/kopetelviprops.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/kopete/contactlist/kopetelviprops.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -439,16 +439,12 @@
+--- kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -7,7 +7,7 @@
+ # standard fields
+ Name=Mirror Search
+ Name[ar]=بحث المرآة
+-Name[ca]=Cerca miralls
++Name[ca]=Cerca de rèpliques
+ Name[cs]=Mirror Search
+ Name[da]=Mirror Search
+ Name[de]=MirrorSearch
+@@ -50,7 +50,7 @@
+ Name[zh_TW]=映射搜尋
  
- Kopete::Contact* KopeteMetaLVIProps::selectedNameSourceContact() const
- {
--	Kopete::Contact *c= mMetaContact->contacts().at( ui_mainWidget->cmbAccountName->currentIndex() );
--	return c ? c : 0L;
-+	return mMetaContact->contacts().value( ui_mainWidget->cmbAccountName->currentIndex(), 0 );
- }
- 
- Kopete::Contact* KopeteMetaLVIProps::selectedPhotoSourceContact() const
- {
--	if (m_withPhotoContacts.isEmpty())
--		return 0L;
--	Kopete::Contact *c = m_withPhotoContacts[ui_mainWidget->cmbAccountPhoto->currentIndex() ];
--	return c ? c : 0L;
-+	return m_withPhotoContacts.value( ui_mainWidget->cmbAccountPhoto->currentIndex(), 0 );
- }
- 
- void KopeteMetaLVIProps::slotOkClicked()
-Index: kopete/kopete/config/appearance/kopete_appearanceconfig.desktop
+ Comment=Allows KGet to search through mirror search engines for files
+-Comment[ca]=Permet que el KGet cerqui el fitxer a miralls de cercadors
++Comment[ca]=Permet que el KGet cerqui els fitxers a rèpliques de motors de cerques
+ Comment[da]=Gør KGet i stand til at søge efter filer via filspejl-søgemaskiner
+ Comment[de]=Ermöglicht es KGet, nach Dateien über Spiegel-Suchmaschinen zu suchen.
+ Comment[el]=Επιτρέπει στο KGet την αναζήτηση του αρχείου σε μηχανές αναζήτησης αντίγραφα
+Index: kget/transfer-plugins/metalink/kget_metalinkfactory.desktop
 ===================================================================
---- kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/kopete/config/appearance/kopete_appearanceconfig.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -47,8 +47,8 @@
- Name[ro]=Listă de contacte
- Name[ru]=Список контактов
- Name[sl]=Seznam stikov
--Name[sr]=Списак контаката
--Name[sr@latin]=Spisak kontakata
-+Name[sr]=Листа контаката
-+Name[sr@latin]=Lista kontakata
- Name[sv]=Kontaktlista
- Name[tr]=Kişi Listesi
- Name[uk]=Список контактів
-@@ -92,8 +92,8 @@
- Comment[ro]=Configurați aspectul și comportamentul listei de contacte
- Comment[ru]=Настройка внешнего вида списка контактов
- Comment[sl]=Nastavite seznam stikov ter izgled in občutek
--Comment[sr]=Подесите изглед списка контаката
--Comment[sr@latin]=Podesite izgled spiska kontakata
-+Comment[sr]=Подесите изглед листе контаката
-+Comment[sr@latin]=Podesite izgled liste kontakata
- Comment[sv]=Anpassa kontaktlistans känsla och utseende
- Comment[tr]=Kişi Listesinin Görünümünü Yapılandır
- Comment[uk]=Налаштувати вигляд і поведінку списку контактів
-Index: kopete/kopete/config/plugins/kopete_pluginconfig.desktop
+--- kget/transfer-plugins/metalink/kget_metalinkfactory.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ kget/transfer-plugins/metalink/kget_metalinkfactory.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -7,7 +7,7 @@
+ # standard fields
+ Name=Metalink
+ Name[ar]=ميتالينك
+-Name[ca]=Metaenllaç
++Name[ca]=«Metalink»
+ Name[cs]=Metalink
+ Name[da]=Metalink
+ Name[de]=Metalink
+@@ -50,7 +50,7 @@
+ Name[zh_CN]=超级链接
+ Name[zh_TW]=Metalink
+ Comment=Allows files to be downloaded from Metalink
+-Comment[ca]=Permet descarregar fitxers des d'un metaenllaç
++Comment[ca]=Permet descarregar fitxers des d'un «metalink»
+ Comment[da]=Muliggør download af filer fra Metalink
+ Comment[de]=Ermöglicht die Übertragung von Dateien mittels Metalink
+ Comment[el]=Επιτρέπει τη λήψη αρχείων από το Metalink
+Index: filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop
 ===================================================================
---- kopete/kopete/config/plugins/kopete_pluginconfig.desktop	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/kopete/config/plugins/kopete_pluginconfig.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -59,7 +59,7 @@
- Name[sr@latin]=Priključci
- Name[sv]=Insticksprogram
- Name[tr]=Eklentiler
--Name[uk]=Втулки
-+Name[uk]=Додатки
- Name[vi]=Phần bổ sung
- Name[x-test]=xxPluginsxx
- Name[zh_CN]=插件
-@@ -106,7 +106,7 @@
- Comment[sr@latin]=Izaberite i podesite priključke
- Comment[sv]=Välj och anpassa insticksprogram
- Comment[tr]=Eklentileri Seç ve Yapılandır
--Comment[uk]=Вибрати і налаштувати втулки
-+Comment[uk]=Вибрати і налаштувати додатки
- Comment[x-test]=xxSelect and Configure Pluginsxx
- Comment[zh_CN]=选择并配置插件
- Comment[zh_TW]=選擇與設定外掛程式
-Index: kopete/kopete/config/chatwindow/chatwindowconfig.h
-===================================================================
---- kopete/kopete/config/chatwindow/chatwindowconfig.h	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/kopete/config/chatwindow/chatwindowconfig.h	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -20,6 +20,8 @@
- #ifndef CHATWINCONF_H
- #define CHATWINCONF_H
- 
-+#include <QtCore/QPointer>
-+
- #define KDE3_SUPPORT
- #include <kcmodule.h>
- #undef KDE3_SUPPORT
-@@ -78,7 +80,7 @@
- 	ChatMessagePart *m_preview;
- 
- 	ChatWindowStyle::StyleVariants m_currentVariantMap;
--	ChatWindowStyle *m_currentStyle;
-+	QPointer<ChatWindowStyle> m_currentStyle;
- 	bool m_loading;
- 	bool m_allowDownloadTheme;
- 	// For style preview
-Index: kopete/kopete/config/chatwindow/chatwindowconfig.cpp
-===================================================================
---- kopete/kopete/config/chatwindow/chatwindowconfig.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/kopete/config/chatwindow/chatwindowconfig.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -471,6 +471,7 @@
- 	{
- 		KMessageBox::queuedMessageBox(this, KMessageBox::Sorry, i18nc("@info", "An error occurred while trying to delete the <resource>%1</resource> Chat Window Style. Your account might not have permission to remove it.", styleName));
- 	}
-+	slotUpdateChatPreview();
- }
- 
- void ChatWindowConfig::slotGetChatStyles()
-Index: kopete/kopete/chatwindow/kopetechatwindowstyle.cpp
-===================================================================
---- kopete/kopete/chatwindow/kopetechatwindowstyle.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/kopete/chatwindow/kopetechatwindowstyle.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -57,13 +57,13 @@
- };
- 
- ChatWindowStyle::ChatWindowStyle(const QString &styleName, StyleBuildMode styleBuildMode)
--	: d(new Private)
-+	: QObject(), d(new Private)
- {
- 	init(styleName, styleBuildMode);
- }
- 
- ChatWindowStyle::ChatWindowStyle(const QString &styleName, const QString &variantPath, StyleBuildMode styleBuildMode)
--	: d(new Private)
-+	: QObject(), d(new Private)
- {
- 	d->currentVariantPath = variantPath;
- 	init(styleName, styleBuildMode);
-Index: kopete/kopete/chatwindow/kopetechatwindowstyle.h
-===================================================================
---- kopete/kopete/chatwindow/kopetechatwindowstyle.h	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/kopete/chatwindow/kopetechatwindowstyle.h	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -27,7 +27,7 @@
-  *
-  * @author Michaël Larouche <larouche@kde.org>
-  */
--class KOPETECHATWINDOW_SHARED_EXPORT ChatWindowStyle
-+class KOPETECHATWINDOW_SHARED_EXPORT ChatWindowStyle : public QObject
- {
- public:
- 	/**
-Index: kopete/kopete/chatwindow/chatview.cpp
-===================================================================
---- kopete/kopete/chatwindow/chatview.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/kopete/chatwindow/chatview.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -533,18 +533,20 @@
- 		this, SLOT( slotPropertyChanged( Kopete::PropertyContainer *, const QString &, const QVariant &, const QVariant & ) ) ) ;
- 	}
- 
--	QString contactName = m_messagePart->formatName(contact, Qt::PlainText);
--	if( !suppress && m_manager->members().count() > 1 )
-+	if( !suppress && m_manager->members().count() > 1 ) {
-+		QString contactName = m_messagePart->formatName(contact, Qt::PlainText);
- 		sendInternalMessage(  i18n("%1 has joined the chat.", contactName) );
-+	}
- 
- 	if ( m_manager->members().count() == 1 )
-+	{
- 		connect( m_manager->members().first(), SIGNAL(canAcceptFilesChanged()), this, SIGNAL(canAcceptFilesChanged()) );
-+		updateChatState();
-+		emit updateStatusIcon( this );
-+		emit canAcceptFilesChanged();
-+	}
- 	else
- 		disconnect( m_manager->members().first(), SIGNAL(canAcceptFilesChanged()), this, SIGNAL(canAcceptFilesChanged()) );
--
--	updateChatState();
--	emit updateStatusIcon( this );
--	emit canAcceptFilesChanged();
- }
- 
- void ChatView::slotContactRemoved( const Kopete::Contact *contact, const QString &reason, Qt::TextFormat format, bool suppressNotification )
-Index: kopete/kopete/chatwindow/chatmessagepart.cpp
-===================================================================
---- kopete/kopete/chatwindow/chatmessagepart.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/kopete/chatwindow/chatmessagepart.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -133,8 +133,7 @@
- 	KAction *closeAction;
- 	KAction *copyURLAction;
- 
--	// We can't use QPointer because ChatWindowStyle is not a QObject
--	ChatWindowStyle *currentChatStyle;
-+	ChatWindowStyle* currentChatStyle;
- 	QPointer<Kopete::Contact> latestContact;
- 	Kopete::Message::MessageDirection latestDirection;
- 	Kopete::Message::MessageType latestType;
-@@ -210,8 +209,9 @@
- {
- 	d->manager = mgr;
- 
--	d->currentChatStyle = ChatWindowStyleManager::self()->getValidStyleFromPool(
--			 KopeteChatWindowSettings::self()->styleName() );
-+	d->currentChatStyle = ChatWindowStyleManager::self()->getValidStyleFromPool( KopeteChatWindowSettings::self()->styleName() );
-+	if (d->currentChatStyle)
-+		connect( d->currentChatStyle, SIGNAL(destroyed(QObject*)), this, SLOT(clearStyle()) );
- 
- 	connect( this, SIGNAL(completed()), this, SLOT(slotRenderingFinished()) );
- 
-@@ -406,23 +406,29 @@
- void ChatMessagePart::setStyle( const QString &styleName )
- {
- 	// Create a new ChatWindowStyle
--	d->currentChatStyle = ChatWindowStyleManager::self()->getValidStyleFromPool(styleName);
--
--	// Do the actual style switch
--	// Wait for the event loop before switching the style
--	QTimer::singleShot( 0, this, SLOT(changeStyle()) );
-+	setStyle( ChatWindowStyleManager::self()->getValidStyleFromPool(styleName) );
- }
- 
- void ChatMessagePart::setStyle( ChatWindowStyle *style )
- {
- 	// Change the current style
-+	if (d->currentChatStyle)
-+		disconnect( d->currentChatStyle, SIGNAL(destroyed(QObject*)), this, SLOT(clearStyle()) );
-+
- 	d->currentChatStyle = style;
-+	if (d->currentChatStyle)
-+		connect( d->currentChatStyle, SIGNAL(destroyed(QObject*)), this, SLOT(clearStyle()) );
- 
- 	// Do the actual style switch
- 	// Wait for the event loop before switching the style
- 	QTimer::singleShot( 0, this, SLOT(changeStyle()) );
- }
- 
-+void ChatMessagePart::clearStyle()
-+{
-+	setStyle( QString() );
-+}
-+
- void ChatMessagePart::setStyleVariant( const QString &variantPath )
- {
- 	DOM::HTMLElement variantNode = document().getElementById( QString("mainStyle") );
-Index: kopete/kopete/chatwindow/kopetechatwindow.cpp
-===================================================================
---- kopete/kopete/chatwindow/kopetechatwindow.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/kopete/chatwindow/kopetechatwindow.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -351,6 +351,9 @@
- 
- void KopeteChatWindow::updateSendKeySequence()
- {
-+	if ( !sendMessage || !m_activeView )
-+		return;
-+
- 	m_activeView->editPart()->textEdit()->setSendKeySequence( sendMessage->shortcut() );
- }
- 
-@@ -363,6 +366,8 @@
- 	chatSend = new KAction( KIcon("mail-send"), i18n( "&Send Message" ), coll );
- 	//Recuperate the qAction for later
- 	sendMessage = coll->addAction( "chat_send", chatSend );
-+	//Set up change signal in case the user changer the shortcut later
-+	connect( sendMessage, SIGNAL(changed()), SLOT(updateSendKeySequence()) );
- 
- 	connect( chatSend, SIGNAL( triggered(bool) ), SLOT( slotSendMessage() ) );
- 	//Default to 'Return' and 'Enter' for sending messages
-@@ -981,9 +986,7 @@
- 	updateActions();
- 	slotUpdateSendEnabled();
- 	m_activeView->loadChatSettings();
--	m_activeView->editPart()->textEdit()->setSendKeySequence( sendMessage->shortcut() );
--	//Set up change signal in case the user changer the shortcut later
--	connect( sendMessage, SIGNAL(changed()), SLOT(updateSendKeySequence()) );
-+	updateSendKeySequence();
- 
- 	emit chatSessionChanged(m_activeView->msgManager());
- }
-Index: kopete/kopete/chatwindow/chatmessagepart.h
-===================================================================
---- kopete/kopete/chatwindow/chatmessagepart.h	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/kopete/chatwindow/chatmessagepart.h	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -181,6 +181,11 @@
- 	void changeStyle();
- 
- 	/**
-+	 * Clears style when style is deleted.
-+	 */
-+	void clearStyle();
-+
-+	/**
- 	 * Update the display in the header template if any.
- 	 */
- 	void slotUpdateHeaderDisplayName();
-Index: kopete/kopete/chatwindow/chattexteditpart.cpp
-===================================================================
---- kopete/kopete/chatwindow/chattexteditpart.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/kopete/chatwindow/chattexteditpart.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -210,8 +210,7 @@
- 	connect( contact, SIGNAL( propertyChanged( Kopete::PropertyContainer *, const QString &, const QVariant &, const QVariant & ) ),
- 	         this, SLOT( slotPropertyChanged( Kopete::PropertyContainer *, const QString &, const QVariant &, const QVariant & ) ) ) ;
- 
--	QString contactName = contact->property(Kopete::Global::Properties::self()->nickName()).value().toString();
--	mComplete->addItem( contactName );
-+	mComplete->addItem( contact->nickName() );
- }
- 
- void ChatTextEditPart::slotContactRemoved( const Kopete::Contact *contact )
-Index: kopete/doc/t1/kopete_tutorialplugin.desktop
-===================================================================
---- kopete/doc/t1/kopete_tutorialplugin.desktop	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/doc/t1/kopete_tutorialplugin.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -46,7 +46,7 @@
- Name[sr@latin]=Priključak za učenje
- Name[sv]=Handledningsinsticksprogram
- Name[tr]=Öğretici Eklentisi
--Name[uk]=Втулка інструкції
-+Name[uk]=Додаток інструкції
- Name[vi]=Phần bổ sung trợ lý
- Name[x-test]=xxTutorial Pluginxx
- Name[zh_CN]=教程插件
-@@ -95,7 +95,7 @@
- Comment[sr@latin]=Pokazni priključak za učenje programiranja Kopetea
- Comment[sv]=Demonstrationsinsticksprogram för att lära ut utveckling av Kopete
- Comment[tr]=Kopete geliştirmesini öğretmek için örnek eklenti
--Comment[uk]=Демонстраційна втулка для навчання по розробці Kopete
-+Comment[uk]=Демонстраційний додаток для навчання розробці у Kopete
- Comment[vi]=Phần bổ sung minh hoạ để dạy phát triển Kopete
- Comment[x-test]=xxDemonstration plugin for teaching Kopete developmentxx
- Comment[zh_CN]=Kopete 开发教学示范插件
-Index: kopete/doc/t2/kopete_tutorialplugin.desktop
-===================================================================
---- kopete/doc/t2/kopete_tutorialplugin.desktop	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/doc/t2/kopete_tutorialplugin.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -46,7 +46,7 @@
- Name[sr@latin]=Priključak za učenje
- Name[sv]=Handledningsinsticksprogram
- Name[tr]=Öğretici Eklentisi
--Name[uk]=Втулка інструкції
-+Name[uk]=Додаток інструкції
- Name[vi]=Phần bổ sung trợ lý
- Name[x-test]=xxTutorial Pluginxx
- Name[zh_CN]=教程插件
-@@ -95,7 +95,7 @@
- Comment[sr@latin]=Pokazni priključak za učenje programiranja Kopetea
- Comment[sv]=Demonstrationsinsticksprogram för att lära ut utveckling av Kopete
- Comment[tr]=Kopete geliştirmesini öğretmek için örnek eklenti
--Comment[uk]=Демонстраційна втулка для навчання по розробці Kopete
-+Comment[uk]=Демонстраційний додаток для навчання розробці у Kopete
- Comment[vi]=Phần bổ sung minh hoạ để dạy phát triển Kopete
- Comment[x-test]=xxDemonstration plugin for teaching Kopete developmentxx
- Comment[zh_CN]=Kopete 开发教学示范插件
-Index: kopete/doc/t3/kopete_tutorialplugin.desktop
-===================================================================
---- kopete/doc/t3/kopete_tutorialplugin.desktop	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/doc/t3/kopete_tutorialplugin.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -46,7 +46,7 @@
- Name[sr@latin]=Priključak za učenje
- Name[sv]=Handledningsinsticksprogram
- Name[tr]=Öğretici Eklentisi
--Name[uk]=Втулка інструкції
-+Name[uk]=Додаток інструкції
- Name[vi]=Phần bổ sung trợ lý
- Name[x-test]=xxTutorial Pluginxx
- Name[zh_CN]=教程插件
-@@ -95,7 +95,7 @@
- Comment[sr@latin]=Pokazni priključak za učenje programiranja Kopetea
- Comment[sv]=Demonstrationsinsticksprogram för att lära ut utveckling av Kopete
- Comment[tr]=Kopete geliştirmesini öğretmek için örnek eklenti
--Comment[uk]=Демонстраційна втулка для навчання по розробці Kopete
-+Comment[uk]=Демонстраційний додаток для навчання розробці у Kopete
- Comment[vi]=Phần bổ sung minh hoạ để dạy phát triển Kopete
- Comment[x-test]=xxDemonstration plugin for teaching Kopete developmentxx
- Comment[zh_CN]=Kopete 开发教学示范插件
-Index: kopete/libkopete/kopetechatsession.h
-===================================================================
---- kopete/libkopete/kopetechatsession.h	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/libkopete/kopetechatsession.h	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -46,6 +46,7 @@
- class OnlineStatus;
- class Account;
- class ChatSessionManager;
-+class PropertyContainer;
- class MessageHandlerChain;
- class TemporaryKMMCallbackAppendMessageHandler;
- 
-@@ -229,12 +230,12 @@
- 	 * @brief a new contact is now in the chat
- 	 */
- 	// FIXME: What's 'suppress'? Shouldn't this be an enum? - Martijn
--	void contactAdded( const Kopete::Contact *contact, bool suppress );
-+	void contactAdded( const Kopete::Contact *contact, bool suppress);
- 
- 	/**
- 	 * @brief a contact is no longer in this chat
- 	 */
--	void contactRemoved( const Kopete::Contact *contact, const QString &reason, Qt::TextFormat format = Qt::PlainText, bool contactRemoved = false );
-+	void contactRemoved( const Kopete::Contact *contact, const QString &reason, Qt::TextFormat format = Qt::PlainText, bool suppressNotification = false);
- 
- 	/**
- 	 * @brief a contact in this chat has changed his status
-@@ -247,6 +248,12 @@
- 	void displayNameChanged();
- 
- 	/**
-+	 * @brief a contact in this chat has changed his nickname
-+	 */
-+	void nickNameChanged( Kopete::Contact *, const QString & );
-+
-+
-+	/**
- 	 * @brief emitting a typing notification
- 	 *
- 	 * The user is typing a message, or just stopped typing
-@@ -405,6 +412,7 @@
- 	void slotOnlineStatusChanged( Kopete::Contact *c, const Kopete::OnlineStatus &status, const Kopete::OnlineStatus &oldStatus );
- 	void slotContactDestroyed( Kopete::Contact *contact );
- 	void slotMyselfDestroyed( Kopete::Contact *contact );
-+	void slotContactPropertyChanged( Kopete::PropertyContainer * contact, const QString &key, const QVariant &oldValue, const QVariant &newValue );
- 
- protected:
- 	/**
-Index: kopete/libkopete/kopetechatsession.cpp
-===================================================================
---- kopete/libkopete/kopetechatsession.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/libkopete/kopetechatsession.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -49,7 +49,7 @@
- class KMMPrivate
- {
- public:
--	Kopete::ContactPtrList mContactList;
-+	Kopete::ContactPtrList contacts;
- 	const Kopete::Contact *mUser;
- 	QMap<const Kopete::Contact *, Kopete::OnlineStatus> contactStatus;
- 	Kopete::Protocol *mProtocol;
-@@ -92,15 +92,18 @@
- 	connect( user, SIGNAL( onlineStatusChanged( Kopete::Contact *, const Kopete::OnlineStatus &, const Kopete::OnlineStatus & ) ), this,
- 		SLOT( slotOnlineStatusChanged( Kopete::Contact *, const Kopete::OnlineStatus &, const Kopete::OnlineStatus & ) ) );
- 
-+	connect( user, SIGNAL( propertyChanged( Kopete::PropertyContainer *, const QString &, const QVariant &, const QVariant & ) ), this, SLOT(slotContactPropertyChanged(Kopete::PropertyContainer*,QString,QVariant,QVariant) ) );
-+
- 	if( user->metaContact() )
- 		connect( user->metaContact(), SIGNAL( photoChanged() ), this, SIGNAL( photoChanged() ) );
- 
-+
- 	slotUpdateDisplayName();
- }
- 
- Kopete::ChatSession::~ChatSession()
- {
--	//for ( Kopete::Contact *c = d->mContactList.first(); c; c = d->mContactList.next() )
-+	//for ( Kopete::Contact *c = d->contacts.first(); c; c = d->contacts.next() )
- 	//	c->setConversations( c->conversations() - 1 );
- 
- 	if ( !d )
-@@ -156,15 +159,16 @@
- 	if( d->customDisplayName )
- 		return;
- 
-+qDebug()<< "have nto custom displayname...";
- 
- 	//If there is no member yet, don't try to update the display name
--	if ( d->mContactList.isEmpty() )
-+	if ( d->contacts.isEmpty() )
- 		return;
- 
- 	d->displayName.clear();
--	for(int i = 0; i != d->mContactList.size(); i++ )
-+	for(int i = 0; i != d->contacts.size(); i++ )
- 	{
--		Kopete::Contact * c = d->mContactList[i];
-+		Kopete::Contact * c = d->contacts[i];
- 		if(! d->displayName.isNull() )
- 			d->displayName.append( QString::fromLatin1( ", " ) ) ;
- 
-@@ -178,9 +182,9 @@
- 	}
- 
- 	//If we have only 1 contact, add the status of him
--	if ( d->mContactList.count() == 1 )
-+	if ( d->contacts.count() == 1 )
- 	{
--		d->displayName.append( QString::fromLatin1( " (%1)" ).arg( d->mContactList.first()->onlineStatus().description() ) );
-+		d->displayName.append( QString::fromLatin1( " (%1)" ).arg( d->contacts.first()->onlineStatus().description() ) );
- 	}
- 
- 	emit displayNameChanged();
-@@ -188,7 +192,7 @@
- 
- const Kopete::ContactPtrList& Kopete::ChatSession::members() const
- {
--	return d->mContactList;
-+	return d->contacts;
- }
- 
- const Kopete::Contact* Kopete::ChatSession::myself() const
-@@ -321,22 +325,20 @@
- 
- void Kopete::ChatSession::addContact( const Kopete::Contact *c, bool suppress )
- {
--	//kDebug( 14010 ) ;
--	if ( d->mContactList.contains( (Kopete::Contact*)(Kopete::Contact*)(Kopete::Contact*)(Kopete::Contact*)(Kopete::Contact*)(Kopete::Contact*)(Kopete::Contact*)(Kopete::Contact*)(Kopete::Contact*)c ) )
-+	if ( d->contacts.contains((Kopete::Contact*)c ) )
- 	{
- 		kDebug( 14010 ) << "Contact already exists";
--		emit contactAdded( c, suppress );
- 	}
- 	else
- 	{
--		if ( d->mContactList.count() == 1 && d->isEmpty )
-+		if ( d->contacts.count() == 1 && d->isEmpty )
- 		{
- 			kDebug( 14010 ) << " FUCKER ZONE ";
- 			/* We have only 1 contact before, so the status of the
- 			   message manager was given from that contact status */
--			Kopete::Contact *old = d->mContactList.first();
--			d->mContactList.removeAll( old );
--			d->mContactList.append( (Kopete::Contact*)c );
-+			Kopete::Contact *old = d->contacts.first();
-+			d->contacts.removeAll( old );
-+			d->contacts.append( (Kopete::Contact*)c );
- 
- 			disconnect( old, SIGNAL( onlineStatusChanged( Kopete::Contact *, const Kopete::OnlineStatus &, const Kopete::OnlineStatus & ) ),
- 			this, SLOT( slotOnlineStatusChanged( Kopete::Contact *, const Kopete::OnlineStatus &, const Kopete::OnlineStatus &) ) );
-@@ -348,18 +350,21 @@
- 			}
- 			else
- 				disconnect( old, SIGNAL( propertyChanged( Kopete::PropertyContainer *, const QString &, const QVariant &, const QVariant & ) ), this, SLOT( slotUpdateDisplayName() ) );
--			emit contactAdded( c, suppress );
-+
-+			disconnect( old, SIGNAL( propertyChanged( Kopete::PropertyContainer *, const QString &, const QVariant &, const QVariant & ) ), this, SLOT(slotContactPropertyChanged(Kopete::PropertyContainer*,QString,QVariant,QVariant) ) );
-+
-+			emit contactAdded( c, suppress);
- 			emit contactRemoved( old, QString() );
- 		}
- 		else
- 		{
--			d->mContactList.append( (Kopete::Contact*)c );
-+			d->contacts.append( (Kopete::Contact*)c );
- 			emit contactAdded( c, suppress );
- 		}
- 
- 		connect( c, SIGNAL( onlineStatusChanged( Kopete::Contact *, const Kopete::OnlineStatus &, const Kopete::OnlineStatus & ) ),
- 			this, SLOT( slotOnlineStatusChanged( Kopete::Contact *, const Kopete::OnlineStatus &, const Kopete::OnlineStatus &) ) );
--;
-+
- 		if ( c->metaContact() )
- 		{
- 			connect( c->metaContact(), SIGNAL( displayNameChanged( const QString &, const QString & ) ), this, SLOT( slotUpdateDisplayName() ) );
-@@ -368,7 +373,7 @@
- 		else
- 			connect( c, SIGNAL( propertyChanged( Kopete::PropertyContainer *, const QString &, const QVariant &, const QVariant & ) ), this, SLOT( slotUpdateDisplayName() ) );
- 		connect( c, SIGNAL( contactDestroyed( Kopete::Contact * ) ), this, SLOT( slotContactDestroyed( Kopete::Contact * ) ) );
--
-+		connect( c, SIGNAL( propertyChanged( Kopete::PropertyContainer *, const QString &, const QVariant &, const QVariant & ) ), this, SLOT(slotContactPropertyChanged(Kopete::PropertyContainer*,QString,QVariant,QVariant) ) );
- 		slotUpdateDisplayName();
- 	}
- 	d->isEmpty = false;
-@@ -377,17 +382,17 @@
- void Kopete::ChatSession::removeContact( const Kopete::Contact *c, const QString& reason, Qt::TextFormat format, bool suppressNotification )
- {
- 	kDebug( 14010 ) ;
--	if ( !c || !d->mContactList.contains( (Kopete::Contact*)c ) )
-+	if ( !c || !d->contacts.contains( (Kopete::Contact*)c ) )
- 		return;
- 
--	if ( d->mContactList.count() == 1 )
-+	if ( d->contacts.count() == 1 )
- 	{
- 		kDebug( 14010 ) << "Contact not removed. Keep always one contact";
- 		d->isEmpty = true;
- 	}
- 	else
- 	{
--		d->mContactList.removeAll( (Kopete::Contact*)c );
-+		d->contacts.removeAll( (Kopete::Contact*)c );
- 
- 		disconnect( c, SIGNAL( onlineStatusChanged( Kopete::Contact *, const Kopete::OnlineStatus &, const Kopete::OnlineStatus & ) ),
- 			this, SLOT( slotOnlineStatusChanged( Kopete::Contact *, const Kopete::OnlineStatus &, const Kopete::OnlineStatus &) ) );
-@@ -401,6 +406,8 @@
- 			disconnect( c, SIGNAL( propertyChanged( Kopete::PropertyContainer *, const QString &, const QVariant &, const QVariant & ) ), this, SLOT( slotUpdateDisplayName() ) );
- 		disconnect( c, SIGNAL( contactDestroyed( Kopete::Contact * ) ), this, SLOT( slotContactDestroyed( Kopete::Contact * ) ) );
- 
-+		disconnect( c, SIGNAL( propertyChanged( Kopete::PropertyContainer *, const QString &, const QVariant &, const QVariant & ) ), this, SLOT(slotContactPropertyChanged(Kopete::PropertyContainer*,QString,QVariant,QVariant) ) );
-+
- 		slotUpdateDisplayName();
- 	}
- 
-@@ -409,6 +416,15 @@
- 	emit contactRemoved( c, reason, format, suppressNotification );
- }
- 
-+void Kopete::ChatSession::slotContactPropertyChanged( Kopete::PropertyContainer * contact, const QString &key, const QVariant &oldValue, const QVariant &newValue ){
-+	kDebug( 14010 );
-+	Kopete::Contact *c = (Kopete::Contact*) contact;
-+	if (key == Kopete::Global::Properties::self()->nickName().key()){
-+		const QString nick = oldValue.toString();
-+		emit nickNameChanged(c,nick);
-+	}
-+}
-+
- void Kopete::ChatSession::receivedTypingMsg( const Kopete::Contact *c, bool t )
- {
- 	emit remoteTyping( c, t );
-@@ -420,11 +436,11 @@
- 	
- 	// FIXME: this needs better design. We can't iterate through List to find out who got what ID
- 	// hash will be better for that, right ?
--	for ( i=0; i != d->mContactList.size(); i++ )
-+	for ( i=0; i != d->contacts.size(); i++ )
- 	{
--		if ( (d->mContactList[i])->contactId() == contactId )
-+		if ( (d->contacts[i])->contactId() == contactId )
- 		{
--			receivedTypingMsg( d->mContactList[i], t );
-+			receivedTypingMsg( d->contacts[i], t );
- 			return;
- 		}
- 	}
-@@ -499,16 +515,16 @@
- 
- void Kopete::ChatSession::slotContactDestroyed( Kopete::Contact *contact )
- {
--	if( !contact || !d->mContactList.contains( contact ) )
-+	if( !contact || !d->contacts.contains( contact ) )
- 		return;
- 
- 	//This is a workaround to prevent crash if the contact get deleted.
- 	// in the best case, we should ask the protocol to recreate a temporary contact.
- 	// (remember: the contact may be deleted when the users removes it from the contact list, or when closing kopete )
--	d->mContactList.removeAll( contact );
-+	d->contacts.removeAll( contact );
- 	emit contactRemoved( contact, QString() );
- 
--	if ( d->mContactList.isEmpty() )
-+	if ( d->contacts.isEmpty() )
- 		deleteLater();
- }
- 
-Index: kopete/libkopete/kopeteaccount.cpp
-===================================================================
---- kopete/libkopete/kopeteaccount.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/libkopete/kopeteaccount.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -91,6 +91,7 @@
- 	QString customIcon;
- 	Kopete::OnlineStatus restoreStatus;
- 	Kopete::StatusMessage restoreMessage;
-+	QDateTime lastLoginTime;
- };
- 
- Account::Account( Protocol *parent, const QString &accountId )
-@@ -275,9 +276,17 @@
- 
- 	if ( !protocol()->canAddMyself() && contactId == d->myself->contactId() )
- 	{
--		KMessageBox::queuedMessageBox( Kopete::UI::Global::mainWidget(), KMessageBox::Error,
--			i18n("You are not allowed to add yourself to the contact list. The addition of \"%1\" to account \"%2\" will not take place.", contactId, accountId()), i18n("Error Creating Contact")
--		);
-+		if ( isConnected() && d->lastLoginTime.secsTo(QDateTime::currentDateTime()) > 30 )
-+		{
-+			KMessageBox::queuedMessageBox( Kopete::UI::Global::mainWidget(), KMessageBox::Error,
-+			                               i18n("You are not allowed to add yourself to the contact list. The addition of \"%1\" to account \"%2\" will not take place.", contactId, accountId()), i18n("Error Creating Contact")
-+			                             );
-+		}
-+		else
-+		{
-+			kWarning(14010) << "You are not allowed to add yourself to the contact list. The addition of" << contactId
-+			                << "to account" << accountId() << "will not take place.";
-+		}
- 		return false;
- 	}
- 
-@@ -341,9 +350,18 @@
- {
- 	if ( !protocol()->canAddMyself() && contactId == myself()->contactId() )
- 	{
--	    	KMessageBox::error( Kopete::UI::Global::mainWidget(),
--			i18n("You are not allowed to add yourself to the contact list. The addition of \"%1\" to account \"%2\" will not take place.", contactId, accountId()), i18n("Error Creating Contact")
--		);
-+		if ( isConnected() && d->lastLoginTime.secsTo(QDateTime::currentDateTime()) > 30 )
-+		{
-+			KMessageBox::queuedMessageBox( Kopete::UI::Global::mainWidget(), KMessageBox::Error,
-+			                               i18n("You are not allowed to add yourself to the contact list. The addition of \"%1\" to account \"%2\" will not take place.", contactId, accountId()), i18n("Error Creating Contact")
-+			                             );
-+		}
-+		else
-+		{
-+			kWarning(14010) << "You are not allowed to add yourself to the contact list. The addition of" << contactId
-+			                << "to account" << accountId() << "will not take place.";
-+		}
-+		
- 		return 0L;
- 	}
- 
-@@ -469,6 +487,9 @@
- 	const bool wasOffline = !oldStatus.isDefinitelyOnline();
- 	const bool isOffline  = !newStatus.isDefinitelyOnline();
- 
-+	if (wasOffline && !isOffline)
-+		d->lastLoginTime = QDateTime::currentDateTime();
-+
- 	if ( wasOffline || newStatus.status() == OnlineStatus::Offline )
- 	{
- 		// Wait for five seconds until we treat status notifications for contacts
-Index: kopete/libkopete/chatsessionmemberslistmodel.h
-===================================================================
---- kopete/libkopete/chatsessionmemberslistmodel.h	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/libkopete/chatsessionmemberslistmodel.h	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -23,6 +23,8 @@
- #include "kopetechatsession.h"
- #include "kopete_export.h"
- 
-+class Private;
-+
- namespace Kopete
- {
- 
-@@ -34,11 +36,13 @@
- public:
- 	explicit ChatSessionMembersListModel(QObject * parent = 0);
- 
-+	~ChatSessionMembersListModel();
-+
- 	// Model methods
- 	int rowCount(const QModelIndex &parent = QModelIndex()) const;
- 	QVariant data(const QModelIndex &index, int role) const;
- 	QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const;
--	Kopete::ChatSession *session() { return m_session; }
-+	Kopete::ChatSession *session();
- 
- 	Kopete::Contact *contactAt( const QModelIndex &index ) const;
- public slots:
-@@ -55,6 +59,7 @@
- 	 */
- 	void slotContactAdded( const Kopete::Contact *c );
- 
-+
- 	/**
- 	 * Called when a contact is removed from the chat session.
- 	 * Removes this contact from the contact list view.
-@@ -62,6 +67,11 @@
- 	 */
- 	void slotContactRemoved( const Kopete::Contact *c );
- 
-+	 /** Called when the nickname of a contact changed.
-+	 * @param contact The contact who changed nickname
-+	 */
-+	void slotContactNickNameChanged( Kopete::Contact *contact);
-+
- 	/**
- 	 * Called when a contact changes status.
- 	 * @param contact The contact who changed status
-@@ -81,7 +91,7 @@
- 	void slotSessionClosed();
- 
- private:
--	Kopete::ChatSession *m_session;
-+	Private *d;
- };
- 
- 
-Index: kopete/libkopete/chatsessionmemberslistmodel.cpp
-===================================================================
---- kopete/libkopete/chatsessionmemberslistmodel.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/libkopete/chatsessionmemberslistmodel.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -18,52 +18,143 @@
- #include "kopetecontact.h"
- #include "kopeteonlinestatus.h"
- #include "chatsessionmemberslistmodel.h"
-+#include "kdebug.h"
- 
-+//own contact comparator, needs sessions contact-online-status weight
-+inline bool lessThan(const Kopete::Contact *c1, int weight1, const Kopete::Contact *c2, int weight2){
-+		return (weight1 > weight2 || (weight1 == weight2
-+				&& c1->nickName().compare(c2->nickName(),Qt::CaseInsensitive)<=0));
-+
-+}
-+
-+//class for more sorting speed
-+class ContactWrapper
-+{
-+public:
-+	ContactWrapper(Kopete::Contact *contact, int weight){
-+		this->contact = contact;
-+		this->weight = weight;
-+	}
-+	Kopete::Contact *contact;
-+	int weight;
-+	bool operator <(const ContactWrapper &other) const
-+	{
-+		return lessThan(this->contact, weight, other.contact, other.weight);
-+	}
-+};
-+
-+class Private
-+{
-+public:
-+	Kopete::ContactPtrList contacts;
-+
-+	Kopete::ChatSession *session;
-+
-+	QTimer *timer;
-+
-+	//insert into temporary efficient structure for sorting, then copy
-+	void insertMultiple(Kopete::ContactPtrList contacts){
-+		QMap<ContactWrapper, Kopete::Contact*> map;
-+		foreach (Kopete::Contact *c,this->contacts)
-+			map.insert(ContactWrapper(c,session->contactOnlineStatus(c).weight()),c);
-+		foreach (Kopete::Contact *c,contacts)
-+			map.insert(ContactWrapper(c,session->contactOnlineStatus(c).weight()),c);
-+		this->contacts.clear();
-+		foreach (Kopete::Contact *c, map)
-+			this->contacts.append(c);
-+	}
-+
-+	//get index by binary search
-+	int getInsertIndex(const Kopete::Contact *contact) const
-+	{
-+		int weightOld;
-+		int weightNew;
-+		int i;
-+		int min = 0;
-+		int max = contacts.size();
-+		int step;
-+
-+		while (max>0)
-+		{
-+			step = max/2;
-+			i = min + step;
-+
-+			weightOld = session->contactOnlineStatus(contacts[i]).weight();
-+			weightNew = session->contactOnlineStatus(contact).weight();
-+
-+			if (lessThan(contacts[i], weightOld, contact, weightNew))
-+			{
-+				min = ++i;
-+				max -= step+1;
-+			} else
-+				max = step;
-+		};
-+		return min;
-+	}
-+};
-+
- namespace Kopete
- {
- 
- ChatSessionMembersListModel::ChatSessionMembersListModel(QObject * parent)
--	: QAbstractListModel(parent), m_session(0L)
-+	: QAbstractListModel(parent)
- {
-+	d = new Private();
-+	d->session = 0L;
-+}
- 
-+ChatSessionMembersListModel::~ChatSessionMembersListModel(){
-+	delete d;
- }
- 
-+Kopete::ChatSession * ChatSessionMembersListModel::session(){
-+	return d->session;
-+}
-+
- void ChatSessionMembersListModel::setChatSession(ChatSession *session)
- {
--	if ( m_session )
--		disconnect( m_session, 0, this, 0 );
-+	if ( d->session )
-+		disconnect( d->session, 0, this, 0 );
- 
--	m_session = session;
-+	d->session = session;
- 
- 	connect( session, SIGNAL(closing(Kopete::ChatSession*)),
--	         this, SLOT(slotSessionClosed()) );
--	connect( session, SIGNAL(contactAdded(const Kopete::Contact*, bool)),
--	         this, SLOT(slotContactAdded(const Kopete::Contact*)) );
-+			 this, SLOT(slotSessionClosed()) );
-+	connect( session, SIGNAL(contactAdded(const Kopete::Contact*,bool)),
-+			 this, SLOT(slotContactAdded(const Kopete::Contact*)) );
- 	connect( session, SIGNAL(contactRemoved(const Kopete::Contact*, const QString&, Qt::TextFormat, bool)),
--	         this, SLOT(slotContactRemoved(const Kopete::Contact*)) );
-+			 this, SLOT(slotContactRemoved(const Kopete::Contact*)) );
- 	connect( session, SIGNAL(onlineStatusChanged(Kopete::Contact*, const Kopete::OnlineStatus&, const Kopete::OnlineStatus&)),
--	         this, SLOT(slotContactStatusChanged(Kopete::Contact*, const Kopete::OnlineStatus&)) );
-+			 this, SLOT(slotContactStatusChanged(Kopete::Contact*, const Kopete::OnlineStatus&)) );
- 	connect( session, SIGNAL(displayNameChanged()),
--	         this, SLOT(slotSessionChanged()) );
-+			 this, SLOT(slotSessionChanged()) );
- 	connect( session, SIGNAL(photoChanged()),
--	         this, SLOT(slotSessionChanged()) );
-+			 this, SLOT(slotSessionChanged()) );
-+	connect( session, SIGNAL(nickNameChanged(Kopete::Contact*,QString)),
-+		 this, SLOT(slotContactNickNameChanged(Kopete::Contact*)) );
-+
-+	d->contacts.clear();
-+	d->insertMultiple(d->session->members());
-+
-+	d->contacts.insert(
-+			d->getInsertIndex((Contact*)d->session->myself()),
-+			(Contact*)d->session->myself());
-+
- 	reset();
- }
- 
- Kopete::Contact * ChatSessionMembersListModel::contactAt( const QModelIndex &index ) const
- {
--	if ( m_session )
-+	kDebug( 14010 ) << "memberslistmodel contactat";
-+	if ( d->session )
- 	{
- 		if (!index.isValid())
- 			return 0L;
--	
--		if (index.row() >= m_session->members().size() + 1)
-+
-+		if (index.row() >= d->contacts.size())
- 			return 0L;
- 
--		if ( index.row() == 0 )
--			return const_cast<Kopete::Contact *>(m_session->myself());
--		else
--			return m_session->members().at(index.row() - 1);
-+		return d->contacts.at(index.row());
- 	}
- 
- 	return 0L;
-@@ -72,29 +163,27 @@
- int ChatSessionMembersListModel::rowCount(const QModelIndex &parent) const
- {
- 	Q_UNUSED(parent)
--	if ( m_session )
--		return m_session->members().count() + 1;
-+	if ( d->session )
-+		return d->contacts.size();
- 	
- 	return 0;
- }
- 
- QVariant ChatSessionMembersListModel::data(const QModelIndex &index, int role) const
- {
--	Contact *c = contactAt(index);
-+	Contact *c = d->contacts.at(index.row());
- 	if (!c)
- 		return QVariant();
- 
- 	if (role == Qt::DisplayRole)
- 	{
--		QString nick = c->property(Kopete::Global::Properties::self()->nickName().key()).value().toString();
--		if ( nick.isEmpty() )
--			nick = c->contactId();
- 		
--		return nick;
-+		return c->nickName();
-+
- 	}
- 	else if (role == Qt::DecorationRole)
- 	{
--		return m_session->contactOnlineStatus(c).iconFor(c);
-+		return d->session->contactOnlineStatus(c).iconFor(c);
- 	}
- 	else if (role == Qt::ToolTipRole)
- 	{
-@@ -117,40 +206,50 @@
- 
- void ChatSessionMembersListModel::slotContactAdded( const Kopete::Contact *contact )
- {
--	Q_UNUSED(contact)
--	// NOTE in the future the adding of a contact
--  // could be done just for the contact
--	reset();
-+	kDebug( 14010 ) << "memberslistmodel contact added "<< contact->nickName();
-+	int index = d->getInsertIndex(contact);
-+	beginInsertRows(QModelIndex(),index,index);
-+	d->contacts.insert(index,(Contact*)contact);
-+	endInsertRows();
- }
- 
- void ChatSessionMembersListModel::slotContactRemoved( const Kopete::Contact *contact )
- {
--	Q_UNUSED(contact)
--	// NOTE in the future the removal of a contact
--  // could be done just for the contact
--	reset();
-+	kDebug( 14010 ) << "memberslistmodel contact removed "<< contact->nickName();
-+	int index = d->contacts.indexOf((Contact*)contact);
-+	beginRemoveRows(QModelIndex(),index, index);
-+	d->contacts.removeAt(index);
-+	endRemoveRows();
- }
- 
- void ChatSessionMembersListModel::slotContactStatusChanged( Kopete::Contact *contact, const Kopete::OnlineStatus &status )
- {
--	Q_UNUSED(contact)
- 	Q_UNUSED(status)
--	// NOTE in the future the change of a contact
--  // could be done just for the contact
--	reset();
-+	kDebug( 14010 ) << "memberslistmodel contact status changed "<< contact->nickName();
-+	slotContactRemoved(contact);
-+	slotContactAdded(contact);
- }
- 
- void ChatSessionMembersListModel::slotSessionChanged()
- {
-+	kDebug( 14010 );
- 	reset();
- }
- 
-+void ChatSessionMembersListModel::slotContactNickNameChanged( Kopete::Contact *contact)
-+{
-+	kDebug( 14010 ) << "memberslistmodel nickname changed to "<< contact->nickName();
-+	slotContactRemoved(contact);
-+	slotContactAdded(contact);
-+}
-+
-+
- void ChatSessionMembersListModel::slotSessionClosed()
- {
--	if ( m_session )
-+	if ( d->session )
- 	{
--		disconnect( m_session, 0, this, 0 );
--		m_session = 0;
-+		disconnect( d->session, 0, this, 0 );
-+		d->session = 0;
- 		reset();
- 	}
- }
-Index: kopete/libkopete/kopetetransfermanager.h
-===================================================================
---- kopete/libkopete/kopetetransfermanager.h	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/libkopete/kopetetransfermanager.h	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -21,6 +21,7 @@
- #define KOPETETRANSFERMANAGER_H
- 
- #include <QtCore/QObject>
-+#include <QtCore/QPointer>
- #include <QtCore/QString>
- #include <QtCore/QMap>
- 
-@@ -34,6 +35,7 @@
- class Transfer;
- class Contact;
- class Message;
-+class ChatSession;
- 
- /**
-  * @author Nick Betcher. <nbetcher@kde.org>
-@@ -63,7 +65,7 @@
- 	unsigned long mSize;
- 	QString mRecipient;
- 	unsigned int mId;
--	Contact *mContact;
-+	QPointer<Contact> mContact;
- 	QStringList mFiles;
- 	QString m_intId;
- 	KopeteTransferDirection mDirection;
-@@ -191,7 +193,7 @@
- 	/**
- 	 * Constructor
- 	 */
--	Transfer( const FileTransferInfo &, const Contact *toUser, bool showProgressInfo = true);
-+	explicit Transfer( const FileTransferInfo &, bool showProgressInfo = true);
- 
- 	/**
- 	 * Destructor
-@@ -265,11 +267,13 @@
- 	QString fileForMessage() const;
- 
- 	void stopTransferRateTimer();
-+	Kopete::ChatSession* chatSession() const;
- 
- 	class Private;
- 	Private* d;
- private slots:
- 	void slotResultEmitted();
-+	void slotContactDestroyed();
- };
- 
- }
-Index: kopete/libkopete/kopetetransfermanager.cpp
-===================================================================
---- kopete/libkopete/kopetetransfermanager.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kopete/libkopete/kopetetransfermanager.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -90,6 +90,7 @@
- Kopete::Transfer::Transfer( const Kopete::FileTransferInfo &kfti, const QString &localFile, bool showProgressInfo)
- 	: KIO::Job(), d( new Private(kfti) )
- {
-+	connect( kfti.contact(), SIGNAL(destroyed(QObject*)), this, SLOT(slotContactDestroyed()) );
- 	this->setUiDelegate(new KIO::JobUiDelegate());
- 	if(showProgressInfo)
- 		KIO::getJobTracker()->registerJob(this);
-@@ -99,16 +100,17 @@
- 	init( targ, showProgressInfo );
- }
- 
--Kopete::Transfer::Transfer( const Kopete::FileTransferInfo &kfti, const Kopete::Contact *contact, bool showProgressInfo)
-+Kopete::Transfer::Transfer( const Kopete::FileTransferInfo &kfti, bool showProgressInfo)
- 	: KIO::Job(), d( new Private(kfti) )
- {
-+	connect( kfti.contact(), SIGNAL(destroyed(QObject*)), this, SLOT(slotContactDestroyed()) );
- 	this->setUiDelegate(new KIO::JobUiDelegate());
- 	if(showProgressInfo)
- 		KIO::getJobTracker()->registerJob(this);
- 
- 	// TODO: use mInfo.url().fileName() after move to protocol-aware filetransfers
- 	KUrl targ; targ.setPath( d->info.file() );
--	init( displayURL( contact, targ.fileName() ), showProgressInfo );
-+	init( displayURL( d->info.contact(), targ.fileName() ), showProgressInfo );
- }
- 
- void Kopete::Transfer::init( const KUrl &target, bool showProgressInfo )
-@@ -271,6 +273,12 @@
- 	}
- }
- 
-+void Kopete::Transfer::slotContactDestroyed()
-+{
-+	setError( KIO::ERR_USER_CANCELED );
-+	emitResult();
-+}
-+
- void Kopete::Transfer::slotCancelled()
- {
- 	stopTransferRateTimer();
-@@ -281,8 +289,8 @@
- 
- bool Kopete::Transfer::showMessage( QString text ) const
- {
--	Kopete::ChatSession *cs = d->info.contact()->manager();
--	if (! cs)
-+	Kopete::ChatSession *cs = chatSession();
-+	if ( !cs )
- 		return false;
- 
- 	Kopete::Message msg;
-@@ -293,7 +301,7 @@
- 
- bool Kopete::Transfer::showHtmlMessage( QString text ) const
- {
--	Kopete::ChatSession *cs = d->info.contact()->manager();
-+	Kopete::ChatSession *cs = chatSession();
- 	if (! cs)
- 		return false;
- 	
-@@ -320,6 +328,12 @@
- 	}
- }
- 
-+Kopete::ChatSession* Kopete::Transfer::chatSession() const
-+{
-+	Kopete::Contact *c = d->info.contact();
-+	return ( c ) ? c->manager() : 0;
-+}
-+
- /***************************
-  *  Kopete::TransferManager  *
-  ***************************/
-@@ -344,7 +358,7 @@
- 	// Use message id to make file transfer id unique because we already use it for incoming file transfer.
- 	uint id = Kopete::Message::nextId();
- 	Kopete::FileTransferInfo info(contact, files, size, recipient, di, id);
--	Kopete::Transfer *trans = new Kopete::Transfer(info, contact);
-+	Kopete::Transfer *trans = new Kopete::Transfer(info);
- 	connect(trans, SIGNAL(result(KJob *)), this, SLOT(slotComplete(KJob *)));
- 	mTransfersMap.insert(id, trans);
- 	return trans;
-Index: kget/core/plugin/kget_plugin.desktop
-===================================================================
---- kget/core/plugin/kget_plugin.desktop	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kget/core/plugin/kget_plugin.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -42,7 +42,7 @@
- Name[sr@latin]=Priključak KGeta
- Name[sv]=Insticksprogram för Kget
- Name[tr]=KGet Eklentisi
--Name[uk]=Втулка KGet
-+Name[uk]=Додаток KGet
- Name[x-test]=xxKGet Pluginxx
- Name[zh_CN]=KGet 插件
- Name[zh_TW]=KGet 外掛程式
-@@ -91,7 +91,7 @@
- Comment[sr@latin]=Priključak za KGet
- Comment[sv]=Insticksprogram för Kget
- Comment[tr]=KGet için eklenti
--Comment[uk]=Втулка для KGet
-+Comment[uk]=Додаток для KGet
- Comment[vi]=Phần bổ sung cho KGet
- Comment[x-test]=xxPlugin for KGetxx
- Comment[zh_CN]=KGet 插件
-Index: kget/extensions/konqueror/kget_plug_in.cpp
-===================================================================
---- kget/extensions/konqueror/kget_plug_in.cpp	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kget/extensions/konqueror/kget_plug_in.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -33,11 +33,7 @@
- 
- #ifdef HAVE_WEBKITKDE
- #include <webkitpart.h>
--#ifdef HAVE_WEBVIEW
--#include <webview.h>
--#else
--#include <webkitview.h>
--#endif
-+#include <QWebView>
- #include <QWebFrame>
- #endif
- 
-Index: kget/extensions/konqueror/CMakeLists.txt
-===================================================================
---- kget/extensions/konqueror/CMakeLists.txt	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kget/extensions/konqueror/CMakeLists.txt	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -18,8 +18,6 @@
-     add_definitions(-DHAVE_WEBKITKDE)
-     include_directories(${KDEWEBKIT_INCLUDE_DIR})
-     include_directories(${WEBKITPART_INCLUDE_DIR})
--    FIND_PATH(WEBVIEW_PATH webkitkde/webview.h PATH ${KDEWEBKIT_INCLUDE_DIR})
--    macro_bool_to_01(WEBVIEW_PATH HAVE_WEBVIEW )
-     set(WEBKITKDE_FOUND true)
- endif( KDEWEBKIT_FOUND AND WEBKITPART_FOUND )
- 
-Index: kget/transfer-plugins/multisegmentkio/kget_multisegkiofactory.desktop
-===================================================================
---- kget/transfer-plugins/multisegmentkio/kget_multisegkiofactory.desktop	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kget/transfer-plugins/multisegmentkio/kget_multisegkiofactory.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -87,7 +87,7 @@
- Comment[sr@latin]=Priključak za višenitno preuzimanje fajlova
- Comment[sv]=Flertrådat insticksprogram för filnerladdning
- Comment[tr]=Çoklu işleyebilen indirme eklentisi
--Comment[uk]=Втулка звантаження файлів у декілька потоків
-+Comment[uk]=Додаток звантаження файлів у декілька потоків
- Comment[x-test]=xxMultithreaded file download pluginxx
- Comment[zh_CN]=多线程文件下载插件
- Comment[zh_TW]=多緒檔案下載外掛程式
-Index: kget/transfer-plugins/kio/kget_kiofactory.desktop
-===================================================================
---- kget/transfer-plugins/kio/kget_kiofactory.desktop	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kget/transfer-plugins/kio/kget_kiofactory.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -88,7 +88,7 @@
- Comment[sr@latin]=Klasični priključak za preuzimanje fajlova
- Comment[sv]=Klassiskt insticksprogram för filnerladdning
- Comment[tr]=Klasik dosya indirme eklentisi
--Comment[uk]=Втулка класичного звантаження файлів
-+Comment[uk]=Додаток класичного звантаження файлів
- Comment[x-test]=xxClassic file downloader pluginxx
- Comment[zh_CN]=传统的文件下载插件
- Comment[zh_TW]=傳統檔案下載外掛程式
-Index: kget/transfer-plugins/mms/kget_mmsfactory.desktop
-===================================================================
---- kget/transfer-plugins/mms/kget_mmsfactory.desktop	(.../tags/KDE/4.3.3/kdenetwork)	(wersja 1053997)
-+++ kget/transfer-plugins/mms/kget_mmsfactory.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1053997)
-@@ -91,7 +91,7 @@
- Comment[sr@latin]=Priključak MMS prenosa za KGet
- Comment[sv]=MMS-överföringsinsticksprogram för Kget
- Comment[tr]=MMS- KGet için aktarım eklentisi
--Comment[uk]=Втулка перенесення MMS для KGet
-+Comment[uk]=Додаток перенесення MMS для KGet
- Comment[x-test]=xxMMS-Transfer plugin for KGetxx
- Comment[zh_CN]=MMS-KGet 传输插件
- Comment[zh_TW]=KGet 的 MMS 傳輸外掛程式
+--- filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
++++ filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
+@@ -111,7 +111,7 @@
+ Comment[ta]=Konqueror பண்புகளின் உரையாடல் செருகுகள் அடைவை சம்பா சேவையகத்துடன் பகிரவேண்டிய செருகுகள்
+ Comment[tg]=Модули муколамаи хусусиятҳои Konqueror барои истифодабарии муштараки феҳрист бо шабакаи маҳалллӣ
+ Comment[tr]=Yerel ağ ile dizin paylaşımı için Konqueror iletişim eklentisi özellikleri
+-Comment[uk]=Втулок діалогу властивостей Konqueror для дозволу спільного доступу до каталогу з локальної мережі
++Comment[uk]=Додаток діалогового вікна властивостей Konqueror для уможливлення спільного доступу до каталогу з локальної мережі
+ Comment[vi]=Phần bổ sung hộp thoại thuộc tính Konqueror dùng để chia sẻ một thư mục trên mạng nội bộ
+ Comment[x-test]=xxKonqueror properties dialog plugin to share a directory with the local networkxx
+ Comment[zh_CN]=可将目录与局域网共享的 Konqueror 属性页对话框插件
 
 Zmiany atrybutów dla: .
 ___________________________________________________________________
