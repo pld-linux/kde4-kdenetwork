@@ -13,12 +13,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.3.4
-Release:	4
+Version:	4.3.5
+Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	71de592596681fc59c5bc0a679703fd2
+# Source0-md5:	e4b9650a0f70daac7f7ba715bf77f14e
 Patch100:	%{name}-branch.diff
 Patch0:		%{name}-libknotification.patch
 Patch1:		%{name}-FindLibgadu.patch
