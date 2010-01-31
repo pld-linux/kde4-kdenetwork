@@ -61,6 +61,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	qca-devel >= 2.0
 BuildRequires:	qimageblitz-devel
 BuildRequires:	qt4-build
+BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	shared-desktop-ontologies-devel >= 0.2
 BuildRequires:	soprano-devel >= 2.3.70
