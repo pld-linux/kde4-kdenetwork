@@ -15,12 +15,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.3.95
+Version:	4.3.98
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	8ba584ac16ddcbc359c9e547201c259e
+# Source0-md5:	1c0cd950fb2f0d33dd8393890ffdeded
 #Patch100: %{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 URL:		http://www.kde.org/
@@ -1038,6 +1038,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/actions/*
 #%{_iconsdir}/oxygen/*/*/kopete*
 %{_iconsdir}/oxygen/*/status/object-locked-*
+%{_iconsdir}/hicolor/*/apps/kopete-offline.png
 %{_kdedocdir}/en/kopete
 
 %files kopete-protocol-aim
@@ -1245,7 +1246,9 @@ rm -rf $RPM_BUILD_ROOT
 %files krfb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krdc
+%attr(755,root,root) %{_bindir}/krdc_rfb_approver
 %attr(755,root,root) %{_bindir}/krfb
+%attr(755,root,root) %{_bindir}/googletalk-call
 %attr(755,root,root) %ghost %{_libdir}/libkrdccore.so.?
 %attr(755,root,root) %{_libdir}/libkrdccore.so.*.*.*
 %attr(755,root,root) %{_libdir}/libkrfbprivate.so.*.*.*
@@ -1272,6 +1275,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/servicetypes/krfb-framebuffer.desktop
 %{_desktopdir}/kde4/krdc.desktop
 %{_desktopdir}/kde4/krfb.desktop
-#%{_includedir}/KRfb
 %{_kdedocdir}/en/krdc
 %{_kdedocdir}/en/krfb
+%{_datadir}/apps/krdc_rfb_approver
+%{_datadir}/telepathy/clients
+%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.krdc_rfb_approver.service
+%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.krdc_rfb_handler.service
