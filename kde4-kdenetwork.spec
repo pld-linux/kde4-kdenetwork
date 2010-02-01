@@ -716,6 +716,8 @@ Summary:	Virtual Desktops
 Summary(pl.UTF-8):	Wirtualne biurka
 Group:		X11/Applications
 Requires:	kde4-kdebase >= %{version}
+# needed for /usr/share/telepathy
+Requires:	libtelepathy
 Suggests:	rdesktop
 
 %description krfb
