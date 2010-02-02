@@ -60,7 +60,8 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	qca-devel >= 2.0
 BuildRequires:	qimageblitz-devel
-BuildRequires:	qt4-build
+BuildRequires:	qt4-build >= %{qtver}
+BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	shared-desktop-ontologies-devel >= 0.2
