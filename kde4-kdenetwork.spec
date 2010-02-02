@@ -32,7 +32,7 @@ BuildRequires:	QtTest-devel >= %{qtver}
 BuildRequires:	alsa-lib-devel
 BuildRequires:	automoc4 >= 0.9.88
 BuildRequires:	avahi-compat-libdns_sd-devel
-BuildRequires:	cmake >= 2.6.3
+BuildRequires:	cmake >= 2.8.0
 BuildRequires:	decibel-devel >= 0.7.0
 BuildRequires:	gmp-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
