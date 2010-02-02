@@ -8,7 +8,6 @@
 %define		_state		unstable
 %define		orgname		kdenetwork
 %define		qtver		4.6.0
-%define		snap		svn1048496
 
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
