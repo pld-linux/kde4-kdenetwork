@@ -1,60 +1,78 @@
 # TODO
 # - fix kopete-tool-{avdeviceconfig,smpppdcs} summaries/descriptions (copy-pastos!)
-# - what about non-applied libgadu patch?
-# - kill internal libgadu copy
 # - BR phonon-devel
+# - FILES update
 #
 # Conditional build:
 #
 %define		_state		stable
 %define		orgname		kdenetwork
-%define		qtver		4.5.1
+%define		qtver		4.6.1
 
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.2.4
-Release:	2
+Version:	4.4.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	3071bbb1a24c62b81593e76187a84fb6
-Patch100:	%{name}-branch.diff
-Patch0:		%{name}-FindDecibel.patch
+# Source0-md5:	a200053df151f17605ffee05f427e959
+#Patch100: %{name}-branch.diff
+Patch0:		%{name}-FindLibgadu.patch
 URL:		http://www.kde.org/
+BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtOpenGL-devel >= %{qtver}
+BuildRequires:	QtSql-devel >= %{qtver}
+BuildRequires:	QtSvg-devel >= %{qtver}
+BuildRequires:	QtTest-devel >= %{qtver}
+BuildRequires:	alsa-lib-devel
 BuildRequires:	automoc4 >= 0.9.88
 BuildRequires:	avahi-compat-libdns_sd-devel
-BuildRequires:	cmake >= 2.6.3
+BuildRequires:	cmake >= 2.8.0
 BuildRequires:	decibel-devel >= 0.7.0
 BuildRequires:	gmp-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
-BuildRequires:	libgadu-devel >= 1.4
+BuildRequires:	libgadu-devel >= 1.8.0
 BuildRequires:	libidn-devel
 BuildRequires:	libiw-devel >= 27
 BuildRequires:	libjpeg-devel
-BuildRequires:	libmsn-devel >= 4.0-0.beta2.1
+BuildRequires:	libmsn-devel >= 4.0-1
 #BuildRequires:	libnxcl-devel >= 1.0-0.r612.1
 BuildRequires:	libotr-devel >= 3.2.0
 BuildRequires:	libtool
+BuildRequires:	libv4l-devel >= 0.5.8
 BuildRequires:	libvncserver-devel
 BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	meanwhile-devel >= 1.0.1
+BuildRequires:	mediastreamer-devel >= 2.3.0
 BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	ortp-devel
 BuildRequires:	pcre-devel
 BuildRequires:	perl-base
+BuildRequires:	pkgconfig
 BuildRequires:	qca-devel >= 2.0
+BuildRequires:	qimageblitz-devel
+BuildRequires:	qt4-build >= %{qtver}
+BuildRequires:	qt4-qmake >= %{qtver}
+BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.268
+BuildRequires:	shared-desktop-ontologies-devel >= 0.2
+BuildRequires:	soprano-devel >= 2.3.70
+BuildRequires:	speex-devel
 BuildRequires:	sqlite3-devel
+BuildRequires:	strigi-devel >= 0.7.0
+BuildRequires:	telepathy-qt4-devel
 BuildRequires:	xmms-devel
+BuildRequires:	xorg-lib-libXdamage-devel
 BuildRequires:	xorg-lib-libXtst-devel
+Obsoletes:	kde4-kdenetwork-kopete-tool-alias
 Obsoletes:	kdenetwork4
 Conflicts:	kdenetwork4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -98,8 +116,8 @@ A shared library which adds OSCAR protocol support needed eg. by AIM
 and ICQ.
 
 %description libkopete_oscar -l pl.UTF-8
-Biblioteka dodająca obsługę protokołu OSCAR, używanego między
-innymi przez AIM i ICQ.
+Biblioteka dodająca obsługę protokołu OSCAR, używanego między innymi
+przez AIM i ICQ.
 
 %package libkopete_otr
 Summary:	Shared library which adds OTR protocol support
@@ -112,8 +130,8 @@ A shared library which adds OTR protocol support needed eg. AIM and
 ICQ.
 
 %description libkopete_otr -l pl.UTF-8
-Biblioteka dodająca obsługę protokołu OTR, używanego między
-innymi przez AIM i ICQ.
+Biblioteka dodająca obsługę protokołu OTR, używanego między innymi
+przez AIM i ICQ.
 
 %package libkopete_videodevice
 Summary:	Video input device support library for kopete
@@ -143,8 +161,8 @@ kdenetwork header files.
 Pliki nagłówkowe kdenetwork.
 
 %description devel -l pt_BR.UTF-8
-Arquivos de inclusão para compilar aplicações que usem as
-bibliotecas do kdenetwork.
+Arquivos de inclusão para compilar aplicações que usem as bibliotecas
+do kdenetwork.
 
 %package filesharing
 Summary:	File sharing plugins
@@ -182,8 +200,8 @@ A GetRight-like file download manager with resuming support and
 Konqueror/Mozilla integration.
 
 %description kget -l pl.UTF-8
-Zarządca ściągania plików podobny do GetRighta z obsługą
-wznawiania oraz integracją z Konquerorem/Mozillą.
+Zarządca ściągania plików podobny do GetRighta z obsługą wznawiania
+oraz integracją z Konquerorem/Mozillą.
 
 %package knewsticker
 Summary:	KDE News Ticker
@@ -200,10 +218,10 @@ RSS/RDF feeds.
 
 %description knewsticker -l pl.UTF-8
 KNewsTicker to aplet dla panelu KDE (znanego także jako Kicker)
-dostarczający łatwy i wygodny sposób dostępu do nowinek
-ogłaszanych przez wiele serwisów z nowościami (takimi jak Slashdot,
-Linux Weekly News czy Freshmeat). Może być używany z właściwie
-każdą stroną udostępniającą feedy RSS/RDF.
+dostarczający łatwy i wygodny sposób dostępu do nowinek ogłaszanych
+przez wiele serwisów z nowościami (takimi jak Slashdot, Linux Weekly
+News czy Freshmeat). Może być używany z właściwie każdą stroną
+udostępniającą feedy RSS/RDF.
 
 %description knewsticker -l pt_BR.UTF-8
 Miniaplicativo de exibição de notícias para o painel Kicker.
@@ -253,17 +271,16 @@ team provides a handful of plugins that most users can use, in
 addition to templates for new developers to base a plugin off of.
 
 %description kopete -l pl.UTF-8
-Kopete to rozszerzalny i rozbudowywalny komunikator obsługujący
-wiele protokołów, zaprojektowany w oparciu o wtyczki. Wszystkie
-protokoły są wtyczkami, co pozwala na modularną instalację,
-konfigurację i używanie bez potrzeby obsługi ładowanych wtyczek w
-głównej aplikacji. Celem Kopete jest wyposażenie użytkowników w
-standardowy i łatwy w użyciu interfejs pomiędzy wszystkimi
-systemami komunikatorów, a jednocześnie zapewnienie programistom
-łatwości pisania wtyczek obsługujących nowe protokoły. Załoga
-programistów Kopete udostępnia podręczny zestaw wtyczek używanych
-przez większość użytkowników oraz szablony dla nowych
-programistów, na których można opierać nowe wtyczki.
+Kopete to rozszerzalny i rozbudowywalny komunikator obsługujący wiele
+protokołów, zaprojektowany w oparciu o wtyczki. Wszystkie protokoły są
+wtyczkami, co pozwala na modularną instalację, konfigurację i używanie
+bez potrzeby obsługi ładowanych wtyczek w głównej aplikacji. Celem
+Kopete jest wyposażenie użytkowników w standardowy i łatwy w użyciu
+interfejs pomiędzy wszystkimi systemami komunikatorów, a jednocześnie
+zapewnienie programistom łatwości pisania wtyczek obsługujących nowe
+protokoły. Załoga programistów Kopete udostępnia podręczny zestaw
+wtyczek używanych przez większość użytkowników oraz szablony dla
+nowych programistów, na których można opierać nowe wtyczki.
 
 %package kopete-protocol-aim
 Summary:	Kopete plugin which adds AIM protocol support
@@ -365,10 +382,25 @@ Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{version}-%{release}
 
 %description kopete-protocol-wlm
-Kopete plugin which adds WLM (Windows Live Messenger) protocol support.
+Kopete plugin which adds WLM (Windows Live Messenger) protocol
+support.
 
 %description kopete-protocol-wlm -l pl.UTF-8
-Wtyczka Kopete dodająca obsługę protokołu WLM (Windows Live Messenger).
+Wtyczka Kopete dodająca obsługę protokołu WLM (Windows Live
+Messenger).
+
+%package kopete-protocol-skype
+Summary:	Kopete plugin which adds Skype(tm) protocol support
+Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu Skype(tm)
+Group:		X11/Applications/Networking
+Requires:	%{name}-kopete = %{version}-%{release}
+
+%description kopete-protocol-skype
+Kopete plugin which adds Skype(tm) protocol support.
+
+%description kopete-protocol-skype -l pl.UTF-8
+Wtyczka Kopete dodająca obsługę protokołu Skype(tm).
+
 
 %package kopete-protocol-msn
 Summary:	Kopete plugin which adds MSN protocol support
@@ -407,8 +439,8 @@ A sample plugin for kopete, which allows developers to learn the
 kopete programming interface.
 
 %description kopete-protocol-testbed -l pl.UTF-8
-Przykładowa wtyczka do kopete, ułatwiająca developerom zapoznanie
-się z interfejsem programowania biblioteki kopete.
+Przykładowa wtyczka do kopete, ułatwiająca developerom zapoznanie się
+z interfejsem programowania biblioteki kopete.
 
 %package kopete-protocol-winpopup
 Summary:	Kopete plugin which adds WinPopUp messaging support
@@ -448,8 +480,8 @@ Kopete plugin which automatically changes status to away. Conditions
 are configurable.
 
 %description kopete-tool-autoaway -l pl.UTF-8
-Wtyczka Kopete automatycznie zmieniająca status na zajęty. Warunki,
-po zaistnieniu których ma nastąpić, są konfigurowalne.
+Wtyczka Kopete automatycznie zmieniająca status na zajęty. Warunki, po
+zaistnieniu których ma nastąpić, są konfigurowalne.
 
 %package kopete-tool-alias
 Summary:	Kopete plugin to add custom aliases for commands
@@ -475,8 +507,8 @@ Kopete plugin which automatically changes status to away. Conditions
 are configurable.
 
 %description kopete-tool-avdeviceconfig -l pl.UTF-8
-Wtyczka Kopete automatycznie zmieniająca status na zajęty. Warunki,
-po zaistnieniu których ma nastąpić, są konfigurowalne.
+Wtyczka Kopete automatycznie zmieniająca status na zajęty. Warunki, po
+zaistnieniu których ma nastąpić, są konfigurowalne.
 
 %package kopete-tool-autoreplace
 Summary:	Kopete plugin which autoreplaces some text you can choose
@@ -631,8 +663,8 @@ Requires:	libxslt >= 1.0.7
 This Kopete plugin shows the status of your IM accounts on a webpage.
 
 %description kopete-tool-webpresence -l pl.UTF-8
-Ta wtyczka Kopete pokazuje status (całej lub części) listy
-kontaktów na stronie WWW.
+Ta wtyczka Kopete pokazuje status (całej lub części) listy kontaktów
+na stronie WWW.
 
 %package kppp
 Summary:	KDE PPP dialer
@@ -665,16 +697,16 @@ pppd. Pozwala na interaktywne generowanie skryptów i konfiguracji
 sieci. Automatyzuje proces dzwonienia do swojego ISP umożliwiając
 jednocześnie wygodne monitorowanie całego procesu.
 
-Po połączeniu KPPP udostępnia bogate statystyki i śledzi czas
-spędzony online.
+Po połączeniu KPPP udostępnia bogate statystyki i śledzi czas spędzony
+online.
 
 Wbudowany terminal i generator skryptów umożliwia łatwe
 skonfigurowanie połączenia. Nie trzeba już dodatkowego programu
 terminalowego, takiego jak seyon czy minicom, do testowania i
 ustawiania połączenia.
 
-KPPP ma wypracowane naliczanie kosztów telefonów, pozwalające
-łatwo śledzić koszt czasu online.
+KPPP ma wypracowane naliczanie kosztów telefonów, pozwalające łatwo
+śledzić koszt czasu online.
 
 %description kppp -l pt_BR.UTF-8
 O discador para Internet.
@@ -684,6 +716,8 @@ Summary:	Virtual Desktops
 Summary(pl.UTF-8):	Wirtualne biurka
 Group:		X11/Applications
 Requires:	kde4-kdebase >= %{version}
+# needed for /usr/share/telepathy
+Requires:	libtelepathy
 Suggests:	rdesktop
 
 %description krfb
@@ -698,22 +732,23 @@ features of Remote Desktop Connection.
 Remote Desktop Connection to aplikacja kliencka umożliwiająca
 oglądanie a nawet sterowanie sesją na innej maszynie z działającym
 kompatybilnym serwerem (VNC). Zwykle używa się Remote Desktop
-Connection z użyciem serwera KDE VNC, czyli "dzielenia pulpitu"
-(także dostarczanego przez ten pakiet), jako że najlepiej pasuje do
+Connection z użyciem serwera KDE VNC, czyli "dzielenia pulpitu" (także
+dostarczanego przez ten pakiet), jako że najlepiej pasuje do
 specjalnych możliwości Remote Desktop Connection.
 
 %prep
 %setup -q -n %{orgname}-%{version}
 #%patch100 -p0
-#%patch0 -p0
+%patch0 -p0
 
 %build
 install -d build
 cd build
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
+	-DLIB_INSTALL_DIR=%{_libdir} \
 	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
-	-DCMAKE_BUILD_TYPE=%{!?debug:release}%{?debug:debug} \
+	-DCMAKE_BUILD_TYPE=%{!?debug:Release}%{?debug:Debug} \
 %if "%{_lib}" == "lib64"
 	-DLIB_SUFFIX=64 \
 %endif
@@ -771,7 +806,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libiris_kopete.so
 %attr(755,root,root) %{_libdir}/libkopete.so
 #%attr(755,root,root) %{_libdir}/libkopete_msn_shared.so
 %attr(755,root,root) %{_libdir}/libkopete_oscar.so
@@ -783,7 +817,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkopeteprivacy.so
 %attr(755,root,root) %{_libdir}/libkopetestatusmenu.so
 %attr(755,root,root) %{_libdir}/liboscar.so
+%attr(755,root,root) %{_libdir}/libkrdccore.so
+%attr(755,root,root) %{_libdir}/libkopetecontactlist.so
+%attr(755,root,root) %{_libdir}/libkrfbprivate.so
 %{_includedir}/kopete
+%{_includedir}/krdc
 
 %files filesharing
 %defattr(644,root,root,755)
@@ -809,33 +847,42 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kget
 %attr(755,root,root) %{_libdir}/kde4/kget_bittorrentfactory.so
+%attr(755,root,root) %{_libdir}/kde4/kget_checksumsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_contentfetchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_kiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_metalinkfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_multisegkiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_bittorrentfactory.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_kget_checksumsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_contentfetchfactory.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_kget_metalinkfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_multisegkiofactory.so
+#%attr(755,root,root) %{_libdir}/kde4/kcm_krunner_kget.so
+%attr(755,root,root) %{_libdir}/kde4/krunner_kget.so
 %attr(755,root,root) %{_libdir}/kde4/khtml_kget.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_kget.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_kget_barapplet.so
-%attr(755,root,root) %{_libdir}/kde4/plasma_kget_panelbar.so
+#%attr(755,root,root) %{_libdir}/kde4/plasma_kget_panelbar.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_kget_piechart.so
 %attr(755,root,root) %{_libdir}/libkgetcore.so.4.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkgetcore.so.?
 %attr(755,root,root) %{_libdir}/libkgetcore.so
-%{_datadir}/apps/desktoptheme/default/widgets/kget.svg
+#%{_datadir}/apps/desktoptheme/default/widgets/kget.svg
 %{_datadir}/apps/kget
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %{_datadir}/config.kcfg/kget.kcfg
 %{_datadir}/config.kcfg/kget_multisegkiofactory.kcfg
 %{_datadir}/config.kcfg/kget_mirrorsearchfactory.kcfg
+%{_datadir}/config.kcfg/kget_checksumsearchfactory.kcfg
 %{_datadir}/config.kcfg/kget_contentfetchfactory.kcfg
 %{_datadir}/kde4/services/kget_bittorrentfactory_config.desktop
+%{_datadir}/kde4/services/kget_checksumsearchfactory.desktop
+%{_datadir}/kde4/services/kget_checksumsearchfactory_config.desktop
 %{_datadir}/kde4/services/kget_contentfetchfactory.desktop
 %{_datadir}/kde4/services/kget_contentfetchfactory_config.desktop
+%{_datadir}/kde4/services/kget_metalinkfactory_config.desktop
 %{_datadir}/kde4/services/kget_mirrorsearchfactory_config.desktop
 %{_datadir}/kde4/services/kget_multisegkiofactory_config.desktop
 %{_datadir}/kde4/services/ServiceMenus/kget_download.desktop
@@ -845,11 +892,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/kget_multisegkiofactory.desktop
 %{_datadir}/kde4/services/kget_mirrorsearchfactory.desktop
 %{_datadir}/kde4/services/kgetbarapplet-default.desktop
-%{_datadir}/kde4/services/kgetpanelbarapplet-default.desktop
+#%{_datadir}/kde4/services/kgetpanelbarapplet-default.desktop
 %{_datadir}/kde4/services/kgetpiechartapplet-default.desktop
 %{_datadir}/kde4/services/plasma-engine-kget.desktop
 %{_datadir}/kde4/servicetypes/kget_plugin.desktop
+%{_datadir}/kde4/services/plasma-runner-kget.desktop
+#%{_datadir}/kde4/services/plasma-runner-kget_config.desktop
 %{_desktopdir}/kde4/kget.desktop
+%{_datadir}/dbus-1/services/org.kde.kget.service
 %{_iconsdir}/*/*/*/*kget*
 %{_kdedocdir}/en/kget
 
@@ -884,7 +934,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde4/kopete_statistics.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_testbed.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_urlpicpreview.so
-%attr(755,root,root) %{_libdir}/kde4/libkrichtexteditpart.so
 
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-0.10.pl
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
@@ -900,10 +949,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader.upd
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader2.sh
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-pluginloader2.upd
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-gaim_to_pidgin_style.pl
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-gaim_to_pidgin_style.upd
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-update_yahoo_server.pl
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-update_yahoo_server.upd
+
 
 #### ???
-%attr(755,root,root) %{_libdir}/libiris_kopete.so.1.0.0
-%attr(755,root,root) %ghost %{_libdir}/libiris_kopete.so.?
 %attr(755,root,root) %{_libdir}/libkopeteaddaccountwizard.so.1.0.0
 %attr(755,root,root) %ghost %{_libdir}/libkopeteaddaccountwizard.so.?
 %attr(755,root,root) %{_libdir}/libkopetechatwindow_shared.so.1.0.0
@@ -916,6 +968,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/liboscar.so.?
 %attr(755,root,root) %{_libdir}/libkopetestatusmenu.so.1.0.0
 %attr(755,root,root) %ghost %{_libdir}/libkopetestatusmenu.so.?
+%attr(755,root,root) %{_libdir}/libkopetecontactlist.so.1
+%attr(755,root,root) %{_libdir}/libkopetecontactlist.so.1.0.0
+%attr(755,root,root) %{_libdir}/kde4/libchattexteditpart.so
 ####
 
 %dir %{_datadir}/apps/kopete
@@ -938,6 +993,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kopete/icons/*/*/apps/preferences-plugin-text-effect-kopete.png
 %{_datadir}/apps/kopete/icons/*/*/apps/preferences-text-autocorrection-kopete.png
 %{_datadir}/apps/kopete/icons/*/*/apps/preferences-text-highlighting-kopete.png
+%{_datadir}/apps/kopete/CompactContactListLayouts.xml
+%{_datadir}/apps/kopete/DefaultContactListLayouts.xml
 #%{_datadir}/apps/kopete/pics/statistics
 %{_datadir}/apps/kopete/styles
 %{_datadir}/apps/kopete_otr
@@ -981,8 +1038,9 @@ rm -rf $RPM_BUILD_ROOT
 %exclude %{_iconsdir}/*/scalable
 %{_iconsdir}/*/*/*/kopete.png
 %{_iconsdir}/*/*/actions/*
-%{_iconsdir}/oxygen/*/*/kopete*
+#%{_iconsdir}/oxygen/*/*/kopete*
 %{_iconsdir}/oxygen/*/status/object-locked-*
+%{_iconsdir}/hicolor/*/apps/kopete-offline.png
 %{_kdedocdir}/en/kopete
 
 %files kopete-protocol-aim
@@ -1001,9 +1059,6 @@ rm -rf $RPM_BUILD_ROOT
 %files kopete-protocol-gg
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kopete_gadu.so
-%attr(755,root,root) %{_libdir}/libgadu_kopete.so.1.*.*
-%attr(755,root,root) %ghost %{_libdir}/libgadu_kopete.so.1
-%attr(755,root,root) %{_libdir}/libgadu_kopete.so
 %{_datadir}/apps/kopete/icons/*/*/*/gadu*
 %{_datadir}/apps/kopete/icons/*/*/*/gg*
 %{_datadir}/kde4/services/kopete_gadu.desktop
@@ -1051,6 +1106,21 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/apps/kopete_wlm
 %{_datadir}/apps/kopete_wlm/wlmchatui.rc
 
+%files kopete-protocol-skype
+%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/skype-action-handler
+# someone find a way to package this
+#%{_prefix}/lib/mozilla/plugins/libskypebuttons.so
+%attr(755,root,root) %{_libdir}/kde4/kopete_skype.so
+%dir %{_datadir}/apps/kopete_skype
+%{_datadir}/apps/kopete_skype/skypechatui.rc
+%{_datadir}/apps/kopete_skype/skypeui.rc
+%{_datadir}/kde4/services/callto.protocol
+%{_datadir}/kde4/services/kopete_skype.desktop
+%{_datadir}/kde4/services/skype.protocol
+%{_datadir}/kde4/services/tel.protocol
+%{_datadir}/apps/kopete/icons/*/*/*/skype_protocol.png
+
 %files kopete-protocol-sms
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kopete_sms.so
@@ -1059,7 +1129,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files kopete-protocol-winpopup
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/winpopup*.sh
+%attr(755,root,root) %{_bindir}/winpopup-install
+%attr(755,root,root) %{_bindir}/winpopup-send
 %attr(755,root,root) %{_libdir}/kde4/kopete_wp.so
 %{_datadir}/apps/kopete/icons/*/*/*/wp*
 %{_datadir}/kde4/services/kopete_wp.desktop
@@ -1077,12 +1148,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kopete/icons/*/*/*/yahoo*
 %{_datadir}/kde4/services/kopete_yahoo.desktop
 
-%files kopete-tool-alias
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_alias.so
-%attr(755,root,root) %{_libdir}/kde4/kopete_alias.so
-%{_datadir}/kde4/services/kconfiguredialog/kopete_alias_config.desktop
-%{_datadir}/kde4/services/kopete_alias.desktop
+#%files kopete-tool-alias
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_libdir}/kde4/kcm_kopete_alias.so
+#%attr(755,root,root) %{_libdir}/kde4/kopete_alias.so
+#%{_datadir}/kde4/services/kconfiguredialog/kopete_alias_config.desktop
+#%{_datadir}/kde4/services/kopete_alias.desktop
 
 %files kopete-tool-autoreplace
 %defattr(644,root,root,755)
@@ -1177,13 +1248,38 @@ rm -rf $RPM_BUILD_ROOT
 %files krfb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krdc
+%attr(755,root,root) %{_bindir}/krdc_rfb_approver
 %attr(755,root,root) %{_bindir}/krfb
+%attr(755,root,root) %{_bindir}/googletalk-call
+%attr(755,root,root) %ghost %{_libdir}/libkrdccore.so.?
+%attr(755,root,root) %{_libdir}/libkrdccore.so.*.*.*
+%attr(755,root,root) %{_libdir}/libkrfbprivate.so.*.*.*
+%attr(755,root,root) %{_libdir}/kde4/krdc_rdpplugin.so
+%attr(755,root,root) %{_libdir}/kde4/krdc_testplugin.so
+%attr(755,root,root) %{_libdir}/kde4/krdc_vncplugin.so
+%attr(755,root,root) %{_libdir}/kde4/krfb_framebuffer_qt.so
+%attr(755,root,root) %{_libdir}/kde4/krfb_framebuffer_x11.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_krdc_rdpplugin.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_krdc_vncplugin.so
 %{_datadir}/apps/krdc
 %{_datadir}/apps/krfb
 %{_datadir}/config.kcfg/krdc.kcfg
 %{_datadir}/kde4/services/rdp.protocol
 %{_datadir}/kde4/services/vnc.protocol
+%{_datadir}/kde4/services/krfb_framebuffer_qt.desktop
+%{_datadir}/kde4/services/krfb_framebuffer_x11.desktop
+%{_datadir}/kde4/services/krdc_rdp.desktop
+%{_datadir}/kde4/services/krdc_rdp_config.desktop
+%{_datadir}/kde4/services/krdc_test.desktop
+%{_datadir}/kde4/services/krdc_vnc.desktop
+%{_datadir}/kde4/services/krdc_vnc_config.desktop
+%{_datadir}/kde4/servicetypes/krdc_plugin.desktop
+%{_datadir}/kde4/servicetypes/krfb-framebuffer.desktop
 %{_desktopdir}/kde4/krdc.desktop
 %{_desktopdir}/kde4/krfb.desktop
 %{_kdedocdir}/en/krdc
 %{_kdedocdir}/en/krfb
+%{_datadir}/apps/krdc_rfb_approver
+%{_datadir}/telepathy/clients
+%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.krdc_rfb_approver.service
+%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.krdc_rfb_handler.service
