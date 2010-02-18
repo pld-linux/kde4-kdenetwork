@@ -870,6 +870,7 @@ rm -rf $RPM_BUILD_ROOT
 #%{_datadir}/apps/desktoptheme/default/widgets/kget.svg
 %{_datadir}/apps/kget
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
+%dir %{_datadir}/apps/kwebkitpart/kpartplugins
 %{_datadir}/apps/kwebkitpart/kpartplugins/kget_plug_in.rc
 %{_datadir}/config.kcfg/kget.kcfg
 %{_datadir}/config.kcfg/kget_multisegkiofactory.kcfg
