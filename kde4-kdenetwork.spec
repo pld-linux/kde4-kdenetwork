@@ -25,37 +25,34 @@ Patch0:		%{name}-FindLibgadu.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtOpenGL-devel >= %{qtver}
+BuildRequires:	QtScript-devel >= %{qtver}
 BuildRequires:	QtSql-devel >= %{qtver}
 BuildRequires:	QtSvg-devel >= %{qtver}
 BuildRequires:	QtTest-devel >= %{qtver}
 BuildRequires:	alsa-lib-devel
 BuildRequires:	automoc4 >= 0.9.88
-BuildRequires:	avahi-compat-libdns_sd-devel
+BuildRequires:	boost-devel
 BuildRequires:	cmake >= 2.8.0
-BuildRequires:	decibel-devel >= 0.7.0
+BuildRequires:	giflib-devel
 BuildRequires:	gmp-devel
+BuildRequires:	gpgme-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
 BuildRequires:	libgadu-devel >= 1.8.0
 BuildRequires:	libidn-devel
-BuildRequires:	libiw-devel >= 27
 BuildRequires:	libjpeg-devel
 BuildRequires:	libmsn-devel >= 4.0-1
-#BuildRequires:	libnxcl-devel >= 1.0-0.r612.1
 BuildRequires:	libotr-devel >= 3.2.0
-BuildRequires:	libtool
 BuildRequires:	libv4l-devel >= 0.5.8
 BuildRequires:	libvncserver-devel
 BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	meanwhile-devel >= 1.0.1
 BuildRequires:	mediastreamer-devel >= 2.3.0
-BuildRequires:	openslp-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	ortp-devel
 BuildRequires:	pcre-devel
-BuildRequires:	perl-base
 BuildRequires:	pkgconfig
 BuildRequires:	qca-devel >= 2.0
 BuildRequires:	qimageblitz-devel
