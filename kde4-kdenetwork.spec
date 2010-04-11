@@ -1085,6 +1085,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files kopete-protocol-jabber
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/googletalk-call
 %attr(755,root,root) %{_libdir}/kde4/kopete*jabber*.so
 %{_datadir}/apps/kopete_jabber
 %{_datadir}/apps/kopete/icons/*/*/*/jabber*.png
@@ -1256,7 +1257,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/krdc
 %attr(755,root,root) %{_bindir}/krdc_rfb_approver
 %attr(755,root,root) %{_bindir}/krfb
-%attr(755,root,root) %{_bindir}/googletalk-call
 %attr(755,root,root) %ghost %{_libdir}/libkrdccore.so.?
 %attr(755,root,root) %{_libdir}/libkrdccore.so.*.*.*
 %attr(755,root,root) %{_libdir}/libkrfbprivate.so.*.*.*
