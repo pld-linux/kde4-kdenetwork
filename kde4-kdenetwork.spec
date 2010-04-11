@@ -44,7 +44,7 @@ BuildRequires:	kde4-kwebkitpart-devel >= 4.4.0
 BuildRequires:	libgadu-devel >= 1.8.0
 BuildRequires:	libidn-devel
 BuildRequires:	libjpeg-devel
-BuildRequires:	libmsn-devel >= 4.0-1
+BuildRequires:	libmsn-devel >= 4.1
 BuildRequires:	libotr-devel >= 3.2.0
 BuildRequires:	libv4l-devel >= 0.5.8
 BuildRequires:	libvncserver-devel
