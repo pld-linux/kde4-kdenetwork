@@ -1,0 +1,11 @@
+--- kdenetwork-4.4.2/kopete/protocols/jabber/googletalk/libjingle/talk/base/openssladapter.cc~	2009-12-01 01:34:11.000000000 +0100
++++ kdenetwork-4.4.2/kopete/protocols/jabber/googletalk/libjingle/talk/base/openssladapter.cc	2010-04-11 16:35:30.672704509 +0200
+@@ -648,7 +648,7 @@
+     int extension_nid = OBJ_obj2nid(X509_EXTENSION_get_object(extension));
+ 
+     if (extension_nid == NID_subject_alt_name) {
+-      X509V3_EXT_METHOD* meth = X509V3_EXT_get(extension);
++      const X509V3_EXT_METHOD* meth = X509V3_EXT_get(extension);
+       if (!meth)
+         break;
+ 
