@@ -14,12 +14,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.4.2
-Release:	4
+Version:	4.4.3
+Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	079fe0c9b7d7c5b52e673b5f4bc4f301
+# Source0-md5:	9e8e285aff018807fd5967806cebf083
 #Patch100: %{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 Patch1:		%{name}-openssl.patch
@@ -740,7 +740,9 @@ specjalnych możliwości Remote Desktop Connection.
 %setup -q -n %{orgname}-%{version}
 #%patch100 -p0
 %patch0 -p0
+%if "%{pld_release}" == "th"
 %patch1 -p1
+%endif
 
 %build
 install -d build
@@ -1286,6 +1288,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_kdedocdir}/en/krdc
 %{_kdedocdir}/en/krfb
 %{_datadir}/apps/krdc_rfb_approver
-%{_datadir}/telepathy/clients
+%{_datadir}/telepathy/clients/*
 %{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.krdc_rfb_approver.service
 %{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.krdc_rfb_handler.service
