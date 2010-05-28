@@ -23,7 +23,6 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 #Patch100: %{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 Patch1:		%{name}-openssl.patch
-Patch2:		%{name}-kget_metalink.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtOpenGL-devel >= %{qtver}
@@ -744,7 +743,6 @@ specjalnych możliwości Remote Desktop Connection.
 %if "%{pld_release}" == "th"
 %patch1 -p1
 %endif
-%patch2 -p1
 
 %build
 install -d build
