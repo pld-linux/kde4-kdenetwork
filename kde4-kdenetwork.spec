@@ -15,7 +15,7 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
 Version:	4.4.4
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -394,6 +394,8 @@ Summary:	Kopete plugin which adds Skype(tm) protocol support
 Summary(pl.UTF-8):	Wtyczka Kopete dodająca obsługę protokołu Skype(tm)
 Group:		X11/Applications/Networking
 Requires:	%{name}-kopete = %{version}-%{release}
+Requires:	browser-plugins >= 2.0
+Requires:	skype-program
 
 %description kopete-protocol-skype
 Kopete plugin which adds Skype(tm) protocol support.
@@ -752,6 +754,7 @@ cd build
 	-DLIB_INSTALL_DIR=%{_libdir} \
 	-DSYSCONF_INSTALL_DIR=%{_sysconfdir} \
 	-DCMAKE_BUILD_TYPE=%{!?debug:Release}%{?debug:Debug} \
+	-DMOZPLUGIN_INSTALL_DIR=%{_browserpluginsdir} \
 %if "%{_lib}" == "lib64"
 	-DLIB_SUFFIX=64 \
 %endif
@@ -789,6 +792,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %post	krfb		-p /sbin/ldconfig
 %postun	krfb		-p /sbin/ldconfig
+
+%post kopete-protocol-skype
+%update_browser_plugins
+
+%postun kopete-protocol-skype
+if [ "$1" = 0 ]; then
+	%update_browser_plugins
+fi
 
 %files libkopete
 %defattr(644,root,root,755)
@@ -1115,11 +1126,11 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/apps/kopete_wlm
 %{_datadir}/apps/kopete_wlm/wlmchatui.rc
 
+# skype exists only for ix86 (and can be used in multiarch env)
+%ifarch %{ix86} %{x8664}
 %files kopete-protocol-skype
 %defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/skype-action-handler
-# someone find a way to package this
-#%{_prefix}/lib/mozilla/plugins/libskypebuttons.so
+%attr(755,root,root) %{_browserpluginsdir}/skypebuttons.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_skype.so
 %dir %{_datadir}/apps/kopete_skype
 %{_datadir}/apps/kopete_skype/skypechatui.rc
@@ -1129,6 +1140,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kde4/services/skype.protocol
 %{_datadir}/kde4/services/tel.protocol
 %{_datadir}/apps/kopete/icons/*/*/*/skype_protocol.png
+%endif
 
 %files kopete-protocol-sms
 %defattr(644,root,root,755)
