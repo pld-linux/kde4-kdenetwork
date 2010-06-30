@@ -41,7 +41,7 @@ BuildRequires:	gpgme-devel
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
-BuildRequires:	kde4-kwebkitpart-devel >= 4.4.0
+BuildRequires:	kde4-kwebkitpart-devel >= %{version}
 BuildRequires:	libgadu-devel >= 1.8.0
 BuildRequires:	libidn-devel
 BuildRequires:	libjpeg-devel
