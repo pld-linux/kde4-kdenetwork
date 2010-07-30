@@ -14,12 +14,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.4.5
+Version:	4.5.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	597e8c8259a625088defbaed322119f6
+# Source0-md5:	8122564496524591b3fdb6341d989ddb
 #Patch100: %{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 Patch1:		%{name}-openssl.patch
@@ -63,11 +63,11 @@ BuildRequires:	qt4-build >= %{qtver}
 BuildRequires:	qt4-qmake >= %{qtver}
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.268
-BuildRequires:	shared-desktop-ontologies-devel >= 0.2
-BuildRequires:	soprano-devel >= 2.3.70
+BuildRequires:	shared-desktop-ontologies-devel >= 0.5
+BuildRequires:	soprano-devel >= 2.4.64
 BuildRequires:	speex-devel
 BuildRequires:	sqlite3-devel
-BuildRequires:	strigi-devel >= 0.7.0
+BuildRequires:	strigi-devel >= 0.7.2
 BuildRequires:	telepathy-qt4-devel
 BuildRequires:	xmms-devel
 BuildRequires:	xorg-lib-libXdamage-devel
@@ -194,6 +194,7 @@ Summary(pl.UTF-8):	Zarządca ściągania plików
 Group:		X11/Applications
 Requires:	kde4-kdebase >= %{version}
 Requires:	kde4-kdebase-workspace >= %{version}
+Requires:	kde4-dolphin >= %{version}
 
 %description kget
 A GetRight-like file download manager with resuming support and
@@ -876,21 +877,19 @@ fi
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_metalinkfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_multisegkiofactory.so
-#%attr(755,root,root) %{_libdir}/kde4/kcm_krunner_kget.so
 %attr(755,root,root) %{_libdir}/kde4/krunner_kget.so
-%attr(755,root,root) %{_libdir}/kde4/khtml_kget.so
+%attr(755,root,root) %{_libdir}/kde4/kget_browser_integration.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_engine_kget.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_kget_barapplet.so
-#%attr(755,root,root) %{_libdir}/kde4/plasma_kget_panelbar.so
 %attr(755,root,root) %{_libdir}/kde4/plasma_kget_piechart.so
 %attr(755,root,root) %{_libdir}/libkgetcore.so.4.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkgetcore.so.?
 %attr(755,root,root) %{_libdir}/libkgetcore.so
-#%{_datadir}/apps/desktoptheme/default/widgets/kget.svg
 %{_datadir}/apps/kget
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %dir %{_datadir}/apps/kwebkitpart/kpartplugins
 %{_datadir}/apps/kwebkitpart/kpartplugins/kget_plug_in.rc
+%{_datadir}/apps/dolphinpart/kpartplugins/kget_plug_in.rc
 %{_datadir}/config.kcfg/kget.kcfg
 %{_datadir}/config.kcfg/kget_multisegkiofactory.kcfg
 %{_datadir}/config.kcfg/kget_mirrorsearchfactory.kcfg
