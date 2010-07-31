@@ -22,7 +22,6 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 # Source0-md5:	8122564496524591b3fdb6341d989ddb
 #Patch100: %{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
-Patch1:		%{name}-openssl.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtOpenGL-devel >= %{qtver}
@@ -45,6 +44,7 @@ BuildRequires:	kde4-kwebkitpart-devel >= %{version}
 BuildRequires:	libgadu-devel >= 1.8.0
 BuildRequires:	libidn-devel
 BuildRequires:	libjpeg-devel
+BuildRequires:	libktorrent-devel
 BuildRequires:	libmsn-devel >= 4.1
 BuildRequires:	libotr-devel >= 3.2.0
 BuildRequires:	libv4l-devel >= 0.5.8
@@ -743,9 +743,6 @@ specjalnych możliwości Remote Desktop Connection.
 %setup -q -n %{orgname}-%{version}
 #%patch100 -p0
 %patch0 -p0
-%if "%{pld_release}" == "th"
-%patch1 -p1
-%endif
 
 %build
 install -d build
