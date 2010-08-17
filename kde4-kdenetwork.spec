@@ -15,7 +15,7 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
 Version:	4.5.0
-Release:	4
+Release:	5
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -44,7 +44,7 @@ BuildRequires:	kde4-kwebkitpart-devel >= %{version}
 BuildRequires:	libgadu-devel >= 1.8.0
 BuildRequires:	libidn-devel
 BuildRequires:	libjpeg-devel
-BuildRequires:	libktorrent-devel
+BuildRequires:	libktorrent-devel >= 1.0.2
 BuildRequires:	libmsn-devel >= 4.1
 BuildRequires:	libotr-devel >= 3.2.0
 BuildRequires:	libv4l-devel >= 0.5.8
