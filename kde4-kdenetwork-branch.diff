@@ -1,250 +1,328 @@
-Index: krdc/rdp/rdpview.cpp
+Index: krfb/connectioncontroller.cpp
 ===================================================================
---- krdc/rdp/rdpview.cpp	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ krdc/rdp/rdpview.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -163,6 +163,7 @@
-     if (!m_url.password().isNull())
-         arguments << "-p" << m_url.password();
+--- krfb/connectioncontroller.cpp	(.../tags/KDE/4.5.0/kdenetwork)	(wersja 1165577)
++++ krfb/connectioncontroller.cpp	(.../branches/KDE/4.5/kdenetwork)	(wersja 1165577)
+@@ -36,6 +36,7 @@
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
++#include <strings.h>
  
-+    arguments << "-D";  // request the window has no decorations
-     arguments << "-X" << QString::number(m_container->winId());
-     arguments << "-a" << QString::number((m_hostPreferences->colorDepth() + 1) * 8);
  
-Index: krfb/kinetd/kinetd.notifyrc
+ static QString peerAddress(int sock) {
+Index: krfb/events.cpp
 ===================================================================
---- krfb/kinetd/kinetd.notifyrc	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ krfb/kinetd/kinetd.notifyrc	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -105,7 +105,7 @@
- Name[ro]=ConexiuneDeIntrare
- Name[ru]=Входящее соединение
- Name[sk]=Prichádzajúce spojenia
--Name[sl]=Prihajajoča povezava
-+Name[sl]=Prejeta povezava
- Name[sr]=Долазна веза
- Name[sr@latin]=Dolazna veza
- Name[sv]=Inkommande anslutning
-Index: kopete/plugins/addbookmarks/kopete_addbookmarks.desktop
-===================================================================
---- kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ kopete/plugins/addbookmarks/kopete_addbookmarks.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -112,7 +112,7 @@
- Comment[ro]=Pune automat semn de carte la legăturile din mesajele de intrare
- Comment[ru]=Автоматическое добавление ссылок из входных сообщений в закладки
- Comment[sk]=Automaticky vytvorí záložky odkazov v prichádzajúcich správach
--Comment[sl]=Samodejno doda povezave v prihajajočih sporočilih med zaznamke
-+Comment[sl]=Samodejno doda povezave iz prejetih sporočilih med zaznamke
- Comment[sr]=Аутоматски маркирај везе у долазним порукама
- Comment[sr@latin]=Automatski markiraj veze u dolaznim porukama
- Comment[sv]=Bokmärk automatiskt länkar i inkommande meddelande.
-Index: kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop
-===================================================================
---- kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ kopete/plugins/addbookmarks/kopete_addbookmarks_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -112,7 +112,7 @@
- Comment[ro]=Pune automat semn de carte la legăturile din mesajele de intrare
- Comment[ru]=Автоматическое добавление ссылок из входных сообщений в закладки
- Comment[sk]=Automaticky vytvorí záložky odkazov v prichádzajúcich správach
--Comment[sl]=Samodejno doda povezave v prihajajočih sporočilih med zaznamke
-+Comment[sl]=Samodejno doda povezave iz prejetih sporočilih med zaznamke
- Comment[sr]=Аутоматски маркирај везе у долазним порукама
- Comment[sr@latin]=Automatski markiraj veze u dolaznim porukama
- Comment[sv]=Bokmärk automatiskt länkar i inkommande meddelande.
-Index: kopete/plugins/history/kopete_history_config.desktop
-===================================================================
---- kopete/plugins/history/kopete_history_config.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ kopete/plugins/history/kopete_history_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -133,7 +133,7 @@
- Comment[ta]=வரலாற்று செருகல்
- Comment[tg]=Модули Номнависи сӯҳбатҳо
- Comment[tr]=Geçmiş Eklentisi
--Comment[uk]=Втулок історії
-+Comment[uk]=Додаток історії
- Comment[uz]=Tarix plagini
- Comment[uz@cyrillic]=Тарих плагини
- Comment[vi]=Phần bổ sung lịch sử
-Index: kopete/plugins/privacy/kopete_privacy_config.desktop
-===================================================================
---- kopete/plugins/privacy/kopete_privacy_config.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ kopete/plugins/privacy/kopete_privacy_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -105,7 +105,7 @@
- Comment[sr@latin]=Priključak za privatnost
- Comment[sv]=Integritetsinsticksprogram
- Comment[tr]=Gizlilik Eklentisi
--Comment[uk]=Втулок конфіденційності
-+Comment[uk]=Додаток конфіденційності
- Comment[vi]=Phần bổ sung riêng tư
- Comment[x-test]=xxPrivacy Pluginxx
- Comment[zh_CN]=隐私插件
-Index: kopete/plugins/privacy/kopete_privacy.desktop
-===================================================================
---- kopete/plugins/privacy/kopete_privacy.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ kopete/plugins/privacy/kopete_privacy.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -107,7 +107,7 @@
- Comment[pt_BR]=Filtrar mensagens recebidas
- Comment[ro]=Filtreză mesajele de intrare
- Comment[ru]=Фильтрация входящих сообщений
--Comment[sl]=Filtrira prihajajoča sporočila
-+Comment[sl]=Filtrira prejeta sporočila
- Comment[sr]=Филтрира долазне поруке
- Comment[sr@latin]=Filtrira dolazne poruke
- Comment[sv]=Filtrerar inkommande meddelanden
-Index: kopete/kopete/kopete.notifyrc
-===================================================================
---- kopete/kopete/kopete.notifyrc	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ kopete/kopete/kopete.notifyrc	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -397,7 +397,7 @@
- Name[pt_BR]=Mensagem recebida
- Name[ro]=Mesaj de intrare
- Name[ru]=Входящее сообщение
--Name[sl]=Prihajajoče sporočilo
-+Name[sl]=Prejeto sporočilo
- Name[sr]=Долазна порука
- Name[sr@latin]=Dolazna poruka
- Name[sv]=Inkommande meddelande
-@@ -504,7 +504,7 @@
- Name[pt_BR]=Mensagem recebida no bate-papo ativo
- Name[ro]=Mesaj de intrare în discuția activă
- Name[ru]=Входящее сообщение в активной беседе
--Name[sl]=Prihajajoče sporočilo v aktivnem klepetu
-+Name[sl]=Prejeto sporočilo v aktivnem klepetu
- Name[sr]=Долазна порука у активном ћаскању
- Name[sr@latin]=Dolazna poruka u aktivnom ćaskanju
- Name[sv]=Inkommande meddelande i aktiv chatt
-@@ -1843,7 +1843,7 @@
- Name[sr@latin]=Veza izgubljena
- Name[sv]=Anslutning förlorad
- Name[tr]=Bağlantı Kesildi
--Name[uk]=Загублено з'єднання
-+Name[uk]=З'єднання розірвано
- Name[uz]=Ulanish uzildi
- Name[uz@cyrillic]=Уланиш узилди
- Name[x-test]=xxConnection Lostxx
-Index: kopete/libkopete/kopeteui.desktop
-===================================================================
---- kopete/libkopete/kopeteui.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ kopete/libkopete/kopeteui.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -57,7 +57,7 @@
- Comment[ta]=ஒரு Kopete UI செருகல்
- Comment[tg]=Модули Интерфейси Корвандии Kopete
- Comment[tr]=Bir Kopete UI Eklentisi
--Comment[uk]=Втулок інтерфейсу для Kopete
-+Comment[uk]=Додаток інтерфейсу для Kopete
- Comment[vi]=Phần bổ sung giao diện người dùng Kopete
- Comment[wa]=On tchôke-divins d' eterface grafike po Kopete
- Comment[x-test]=xxA Kopete UI Pluginxx
-Index: kopete/libkopete/kopeteprotocol.desktop
-===================================================================
---- kopete/libkopete/kopeteprotocol.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ kopete/libkopete/kopeteprotocol.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -58,7 +58,7 @@
- Comment[ta]=Kopete விதிமுறை செருகல்
- Comment[tg]=Модули Қарордоди Kopete 
- Comment[tr]=Kopete İletişim Kuralı Eklentisi
--Comment[uk]=Втулок протоколу для Kopete
-+Comment[uk]=Додаток протоколу для Kopete
- Comment[vi]=Phần bổ sung giao thức Kopete
- Comment[wa]=Tchôke-divins di protocole po Kopete
- Comment[x-test]=xxKopete Protocol Pluginxx
-Index: kopete/libkopete/avdevice/videodevice.cpp
-===================================================================
---- kopete/libkopete/avdevice/videodevice.cpp	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ kopete/libkopete/avdevice/videodevice.cpp	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -1047,6 +1047,12 @@
- 					(uint) m_rawbuffers.size() <= v4l2buffer.index)
- 					return EXIT_FAILURE;
+--- krfb/events.cpp	(.../tags/KDE/4.5.0/kdenetwork)	(wersja 1165577)
++++ krfb/events.cpp	(.../branches/KDE/4.5/kdenetwork)	(wersja 1165577)
+@@ -84,11 +84,11 @@
+     if(isShift && mod != 1) {
+         if(ModifierState & LEFTSHIFT) {
+             XTestFakeKeyEvent(dpy, leftShiftCode,
+-                            !down, CurrentTime);
++                            down, CurrentTime);
+         }
+         if(ModifierState & RIGHTSHIFT) {
+             XTestFakeKeyEvent(dpy, rightShiftCode,
+-                            !down, CurrentTime);
++                            down, CurrentTime);
+         }
+     }
  
-+				if (m_rawbuffers[v4l2buffer.index].length < m_currentbuffer.data.size())
-+				{
-+					kDebug() <<  "Buffer size mismatch: expecting raw buffer length to be" << m_currentbuffer.data.size() << "but it was" << m_rawbuffers[v4l2buffer.index].length;
-+					return EXIT_FAILURE;
-+				}
+Index: kopete/kopete/chatwindow/chatview.cpp
+===================================================================
+--- kopete/kopete/chatwindow/chatview.cpp	(.../tags/KDE/4.5.0/kdenetwork)	(wersja 1165577)
++++ kopete/kopete/chatwindow/chatview.cpp	(.../branches/KDE/4.5/kdenetwork)	(wersja 1165577)
+@@ -543,7 +543,7 @@
+ 		this, SLOT( slotPropertyChanged( Kopete::PropertyContainer *, const QString &, const QVariant &, const QVariant & ) ) ) ;
+ 	}
+ 
+-	if( !suppress && m_manager->members().count() > 1 ) {
++	if( !suppress && Kopete::BehaviorSettings::self()->showEvents() && m_manager->members().count() > 1 ) {
+ 		QString contactName = m_messagePart->formatName(contact, Qt::PlainText);
+ 		sendInternalMessage(  i18n("%1 has joined the chat.", contactName) );
+ 	}
+@@ -588,7 +588,7 @@
+ 			}
+ 		}
+ 
+-		if ( !suppressNotification )
++		if ( !suppressNotification && Kopete::BehaviorSettings::self()->showEvents() )
+ 		{
+ 			QString contactName = m_messagePart->formatName(contact, Qt::PlainText);
+ 			if ( reason.isEmpty() )
+Index: kopete/libkopete/kopeteavatarmanager.cpp
+===================================================================
+--- kopete/libkopete/kopeteavatarmanager.cpp	(.../tags/KDE/4.5.0/kdenetwork)	(wersja 1165577)
++++ kopete/libkopete/kopeteavatarmanager.cpp	(.../branches/KDE/4.5/kdenetwork)	(wersja 1165577)
+@@ -178,7 +178,7 @@
+ 	// for the contact avatar, save it with the contactId + .png
+ 	if (newEntry.category == AvatarManager::Contact && newEntry.contact)
+ 	{
+-		avatarFilename = newEntry.contact->contactId() + ".png";
++		avatarFilename = KIO::encodeFileName(newEntry.contact->contactId()) + ".png";
+ 	}
+ 	else
+ 	{
+@@ -199,7 +199,7 @@
+ 
+ 	if( !avatar.save( avatarUrl.toLocalFile(), "PNG") )
+ 	{
+-		kDebug(14010) << "Saving of " << avatarUrl.toLocalFile() << " failed !";
++		kDebug(14010) << "Saving of scaled avatar to " << avatarUrl.toLocalFile() << " failed !";
+ 		return AvatarEntry();
+ 	}
+ 
+@@ -208,7 +208,7 @@
+ 	// for the contact avatar, save it with the contactId + .png
+ 	if (newEntry.category == AvatarManager::Contact && newEntry.contact)
+ 	{
+-		dataFilename = newEntry.contact->contactId() + QLatin1String("_");
++		dataFilename = KIO::encodeFileName(newEntry.contact->contactId()) + QLatin1String("_");
+ 	}
+ 
+ 	dataFilename += KMD5(data).hexDigest();
+@@ -223,7 +223,7 @@
+ 	QFile f(dataUrl.toLocalFile());
+ 	if (!f.open(QIODevice::WriteOnly))
+ 	{
+-		kDebug(14010) << "Saving of " << dataUrl.toLocalFile() << " failed !";
++		kDebug(14010) << "Saving of original avatar to " << dataUrl.toLocalFile() << " failed !";
+ 		return AvatarEntry();
+ 	}
+ 	f.write(data);
+Index: kget/core/datasourcefactory.h
+===================================================================
+--- kget/core/datasourcefactory.h	(.../tags/KDE/4.5.0/kdenetwork)	(wersja 1165577)
++++ kget/core/datasourcefactory.h	(.../branches/KDE/4.5/kdenetwork)	(wersja 1165577)
+@@ -216,6 +216,7 @@
+          * Kills the putjob and starts the moving of files
+          */
+         void startMove();
++        void slotPutJobDestroyed(QObject *job);
+         void newDestResult(KJob *job);
+ 
+         void slotRepair(const QList<KIO::fileoffset_t> &offsets, KIO::filesize_t length);
+Index: kget/core/datasourcefactory.cpp
+===================================================================
+--- kget/core/datasourcefactory.cpp	(.../tags/KDE/4.5.0/kdenetwork)	(wersja 1165577)
++++ kget/core/datasourcefactory.cpp	(.../branches/KDE/4.5/kdenetwork)	(wersja 1165577)
+@@ -27,6 +27,7 @@
+ #include <KIO/NetAccess>
+ #include <KLocale>
+ #include <KMessageBox>
++#include <kmountpoint.h>
+ 
+ #include <KDebug>
+ 
+@@ -212,6 +213,7 @@
+         if (!m_putJob) {
+             m_putJob = KIO::open(m_dest, QIODevice::WriteOnly | QIODevice::ReadOnly);
+             connect(m_putJob, SIGNAL(open(KIO::Job*)), this, SLOT(open(KIO::Job*)));
++            connect(m_putJob, SIGNAL(destroyed(QObject*)), this, SLOT(slotPutJobDestroyed(QObject*)));
+             m_startTried = true;
+             return;
+         }
+@@ -259,6 +261,19 @@
+     }
+ 
+     if (m_open) {
++        //check if the filesystem supports a file of m_size
++        const static KIO::filesize_t maxFatSize = 4294967295;
++        if (m_size > maxFatSize) {
++            KMountPoint::Ptr mountPoint = KMountPoint::currentMountPoints().findByPath(m_dest.directory());
++            if (!mountPoint.isNull()) {
++                if (mountPoint->mountType() == "vfat") {//TODO check what is reported on Windows for vfat
++                    stop();
++                    kError(5001) << "Filesize is larger than maximum file size supported by VFAT.";
++                    return;
++                }
++            }
++        }
 +
- 				memcpy(&m_currentbuffer.data[0], m_rawbuffers[v4l2buffer.index].start, m_currentbuffer.data.size());
- 				if (-1 == xioctl (VIDIOC_QBUF, &v4l2buffer))
- 					return errnoReturn ("VIDIOC_QBUF");
-Index: kopete/libkopete/kopeteplugin.desktop
-===================================================================
---- kopete/libkopete/kopeteplugin.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ kopete/libkopete/kopeteplugin.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -58,7 +58,7 @@
- Comment[ta]=Kopete செருகல்
- Comment[tg]=Модули Kopete 
- Comment[tr]=Kopete Eklentisi
--Comment[uk]=Втулок Kopete
-+Comment[uk]=Додаток до Kopete
- Comment[uz]=Kopete plagini
- Comment[uz@cyrillic]=Kopete плагини
- Comment[vi]=Phần bổ sung Kopete
-Index: kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory_config.desktop
-===================================================================
---- kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory_config.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory_config.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -7,7 +7,7 @@
+         QFile::resize(m_dest.pathOrUrl(), m_size);//TODO should we keep that?
+         m_speedTimer->start();
  
- Name=MirrorSearch
- Name[ar]=بحث المرآة
--Name[ca]=CercaMirall
-+Name[ca]=Cerca de rèplica
- Name[cs]=MirrorSearch
- Name[da]=MirrorSearch
- Name[de]=MirrorSearch
-Index: kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop
-===================================================================
---- kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ kget/transfer-plugins/mirrorsearch/kget_mirrorsearchfactory.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -7,7 +7,7 @@
- # standard fields
- Name=Mirror Search
- Name[ar]=بحث المرآة
--Name[ca]=Cerca miralls
-+Name[ca]=Cerca de rèpliques
- Name[cs]=Mirror Search
- Name[da]=Mirror Search
- Name[de]=MirrorSearch
-@@ -50,7 +50,7 @@
- Name[zh_TW]=映射搜尋
+@@ -765,6 +780,13 @@
+     }
+ }
  
- Comment=Allows KGet to search through mirror search engines for files
--Comment[ca]=Permet que el KGet cerqui el fitxer a miralls de cercadors
-+Comment[ca]=Permet que el KGet cerqui els fitxers a rèpliques de motors de cerques
- Comment[da]=Gør KGet i stand til at søge efter filer via filspejl-søgemaskiner
- Comment[de]=Ermöglicht es KGet, nach Dateien über Spiegel-Suchmaschinen zu suchen.
- Comment[el]=Επιτρέπει στο KGet την αναζήτηση του αρχείου σε μηχανές αναζήτησης αντίγραφα
-Index: kget/transfer-plugins/metalink/kget_metalinkfactory.desktop
++void DataSourceFactory::slotPutJobDestroyed(QObject *job)
++{
++    Q_UNUSED(job)
++
++    m_putJob = 0;
++}
++
+ bool DataSourceFactory::setNewDestination(const KUrl &newDestination)
+ {
+     m_newDest = newDestination;
+Index: kget/mainwindow.cpp
 ===================================================================
---- kget/transfer-plugins/metalink/kget_metalinkfactory.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ kget/transfer-plugins/metalink/kget_metalinkfactory.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -7,7 +7,7 @@
- # standard fields
- Name=Metalink
- Name[ar]=ميتالينك
--Name[ca]=Metaenllaç
-+Name[ca]=«Metalink»
- Name[cs]=Metalink
- Name[da]=Metalink
- Name[de]=Metalink
-@@ -50,7 +50,7 @@
- Name[zh_CN]=超级链接
- Name[zh_TW]=Metalink
- Comment=Allows files to be downloaded from Metalink
--Comment[ca]=Permet descarregar fitxers des d'un metaenllaç
-+Comment[ca]=Permet descarregar fitxers des d'un «metalink»
- Comment[da]=Muliggør download af filer fra Metalink
- Comment[de]=Ermöglicht die Übertragung von Dateien mittels Metalink
- Comment[el]=Επιτρέπει τη λήψη αρχείων από το Metalink
-Index: filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop
+--- kget/mainwindow.cpp	(.../tags/KDE/4.5.0/kdenetwork)	(wersja 1165577)
++++ kget/mainwindow.cpp	(.../branches/KDE/4.5/kdenetwork)	(wersja 1165577)
+@@ -504,8 +504,6 @@
+                 KStandardGuiItem::quit(), KStandardGuiItem::cancel(),
+                 "ExitWithActiveTransfers") != KMessageBox::Yes)
+             return;
+-
+-        KGet::setSchedulerRunning(false);
+     }
+ 
+     Settings::self()->writeConfig();
+Index: kget/plasma/applet/piechart/kgetpiechart.cpp
 ===================================================================
---- filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../tags/KDE/4.3.4/kdenetwork)	(wersja 1071805)
-+++ filesharing/advanced/propsdlgplugin/fileshare_propsdlgplugin.desktop	(.../branches/KDE/4.3/kdenetwork)	(wersja 1071805)
-@@ -111,7 +111,7 @@
- Comment[ta]=Konqueror பண்புகளின் உரையாடல் செருகுகள் அடைவை சம்பா சேவையகத்துடன் பகிரவேண்டிய செருகுகள்
- Comment[tg]=Модули муколамаи хусусиятҳои Konqueror барои истифодабарии муштараки феҳрист бо шабакаи маҳалллӣ
- Comment[tr]=Yerel ağ ile dizin paylaşımı için Konqueror iletişim eklentisi özellikleri
--Comment[uk]=Втулок діалогу властивостей Konqueror для дозволу спільного доступу до каталогу з локальної мережі
-+Comment[uk]=Додаток діалогового вікна властивостей Konqueror для уможливлення спільного доступу до каталогу з локальної мережі
- Comment[vi]=Phần bổ sung hộp thoại thuộc tính Konqueror dùng để chia sẻ một thư mục trên mạng nội bộ
- Comment[x-test]=xxKonqueror properties dialog plugin to share a directory with the local networkxx
- Comment[zh_CN]=可将目录与局域网共享的 Konqueror 属性页对话框插件
+--- kget/plasma/applet/piechart/kgetpiechart.cpp	(.../tags/KDE/4.5.0/kdenetwork)	(wersja 1165577)
++++ kget/plasma/applet/piechart/kgetpiechart.cpp	(.../branches/KDE/4.5/kdenetwork)	(wersja 1165577)
+@@ -85,14 +85,16 @@
+ {
+     m_angles.clear();
+ 
+-    QHash<OrgKdeKgetTransferInterface*, Data>::const_iterator it;
+-    QHash<OrgKdeKgetTransferInterface*, Data>::const_iterator itEnd = m_data->constEnd();
+-    int startAngle = 90 * 16;
+-    for (it = m_data->constBegin(); it != itEnd; ++it) {
+-        const int span = (-1 * ((it.value().size * 360 * 16) / m_totalSize));
+-        m_angles[it.key()] = qMakePair(startAngle, span);
++    if (m_totalSize) {
++        QHash<OrgKdeKgetTransferInterface*, Data>::const_iterator it;
++        QHash<OrgKdeKgetTransferInterface*, Data>::const_iterator itEnd = m_data->constEnd();
++        int startAngle = 90 * 16;
++        for (it = m_data->constBegin(); it != itEnd; ++it) {
++            const int span = (-1 * ((it.value().size * 360 * 16) / m_totalSize));
++            m_angles[it.key()] = qMakePair(startAngle, span);
+ 
+-        startAngle += span;
++            startAngle += span;
++        }
+     }
+ }
+ 
+@@ -102,7 +104,7 @@
+ 
+     kDebug() << "Repaint";
+ 
+-    if (m_angles.count() != m_data->count()) {
++    if (m_totalSize && (m_angles.count() != m_data->count())) {
+         createAngles();
+     }
+ 
+@@ -139,7 +141,7 @@
+         p->drawPie(rect, angles.first, angles.second);
+ 
+         p->setOpacity(ACTIVE_PIE_OPACITY);
+-        if (!data.isFinished) {
++        if (m_totalSize && !data.isFinished) {
+             angles.second = (-1 * ((data.downloadedSize * 360 * 16) / m_totalSize));
+         }
+         p->drawPie(QRect(rect.x() + 15, rect.y() + 15, rect.width() - 30, rect.height() - 30), angles.first, angles.second);
+Index: kget/plasma/runner/kgetrunner.cpp
+===================================================================
+--- kget/plasma/runner/kgetrunner.cpp	(.../tags/KDE/4.5.0/kdenetwork)	(wersja 1165577)
++++ kget/plasma/runner/kgetrunner.cpp	(.../branches/KDE/4.5/kdenetwork)	(wersja 1165577)
+@@ -3,6 +3,7 @@
+  *
+  *   Copyright (C) 2009 Tomas Van Verrewegen <tomasvanverrewegen@telenet.be>
+  *   Copyright (C) 2009 Lukas Appelhans <l.appelhans@gmx.de>
++ *   Copyright (C) 2010 Matthias Fuchs <mat69@gmx.net>
+  *
+  *   This program is free software; you can redistribute it and/or modify
+  *   it under the terms of the GNU General Public License as published
+@@ -29,8 +30,6 @@
+ {
+     setObjectName("KGet");
+     addSyntax(Plasma::RunnerSyntax(":q:", i18n("Find all links in :q: and download them with KGet.")));
+-    
+-    m_kget = new OrgKdeKgetMainInterface(KGET_DBUS_SERVICE, KGET_DBUS_PATH, QDBusConnection::sessionBus(), this);
+ }
+ 
+ 
+@@ -38,6 +37,12 @@
+ {
+ }
+ 
++void KGetRunner::init()
++{
++    m_kget = new OrgKdeKgetMainInterface(KGET_DBUS_SERVICE, KGET_DBUS_PATH, QDBusConnection::sessionBus(), this);
++    m_interface = QDBusConnection::sessionBus().interface();
++}
++
+ void KGetRunner::match(Plasma::RunnerContext& context)
+ {
+     QString query = context.query();
+@@ -116,7 +121,7 @@
+         //  We check if the match is a valid URL, if the protocol is handled by KGet,
+         //  and if the host is not empty, otherwise "http://" would also be matched.
+         KUrl url(re.cap());
+-        if (QDBusConnection::sessionBus().interface()->isServiceRegistered(KGET_DBUS_SERVICE) 
++        if (m_interface->isServiceRegistered(KGET_DBUS_SERVICE)
+             ? m_kget->isSupported(url.url()).value()
+             : (url.isValid() && url.hasHost())) {
+             urls << url.url();
+Index: kget/plasma/runner/kgetrunner.h
+===================================================================
+--- kget/plasma/runner/kgetrunner.h	(.../tags/KDE/4.5.0/kdenetwork)	(wersja 1165577)
++++ kget/plasma/runner/kgetrunner.h	(.../branches/KDE/4.5/kdenetwork)	(wersja 1165577)
+@@ -3,6 +3,7 @@
+  *
+  *   Copyright (C) 2009 Tomas Van Verrewegen <tomasvanverrewegen@telenet.be>
+  *   Copyright (C) 2009 Lukas Appelhans <l.appelhans@gmx.de>
++ *   Copyright (C) 2010 Matthias Fuchs <mat69@gmx.net>
+  *
+  *   This program is free software; you can redistribute it and/or modify
+  *   it under the terms of the GNU General Public License as published
+@@ -17,6 +18,8 @@
+ 
+ #include <Plasma/AbstractRunner>
+ #include <KIcon>
++
++class QDBusConnectionInterface;
+ class QDBusPendingCallWatcher;
+ 
+ 
+@@ -26,25 +29,27 @@
+     Q_OBJECT
+ 
+     public:
+-        
+-    KGetRunner(QObject* parent, const QVariantList& args);
+-    ~KGetRunner();
++        KGetRunner(QObject* parent, const QVariantList& args);
++        ~KGetRunner();
+ 
+-    void match(Plasma::RunnerContext& context);
+-    void run(const Plasma::RunnerContext& context, const Plasma::QueryMatch& match);
+-    
++        void match(Plasma::RunnerContext& context);
++        void run(const Plasma::RunnerContext& context, const Plasma::QueryMatch& match);
++
++    protected slots:
++        void init();
++
+     private slots:
+-    
+-    void showNewTransferDialog();
+-    void callFinished(QDBusPendingCallWatcher* call);
+-        
++        void showNewTransferDialog();
++        void callFinished(QDBusPendingCallWatcher* call);
++
+     private:
+-    
+-    QStringList parseUrls(const QString& text) const;
+-    
+-    OrgKdeKgetMainInterface * m_kget;
+-    KIcon m_icon;
+-    QStringList m_urls;
++        QStringList parseUrls(const QString& text) const;
++
++    private:
++        QDBusConnectionInterface *m_interface;
++        OrgKdeKgetMainInterface *m_kget;
++        KIcon m_icon;
++        QStringList m_urls;
+ };
+ 
+ 
 
 Zmiany atrybutów dla: .
 ___________________________________________________________________
