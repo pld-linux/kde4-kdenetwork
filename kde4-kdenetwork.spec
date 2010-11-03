@@ -15,7 +15,7 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
 Version:	4.5.3
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
@@ -54,7 +54,7 @@ BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	meanwhile-devel >= 1.0.1
 BuildRequires:	mediastreamer-devel >= 2.3.0
 BuildRequires:	openssl-devel >= 0.9.7d
-BuildRequires:	ortp-devel
+BuildRequires:	ortp-devel >= 0.16.1-3
 BuildRequires:	pcre-devel
 BuildRequires:	pkgconfig
 BuildRequires:	qca-devel >= 2.0
