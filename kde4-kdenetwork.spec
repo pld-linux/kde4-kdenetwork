@@ -1084,6 +1084,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde4/kopete_icq.so
 %{_datadir}/apps/kopete/icons/*/*/*/*icq*
 %{_datadir}/kde4/services/kopete_icq.desktop
+%{_datadir}/apps/kconf_update/kopete-update_icq_server.pl
+%{_datadir}/apps/kconf_update/kopete-update_icq_server.upd
 
 %files kopete-protocol-jabber
 %defattr(644,root,root,755)
