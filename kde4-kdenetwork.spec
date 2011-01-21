@@ -14,12 +14,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.5.5
+Version:	4.6.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	9afe9295fd200323cb8171c2ad32e8fd
+# Source0-md5:	f7611f38c3bbaab43121a64b14aceb1a
 Patch100:	%{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 URL:		http://www.kde.org/
@@ -37,6 +37,7 @@ BuildRequires:	cmake >= 2.8.0
 BuildRequires:	giflib-devel
 BuildRequires:	gmp-devel
 BuildRequires:	gpgme-devel
+BuildRequires:	kde4-kdebase-devel >= %{version}
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
@@ -53,6 +54,7 @@ BuildRequires:	libxml2-progs
 BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	meanwhile-devel >= 1.0.1
 BuildRequires:	mediastreamer-devel >= 2.3.0
+BuildRequires:	msilbc-devel >= 2.0.1
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	ortp-devel >= 0.16.1-3
 BuildRequires:	pcre-devel
@@ -827,7 +829,6 @@ fi
 %attr(755,root,root) %{_libdir}/liboscar.so
 %attr(755,root,root) %{_libdir}/libkrdccore.so
 %attr(755,root,root) %{_libdir}/libkopetecontactlist.so
-%attr(755,root,root) %{_libdir}/libkrfbprivate.so
 %{_includedir}/kopete
 %{_includedir}/krdc
 
@@ -877,9 +878,12 @@ fi
 %attr(755,root,root) %{_libdir}/libkgetcore.so
 %{_datadir}/apps/kget
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
+%{_datadir}/apps/khtml/kpartplugins/kget_plug_in.desktop
 %dir %{_datadir}/apps/kwebkitpart/kpartplugins
 %{_datadir}/apps/kwebkitpart/kpartplugins/kget_plug_in.rc
+%{_datadir}/apps/kwebkitpart/kpartplugins/kget_plug_in.desktop
 %{_datadir}/apps/dolphinpart/kpartplugins/kget_plug_in.rc
+%{_datadir}/apps/dolphinpart/kpartplugins/kget_plug_in.desktop
 %{_datadir}/config.kcfg/kget.kcfg
 %{_datadir}/config.kcfg/kget_multisegkiofactory.kcfg
 %{_datadir}/config.kcfg/kget_mirrorsearchfactory.kcfg
@@ -1038,6 +1042,7 @@ fi
 %{_datadir}/kde4/servicetypes/kopeteplugin.desktop
 %{_datadir}/kde4/servicetypes/kopeteprotocol.desktop
 %{_datadir}/kde4/servicetypes/kopeteui.desktop
+%{_datadir}/sounds/KDE-Im-Phone-Ring.wav
 %{_datadir}/sounds/Kopete_Event.ogg
 %{_datadir}/sounds/Kopete_Received.ogg
 %{_datadir}/sounds/Kopete_Sent.ogg
@@ -1236,6 +1241,7 @@ fi
 %{_datadir}/apps/kopete_translator
 %{_datadir}/kde4/services/kconfiguredialog/kopete_translator_config.desktop
 %{_datadir}/kde4/services/kopete_translator.desktop
+%{_datadir}/config.kcfg/translatorconfig.kcfg
 
 %files kopete-tool-webpresence
 %defattr(644,root,root,755)
@@ -1260,7 +1266,6 @@ fi
 %files krfb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krdc
-%attr(755,root,root) %{_bindir}/krdc_rfb_approver
 %attr(755,root,root) %{_bindir}/krfb
 %attr(755,root,root) %ghost %{_libdir}/libkrdccore.so.?
 %attr(755,root,root) %{_libdir}/libkrdccore.so.*.*.*
@@ -1290,7 +1295,3 @@ fi
 %{_desktopdir}/kde4/krfb.desktop
 %{_kdedocdir}/en/krdc
 %{_kdedocdir}/en/krfb
-%{_datadir}/apps/krdc_rfb_approver
-%{_datadir}/telepathy/clients/*
-%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.krdc_rfb_approver.service
-%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.krdc_rfb_handler.service
