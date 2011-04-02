@@ -1,0 +1,10 @@
+--- kdenetwork-4.6.2/kopete/protocols/jabber/googletalk/libjingle/talk/base/sigslot.h~	2011-01-19 23:20:15.000000000 +0100
++++ kdenetwork-4.6.2/kopete/protocols/jabber/googletalk/libjingle/talk/base/sigslot.h	2011-04-02 19:23:51.312937427 +0200
+@@ -78,6 +78,7 @@
+ #ifndef TALK_BASE_SIGSLOT_H__
+ #define TALK_BASE_SIGSLOT_H__
+ 
++#include <cstddef>
+ #include <set>
+ #include <list>
+ 

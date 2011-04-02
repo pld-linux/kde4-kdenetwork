@@ -7,21 +7,22 @@
 #
 %define		_state		stable
 %define		orgname		kdenetwork
-%define		qtver		4.7.1
+%define		qtver		4.7.2
 
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.6.1
-Release:	2
+Version:	4.6.2
+Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	f8aefe5e7b5d773745af442009026951
+# Source0-md5:	72952749d055f5323df06a6c2a3d3d8b
 Patch100:	%{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
+Patch1:		%{name}-gcc.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtOpenGL-devel >= %{qtver}
@@ -41,7 +42,7 @@ BuildRequires:	kde4-kdebase-devel >= %{version}
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
 BuildRequires:	kde4-kdepimlibs-devel >= %{version}
-BuildRequires:	kde4-kwebkitpart-devel >= %{version}
+BuildRequires:	kde4-kwebkitpart-devel
 BuildRequires:	libgadu-devel >= 1.8.0
 BuildRequires:	libidn-devel
 BuildRequires:	libjpeg-devel
@@ -745,6 +746,7 @@ specjalnych możliwości Remote Desktop Connection.
 %setup -q -n %{orgname}-%{version}
 #%patch100 -p0
 %patch0 -p0
+%patch1 -p1
 
 %build
 install -d build
