@@ -14,12 +14,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.6.5
-Release:	2
+Version:	4.7.0
+Release:	0.1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	21724bf54030705f26305b403b14db81
+# Source0-md5:	bbda7b39ebb41794205299b77a4897a4
 Patch100:	%{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 Patch1:		%{name}-gcc.patch
@@ -47,6 +47,7 @@ BuildRequires:	libgadu-devel >= 1.8.0
 BuildRequires:	libidn-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libktorrent-devel >= 1.0.2
+BuildRequires:	libmms-devel
 BuildRequires:	libmsn-devel >= 4.1
 BuildRequires:	libotr-devel >= 3.2.0
 BuildRequires:	libv4l-devel >= 0.5.8
@@ -836,14 +837,8 @@ fi
 
 %files filesharing
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/kde4/kcm_fileshare.so
-%attr(755,root,root) %{_libdir}/kde4/kcm_kcmsambaconf.so
-%attr(755,root,root) %{_libdir}/kde4/fileshare_propsdlgplugin.so
-%{_datadir}/kde4/services/fileshare.desktop
-%{_datadir}/kde4/services/fileshare_propsdlgplugin.desktop
-%{_datadir}/kde4/services/kcmsambaconf.desktop
-%{_iconsdir}/hicolor/16x16/apps/kcmsambaconf.png
-%{_datadir}/kde4/services/ServiceMenus/smb2rdc.desktop
+%attr(755,root,root) %{_libdir}/kde4/sambausershareplugin.so
+%{_datadir}/kde4/services/sambausershareplugin.desktop
 
 %files kdnssd
 %defattr(644,root,root,755)
@@ -1282,6 +1277,7 @@ fi
 %{_datadir}/apps/krdc
 %{_datadir}/apps/krfb
 %{_datadir}/config.kcfg/krdc.kcfg
+%{_datadir}/kde4/services/ServiceMenus/smb2rdc.desktop
 %{_datadir}/kde4/services/rdp.protocol
 %{_datadir}/kde4/services/vnc.protocol
 %{_datadir}/kde4/services/krfb_framebuffer_qt.desktop
