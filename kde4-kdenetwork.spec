@@ -14,12 +14,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.7.0
+Version:	4.7.1
 Release:	0.1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	bbda7b39ebb41794205299b77a4897a4
+# Source0-md5:	9f6e2d00955a9fcbdf0afa71a91e3aa2
 Patch100:	%{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 Patch1:		%{name}-gcc.patch
@@ -854,14 +854,14 @@ fi
 %attr(755,root,root) %{_bindir}/kget
 %attr(755,root,root) %{_libdir}/kde4/kget_bittorrentfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_checksumsearchfactory.so
-%attr(755,root,root) %{_libdir}/kde4/kget_contentfetchfactory.so
+%attr(755,root,root) %{_libdir}/kde4/kget_mmsfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_kiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_metalinkfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kget_multisegkiofactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_bittorrentfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_checksumsearchfactory.so
-%attr(755,root,root) %{_libdir}/kde4/kcm_kget_contentfetchfactory.so
+%attr(755,root,root) %{_libdir}/kde4/kcm_kget_mmsfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_metalinkfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_mirrorsearchfactory.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_kget_multisegkiofactory.so
@@ -885,12 +885,12 @@ fi
 %{_datadir}/config.kcfg/kget_multisegkiofactory.kcfg
 %{_datadir}/config.kcfg/kget_mirrorsearchfactory.kcfg
 %{_datadir}/config.kcfg/kget_checksumsearchfactory.kcfg
-%{_datadir}/config.kcfg/kget_contentfetchfactory.kcfg
+%{_datadir}/config.kcfg/kget_mmsfactory.kcfg
 %{_datadir}/kde4/services/kget_bittorrentfactory_config.desktop
 %{_datadir}/kde4/services/kget_checksumsearchfactory.desktop
 %{_datadir}/kde4/services/kget_checksumsearchfactory_config.desktop
-%{_datadir}/kde4/services/kget_contentfetchfactory.desktop
-%{_datadir}/kde4/services/kget_contentfetchfactory_config.desktop
+%{_datadir}/kde4/services/kget_mmsfactory.desktop
+%{_datadir}/kde4/services/kget_mmsfactory_config.desktop
 %{_datadir}/kde4/services/kget_metalinkfactory_config.desktop
 %{_datadir}/kde4/services/kget_mirrorsearchfactory_config.desktop
 %{_datadir}/kde4/services/kget_multisegkiofactory_config.desktop
