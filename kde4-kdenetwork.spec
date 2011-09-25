@@ -7,7 +7,7 @@
 #
 %define		_state		stable
 %define		orgname		kdenetwork
-%define		qtver		4.7.3
+%define		qtver		4.7.4
 
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
@@ -15,7 +15,7 @@ Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
 Version:	4.7.1
-Release:	0.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
