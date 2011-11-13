@@ -38,6 +38,7 @@ BuildRequires:	cmake >= 2.8.0
 BuildRequires:	giflib-devel
 BuildRequires:	gmp-devel
 BuildRequires:	gpgme-devel
+BuildRequires:	jasper-devel
 BuildRequires:	kde4-kdebase-devel >= %{version}
 BuildRequires:	kde4-kdebase-workspace-devel >= %{version}
 BuildRequires:	kde4-kdelibs-devel >= %{version}
