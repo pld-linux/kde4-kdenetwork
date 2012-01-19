@@ -39,10 +39,4 @@
      else (NOT WIN32)
  
          find_library_with_debug (LIBGADU_LIBRARIES
-@@ -89,4 +75,4 @@
- 
-     endif (NOT WIN32)
- 
--endif (LIBGADU_INCLUDE_DIR AND LIBGADU_LIBRARIES)
-\ Brak znaku nowej linii na koñcu pliku
-+endif (LIBGADU_INCLUDE_DIR AND LIBGADU_LIBRARIES)
+

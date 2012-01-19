@@ -7,19 +7,19 @@
 #
 %define		_state		stable
 %define		orgname		kdenetwork
-%define		qtver		4.7.4
+%define		qtver		4.8.0
 
 Summary:	K Desktop Environment - network applications
 Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.7.4
+Version:	4.8.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	e180222d932c64574ba5b8ef31e6bb86
+# Source0-md5:	4fc00a35dc3f0b3b06a2b6be3086563d
 Patch100:	%{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 Patch1:		%{name}-gcc.patch
@@ -873,6 +873,9 @@ fi
 %attr(755,root,root) %{_libdir}/libkgetcore.so.4.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkgetcore.so.?
 %attr(755,root,root) %{_libdir}/libkgetcore.so
+%{_datadir}/apps/kconf_update/kget.upd
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kget_limitdownloads.pl
+%attr(755,root,root) %{_datadir}/apps/kconf_update/kget_sensitive.pl
 %{_datadir}/apps/kget
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.rc
 %{_datadir}/apps/khtml/kpartplugins/kget_plug_in.desktop
@@ -943,6 +946,8 @@ fi
 %attr(755,root,root) %{_libdir}/kde4/kopete_statistics.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_testbed.so
 %attr(755,root,root) %{_libdir}/kde4/kopete_urlpicpreview.so
+%dir %attr(755,root,root) %{_libdir}/kde4/plugins/accessible
+%attr(755,root,root) %{_libdir}/kde4/plugins/accessible/chatwindowaccessiblewidgetfactory.so
 
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-0.10.pl
 %attr(755,root,root) %{_datadir}/apps/kconf_update/kopete-account-kconf_update.sh
