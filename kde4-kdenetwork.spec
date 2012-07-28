@@ -14,12 +14,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.8.4
+Version:	4.9.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	3d594eaee39ded0eef1aef3d135ea4f1
+# Source0-md5:	498dde690fd5609c08a049bf50913117
 Patch100:	%{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 Patch1:		%{name}-gcc.patch
@@ -72,7 +72,7 @@ BuildRequires:	soprano-devel >= 2.4.64
 BuildRequires:	speex-devel
 BuildRequires:	sqlite3-devel
 BuildRequires:	strigi-devel >= 0.7.2
-BuildRequires:	telepathy-qt4-devel
+BuildRequires:	telepathy-qt4-devel >= 0.9.0
 BuildRequires:	xmms-devel
 BuildRequires:	xorg-lib-libXdamage-devel
 BuildRequires:	xorg-lib-libXtst-devel
@@ -1268,6 +1268,7 @@ fi
 %files krfb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krdc
+%attr(755,root,root) %{_bindir}/krdc_rfb_approver
 %attr(755,root,root) %{_bindir}/krfb
 %attr(755,root,root) %ghost %{_libdir}/libkrdccore.so.?
 %attr(755,root,root) %{_libdir}/libkrdccore.so.*.*.*
@@ -1280,6 +1281,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde4/kcm_krdc_rdpplugin.so
 %attr(755,root,root) %{_libdir}/kde4/kcm_krdc_vncplugin.so
 %{_datadir}/apps/krdc
+%{_datadir}/apps/krdc_rfb_approver
 %{_datadir}/apps/krfb
 %{_datadir}/config.kcfg/krdc.kcfg
 %{_datadir}/kde4/services/ServiceMenus/smb2rdc.desktop
@@ -1298,3 +1300,5 @@ fi
 %{_desktopdir}/kde4/krfb.desktop
 %{_kdedocdir}/en/krdc
 %{_kdedocdir}/en/krfb
+%{_datadir}/dbus-1/services/org.freedesktop.Telepathy.Client.kr*.service
+%{_datadir}/telepathy/clients/kr*.client
