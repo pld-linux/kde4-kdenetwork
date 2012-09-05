@@ -1113,7 +1113,7 @@ fi
 %files kopete-protocol-meanwhile
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kopete_meanwhile.so
-%{_datadir}/apps/kopete/icons/*/*/*/meanwhile_*.png
+%{_datadir}/apps/kopete/icons/*/*/*/meanwhile_*.*
 %{_datadir}/kde4/services/kopete_meanwhile.desktop
 
 %files kopete-protocol-wlm
