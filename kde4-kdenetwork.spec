@@ -14,15 +14,16 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.9.1
+Version:	4.9.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	ae0253fdef5988f46640535381bdeb6c
+# Source0-md5:	aa150f94cd57ed8f2b37d6b5d98f6d3f
 Patch100:	%{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 Patch1:		%{name}-gcc.patch
+Patch2:		kdenetwork-4.7.97-fix-for-g++47.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtOpenGL-devel >= %{qtver}
@@ -748,6 +749,7 @@ specjalnych możliwości Remote Desktop Connection.
 #%patch100 -p0
 %patch0 -p0
 %patch1 -p1
+%patch2 -p1
 
 %build
 install -d build
@@ -1002,6 +1004,14 @@ fi
 
 %{_datadir}/apps/kopete/*rc
 %{_datadir}/apps/kopete/icons/*/*/actions
+%exclude %{_datadir}/apps/kopete/icons/*/*/actions/aim_*
+%exclude %{_datadir}/apps/kopete/icons/*/*/actions/gg_*
+%exclude %{_datadir}/apps/kopete/icons/*/*/actions/icq_*
+%exclude %{_datadir}/apps/kopete/icons/*/*/actions/jabber_*
+%exclude %{_datadir}/apps/kopete/icons/*/*/actions/meanwhile_*
+%exclude %{_datadir}/apps/kopete/icons/*/*/actions/wlm_*
+%exclude %{_datadir}/apps/kopete/icons/*/*/actions/yahoo_*
+%exclude %{_datadir}/apps/kopete/icons/*/*/actions/wp_*
 %{_datadir}/apps/kopete/icons/*/*/apps/testbed_protocol.png
 %{_datadir}/apps/kopete/icons/*/*/apps/qq_protocol.png
 %{_datadir}/apps/kopete/icons/*/*/apps/preferences-plugin-text-effect-kopete.png
@@ -1036,7 +1046,11 @@ fi
 %{_datadir}/kde4/services/kopete_qq.desktop
 %{_datadir}/kde4/services/kopete_testbed.desktop
 %{_datadir}/kde4/services/kopete_urlpicpreview.desktop
-%{_datadir}/kde4/services/kconfiguredialog
+%dir %{_datadir}/kde4/services/kconfiguredialog
+%{_datadir}/kde4/services/kconfiguredialog/kopete_otr_config.desktop
+%{_datadir}/kde4/services/kconfiguredialog/kopete_pipes_config.desktop
+%{_datadir}/kde4/services/kconfiguredialog/kopete_privacy_config.desktop
+%{_datadir}/kde4/services/kconfiguredialog/kopete_urlpicpreview_config.desktop
 %{_datadir}/kde4/services/kopete_privacy.desktop
 %{_datadir}/kde4/services/kopete_pipes.desktop
 %{_datadir}/kde4/services/kopete_statusconfig.desktop
@@ -1061,7 +1075,7 @@ fi
 %files kopete-protocol-aim
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kopete_aim.so
-%{_datadir}/apps/kopete/icons/*/*/*/*aim*
+%{_datadir}/apps/kopete/icons/*/*/*/aim*
 %{_datadir}/kde4/services/aim.protocol
 %{_datadir}/kde4/services/kopete_aim.desktop
 
@@ -1089,7 +1103,7 @@ fi
 %files kopete-protocol-icq
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/kde4/kopete_icq.so
-%{_datadir}/apps/kopete/icons/*/*/*/*icq*
+%{_datadir}/apps/kopete/icons/*/*/*/icq*
 %{_datadir}/kde4/services/kopete_icq.desktop
 %{_datadir}/apps/kconf_update/kopete-update_icq_server.pl
 %{_datadir}/apps/kconf_update/kopete-update_icq_server.upd
@@ -1100,6 +1114,7 @@ fi
 %attr(755,root,root) %{_libdir}/kde4/kopete*jabber*.so
 %{_datadir}/apps/kopete_jabber
 %{_datadir}/apps/kopete/icons/*/*/*/jabber*.png
+%{_datadir}/apps/kopete/icons/*/*/*/jabber*.mng
 %{_datadir}/kde4/services/xmpp.protocol
 %{_datadir}/kde4/services/kopete_jabber.desktop
 
