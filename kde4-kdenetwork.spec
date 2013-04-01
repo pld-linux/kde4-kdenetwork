@@ -14,12 +14,12 @@ Summary(es.UTF-8):	K Desktop Environment - aplicaciones de red
 Summary(pl.UTF-8):	K Desktop Environment - aplikacje sieciowe
 Summary(pt_BR.UTF-8):	K Desktop Environment - aplicações de rede
 Name:		kde4-kdenetwork
-Version:	4.10.1
+Version:	4.10.2
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	ff5bba9c3d13ef95332c61aa5b011c04
+# Source0-md5:	4b8ea088ec26a21f2328056977e23d67
 Patch100:	%{name}-branch.diff
 Patch0:		%{name}-FindLibgadu.patch
 Patch1:		%{name}-gcc.patch
@@ -912,6 +912,8 @@ fi
 %{_datadir}/kde4/servicetypes/kget_plugin.desktop
 %{_datadir}/kde4/services/plasma-runner-kget.desktop
 #%{_datadir}/kde4/services/plasma-runner-kget_config.desktop
+%{_datadir}/ontology/kde/kget_history.ontology
+%{_datadir}/ontology/kde/kget_history.trig
 %{_desktopdir}/kde4/kget.desktop
 %{_datadir}/dbus-1/services/org.kde.kget.service
 %{_iconsdir}/*/*/*/*kget*
