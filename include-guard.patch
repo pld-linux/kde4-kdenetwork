@@ -1,0 +1,13 @@
+--- kdenetwork-4.10.4/kopete/protocols/jabber/googletalk/libjingle/talk/p2p/base/stun.h~	2013-05-28 22:39:28.000000000 +0200
++++ kdenetwork-4.10.4/kopete/protocols/jabber/googletalk/libjingle/talk/p2p/base/stun.h	2013-06-20 15:18:55.279966306 +0200
+@@ -25,8 +25,8 @@
+  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
+-#ifndef __STUN_H__
+-#define __STUN_H__
++#ifndef __BASE_STUN_H__
++#define __BASE_STUN_H__
+ 
+ // This file contains classes for dealing with the STUN and TURN protocols.
+ // Both protocols use the same wire format.

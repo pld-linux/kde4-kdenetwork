@@ -25,6 +25,7 @@ Patch0:		%{name}-FindLibgadu.patch
 Patch1:		%{name}-gcc.patch
 Patch2:		kdenetwork-4.7.97-fix-for-g++47.patch
 Patch3:		linphone-fix.patch
+Patch4:		include-guard.patch
 URL:		http://www.kde.org/
 BuildRequires:	Qt3Support-devel >= %{qtver}
 BuildRequires:	QtOpenGL-devel >= %{qtver}
@@ -752,6 +753,7 @@ specjalnych możliwości Remote Desktop Connection.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 install -d build
