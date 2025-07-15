@@ -749,7 +749,7 @@ specjalnych możliwości Remote Desktop Connection.
 
 %prep
 %setup -q -n %{orgname}-%{version}
-#%patch100 -p0
+#%%patch100 -p0
 %patch -P0 -p0
 %patch -P1 -p1
 %patch -P2 -p1
